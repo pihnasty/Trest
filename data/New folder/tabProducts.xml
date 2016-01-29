@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tabProducts>
+<RowProduct description="Описание продукта №1" id="1" name="Прод №1"/>
+<RowProduct description="Описание продукта №2" id="2" name="Прод №2"/>
+<RowProduct description="Описание продукта №3" id="3" name="Прод №3"/>
+<RowProduct description="Описание продукта №4" id="4" name="Прод №4"/>
+<RowProduct description="Описание продукта №5" id="5" name="Прод №5"/>
+<RowProduct description="Описание продукта №6" id="6" name="Прод №6"/>
+<RowProduct description="Описание продукта №7" id="7" name="Прод №7"/>
+<RowProduct description="Описание продукта №8" id="8" name="Прод №8"/>
+<RowProduct description="Описание продукта №9" id="9" name="Прод №9"/>
+<RowProduct description="Описание продукта №10" id="10" name="Прод №10"/>
+<RowProduct description="Описание продукта №11" id="11" name="Прод №11"/>
+<RowProduct description="Описание продукта №12" id="12" name="Прод №12"/>
+<RowProduct description="Описание продукта №13" id="13" name="Прод №13"/>
+<RowProduct description="Описание продукта №14" id="14" name="Прод №14"/>
+<RowProduct description="Описание продукта №15" id="15" name="Прод №15"/>
+<RowProduct description="Описание продукта №16" id="16" name="Прод №16"/>
+<RowProduct description="Описание продукта №17" id="17" name="Прод №17"/>
+<RowProduct description="Описание продукта №18" id="18" name="Прод №18"/>
+<RowProduct description="Описание продукта №19" id="19" name="Прод №19"/>
+</tabProducts>

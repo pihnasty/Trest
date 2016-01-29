@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tabMachineModelmachines>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 50-1" id="50" id2="1"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 51-2" id="51" id2="2"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 52-3" id="52" id2="3"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 53-4" id="53" id2="4"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 54-5" id="54" id2="5"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 55-6" id="55" id2="6"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 56-7" id="56" id2="7"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 57-8" id="57" id2="8"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 58-9" id="58" id2="9"/>
+<RowMachineModelmachine description="Строка: Машина - Модель Машины 59-10" id="59" id2="10"/>
+<RowMachineModelmachine description="   " id="33" id2="6"/>
+<RowMachineModelmachine description="   " id="34" id2="2"/>
+<RowMachineModelmachine description="   " id="35" id2="2"/>
+<RowMachineModelmachine description="   " id="36" id2="2"/>
+<RowMachineModelmachine description="   " id="46" id2="2"/>
+<RowMachineModelmachine description="   " id="47" id2="2"/>
+<RowMachineModelmachine description="   " id="48" id2="2"/>
+<RowMachineModelmachine description="   " id="49" id2="2"/>
+<RowMachineModelmachine description="   " id="60" id2="2"/>
+<RowMachineModelmachine description="   " id="61" id2="2"/>
+<RowMachineModelmachine description="   " id="62" id2="2"/>
+<RowMachineModelmachine description="   " id="63" id2="2"/>
+<RowMachineModelmachine description="   " id="64" id2="2"/>
+<RowMachineModelmachine description="   " id="65" id2="2"/>
+<RowMachineModelmachine description="   " id="66" id2="2"/>
+<RowMachineModelmachine description="   " id="67" id2="2"/>
+<RowMachineModelmachine description="   " id="68" id2="2"/>
+<RowMachineModelmachine description="   " id="69" id2="2"/>
+<RowMachineModelmachine description="   " id="71" id2="2"/>
+<RowMachineModelmachine description="   " id="84" id2="2"/>
+<RowMachineModelmachine description="   " id="85" id2="2"/>
+<RowMachineModelmachine description="   " id="118" id2="2"/>
+<RowMachineModelmachine description="   " id="119" id2="2"/>
+<RowMachineModelmachine description="   " id="120" id2="2"/>
+<RowMachineModelmachine description="   " id="208" id2="2"/>
+<RowMachineModelmachine description="   " id="209" id2="2"/>
+<RowMachineModelmachine description="   " id="210" id2="2"/>
+<RowMachineModelmachine description="   " id="211" id2="2"/>
+<RowMachineModelmachine description="   " id="212" id2="2"/>
+<RowMachineModelmachine description="   " id="261" id2="2"/>
+<RowMachineModelmachine description="   " id="262" id2="2"/>
+<RowMachineModelmachine description="   " id="263" id2="2"/>
+<RowMachineModelmachine description="   " id="264" id2="2"/>
+<RowMachineModelmachine description="   " id="265" id2="2"/>
+<RowMachineModelmachine description="   " id="266" id2="2"/>
+<RowMachineModelmachine description="   " id="267" id2="2"/>
+<RowMachineModelmachine description="   " id="268" id2="2"/>
+<RowMachineModelmachine description="   " id="269" id2="2"/>
+<RowMachineModelmachine description="   " id="213" id2="2"/>
+<RowMachineModelmachine description="   " id="214" id2="2"/>
+<RowMachineModelmachine description="   " id="215" id2="2"/>
+<RowMachineModelmachine description="   " id="216" id2="2"/>
+<RowMachineModelmachine description="   " id="217" id2="2"/>
+<RowMachineModelmachine description="   " id="218" id2="2"/>
+<RowMachineModelmachine description="   " id="219" id2="2"/>
+<RowMachineModelmachine description="   " id="220" id2="2"/>
+<RowMachineModelmachine description="   " id="221" id2="2"/>
+<RowMachineModelmachine description="   " id="222" id2="2"/>
+<RowMachineModelmachine description="   " id="43" id2="2"/>
+<RowMachineModelmachine description="   " id="42" id2="2"/>
+<RowMachineModelmachine description="   " id="44" id2="2"/>
+<RowMachineModelmachine description="   " id="41" id2="2"/>
+<RowMachineModelmachine description="   " id="45" id2="2"/>
+<RowMachineModelmachine description="   " id="223" id2="2"/>
+<RowMachineModelmachine description="   " id="224" id2="2"/>
+<RowMachineModelmachine description="   " id="225" id2="2"/>
+<RowMachineModelmachine description="   " id="226" id2="2"/>
+<RowMachineModelmachine description="   " id="227" id2="2"/>
+<RowMachineModelmachine description="   " id="228" id2="2"/>
+<RowMachineModelmachine description="   " id="229" id2="2"/>
+<RowMachineModelmachine description="   " id="230" id2="2"/>
+<RowMachineModelmachine description="   " id="231" id2="2"/>
+<RowMachineModelmachine description="   " id="232" id2="2"/>
+<RowMachineModelmachine description="   " id="233" id2="2"/>
+<RowMachineModelmachine description="   " id="234" id2="2"/>
+<RowMachineModelmachine description="   " id="235" id2="2"/>
+<RowMachineModelmachine description="   " id="236" id2="2"/>
+<RowMachineModelmachine description="   " id="237" id2="2"/>
+<RowMachineModelmachine description="   " id="238" id2="2"/>
+<RowMachineModelmachine description="   " id="239" id2="2"/>
+<RowMachineModelmachine description="   " id="240" id2="2"/>
+<RowMachineModelmachine description="   " id="241" id2="2"/>
+<RowMachineModelmachine description="   " id="242" id2="2"/>
+<RowMachineModelmachine description="   " id="243" id2="2"/>
+<RowMachineModelmachine description="   " id="244" id2="2"/>
+<RowMachineModelmachine description="   " id="245" id2="2"/>
+<RowMachineModelmachine description="   " id="246" id2="2"/>
+<RowMachineModelmachine description="   " id="247" id2="2"/>
+<RowMachineModelmachine description="   " id="248" id2="2"/>
+<RowMachineModelmachine description="   " id="249" id2="2"/>
+<RowMachineModelmachine description="   " id="250" id2="2"/>
+<RowMachineModelmachine description="   " id="251" id2="2"/>
+<RowMachineModelmachine description="   " id="252" id2="2"/>
+<RowMachineModelmachine description="   " id="253" id2="2"/>
+<RowMachineModelmachine description="   " id="254" id2="2"/>
+<RowMachineModelmachine description="   " id="255" id2="2"/>
+<RowMachineModelmachine description="   " id="256" id2="2"/>
+<RowMachineModelmachine description="   " id="257" id2="2"/>
+<RowMachineModelmachine description="   " id="270" id2="2"/>
+<RowMachineModelmachine description="   " id="271" id2="2"/>
+<RowMachineModelmachine description="   " id="272" id2="2"/>
+<RowMachineModelmachine description="   " id="273" id2="2"/>
+<RowMachineModelmachine description="   " id="274" id2="2"/>
+<RowMachineModelmachine description="   " id="275" id2="2"/>
+<RowMachineModelmachine description="   " id="276" id2="2"/>
+<RowMachineModelmachine description="   " id="277" id2="2"/>
+<RowMachineModelmachine description="   " id="278" id2="2"/>
+<RowMachineModelmachine description="   " id="279" id2="2"/>
+<RowMachineModelmachine description="   " id="280" id2="2"/>
+<RowMachineModelmachine description="   " id="281" id2="2"/>
+<RowMachineModelmachine description="   " id="282" id2="2"/>
+<RowMachineModelmachine description="   " id="258" id2="2"/>
+<RowMachineModelmachine description="   " id="149" id2="2"/>
+<RowMachineModelmachine description="   " id="150" id2="2"/>
+<RowMachineModelmachine description="   " id="151" id2="2"/>
+<RowMachineModelmachine description="   " id="152" id2="2"/>
+<RowMachineModelmachine description="   " id="153" id2="2"/>
+<RowMachineModelmachine description="   " id="154" id2="2"/>
+<RowMachineModelmachine description="   " id="155" id2="2"/>
+<RowMachineModelmachine description="   " id="156" id2="2"/>
+<RowMachineModelmachine description="   " id="157" id2="2"/>
+<RowMachineModelmachine description="   " id="158" id2="2"/>
+<RowMachineModelmachine description="   " id="159" id2="2"/>
+<RowMachineModelmachine description="   " id="23" id2="2"/>
+<RowMachineModelmachine description="   " id="24" id2="2"/>
+<RowMachineModelmachine description="   " id="25" id2="2"/>
+<RowMachineModelmachine description="   " id="26" id2="2"/>
+<RowMachineModelmachine description="   " id="27" id2="2"/>
+<RowMachineModelmachine description="   " id="28" id2="2"/>
+<RowMachineModelmachine description="   " id="29" id2="2"/>
+<RowMachineModelmachine description="   " id="30" id2="2"/>
+<RowMachineModelmachine description="   " id="37" id2="2"/>
+<RowMachineModelmachine description="   " id="38" id2="2"/>
+<RowMachineModelmachine description="   " id="39" id2="2"/>
+<RowMachineModelmachine description="   " id="40" id2="2"/>
+<RowMachineModelmachine description="   " id="72" id2="2"/>
+<RowMachineModelmachine description="   " id="73" id2="2"/>
+<RowMachineModelmachine description="   " id="74" id2="2"/>
+<RowMachineModelmachine description="   " id="75" id2="2"/>
+<RowMachineModelmachine description="   " id="76" id2="2"/>
+<RowMachineModelmachine description="   " id="77" id2="2"/>
+<RowMachineModelmachine description="   " id="78" id2="2"/>
+<RowMachineModelmachine description="   " id="80" id2="2"/>
+<RowMachineModelmachine description="   " id="82" id2="2"/>
+<RowMachineModelmachine description="   " id="83" id2="2"/>
+<RowMachineModelmachine description="   " id="259" id2="2"/>
+<RowMachineModelmachine description="   " id="260" id2="2"/>
+<RowMachineModelmachine description="   " id="283" id2="2"/>
+<RowMachineModelmachine description="IdMachine=454IdModelMachine=1.0" id="454" id2="1"/>
+<RowMachineModelmachine description="IdMachine=455IdModelMachine=1.0" id="455" id2="1"/>
+<RowMachineModelmachine description="IdMachine=456IdModelMachine=2.0" id="456" id2="2"/>
+<RowMachineModelmachine description="   " id="287" id2="4"/>
+<RowMachineModelmachine description="   " id="288" id2="4"/>
+<RowMachineModelmachine description="   " id="289" id2="4"/>
+<RowMachineModelmachine description="   " id="290" id2="4"/>
+<RowMachineModelmachine description="   " id="291" id2="4"/>
+<RowMachineModelmachine description="   " id="292" id2="4"/>
+<RowMachineModelmachine description="   " id="293" id2="4"/>
+<RowMachineModelmachine description="   " id="294" id2="4"/>
+<RowMachineModelmachine description="   " id="295" id2="4"/>
+<RowMachineModelmachine description="   " id="296" id2="4"/>
+<RowMachineModelmachine description="   " id="297" id2="4"/>
+<RowMachineModelmachine description="   " id="298" id2="4"/>
+<RowMachineModelmachine description="   " id="299" id2="4"/>
+<RowMachineModelmachine description="   " id="300" id2="4"/>
+<RowMachineModelmachine description="   " id="301" id2="4"/>
+<RowMachineModelmachine description="   " id="302" id2="4"/>
+<RowMachineModelmachine description="   " id="303" id2="4"/>
+<RowMachineModelmachine description="   " id="304" id2="4"/>
+<RowMachineModelmachine description="   " id="305" id2="4"/>
+<RowMachineModelmachine description="   " id="306" id2="4"/>
+<RowMachineModelmachine description="   " id="307" id2="4"/>
+<RowMachineModelmachine description="   " id="308" id2="4"/>
+<RowMachineModelmachine description="   " id="309" id2="4"/>
+<RowMachineModelmachine description="   " id="310" id2="4"/>
+<RowMachineModelmachine description="   " id="311" id2="4"/>
+<RowMachineModelmachine description="   " id="312" id2="4"/>
+<RowMachineModelmachine description="   " id="313" id2="4"/>
+<RowMachineModelmachine description="   " id="314" id2="4"/>
+<RowMachineModelmachine description="   " id="315" id2="4"/>
+<RowMachineModelmachine description="   " id="316" id2="4"/>
+<RowMachineModelmachine description="   " id="317" id2="4"/>
+<RowMachineModelmachine description="   " id="318" id2="4"/>
+<RowMachineModelmachine description="   " id="319" id2="4"/>
+<RowMachineModelmachine description="   " id="320" id2="4"/>
+<RowMachineModelmachine description="   " id="321" id2="4"/>
+<RowMachineModelmachine description="   " id="322" id2="4"/>
+<RowMachineModelmachine description="   " id="343" id2="4"/>
+<RowMachineModelmachine description="   " id="387" id2="4"/>
+<RowMachineModelmachine description="   " id="416" id2="4"/>
+<RowMachineModelmachine description="   " id="435" id2="4"/>
+<RowMachineModelmachine description="   " id="447" id2="4"/>
+<RowMachineModelmachine description="   " id="448" id2="4"/>
+<RowMachineModelmachine description="   " id="449" id2="4"/>
+<RowMachineModelmachine description="   " id="450" id2="4"/>
+<RowMachineModelmachine description="   " id="451" id2="4"/>
+<RowMachineModelmachine description="   " id="452" id2="4"/>
+<RowMachineModelmachine description="   " id="453" id2="4"/>
+<RowMachineModelmachine description="   " id="359" id2="4"/>
+<RowMachineModelmachine description="   " id="360" id2="4"/>
+<RowMachineModelmachine description="   " id="354" id2="4"/>
+<RowMachineModelmachine description="   " id="357" id2="4"/>
+<RowMachineModelmachine description="   " id="358" id2="4"/>
+<RowMachineModelmachine description="   " id="361" id2="4"/>
+<RowMachineModelmachine description="   " id="362" id2="4"/>
+<RowMachineModelmachine description="   " id="284" id2="4"/>
+<RowMachineModelmachine description="   " id="363" id2="4"/>
+<RowMachineModelmachine description="   " id="364" id2="4"/>
+<RowMachineModelmachine description="   " id="365" id2="4"/>
+<RowMachineModelmachine description="   " id="366" id2="4"/>
+<RowMachineModelmachine description="   " id="367" id2="4"/>
+<RowMachineModelmachine description="   " id="368" id2="4"/>
+<RowMachineModelmachine description="   " id="423" id2="4"/>
+<RowMachineModelmachine description="   " id="426" id2="4"/>
+<RowMachineModelmachine description="   " id="429" id2="4"/>
+<RowMachineModelmachine description="   " id="432" id2="4"/>
+<RowMachineModelmachine description="   " id="433" id2="4"/>
+<RowMachineModelmachine description="   " id="434" id2="4"/>
+<RowMachineModelmachine description="   " id="445" id2="4"/>
+<RowMachineModelmachine description="   " id="446" id2="4"/>
+<RowMachineModelmachine description="IdMachine=457IdModelMachine=13.0" id="457" id2="13"/>
+<RowMachineModelmachine description="IdMachine=458IdModelMachine=28.0" id="458" id2="28"/>
+<RowMachineModelmachine description="IdMachine=459IdModelMachine=18.0" id="459" id2="18"/>
+<RowMachineModelmachine description="IdMachine=460IdModelMachine=20.0" id="460" id2="20"/>
+<RowMachineModelmachine description="IdMachine=461IdModelMachine=31.0" id="461" id2="31"/>
+<RowMachineModelmachine description="IdMachine=462IdModelMachine=30.0" id="462" id2="30"/>
+<RowMachineModelmachine description="IdMachine=463IdModelMachine=15.0" id="463" id2="15"/>
+<RowMachineModelmachine description="IdMachine=464IdModelMachine=18.0" id="464" id2="18"/>
+<RowMachineModelmachine description="IdMachine=465IdModelMachine=19.0" id="465" id2="19"/>
+<RowMachineModelmachine description="IdMachine=466IdModelMachine=23.0" id="466" id2="23"/>
+<RowMachineModelmachine description="IdMachine=467IdModelMachine=23.0" id="467" id2="23"/>
+<RowMachineModelmachine description="IdMachine=468IdModelMachine=27.0" id="468" id2="27"/>
+<RowMachineModelmachine description="IdMachine=469IdModelMachine=18.0" id="469" id2="18"/>
+<RowMachineModelmachine description="IdMachine=470IdModelMachine=18.0" id="470" id2="18"/>
+<RowMachineModelmachine description="IdMachine=471IdModelMachine=18.0" id="471" id2="18"/>
+<RowMachineModelmachine description="IdMachine=472IdModelMachine=7.0" id="472" id2="7"/>
+<RowMachineModelmachine description="IdMachine=473IdModelMachine=7.0" id="473" id2="7"/>
+<RowMachineModelmachine description="IdMachine=474IdModelMachine=19.0" id="474" id2="19"/>
+<RowMachineModelmachine description="IdMachine=475IdModelMachine=18.0" id="475" id2="18"/>
+<RowMachineModelmachine description="IdMachine=476IdModelMachine=13.0" id="476" id2="13"/>
+<RowMachineModelmachine description="IdMachine=477IdModelMachine=13.0" id="477" id2="13"/>
+<RowMachineModelmachine description="IdMachine=478IdModelMachine=17.0" id="478" id2="17"/>
+<RowMachineModelmachine description="IdMachine=479IdModelMachine=15.0" id="479" id2="15"/>
+<RowMachineModelmachine description="IdMachine=480IdModelMachine=20.0" id="480" id2="20"/>
+<RowMachineModelmachine description="IdMachine=481IdModelMachine=20.0" id="481" id2="20"/>
+<RowMachineModelmachine description="IdMachine=482IdModelMachine=21.0" id="482" id2="21"/>
+<RowMachineModelmachine description="IdMachine=483IdModelMachine=21.0" id="483" id2="21"/>
+<RowMachineModelmachine description="IdMachine=484IdModelMachine=21.0" id="484" id2="21"/>
+<RowMachineModelmachine description="IdMachine=485IdModelMachine=21.0" id="485" id2="21"/>
+<RowMachineModelmachine description="IdMachine=486IdModelMachine=22.0" id="486" id2="22"/>
+<RowMachineModelmachine description="IdMachine=487IdModelMachine=22.0" id="487" id2="22"/>
+<RowMachineModelmachine description="IdMachine=488IdModelMachine=22.0" id="488" id2="22"/>
+<RowMachineModelmachine description="IdMachine=489IdModelMachine=18.0" id="489" id2="18"/>
+<RowMachineModelmachine description="IdMachine=490IdModelMachine=19.0" id="490" id2="19"/>
+<RowMachineModelmachine description="IdMachine=491IdModelMachine=29.0" id="491" id2="29"/>
+<RowMachineModelmachine description="IdMachine=492IdModelMachine=29.0" id="492" id2="29"/>
+<RowMachineModelmachine description="IdMachine=493IdModelMachine=14.0" id="493" id2="14"/>
+<RowMachineModelmachine description="IdMachine=494IdModelMachine=14.0" id="494" id2="14"/>
+<RowMachineModelmachine description="IdMachine=495IdModelMachine=30.0" id="495" id2="30"/>
+<RowMachineModelmachine description="IdMachine=496IdModelMachine=30.0" id="496" id2="30"/>
+<RowMachineModelmachine description="IdMachine=497IdModelMachine=3.0" id="497" id2="3"/>
+<RowMachineModelmachine description="IdMachine=498IdModelMachine=31.0" id="498" id2="31"/>
+<RowMachineModelmachine description="IdMachine=499IdModelMachine=29.0" id="499" id2="29"/>
+</tabMachineModelmachines>

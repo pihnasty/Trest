@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tabMachines>
+<RowMachine description="description №2" id="2" img="Image/Machine/Машина №2.png" locationX="200" locationY="200" name="Машина №2" state="0.1"/>
+<RowMachine description="description №1" id="1" img="Image/Machine/Машина №1.png" locationX="100" locationY="200" name="Машина №1" state="0.1"/>
+<RowMachine description="description №3" id="3" img="Image/Machine/Машина №3.png" locationX="300" locationY="200" name="Машина №3" state="0.1"/>
+<RowMachine description="description №4" id="4" img="Image/Machine/Машина №4.png" locationX="400" locationY="200" name="Машина №4" state="0.1"/>
+<RowMachine description="description №5" id="5" img="Image/Machine/Машина №5.png" locationX="500" locationY="200" name="Машина №5" state="0.1"/>
+<RowMachine description="description №6" id="6" img="Image/Machine/Машина №6.png" locationX="600" locationY="200" name="Машина №6" state="0.1"/>
+<RowMachine description="description №7" id="7" img="Image/Machine/Машина №7.png" locationX="700" locationY="200" name="Машина №7" state="0.1"/>
+<RowMachine description="description №8" id="8" img="Image/Machine/Машина №8.png" locationX="800" locationY="200" name="Машина №8" state="0.1"/>
+</tabMachines>
