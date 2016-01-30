@@ -29,6 +29,8 @@ public class MainApplicationFX extends Application {
     public void start(Stage stage) throws Exception{
 
 
+
+
         setLocale("en");
 
         FXMLLoader loader = new FXMLLoader();
@@ -57,13 +59,10 @@ public class MainApplicationFX extends Application {
      */
     private void setLocale(String s) {
         Locale locale = Locale.getDefault();
-
         Locale.setDefault( new Locale(s));
         System.out.println(locale.getLanguage());
         // locale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
-
         // Locale.setDefault( Locale.GERMAN);
-
         System.out.println(locale.getDisplayName(Locale.getDefault()));
     }
 
