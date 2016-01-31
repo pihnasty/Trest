@@ -1,7 +1,7 @@
 package old.simulation.GUI;
 /**
 @version 1.21 2015-04-10
-@author Pignasty Oleg
+@author Pihnastyi Oleg
 */
 
 import javax.swing.*;

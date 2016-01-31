@@ -9,6 +9,7 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import loader.DataSet;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -17,7 +18,8 @@ import java.util.ResourceBundle;
  * Sample custom control hosting a text field and a button.
  */
 public class RootPane extends BorderPane {
-    public RootPane() {
+    public RootPane(){}
+    public RootPane(DataSet dataSet) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("rootPane.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         fxmlLoader.setRoot(this);

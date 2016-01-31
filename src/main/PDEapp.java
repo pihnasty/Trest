@@ -1,5 +1,6 @@
 package main;
 
+import javafx.application.Application;
 import ui.MainApplicationFX;
 
 /**
@@ -7,7 +8,6 @@ import ui.MainApplicationFX;
  */
 public class PDEapp {
     public static void main(String[] args) {
-        MainApplicationFX uiApp = new MainApplicationFX();
-        uiApp.main("");
+       MainApplicationFX uiApp = new MainApplicationFX(args);
     }
 }
