@@ -45,7 +45,10 @@ public class MainApplicationFX extends Application {
         DataSet dataSet = new DataSet();
         RootPane rootPane = new RootPane(dataSet);
 
-
+        Image im=new Image(this.getClass().getResource("work3.png").toString());
+        //      System.out.println("Height: "+im.getHeight()+"Width: "+im.getWidth());
+        ImageView imv=new ImageView(im);
+        stage.getIcons().add(new Image(this.getClass().getResource("work3.png").toString()));
 
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(ResourceBundle.getBundle("resources.ui"));
@@ -56,9 +59,7 @@ public class MainApplicationFX extends Application {
         stage.initStyle(StageStyle.DECORATED);
         stage.setMaximized(true);
 
-       Image im=new Image(this.getClass().getResource("work3.png").toString());
-  //      System.out.println("Height: "+im.getHeight()+"Width: "+im.getWidth());
-        ImageView imv=new ImageView(im);
+
 
 
         rootPane.setBottom(imv);
