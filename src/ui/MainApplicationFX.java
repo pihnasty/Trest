@@ -52,6 +52,10 @@ public class MainApplicationFX extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(ResourceBundle.getBundle("resources.ui"));
+
+
+
+
         setLocale("");
 
         stage.setTitle(loader.getResources().getString("stageTitle"));
