@@ -77,11 +77,14 @@ public class RootPane extends BorderPane {
         menuE.getItems().addAll(menuItemCut, menuItemCopy, menuItemPaste);
 
         Menu menuV = new Menu("Вид");
+
+        Menu menuL = new Menu("Язык");
+
         MenuItem menuItemS = new MenuItem("Масштаб");
         menuItemS.setStyle("-fx-text-fill:navy;-fx-font:bold italic 14pt Georgia;");
         menuV.getItems().addAll(menuItemS);
 
-        menuBar.getMenus().addAll(menuF, menuE, menuV);
+        menuBar.getMenus().addAll(menuF, menuE, menuV,menuL);
 
 
 

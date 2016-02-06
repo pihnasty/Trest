@@ -50,13 +50,15 @@ public class MainApplicationFX extends Application {
         ImageView imv=new ImageView(im);
         stage.getIcons().add(new Image(this.getClass().getResource("work3.png").toString()));
 
+        setLocale("ru");
         FXMLLoader loader = new FXMLLoader();
         loader.setResources(ResourceBundle.getBundle("resources.ui"));
 
 
 
+// ----------------------------------------------
 
-        setLocale("");
+//----------------------------------------------------------------------
 
         stage.setTitle(loader.getResources().getString("stageTitle"));
 
@@ -96,8 +98,10 @@ public class MainApplicationFX extends Application {
      * @param s Language of the application ( new Locale(s))
      */
     private void setLocale(String s) {
-        Locale locale = Locale.getDefault();
-        if (s!="") Locale.setDefault(new Locale(s));
+       Locale locale = Locale.getDefault();
+        if (s!="")
+
+            Locale.setDefault(new Locale(s));
         System.out.println(locale.getLanguage());
         // locale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
         // Locale.setDefault( Locale.GERMAN);
