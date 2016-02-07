@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 <fx:root type="ui.rootPane.RootPane" xmlns:fx="http://javafx.com/fxml"   >
 
     <center>
         <Button text="Click Me" />
+
     </center>
+
     <bottom>
-        <TextField fx:id="textField"/>
+        <Label text="wwwwww"/>
 
     </bottom>
+
+    <top>
+        <Label text="wwwwww"/>
+    </top>
 </fx:root>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<fx:root type="ui.rootPane.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"   >
+<Menu text="%File">
+    <MenuItem text="%New"></MenuItem>
+    <MenuItem text="%Open"></MenuItem>
+    <SeparatorMenuItem/>
+    <MenuItem text="%Save"></MenuItem>
+    <MenuItem text="%SaveAs"></MenuItem>
+    <MenuItem text="%SaveAll"></MenuItem>
+    <SeparatorMenuItem/>
+    <MenuItem text="%Exit"></MenuItem>
+</Menu>
+<Menu text="%Edit">
+    <MenuItem text="%Cut"></MenuItem>
+    <MenuItem text="%Copy"></MenuItem>
+    <MenuItem text="%Paste"></MenuItem>
+</Menu>
+<Menu text="%Setting">
+    <MenuItem text="%Platform"></MenuItem>
+</Menu>
+<Menu text="%Window">
+
+    <Menu  fx:id="OpenPerspective"  text="%OpenPerspective">
+        <MenuItem text="%DefaultPerspective"></MenuItem>
+        <MenuItem text="%OrdersPerspective"></MenuItem>
+        <MenuItem text="%RoutesPerspective"></MenuItem>
+        <MenuItem text="%MachinesLocationPerspective"></MenuItem>
+    </Menu>
+</Menu>
+<Menu text="%Test">
+    <MenuItem text="%TestOfMachine"></MenuItem>
+</Menu>
+<Menu text="%Help"/>
+<Menu text="%Language"/>
+
+
+
+
+</fx:root>
