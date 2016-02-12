@@ -8,6 +8,6 @@ import ui.MainApplicationFX;
  */
 public class PDEapp {
     public static void main(String[] args) {
-       MainApplicationFX uiApp = new MainApplicationFX(args);
+        Application uiApp = new MainApplicationFX(args);
     }
 }

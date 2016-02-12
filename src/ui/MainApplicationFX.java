@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import javafx.stage.StageStyle;
@@ -46,7 +47,7 @@ public class MainApplicationFX extends Application {
         setLocale("ru"); //en
 
         DataSet dataSet = new DataSet();
-        RootPane rootPane = new RootPane(dataSet);
+        BorderPane rootPane = new RootPane(dataSet);
 
         Image im = new Image(this.getClass().getResource("work3.png").toString());
         ImageView imv = new ImageView(im);
@@ -56,6 +57,7 @@ public class MainApplicationFX extends Application {
         stage.setTitle(loader.getResources().getString("stageTitle"));
         stage.initStyle(StageStyle.DECORATED);
         stage.setMaximized(true);
+
         stage.setScene(new Scene(rootPane));
         stage.setWidth(DEFAULT_WIDTH / 2);
         stage.setHeight(DEFAULT_HEIGHT / 2);
@@ -74,10 +76,5 @@ public class MainApplicationFX extends Application {
             Locale.setDefault(locale);
             System.out.println("s=" + s);
         }
-
-        System.out.println(locale.getLanguage());
-        // locale = new Locale.Builder().setLanguage("ru").setScript("Cyrl").build();
-        // Locale.setDefault( Locale.GERMAN);
-        System.out.println(locale.getDisplayName(Locale.getDefault()));
     }
 }
