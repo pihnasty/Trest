@@ -30,7 +30,7 @@ public class TMenuView extends MenuBar {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tMenuView.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
-        //     getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
+        getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -44,11 +44,11 @@ public class TMenuView extends MenuBar {
 
 
 
-
+/*
 
         newItem = new MenuItem();
 
-        /**/
+
 
 
 
@@ -61,7 +61,7 @@ public class TMenuView extends MenuBar {
 
         System.out.println(newItem.getGraphic()+"------------------------------------------------------------------------");
 
-
+*/
 
 
 
