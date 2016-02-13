@@ -1,0 +1,13 @@
+
+#newItem {
+
+       -fx-background-repeat:no-repeat;
+    -fx-padding: 0pt 0pt 0pt 15pt;
+    -fx-background-position: 0,left;
+}
+
+.menu-item {
+/*    -fx-skin: "com.sun.javafx.scene.control.skin.MenuItemSkin";*/
+/*    -fx-background-color: chartreuse;*/
+
+}
