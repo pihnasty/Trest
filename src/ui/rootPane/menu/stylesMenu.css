@@ -1,13 +1,21 @@
+/* Menu File*/
+#newItem        { -fx-background-image: url("../../../images/icons/new.png");       }
+#openItem       { -fx-background-image: url("../../../images/icons/open.png");      }
+#saveItem       { -fx-background-image: url("../../../images/icons/save.png");      }
+#saveItem       { -fx-background-image: url("../../../images/icons/save.png");      }
+#saveAsItem     { -fx-background-image: url("../../../images/icons/save_as.png");   }
+#saveAllItem    { -fx-background-image: url("../../../images/icons/save_all.png");  }
+#exitItem       { -fx-background-image: url("../../../images/icons/exit.png");      }
+/* Menu Edit*/
+#cutItem        { -fx-background-image: url("../../../images/icons/cut.png");       }
+#copyItem       { -fx-background-image: url("../../../images/icons/copy.png");      }
+#pasteItem      { -fx-background-image: url("../../../images/icons/paste.png");     }
 
-#newItem {
-    -fx-background-image: url("new.png");
-    -fx-background-repeat:no-repeat;
-    -fx-padding: 0pt 0pt 0pt 15pt;
-    -fx-background-position: 0,left;
-}
 
 .menu-item {
 /*    -fx-skin: "com.sun.javafx.scene.control.skin.MenuItemSkin";*/
-/*    -fx-background-color: chartreuse;*/
-
+    -fx-background-color: chartreuse;
+    -fx-background-repeat:no-repeat;
+    -fx-padding: 0pt 0pt 0pt 18pt;
+    -fx-background-position: 0,left;
 }

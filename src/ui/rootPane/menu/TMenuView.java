@@ -5,12 +5,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
+import ui.Controller;
 import java.io.IOException;
 import java.util.ResourceBundle;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 
 /**
  * Created by pom on 07.02.2016.
@@ -19,9 +26,6 @@ public class TMenuView extends MenuBar {
 
     @FXML
     private Menu OpenPerspective;
-
-    @FXML
-    private MenuItem newItem;
 
     public TMenuView() {
     }
@@ -32,38 +36,12 @@ public class TMenuView extends MenuBar {
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
         fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        // fxmlLoader.setController(new TMenuController());        // or  fx:controller="ui.rootPane.menu.TMenuController"
 
-
-//
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-
-
-/*
-
-        newItem = new MenuItem();
-
-
-
-
-
-        newItem.setGraphic(new ImageView(
-                        new Image (
-                                getClass().getResource("new.png").toExternalForm())
-                )
-        );
-
-
-        System.out.println(newItem.getGraphic()+"------------------------------------------------------------------------");
-
-*/
-
-
-
     }
 }
