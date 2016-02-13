@@ -35,8 +35,7 @@ public class TMenuView extends MenuBar {
         fxmlLoader.setController(this);
 
 
-
-
+//
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
