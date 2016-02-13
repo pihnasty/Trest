@@ -7,6 +7,8 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import loader.DataSet;
@@ -22,6 +24,7 @@ import java.util.ResourceBundle;
  * Sample custom control hosting a text field and a button.
  */
 public class RootPane extends BorderPane {
+
     public RootPane() {
     }
 
@@ -41,6 +44,24 @@ public class RootPane extends BorderPane {
         MenuBar tMenuView = new TMenuView(menuModel);
         this.setTop(tMenuView);
 
+
+
+    /*
+        b=new Button();
+
+        Image im =new Image(
+                getClass().getResource("new.png").toExternalForm());
+
+        ImageView imv=new ImageView(im);
+        imv.setFitHeight(50);
+        imv.setFitWidth(50);
+
+        b.setGraphic(imv);
+        b.setLayoutX(80);
+
+        b.setLayoutY(170);
+        this.setBottom(b);
+        */
 
     }
 }

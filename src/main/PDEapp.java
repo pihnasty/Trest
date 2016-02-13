@@ -10,5 +10,4 @@ public class PDEapp {
     public static void main(String[] args) {
         Application uiApp = new MainApplicationFX(args);
     }
-    // gggg
 }

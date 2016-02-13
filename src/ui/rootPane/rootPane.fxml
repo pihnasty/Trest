@@ -4,17 +4,6 @@
 <?import javafx.scene.control.Label?>
 <fx:root type="ui.rootPane.RootPane" xmlns:fx="http://javafx.com/fxml"   >
 
-    <center>
-        <Button text="Click Me" />
 
-    </center>
 
-    <bottom>
-        <Label text="wwwwww"/>
-
-    </bottom>
-
-    <top>
-        <Label text="wwwwww"/>
-    </top>
 </fx:root>

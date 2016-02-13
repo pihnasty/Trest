@@ -7,7 +7,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <fx:root type="ui.rootPane.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"   >
 <Menu text="%File">
-    <MenuItem text="%New" >
+    <MenuItem text="%New" fx:id="newItem" >
 
     </MenuItem>
     <MenuItem text="%Open"></MenuItem>
