@@ -52,7 +52,7 @@ public class MenuFrame extends JFrame
         setIconImage(new ImageIcon("Image/Icon/work3.png").getImage());	//	инициализируем иконку для фрейма   
         setJMenuBar(new PMenuBar (this));								//	инициализуем menuBar по умолчанию
 
-        dataSet = new DataSet();						// Инициализируем поля DataSet
+        dataSet = new DataSet();					// Инициализируем поля DataSet
         dataSet.openDataSet();						// Считываем данные из XML-файлов в поля DataSet. 
 
         trest= dataSet.getTrest(1);					// Инициализируем объект Трест по id=1

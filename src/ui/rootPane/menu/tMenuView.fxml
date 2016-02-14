@@ -27,10 +27,10 @@
 <Menu text="%Window">
 
     <Menu  fx:id="OpenPerspective"  text="%OpenPerspective">
-        <MenuItem text="%DefaultPerspective"></MenuItem>
-        <MenuItem text="%OrdersPerspective"></MenuItem>
-        <MenuItem text="%RoutesPerspective"></MenuItem>
-        <MenuItem text="%MachinesLocationPerspective"></MenuItem>
+        <MenuItem text="%DefaultPerspective"            fx:id="defaultPerspectiveItem"  />
+        <MenuItem text="%OrdersPerspective"             fx:id="ordersPerspectiveItem"/>
+        <MenuItem text="%RoutesPerspective"             fx:id="routesPerspectiveItem"/>
+        <MenuItem text="%MachinesLocationPerspective"   fx:id="machinesLocationPerspectiveItem" />
     </Menu>
 </Menu>
 <Menu text="%Test">

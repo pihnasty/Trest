@@ -19,3 +19,7 @@
     -fx-padding: 0pt 0pt 0pt 18pt;
     -fx-background-position: 0,left;
 }
+
+.menu-item:focused  {
+    -fx-background-color : blue;
+}
