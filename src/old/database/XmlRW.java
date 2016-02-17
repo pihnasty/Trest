@@ -70,25 +70,6 @@ public class XmlRW
 		return pathData;
 	}
 	
-	static public void writePathData( String pathData) 
-	{
-		  /* 	
-		 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	     builder = factory.newDocumentBuilder();
-	     doc = builder.newDocument();			
-	   
-		 File f = new File(pathDataFile+".xml");	
-		 Transformer t = TransformerFactory.newInstance().newTransformer();		 
-		 writeTabClass (tab, cL, TagNames);		  
-	     t.setOutputProperty(OutputKeys.INDENT,"yes");
-	     t.transform(new DOMSource(doc),new StreamResult(new FileOutputStream(f))); 
-	     
-	     
-	     */
-	}	
-	
-	
-
 
 	/**
 	 * Выбираем каталог, откуда будем считывать БД
