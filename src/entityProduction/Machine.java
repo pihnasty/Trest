@@ -1,7 +1,7 @@
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowMachine;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowMachine;
 
 /**
  * @author POM Единица производственного оборудования

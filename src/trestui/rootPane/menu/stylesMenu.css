@@ -1,15 +1,15 @@
 /* Menu File*/
-#newItem        { -fx-background-image: url("../../../images/icons/new.png");       }
-#openItem       { -fx-background-image: url("../../../images/icons/open.png");      }
-#saveItem       { -fx-background-image: url("../../../images/icons/save.png");      }
-#saveItem       { -fx-background-image: url("../../../images/icons/save.png");      }
-#saveAsItem     { -fx-background-image: url("../../../images/icons/save_as.png");   }
-#saveAllItem    { -fx-background-image: url("../../../images/icons/save_all.png");  }
-#exitItem       { -fx-background-image: url("../../../images/icons/exit.png");      }
+#newItem        { -fx-background-image: url("../../../resources/images/icons/new.png");       }
+#openItem       { -fx-background-image: url("../../../resources/images/icons/open.png");      }
+#saveItem       { -fx-background-image: url("../../../resources/images/icons/save.png");      }
+#saveItem       { -fx-background-image: url("../../../resources/images/icons/save.png");      }
+#saveAsItem     { -fx-background-image: url("../../../resources/images/icons/save_as.png");   }
+#saveAllItem    { -fx-background-image: url("../../../resources/images/icons/save_all.png");  }
+#exitItem       { -fx-background-image: url("../../../resources/images/icons/exit.png");      }
 /* Menu Edit*/
-#cutItem        { -fx-background-image: url("../../../images/icons/cut.png");       }
-#copyItem       { -fx-background-image: url("../../../images/icons/copy.png");      }
-#pasteItem      { -fx-background-image: url("../../../images/icons/paste.png");     }
+#cutItem        { -fx-background-image: url("../../../resources/images/icons/cut.png");       }
+#copyItem       { -fx-background-image: url("../../../resources/images/icons/copy.png");      }
+#pasteItem      { -fx-background-image: url("../../../resources/images/icons/paste.png");     }
 
 
 .menu-item {

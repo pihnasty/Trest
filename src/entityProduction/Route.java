@@ -1,7 +1,7 @@
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowRoute;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowRoute;
 
 import java.util.ArrayList;
 

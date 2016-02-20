@@ -1,6 +1,6 @@
 package trestmodel;
 
-import loader.DataSet;
+import persistence.loader.DataSet;
 
 /**
  * Created by Max on 19.02.2016.

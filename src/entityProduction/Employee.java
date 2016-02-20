@@ -3,8 +3,8 @@
  */
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowEmployee;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowEmployee;
 
 /**
  * @author Oleg

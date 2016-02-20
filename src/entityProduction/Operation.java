@@ -1,7 +1,7 @@
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowOperation;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowOperation;
 
 public class Operation extends RowOperation {
 

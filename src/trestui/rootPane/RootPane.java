@@ -1,24 +1,15 @@
 package trestui.rootPane;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.control.*;
-import javafx.scene.effect.BlendMode;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
-import loader.DataSet;
+import persistence.loader.DataSet;
 import trestui.rootPane.menu.TMenuController;
 import trestui.rootPane.menu.TMenuModel;
 import trestui.rootPane.menu.TMenuView;
 
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 /**
  * Sample custom control hosting a text field and a button.

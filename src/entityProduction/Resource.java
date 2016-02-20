@@ -1,6 +1,6 @@
 package entityProduction;
-import loader.DataSet;
-import loader.tabDataSet.RowResource;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowResource;
 
 public class Resource extends RowResource {
 	/**

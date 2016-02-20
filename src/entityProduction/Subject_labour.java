@@ -3,8 +3,8 @@
  */
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowSubject_labour;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowSubject_labour;
 
 import java.util.ArrayList;
 

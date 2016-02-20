@@ -1,7 +1,7 @@
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowFunctionOEM;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowFunctionOEM;
 
 public class FunctionOEM extends RowFunctionOEM	{
 	/**

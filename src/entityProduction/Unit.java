@@ -1,7 +1,7 @@
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowUnit;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowUnit;
 
 /**
  * �������� �������� "������� ���������"

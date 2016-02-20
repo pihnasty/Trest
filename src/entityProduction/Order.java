@@ -3,8 +3,8 @@
  */
 package entityProduction;
 
-import loader.DataSet;
-import loader.tabDataSet.RowOrder;
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowOrder;
 
 import java.util.ArrayList;
 import java.util.Date;
