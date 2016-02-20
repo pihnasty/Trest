@@ -34,6 +34,7 @@ public class TrestViewFX extends Application {
     public Locale locale;
     int w =1;
     DataSet dataSet;
+    public BorderPane rootPane;
 
 
     private TrestModel trestModel;
@@ -44,11 +45,12 @@ public class TrestViewFX extends Application {
 
     public TrestViewFX(String[] args,  TrestModel trestModel)  {
         this.trestModel = trestModel;
+        this.dataSet = this.trestModel.getDataSet();
         w=w+1;
-        TrestViewFX.launch(TrestViewFX.class);
+        launch(args);
         System.out.println("1------------------------------"+w);
         try {
-            start(new Stage() );
+        //    start(new Stage() );
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,12 +63,17 @@ public class TrestViewFX extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-                    setLocale("ru"); //en
+                    setLocale("en"); //en
 
-                    System.out.println("2------------------------------" + w+w);
+                    System.out.println("2------------------------------" + w);
 
 
-                    BorderPane rootPane = new RootPane(dataSet);
+                    rootPane = new RootPane(dataSet);
+
+
+
+
+
 
                     Image im = new Image(this.getClass().getResource("work3.png").toString());
                     ImageView imv = new ImageView(im);

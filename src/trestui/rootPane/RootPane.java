@@ -15,11 +15,13 @@ import java.io.IOException;
  * Sample custom control hosting a text field and a button.
  */
 public class RootPane extends BorderPane {
+    public DataSet dataSet;
 
     public RootPane() {
     }
 
     public RootPane(DataSet dataSet) {
+        this.dataSet = dataSet;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("rootPane.fxml"));
      //   fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         fxmlLoader.setRoot(this);
