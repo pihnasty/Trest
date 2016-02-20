@@ -1,4 +1,4 @@
-package ui;
+package trestui;
 
 public class Controller {
 }

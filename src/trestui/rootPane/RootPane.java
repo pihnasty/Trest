@@ -1,4 +1,4 @@
-package ui.rootPane;
+package trestui.rootPane;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,9 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import loader.DataSet;
-import ui.rootPane.menu.TMenuController;
-import ui.rootPane.menu.TMenuModel;
-import ui.rootPane.menu.TMenuView;
+import trestui.rootPane.menu.TMenuController;
+import trestui.rootPane.menu.TMenuModel;
+import trestui.rootPane.menu.TMenuView;
 
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class RootPane extends BorderPane {
 
     public RootPane(DataSet dataSet) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("rootPane.fxml"));
-        fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
+     //   fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {

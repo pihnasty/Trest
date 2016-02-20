@@ -1,4 +1,4 @@
-package ui.rootPane.menu;
+package trestui.rootPane.menu;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -6,7 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.input.KeyCombination;
-import ui.Controller;
+import trestui.Controller;
 import java.io.IOException;
 import java.util.ResourceBundle;
 

@@ -1,4 +1,4 @@
-package ui;
+package trestui;
 
 import javafx.application.Application;
 
@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import javafx.stage.StageStyle;
 import loader.DataSet;
-import ui.rootPane.RootPane;
+import trestui.rootPane.RootPane;
 
 import java.awt.*;
 
@@ -46,8 +46,15 @@ public class MainApplicationFX extends Application {
 
         setLocale("ru"); //en
 
+
+
+
         DataSet dataSet = new DataSet();
         BorderPane rootPane = new RootPane(dataSet);
+
+
+
+
 
         Image im = new Image(this.getClass().getResource("work3.png").toString());
         ImageView imv = new ImageView(im);
