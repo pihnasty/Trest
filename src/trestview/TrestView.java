@@ -38,8 +38,8 @@ public class TrestView extends BorderPane {
 
 
         TMenuModel menuModel = new TMenuModel(this.trestModel);
-        TMenuController tMenuController = new TMenuController(menuModel);
-        MenuBar tMenuView = new TMenuView(menuModel);
-        this.setTop(tMenuView);
+        TMenuController menuController = new TMenuController(menuModel);
+        MenuBar menuView = new TMenuView(menuModel, menuController);
+        this.setTop(menuView);
     }
 }

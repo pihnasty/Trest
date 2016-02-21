@@ -5,7 +5,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >
+<fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"   >
+<!-- <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >   or   fxmlLoader.setController( menuController);     -->
 <Menu text="%File">
     <MenuItem text="%New"       fx:id="newItem"     />
     <MenuItem text="%Open"      fx:id="openItem"   onAction="#handleOpenAction" />

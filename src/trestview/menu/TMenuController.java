@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
  */
 public class TMenuController implements Initializable {
 
-    private static TMenuModel menuModel;
+    private TMenuModel menuModel;
 
     @FXML
     private Menu fileMenu;
@@ -47,13 +47,13 @@ public class TMenuController implements Initializable {
     public TMenuController(TMenuModel menuModel) {
 
         this.menuModel = menuModel;
-        System.out.println("_________________________________________________________________________________________1"+this.menuModel);
+        //System.out.println("_________________________________________________________________________________________1"+this.menuModel);
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("_________________________________________________________________________________________2"+this.menuModel);
+        //System.out.println("_________________________________________________________________________________________2"+this.menuModel);
         newItem.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
         openItem.setAccelerator(KeyCombination.keyCombination("Ctrl+O"));
         saveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+S"));
@@ -76,7 +76,7 @@ public class TMenuController implements Initializable {
 
     @FXML
     private void handleOpenAction (ActionEvent event) {
-        System.out.println("_________________________________________________________________________________________3"+this.menuModel);
+        //System.out.println("_________________________________________________________________________________________3"+this.menuModel);
         String pathData = XmlRW.getPathData();									// �������� ���� �� ��������� (���� � �������� ��������)
         System.out.println("---------------"+pathData);
 
