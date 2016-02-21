@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import trestui.rootPane.menu.TMenuController?>
+<?import trestview.menu.TMenuController?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<fx:root type="trestui.rootPane.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestui.rootPane.menu.TMenuController" >
+<fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >
 <Menu text="%File">
     <MenuItem text="%New"       fx:id="newItem"     />
-    <MenuItem text="%Open"      fx:id="openItem"    />
+    <MenuItem text="%Open"      fx:id="openItem"   onAction="#handleOpenAction" />
     <SeparatorMenuItem/>
     <MenuItem text="%Save"      fx:id="saveItem"    />
     <MenuItem text="%SaveAs"    fx:id="saveAsItem"  />

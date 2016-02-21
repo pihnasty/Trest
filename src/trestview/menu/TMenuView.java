@@ -1,23 +1,13 @@
-package trestui.rootPane.menu;
+package trestview.menu;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.input.KeyCombination;
-import trestui.Controller;
+
 import java.io.IOException;
 import java.util.ResourceBundle;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 
 /**

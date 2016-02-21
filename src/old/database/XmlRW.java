@@ -118,6 +118,9 @@ public class XmlRW
      	chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);								// указываем, что показывать только директории в showDialog(...)				   
       	int result = chooser.showDialog(null , "Выбрать");    	  									// вызываем showDialog(...) с надпистью на кнопке "Выбрать"
     	if(result==JFileChooser.APPROVE_OPTION) pathData=chooser.getSelectedFile().getPath()+"\\";  // возвращаем выбранную директорию
+		System.out.println("pathData777"+pathData);
+
+
     	for (Field fd : DataSet.class.getDeclaredFields() )		{									// проходим все поля  DataSet.class
     	 	 if ( fd.getName().substring(0,3).equals("tab"))	{	  	 																							// и находим те поля, которые начинаются с tab......
     	 		 if ( !new File(pathData+fd.getName()+".xml").exists()) return "";					// DataSet.tSettings.get(0).getSystemPath();

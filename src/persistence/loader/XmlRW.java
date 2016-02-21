@@ -4,10 +4,15 @@
 package persistence.loader;
 
 
+import javafx.fxml.FXMLLoader;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import persistence.loader.tabDataSet.*;
 import old._util._Date;
 import old.entityProduction.*;
 import org.w3c.dom.*;
+
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
@@ -25,6 +30,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * @author ПОМ
@@ -94,56 +100,33 @@ public class XmlRW
 	 * Выбираем каталог, откуда будем считывать БД
 	 * @return	выбранная через showDialog(...) директория с базой данных  
 	 */
-    static public String pathDataWork()
+    static public String getPathData()
     {
-    	// вспомогательный класс, задает фильтры для выбираемых файлов в  showDialog
-    	class ExtensionFileFilter extends FileFilter
-    	{
-    	   public ExtensionFileFilter (String description,  String ... nameExtensions)
-    	   {
-    		   this.description=description;
-    		   for ( String s: nameExtensions)        	this.addExtension(".xml");
-    	   }
-    	   public void addExtension(String extension)
-    	   {
-    	      if (!extension.startsWith(".")) extension = "." + extension;						// добавляем точку в строку для расширения, если програмист указал в методе без точки ".txt" or "txt"
-    	      extensions.add(extension.toLowerCase());  										// переводим строку для расширения в нижний регистр   
-    	   }
-    	   /**
-    	    * задаем описания для выбранного расширения файла (Пример: "это файлы txt")
-    	    * @param aDescription описание файла с указанным расширением
-    	   */
-    	   public void setDescription(String aDescription)   	 { description = aDescription;	}
-    	   public String getDescription()    	  				 { return description;    	   	}
-    	   public boolean accept(File f)
-    	   {
-    	      if (f.isDirectory()) return true;					// сообщаем, что выбрана директория
-    	      String name = f.getName().toLowerCase();
-    	      for (int i = 0; i < extensions.size(); i++)  if (name.endsWith((String)extensions.get(i)))  return true;
-    	      return false;
-    	   }
 
-    	   private String 		description = "";					// описание файла
-    	   private ArrayList 	extensions = new ArrayList();		// расширение
-    	}
-    	
-    	String pathData="";
-    	JFileChooser chooser = new JFileChooser();  
-    	
-    	try  { chooser.setCurrentDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); } catch (Throwable exp)  {  exp.printStackTrace(); }			// задаем текущим каталогом тот каталог, который определен в config.xml
+		String pathData="";
+		FXMLLoader loader = new FXMLLoader();
+		loader.setResources(ResourceBundle.getBundle("resources.ui"));
 
-       	ExtensionFileFilter filter = new ExtensionFileFilter ("Каталог с базой данных",".xml");		// инициализируем фильтр для выбора файлов через showDialog(...). Для этого написали внутренний класс фильтр
-       	chooser.setFileFilter(filter);																// задаем фильтр для выбора файлов через showDialog(...).
-     	chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);								// указываем, что показывать только директории в showDialog(...)
-      	int result = chooser.showDialog(null , "Выбрать");    	  									// вызываем showDialog(...) с надпистью на кнопке "Выбрать"
-    	if(result==JFileChooser.APPROVE_OPTION) pathData=chooser.getSelectedFile().getPath()+"\\";  // возвращаем выбранную директорию
-    	for (Field fd : DataSet.class.getDeclaredFields() )		{									// проходим все поля  DataSet.class
-    	 	 if ( fd.getName().substring(0,3).equals("tab"))	{	  	 																							// и находим те поля, которые начинаются с tab......
-    	 		 if ( !new File(pathData+fd.getName()+".xml").exists()) return "";					// DataSet.tSettings.get(0).getSystemPath();
-    	 		 																					// и проверяем, есть ли в каталоге файлы с данными (их название совпадает с именами полей) fd.getName()
-    																								// Если хотя бы один из файлов с данными не соответствует или не найден, возвращает преждний путь к каталогам с БД
-    	 	 }
-    	}
+		DirectoryChooser chooser=new DirectoryChooser();
+		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); // we set the current directory, which is defined in the config.xml
+		chooser.setTitle(loader.getResources().getString("Select_db_download"));
+		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()) );  //  .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+		java.io.File file=chooser.showDialog(new Stage());
+
+		if (file != null) {
+			pathData=chooser.getInitialDirectory().getAbsolutePath()+"\\";
+			System.out.println(pathData);
+		}
+
+		for (Field fd : DataSet.class.getDeclaredFields() )		{					// We go through all the fields of  DataSet.class
+			if ( fd.getName().substring(0,3).equals("tab"))	{	  	 				// and find those fields that begin with a tab......
+				if ( !new File(pathData+fd.getName()+".xml").exists()) return "";	// DataSet.tSettings.get(0).getSystemPath();
+				// and check whether there is a directory of data files (their name is the same as the field names) fd.getName()
+				// If at least one of the data files does not match or is not found, it returns the old path to the directory database
+				System.out.println(pathData+fd.getName()+".xml");
+			}
+		}
   		return pathData;
     }
 
