@@ -267,9 +267,8 @@ public class XmlRW
 		 if (fd.getType() == Date.class && flag=="PModelTable")			return  _Date._toDateForString	((String)o	, Locale.US);			// Специфический формат, используемый в PModelTable
 		 return o;		   	
 	}
-	
-	
-	
+
+
 	
 	
     /**

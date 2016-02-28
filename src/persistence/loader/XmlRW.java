@@ -26,6 +26,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
@@ -111,10 +112,14 @@ public class XmlRW
 		chooser.setTitle(loader.getResources().getString("Select_db_download"));
 		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()) );  //  .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		java.io.File file=chooser.showDialog(new Stage());
-
+		;
 		if (file != null) {
 			chooser.setInitialDirectory(file);
-			pathData=chooser.getInitialDirectory().getAbsolutePath()+"\\";
+			try {
+				pathData=chooser.getInitialDirectory().getCanonicalPath()+"\\";
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 		for (Field fd : DataSet.class.getDeclaredFields() )		{					// We go through all the fields of  DataSet.class
@@ -135,20 +140,10 @@ public class XmlRW
     static public String pathDataWork(String s)
     {
     	String pathData="";
-		FileChooser chooser=new  FileChooser ();
+		DirectoryChooser chooser=new  DirectoryChooser();
 		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); // we set the current directory, which is defined in the config.xml
-
-
-		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", " ");
-		chooser.getExtensionFilters().add(extFilter);
-		File file = chooser.showSaveDialog(new Stage());
-
-		if (file != null) {
-			pathData = file.getAbsolutePath()+"\\";
-		}
-		System.out.println("pathData2 ="+pathData );
-
-
+		File file = chooser.showDialog(new Stage());
+		if (file != null) pathData = file.getAbsolutePath()+"\\";
   		return pathData;
     }
 

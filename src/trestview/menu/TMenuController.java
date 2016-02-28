@@ -101,7 +101,7 @@ public class TMenuController implements Initializable {
 
     @FXML
     private void handleSaveAsAction(ActionEvent event) {
-        String XmlRW_pathDataWork= XmlRW.pathDataWork("");			  // The directory path to the database that you selected in the dialog [DirectoryChooser()].
+        String XmlRW_pathDataWork= XmlRW.pathDataWork("");			              // The directory path to the database that you selected in the dialog [DirectoryChooser()].
         savePathConfig(XmlRW_pathDataWork, false);			                      // Save new path add read new database  from new directory path
         menuModel.getTrestModel().getDataSet().saveDataset();
     }
@@ -118,7 +118,7 @@ public class TMenuController implements Initializable {
      * @param pathData          The directory path to the database, which (path) will be written to the file (tSettings).
      * @param boolOpenDataSet   If it is true - a database in the specified path is read into the model.
      */
-    public void savePathConfig(String pathData, boolean boolOpenDataSet) {
+    public void savePathConfigNew(String pathData, boolean boolOpenDataSet) { // Это удадить!!!!!!!!!!
         if (pathData != "") {
             menuModel.getTrestModel().getDataSet().tSettings.get(0).setSystemPath(pathData);   // We set up a new path.
             menuModel.getTrestModel().getDataSet().writeTab(DataSet.tSettings);                // Write the changes to the file [tSettings]
@@ -129,14 +129,29 @@ public class TMenuController implements Initializable {
         }
     }
 
+    public void savePathConfig(String pathData, boolean boolOpenDataSet) {
+        if (pathData != "") {
+            menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);                    // Set the default path to the database.
+            // String pathSet =  menuModel.getTrestModel().getDataSet().getPathDataDefault();
+            menuModel.getTrestModel().getDataSet().tSettings.get(0).setSystemPath(pathData);
 
-    /**
-     * ���������� ����� �������� ���� � �� � congig.xml ���� � ����������� ��������� � DataSet �������� �� ��.
-     *
-     * @param pathData        ���� � �������� ��� ����������/������ ��
-     * @param boolOpenDataSet ����. ��� boolOpenDataSet=true ���������� �������� ��, ������� ��������� �� ���������� ����.
-     */
-    public void savePathConfigOld(String pathData, boolean boolOpenDataSet) {       // Это удадить!!!!!!!!!!
+
+            menuModel.getTrestModel().getDataSet().setPathDataDefault(DataSet.getPathConfig());
+
+            menuModel.getTrestModel().getDataSet().writeTab(DataSet.tSettings);
+
+
+            menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);
+
+            if (boolOpenDataSet) {
+                TrestModel trestModel = new TrestModel();           //  We get a new model from a the changed directory.
+                menuModel.setTrestModel(trestModel);                //  We define a new model
+            }
+        }
+    }
+
+
+    public void savePathConfigOld(String pathData, boolean boolOpenDataSet) {
         if (pathData != "") {
             menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);                    // Set the default path to the database.
             // String pathSet =  menuModel.getTrestModel().getDataSet().getPathDataDefault();
@@ -156,6 +171,5 @@ public class TMenuController implements Initializable {
             }
         }
     }
-
 
 }
