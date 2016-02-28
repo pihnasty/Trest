@@ -6,6 +6,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 
 import java.io.IOException;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.MenuItem;
@@ -13,13 +15,12 @@ import javafx.scene.control.MenuItem;
 /**
  * Created by pom on 07.02.2016.
  */
-public class TMenuView extends MenuBar  {
+public class TMenuView extends MenuBar  implements Observer {
+
+    private TMenuModel menuModel;
 
     @FXML
     private Menu fileMenu;
-
-    @FXML
-    private MenuItem newItem;
 
     @FXML
     private Menu OpenPerspective;
@@ -28,6 +29,7 @@ public class TMenuView extends MenuBar  {
     }
 
     public TMenuView(TMenuModel menuModel, TMenuController menuController ) {
+        this.menuModel =menuModel;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tMenuView.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
@@ -39,5 +41,11 @@ public class TMenuView extends MenuBar  {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        menuModel = (TMenuModel)o;
+        System.out.println("New model");
     }
 }

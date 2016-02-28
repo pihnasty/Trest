@@ -11,8 +11,8 @@
     <MenuItem text="%New"       fx:id="newItem"     />
     <MenuItem text="%Open"      fx:id="openItem"   onAction="#handleOpenAction" />
     <SeparatorMenuItem/>
-    <MenuItem text="%Save"      fx:id="saveItem"    />
-    <MenuItem text="%SaveAs"    fx:id="saveAsItem"  />
+    <MenuItem text="%Save"      fx:id="saveItem"   onAction="#handleSaveAction"/>
+    <MenuItem text="%SaveAs"    fx:id="saveAsItem" onAction="#handleSaveAsAction"/>
     <MenuItem text="%SaveAll"   fx:id="saveAllItem" />
     <SeparatorMenuItem/>
     <MenuItem text="%Exit"      fx:id="exitItem"  onAction="#handleExitAction"  />

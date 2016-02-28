@@ -2,10 +2,12 @@ package trestview.menu;
 
 import trestmodel.TrestModel;
 
+import java.util.Observable;
+
 /**
  * Created by pom on 07.02.2016.
  */
-public class TMenuModel {
+public class TMenuModel extends Observable  {
 
     private TrestModel trestModel;
 
@@ -21,5 +23,11 @@ public class TMenuModel {
 
     public void setTrestModel(TrestModel trestModel) {
         this.trestModel = trestModel;
+        changed();
+    }
+
+    public void changed() {
+        setChanged();
+        notifyObservers();
     }
 }

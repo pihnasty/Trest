@@ -97,12 +97,11 @@ public class XmlRW
 
 
 	/**
-	 * Выбираем каталог, откуда будем считывать БД
-	 * @return	выбранная через showDialog(...) директория с базой данных  
+	 * This will select  the directory where we will create a database
+	 * @return	The directory path to the database
 	 */
     static public String getPathData()
     {
-
 		String pathData="";
 		FXMLLoader loader = new FXMLLoader();
 		loader.setResources(ResourceBundle.getBundle("resources.ui"));
@@ -111,12 +110,11 @@ public class XmlRW
 		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); // we set the current directory, which is defined in the config.xml
 		chooser.setTitle(loader.getResources().getString("Select_db_download"));
 		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()) );  //  .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
 		java.io.File file=chooser.showDialog(new Stage());
 
 		if (file != null) {
+			chooser.setInitialDirectory(file);
 			pathData=chooser.getInitialDirectory().getAbsolutePath()+"\\";
-			System.out.println(pathData);
 		}
 
 		for (Field fd : DataSet.class.getDeclaredFields() )		{					// We go through all the fields of  DataSet.class
@@ -124,10 +122,10 @@ public class XmlRW
 				if ( !new File(pathData+fd.getName()+".xml").exists()) return "";	// DataSet.tSettings.get(0).getSystemPath();
 				// and check whether there is a directory of data files (their name is the same as the field names) fd.getName()
 				// If at least one of the data files does not match or is not found, it returns the old path to the directory database
-				System.out.println(pathData+fd.getName()+".xml");
 			}
 		}
-  		return pathData;
+
+		return pathData;
     }
 
 	/**
@@ -137,12 +135,20 @@ public class XmlRW
     static public String pathDataWork(String s)
     {
     	String pathData="";
-    	JFileChooser chooser = new JFileChooser();
+		FileChooser chooser=new  FileChooser ();
+		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); // we set the current directory, which is defined in the config.xml
 
-    	try  { chooser.setCurrentDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); } catch (Throwable exp)  {  exp.printStackTrace(); }  // задаем текущим каталогом тот каталог, который определен в config.xml
-     	chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);								// указываем, что показывать только директории в showDialog(...)
-      	int result = chooser.showSaveDialog(null);    	  											// вызываем showDialog(...) с надпистью на кнопке "Выбрать"
-    	if(result==JFileChooser.APPROVE_OPTION) pathData=chooser.getSelectedFile().getPath()+"\\";  // возвращаем выбранную директорию
+
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TXT files (*.txt)", " ");
+		chooser.getExtensionFilters().add(extFilter);
+		File file = chooser.showSaveDialog(new Stage());
+
+		if (file != null) {
+			pathData = file.getAbsolutePath()+"\\";
+		}
+		System.out.println("pathData2 ="+pathData );
+
+
   		return pathData;
     }
 
@@ -295,8 +301,8 @@ public class XmlRW
 
     /**
      * Метод записывает поля объектов Work (Object o) -> RowWork (Object ro). Служит для заполнения полей от объектов Trest в объекты DataSet ( из элемента Work коллекции Trest.works  в элемент RowWork коллекции DataSet.tabWorks)
-     * @param o1	Объект типа Work
-     * @param o2	Объект типа RowWork
+     * @param ro	Объект типа Work
+     * @param o	Объект типа RowWork
      */
     static public  void FieldToField(Object ro, Object o)
     {

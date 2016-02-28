@@ -208,13 +208,13 @@ public class DataSet {
 
         tabModelmachines = (ArrayList<RowModelmachine>) setTabXML(tabModelmachines, RowModelmachine.class);   //   showTab(tabModelmachines);
         tabTypemachines = (ArrayList<RowTypemachine>) setTabXML(tabTypemachines, RowTypemachine.class);
-        showTab(tabTypemachines);
+       // showTab(tabTypemachines);
 
         tabModelmachineTypemachines = (ArrayList<RowModelmachineTypemachine>) setTabXML(tabModelmachineTypemachines, RowModelmachineTypemachine.class);
-        showTab(tabModelmachineTypemachines);
+        //showTab(tabModelmachineTypemachines);
 
         tabMachineModelmachines = (ArrayList<RowMachineModelmachine>) setTabXML(tabMachineModelmachines, RowMachineModelmachine.class);
-        showTab(tabMachineModelmachines);
+        //showTab(tabMachineModelmachines);
 
         System.out.println("Данные из XML файла считаны успешно");
     }
