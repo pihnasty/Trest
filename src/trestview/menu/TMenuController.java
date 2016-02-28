@@ -10,7 +10,9 @@ import javafx.scene.input.KeyCombination;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import trestmodel.TrestModel;
-
+import trestview.dictionary.DictionaryController;
+import trestview.dictionary.DictionaryModel;
+import trestview.dictionary.DictionaryView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -59,7 +61,6 @@ public class TMenuController implements Initializable {
     }
 
     public TMenuController(TMenuModel menuModel) {
-
         this.menuModel = menuModel;
         //System.out.println("_________________________________________________________________________________________1"+this.menuModel);
     }
@@ -101,7 +102,7 @@ public class TMenuController implements Initializable {
 
     @FXML
     private void handleSaveAsAction(ActionEvent event) {
-        String XmlRW_pathDataWork= XmlRW.pathDataWork("");			              // The directory path to the database that you selected in the dialog [DirectoryChooser()].
+        String XmlRW_pathDataWork= XmlRW.getSavePath("");			              // The directory path to the database that you selected in the dialog [DirectoryChooser()].
         savePathConfig(XmlRW_pathDataWork, false);			                      // Save new path add read new database  from new directory path
         menuModel.getTrestModel().getDataSet().saveDataset();
     }
@@ -112,64 +113,35 @@ public class TMenuController implements Initializable {
         System.exit(0);
         Platform.exit();
     }
+//------------------- menu Dictionary ------------------------------------
+    @FXML
+    private void handleWorkAction (ActionEvent event) {
+
+        DictionaryModel dictionaryModel = new DictionaryModel(this.menuModel);
+        DictionaryController dictionaryController = new DictionaryController(dictionaryModel);
+        DictionaryView dictionaryView = new DictionaryView(dictionaryModel, dictionaryController);
+        dictionaryModel.addObserver(dictionaryView);
+    }
+
+
+
 
     /**
      * Add congig.xml
      * @param pathData          The directory path to the database, which (path) will be written to the file (tSettings).
      * @param boolOpenDataSet   If it is true - a database in the specified path is read into the model.
      */
-    public void savePathConfigNew(String pathData, boolean boolOpenDataSet) { // Это удадить!!!!!!!!!!
-        if (pathData != "") {
-            menuModel.getTrestModel().getDataSet().tSettings.get(0).setSystemPath(pathData);   // We set up a new path.
-            menuModel.getTrestModel().getDataSet().writeTab(DataSet.tSettings);                // Write the changes to the file [tSettings]
-            if (boolOpenDataSet) {
-                TrestModel trestModel = new TrestModel();           //  We get a new model from a the changed directory.
-                menuModel.setTrestModel(trestModel);                //  We define a new model
-            }
-        }
-    }
-
     public void savePathConfig(String pathData, boolean boolOpenDataSet) {
         if (pathData != "") {
             menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);                    // Set the default path to the database.
-            // String pathSet =  menuModel.getTrestModel().getDataSet().getPathDataDefault();
-            menuModel.getTrestModel().getDataSet().tSettings.get(0).setSystemPath(pathData);
-
-
+            menuModel.getTrestModel().getDataSet().tSettings.get(0).setSystemPath(pathData);        // We set up a new path.
             menuModel.getTrestModel().getDataSet().setPathDataDefault(DataSet.getPathConfig());
-
-            menuModel.getTrestModel().getDataSet().writeTab(DataSet.tSettings);
-
-
+            menuModel.getTrestModel().getDataSet().writeTab(DataSet.tSettings);                     // Write the changes to the file [tSettings]
             menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);
-
             if (boolOpenDataSet) {
                 TrestModel trestModel = new TrestModel();           //  We get a new model from a the changed directory.
                 menuModel.setTrestModel(trestModel);                //  We define a new model
             }
         }
     }
-
-
-    public void savePathConfigOld(String pathData, boolean boolOpenDataSet) {
-        if (pathData != "") {
-            menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);                    // Set the default path to the database.
-            // String pathSet =  menuModel.getTrestModel().getDataSet().getPathDataDefault();
-            menuModel.getTrestModel().getDataSet().tSettings.get(0).setSystemPath(pathData);
-
-
-            menuModel.getTrestModel().getDataSet().setPathDataDefault(DataSet.getPathConfig());
-
-            menuModel.getTrestModel().getDataSet().writeTab(DataSet.tSettings);
-
-
-            menuModel.getTrestModel().getDataSet().setPathDataDefault(pathData);
-
-            if (boolOpenDataSet) {
-                menuModel.getTrestModel().getDataSet().openDataSet();
-                menuModel.getTrestModel().setTrest(menuModel.getTrestModel().getDataSet().getTrest(1));
-            }
-        }
-    }
-
 }

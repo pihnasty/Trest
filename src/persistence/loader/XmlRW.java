@@ -137,11 +137,14 @@ public class XmlRW
 	 * Выбираем каталог, откуда будем записать данные БД
 	 * @return	выбранная через showDialog(...) директория с базой данных
 	 */
-    static public String pathDataWork(String s)
+    static public String getSavePath(String s)
     {
     	String pathData="";
+		FXMLLoader loader = new FXMLLoader();
+		loader.setResources(ResourceBundle.getBundle("resources.ui"));
 		DirectoryChooser chooser=new  DirectoryChooser();
 		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()  )); // we set the current directory, which is defined in the config.xml
+		chooser.setTitle(loader.getResources().getString("Select_db_save"));
 		File file = chooser.showDialog(new Stage());
 		if (file != null) pathData = file.getAbsolutePath()+"\\";
   		return pathData;
