@@ -208,7 +208,7 @@ public class DataSet {
 
         tabModelmachines = (ArrayList<RowModelmachine>) setTabXML(tabModelmachines, RowModelmachine.class);   //   showTab(tabModelmachines);
         tabTypemachines = (ArrayList<RowTypemachine>) setTabXML(tabTypemachines, RowTypemachine.class);
-       // showTab(tabTypemachines);
+        showTab(tabTypemachines);
 
         tabModelmachineTypemachines = (ArrayList<RowModelmachineTypemachine>) setTabXML(tabModelmachineTypemachines, RowModelmachineTypemachine.class);
         //showTab(tabModelmachineTypemachines);
