@@ -17,16 +17,16 @@ import java.util.ResourceBundle;
 /**
  * Created by pom on 07.02.2016.
  */
-public class PTableView extends TableView implements Observer {
+public class TableViewP extends TableView implements Observer {
 
     private TableModel tableModel;
 
 
 
-    public PTableView() {
+    public TableViewP() {
     }
 
-    public PTableView(TableModel tableModel, TableController tableController ) {
+    public TableViewP(TableModel tableModel, TableController tableController ) {
         this.tableModel =tableModel;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TableView.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));

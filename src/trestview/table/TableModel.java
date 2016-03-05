@@ -1,5 +1,6 @@
 package trestview.table;
 
+import javafx.scene.control.TableViewBuilder;
 import trestview.menu.TMenuModel;
 
 import java.util.Observable;
@@ -15,6 +16,7 @@ public class TableModel extends Observable  {
     }
     public TableModel(TMenuModel menuModel) {
         this.menuModel = menuModel;
+        TableViewBuilder a;
     }
 
     public TMenuModel getTrestModel() {
