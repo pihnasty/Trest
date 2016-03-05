@@ -1,5 +1,6 @@
 package trestview.menu;
 
+import entityProduction.Work;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -117,7 +118,7 @@ public class TMenuController implements Initializable {
     @FXML
     private void handleWorkAction (ActionEvent event) {
 
-        DictionaryModel dictionaryModel = new DictionaryModel(this.menuModel);
+        DictionaryModel dictionaryModel = new DictionaryModel(this.menuModel, Work.class);
         DictionaryController dictionaryController = new DictionaryController(dictionaryModel);
         DictionaryView dictionaryView = new DictionaryView(dictionaryModel, dictionaryController);
         dictionaryModel.addObserver(dictionaryView);

@@ -1,5 +1,6 @@
 package trestview.dictionary;
 
+import entityProduction.Work;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,10 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
+import trestview.table.TableController;
+import trestview.table.TableViewP;
+import trestview.table.tablemodel.TableModel;
+import trestview.table.tablemodel.TableMolelBuilder;
 
 import java.io.IOException;
 import java.util.Observable;
@@ -45,6 +50,13 @@ public class DictionaryView extends Dialog implements Observer {
         setTitle("Search");
         setHeaderText("Enter search parameters");
 
+
+        TableModel tableModel = ( TableModel)TableMolelBuilder.build(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
+        TableController tableController = new TableController(tableModel);
+        TableViewP tableView = new TableViewP(tableModel, tableController);
+        tableModel.addObserver(tableView);
+
+        getDialogPane().setContent(tableView);
 
 
 

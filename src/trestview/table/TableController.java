@@ -1,6 +1,7 @@
 package trestview.table;
 
 import javafx.fxml.Initializable;
+import trestview.table.tablemodel.TableModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;

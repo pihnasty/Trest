@@ -11,18 +11,20 @@ import java.util.Observable;
 public class DictionaryModel extends Observable  {
 
     private TMenuModel menuModel;
+    private Class tClass;
 
     public DictionaryModel() {
     }
-    public DictionaryModel(TMenuModel menuModel) {
+    public DictionaryModel(TMenuModel menuModel,Class tClass) {
         this.menuModel = menuModel;
+        this.tClass = tClass;
     }
 
-    public TMenuModel getTrestModel() {
+    public TMenuModel getTMenuModel() {
         return menuModel;
     }
 
-    public void setTrestModel(TMenuModel menuModel) {
+    public void setTMenuModel(TMenuModel menuModel) {
         this.menuModel = menuModel;
         changed();
     }

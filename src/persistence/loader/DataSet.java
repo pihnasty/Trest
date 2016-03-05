@@ -214,7 +214,7 @@ public class DataSet {
         //showTab(tabModelmachineTypemachines);
 
         tabMachineModelmachines = (ArrayList<RowMachineModelmachine>) setTabXML(tabMachineModelmachines, RowMachineModelmachine.class);
-        //showTab(tabMachineModelmachines);
+         showTab(tabMachineModelmachines);
 
         System.out.println("Данные из XML файла считаны успешно");
     }
