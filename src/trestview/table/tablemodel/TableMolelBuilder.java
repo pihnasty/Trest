@@ -1,22 +1,16 @@
 package trestview.table.tablemodel;
 
-import java.util.ArrayList;
+import trestview.dictionary.DictionaryModel;
+
 
 /**
  * Created by pom on 05.03.2016.
  */
-public class TableMolelBuilder {
-    public static <cL> AbstractTableModel build (ArrayList<cL> tab, Class<cL> tClass) {
+public class  TableMolelBuilder <cL> {
 
-        if (tab != null) {
-                if (!tab.isEmpty()) {     System.out.println(((ArrayList<cL>) tab).get(0).getClass());
-                    }
-             //   else { tab.add()}
+    public static <cL> AbstractTableModel build (DictionaryModel dictionaryModel, Class tClass) {
 
-
-        }
-
-       AbstractFactoryTableModel factoryTableModel = new FactoryTableModel(  tab,   tClass);
+        AbstractFactoryTableModel factoryTableModel = new FactoryTableModel(dictionaryModel,tClass);
 
         return ((FactoryTableModel) factoryTableModel).getTableModel();
     }

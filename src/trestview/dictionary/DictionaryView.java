@@ -7,18 +7,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import resources.images.icons.IconT;
+import trestview.hboxpane.HboxpaneController;
+import trestview.hboxpane.HboxpaneModel;
+import trestview.hboxpane.HboxpaneView;
 import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
 import trestview.table.tablemodel.TableMolelBuilder;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by pom on 07.02.2016.
@@ -36,6 +41,7 @@ public class DictionaryView extends Dialog implements Observer {
         this.dictionaryModel =dictionaryModel;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dictionaryView.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
+     //  this.getOwner().getStylesheets().add((getClass().getResource("stylesMenu2.css")).toExternalForm());
      //   getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
         fxmlLoader.setRoot(this);
         fxmlLoader.setController( dictionaryController);        // or  fx:controller="ui.rootPane.menu.TMenuController"
@@ -47,18 +53,41 @@ public class DictionaryView extends Dialog implements Observer {
         }
 
 
-        setTitle("Search");
-        setHeaderText("Enter search parameters");
+       //  setTitle("%Open");
+        setTitle(fxmlLoader.getResources().getString("Dictionary")+":  "+fxmlLoader.getResources().getString("Work"));
+        setHeaderText(fxmlLoader.getResources().getString("HeaderText"));
+
+       // this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
 
 
-        TableModel tableModel = ( TableModel)TableMolelBuilder.build(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
+       // getDialogPane().getGraphic().getScene().getWindow().set
+     //   ArrayList icons = new ArrayList();
+      //  icons.add(new Image(IconT.class.getResource("work1.png").toString()));
+     //   this.getOwner().getScene().getWindow().impl_getPeer().setIcons(icons);
+
+        setGraphic( new ImageView(new Image(IconT.class.getResource("work1.png").toString())));
+      //  this.getDialogPane().setPrefWidth(455);
+       // this.getDialogPane().isScaleShape();
+        TableModel tableModel = ( TableModel)TableMolelBuilder.build(dictionaryModel, Work.class); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
         TableController tableController = new TableController(tableModel);
         TableViewP tableView = new TableViewP(tableModel, tableController);
         tableModel.addObserver(tableView);
 
-        getDialogPane().setContent(tableView);
+
+        HboxpaneModel hboxpaneModel = new HboxpaneModel(dictionaryModel, Work.class);
+        HboxpaneController hboxpaneController = new HboxpaneController(hboxpaneModel);
+        HboxpaneView hboxpaneView = new HboxpaneView(hboxpaneModel, hboxpaneController);
+        hboxpaneModel.addObserver(hboxpaneView);
+        hboxpaneModel.addObserver(tableModel);
 
 
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(hboxpaneView,tableView);
+        vbox.setSpacing(5);   // The amount of vertical space between each child in the vbox.
+        vbox.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
+
+        getDialogPane().setContent( vbox);
+      //  getDialogPane().setContent(tableView);
 
         ButtonType searchButtonType = new ButtonType("Search", ButtonBar.ButtonData.OK_DONE);
         getDialogPane().getButtonTypes().addAll(searchButtonType,ButtonType.CANCEL);        // Create the layout for the controls.
@@ -71,15 +100,6 @@ public class DictionaryView extends Dialog implements Observer {
 
 
     }
-
-
-
-
-
-
-
-
-
 
     @Override
     public void update(Observable o, Object arg) {

@@ -13,9 +13,15 @@ public class TMenuModel extends Observable  {
 
     public TMenuModel() {
     }
+
+
+
     public TMenuModel(TrestModel trestModel) {
         this.trestModel = trestModel;
     }
+
+
+
 
     public TrestModel getTrestModel() {
         return trestModel;

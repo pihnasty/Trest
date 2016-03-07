@@ -1,28 +1,44 @@
 package trestview.table.tablemodel;
 
 import entityProduction.Work;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableViewBuilder;
-import trestview.menu.TMenuModel;
-import trestview.table.tablemodel.AbstractTableModel;
+import trestview.dictionary.DictionaryModel;
+import trestview.hboxpane.HboxpaneModel;
 
-import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by pom on 07.02.2016.
  */
-public class TableModel <cL> extends AbstractTableModel {
+public class TableModel <cL> extends AbstractTableModel implements Observer {
 
 
 
-    public TableModel(ArrayList<cL> tab, Class<cL> tClass) {
-        this.tab = tab;
+    public TableModel(DictionaryModel dictionaryModel, Class<cL> tClass) {
+        this.dictionaryModel = dictionaryModel;
+        this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
+
         this.tClass = tClass;
         this.nameColumns = biuldNameColumns();
     }
 
 
+    @Override
+    public void update(Observable o, Object arg) {
+        if(!((HboxpaneModel) o).isSaveChange()) tab.add(new Work(this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet()));
+            else {this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet().saveDataset();   }
+        changed();
+    }
+
+
+
+    public void changed() {
+        setChanged();
+        notifyObservers();
+    }
+
 
 
 }
+
+

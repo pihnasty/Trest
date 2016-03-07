@@ -1,6 +1,7 @@
 package trestview.table.tablemodel;
 
 import persistence.loader.XmlRW;
+import trestview.dictionary.DictionaryModel;
 import trestview.menu.TMenuModel;
 
 import java.lang.reflect.Field;
@@ -14,6 +15,8 @@ public abstract class AbstractTableModel<cL> extends Observable {
 
 
 
+
+    protected DictionaryModel dictionaryModel;
     protected ArrayList<cL> tab;
 
     protected ArrayList<String>  nameColumns ;
@@ -28,9 +31,13 @@ public abstract class AbstractTableModel<cL> extends Observable {
 
     public ArrayList<String> biuldNameColumns() {
         nameColumns = new ArrayList<String>();
+        Integer i = new Integer(0);
         if (tab != null) {
             if (!tab.isEmpty()) { Field[] fields = XmlRW.fieldsCl(tClass);
-                for (Field fd : fields) { nameColumns.add(fd.getName());
+                for (Field fd : fields) {
+                    // nameColumns.add(i.toString());
+                     nameColumns.add(fd.getName());
+                    i++;
                 }
             }
         }
@@ -49,4 +56,11 @@ public abstract class AbstractTableModel<cL> extends Observable {
         this.tab = tab;
     }
 
+    public DictionaryModel getDictionaryModel() {
+        return dictionaryModel;
+    }
+
+    public void setDictionaryModel(DictionaryModel dictionaryModel) {
+        this.dictionaryModel = dictionaryModel;
+    }
 }

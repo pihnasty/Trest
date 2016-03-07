@@ -354,6 +354,11 @@ public class PBuilderRoutePane extends JSplitPane {
         
         pschemeView.addMouseMotionListener(pschemeController);                          //  Here we add an observer (MouseMotionListener: mouseDragged, mouseMoved) for the view.
         pschemeView.addMouseListener(pschemeController);                                //  Here we add an observer (MouseListener:  mousePressed) for the view.
+
+
+
+
+
 //------ There are the parametrs for panel types and models of equipment------//           
         
         Dimension preferredSize = new Dimension((Toolkit.getDefaultToolkit().getScreenSize().width) / 8, (int) (Toolkit.getDefaultToolkit().getScreenSize().height * 0.8));

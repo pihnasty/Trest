@@ -183,7 +183,8 @@ public class PTablePanel<cL> extends JPanel {
 				}				
 		    }
 	}										 
-	class CreateXXX_rowXXX implements ActionListener {		// Создаем новую строку в таблице 	
+
+	class CreateXXX_rowXXX implements ActionListener {		// Создаем новую строку в таблице
 		CreateXXX_rowXXX( Class _cL, MenuFrame _fm, PModelTable _modelTable)		{	this.cL=_cL; this.fm=_fm; this.modelTable=_modelTable;	}
 		public void actionPerformed(ActionEvent event)	{
 

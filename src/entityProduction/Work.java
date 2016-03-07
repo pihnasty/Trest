@@ -1,7 +1,8 @@
 package entityProduction;
 
-import old.database.DataSet;
-import old.database.tabDataSet.RowWork;
+
+import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowWork;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * Описание сущности Производство
  * @author ПОМ
  */
-public class Work extends RowWork {  
+public class Work extends RowWork {
         
     /**
      * Список машин(оборудования), находящегося на производстве

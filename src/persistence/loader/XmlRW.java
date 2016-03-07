@@ -355,12 +355,27 @@ public class XmlRW
     	if ( o.getClass()== Line.class)		// Если выделенный узел Order.class, то приводим выделенный объект, хранящийся в узле, к нужному типу и записываем изменения в 	DataSet для соответствующей таблице (tabOrders)
     		for (RowLine r: ds.getTabLines())		if (((Line)o).getId()==r.getId()) XmlRW.FieldToField(r, o); 	 	// выбираем нужную строку таблицы для изменения. Изменяем.
      }
-    
-    
-  
-    
- 
 
+	/**
+	 * Resource loader FXML
+	 * @param view
+	 * @param conrtoller
+	 * @param getResourceFxml
+	 * @param getBundleResources
+     * @param getBundleCss
+     */
+	public static void fxmlLoad (Object view, Object conrtoller, String getResourceFxml, String getBundleResources, String getBundleCss)  {
+		FXMLLoader fxmlLoader;
+		if (getResourceFxml!="") {
+			fxmlLoader = new FXMLLoader(view.getClass().getResource(getResourceFxml));
+			if (getBundleResources!="") fxmlLoader.setResources(ResourceBundle.getBundle(getBundleResources));
+			//   getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
+			fxmlLoader.setRoot(view);
+			if (conrtoller!=null) fxmlLoader.setController(conrtoller);        // or  fx:controller="ui.rootPane.menu.TMenuController"
+			// or <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >
+			try { fxmlLoader.load();  } catch (IOException exception) {  throw new RuntimeException(exception);       }
+		}
+	}
 }
 
 
