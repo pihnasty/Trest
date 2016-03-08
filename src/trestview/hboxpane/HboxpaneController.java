@@ -63,10 +63,7 @@ public class HboxpaneController implements Initializable {
     @FXML
     public void handleSaveAsAction(MouseEvent e ) { hboxpaneModel.saveRowTable(); }
     @FXML
-    public void handleEditAsAction(MouseEvent e ) {
-
-        tab.add(new Work(this.hboxpaneModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet()));
-    }
+    public void handleEditAsAction(MouseEvent e ) { hboxpaneModel.editRowTable(); }
     @FXML
     public void handleDelAsAction(MouseEvent e )  { hboxpaneModel.delRowTable(); }
 

@@ -7,7 +7,6 @@
 <RowWork description="description №6" id="6" name="Произво №6" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство тканей.png"/>
 <RowWork description="Описание для    Work" id="15" name="Work№15" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
 <RowWork description="Описание для    Work" id="16" name="Work№16" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="19" name="Work№19" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство двигателей.png"/>
 <RowWork description="Описание для    Work" id="20" name="Work№20" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство мебели.png"/>
 <RowWork description="Описание для    Work" id="23" name="Work№23" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство автомобилей.png"/>
 <RowWork description="Описание для    Work" id="25" name="Work№25" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство автомобилей.png"/>
@@ -22,27 +21,4 @@
 <RowWork description="Описание для    Work" id="36" name="Work№36" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство двигателей.png"/>
 <RowWork description="Описание для    Work" id="37" name="Work№37" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
 <RowWork description="Описание для    Work" id="38" name="Work№38" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="39" name="Work№39" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="40" name="Work№40" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="41" name="Work№41" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="42" name="Work№42" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="43" name="Work№43" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="44" name="Work№44" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="45" name="Work№45" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="46" name="Work№46" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="47" name="Work№47" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="48" name="Work№48" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="49" name="Work№49" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="50" name="Work№50" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="51" name="Work№51" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="52" name="Work№52" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="53" name="Work№53" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="54" name="Work№54" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="55" name="Work№55" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="56" name="Work№56" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="57" name="Work№57" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="58" name="Work№58" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="59" name="Work№59" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="60" name="Work№60" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    Work" id="61" name="Work№61" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
 </tabWorks>

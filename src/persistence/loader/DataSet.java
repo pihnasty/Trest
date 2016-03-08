@@ -352,7 +352,7 @@ public class DataSet {
      * @throws Throwable
      */
     static public void showObjTabs(Object obj, Class[] cLs, Object... objects) {
-        System.out.println("   ");
+
         System.out.print(" Данные объекта  " + obj.getClass().getSimpleName() + ":  ");
         Class cLobj = obj.getClass();
         Field[] fields = XmlRW.fieldsCl(cLobj);
@@ -701,7 +701,7 @@ public class DataSet {
                     if (rSL.compareTo(w) == 0) {
                         flag = true;
                         rSL = w;
-                        System.out.println("rtTab.add(rSL)=" + rSL.getClass() + "rSL.getId()=" + rSL.getId() + "rSL.getId()=" + w.getId());
+                        //System.out.println("rtTab.add(rSL)=" + rSL.getClass() + "rSL.getId()=" + rSL.getId() + "rSL.getId()=" + w.getId());
                     }
                 }
                 if (!flag) {

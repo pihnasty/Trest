@@ -38,12 +38,14 @@ public class HboxpaneModel extends Observable  {
         methodCall = MethodCall.delRowTable;
         changed();
     }
-
+    public void  editRowTable()   {
+        methodCall = MethodCall.editRowTable;
+        changed();
+    }
 
     public void changed() {
         setChanged();
         notifyObservers();
-        System.out.println("changed() HboxModel");
     }
 
     public DictionaryModel getDictionaryModel() {

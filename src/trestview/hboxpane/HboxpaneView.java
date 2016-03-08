@@ -49,6 +49,5 @@ public class HboxpaneView extends HBox implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         hboxpaneModel = (HboxpaneModel)o;
-        System.out.println("New model HBox");
-    }
+     }
 }

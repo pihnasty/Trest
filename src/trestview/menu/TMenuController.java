@@ -111,6 +111,7 @@ public class TMenuController implements Initializable {
 
     @FXML
     private void handleExitAction(ActionEvent event) {
+        menuModel.getTrestModel().getDataSet().saveDataset();                     // Save new path add read new database  from new directory path
         System.exit(0);
         Platform.exit();
     }

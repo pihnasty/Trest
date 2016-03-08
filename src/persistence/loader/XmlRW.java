@@ -4,13 +4,13 @@
 package persistence.loader;
 
 
+import entityProduction.*;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import persistence.loader._util._Date;
 import persistence.loader.tabDataSet.*;
-import old._util._Date;
-import old.entityProduction.*;
 import org.w3c.dom.*;
 
 
@@ -320,7 +320,7 @@ public class XmlRW
      */
     static public  void FieldToField_ifClass(DataSet ds, Object o)
     {   
-    	if ( o.getClass()==Employee.class)		// Если выделенный узел Employee.class, то приводим выделенный объект, хранящийся в узле, к нужному типу и записываем изменения в 	DataSet для соответствующей таблице (tabEmployees) 
+    	if ( o.getClass()== Employee.class)		// Если выделенный узел Employee.class, то приводим выделенный объект, хранящийся в узле, к нужному типу и записываем изменения в 	DataSet для соответствующей таблице (tabEmployees)
      	   for (RowEmployee r: ds.getTabEmployees())if (((Employee)o).getId()==r.getId()) XmlRW.FieldToField(r, o); 	 	// выбираем нужную строку таблицы для изменения. Изменяем.
     	if ( o.getClass()== FunctionOEM.class)		// Если выделенный узел Employee.class, то приводим выделенный объект, хранящийся в узле, к нужному типу и записываем изменения в 	DataSet для соответствующей таблице (tabEmployees)
      	   for (RowFunctionOEM r: ds.getTabFunctionOEMs())if (((FunctionOEM)o).getId()==r.getId()) XmlRW.FieldToField(r, o); 	 	// выбираем нужную строку таблицы для изменения. Изменяем.
@@ -376,6 +376,19 @@ public class XmlRW
 			try { fxmlLoader.load();  } catch (IOException exception) {  throw new RuntimeException(exception);       }
 		}
 	}
+
+	/**
+	 * @param tab			коллекция объектов, один из которых подлежат удалению
+	 * @param Rowtab		таблица (коллекция) строк в DataSet с уникальным id2, в которых хранятся данные для формирования объектов
+	 * @param RowIdIdtab    таблица (коллекция) реестров строк в DataSet с уникальным id и id2, в которых хранятся данные для формирования объектов
+	 */
+	public static  <cL, RowcL, RowIdIdcL> void delRow (cL o, ArrayList <cL> tab, ArrayList <RowcL> Rowtab, ArrayList <RowIdIdcL> RowIdIdtab){
+		int id = ((RowIdNameDescription)o).getId();
+		tab.remove(o);
+		for ( RowcL r : Rowtab ) 			if ( id== ((RowIdNameDescription) r).getId() )  {	Rowtab.remove(r);	break;	}	// удаляем строку данных об объекте
+		for ( RowIdIdcL wr : RowIdIdtab )	if ( id == ((RowIdId2) wr).getId2() )  			{	Rowtab.remove(wr);	break;	}	// удаляем строку  связи объекта с родителем																								   {	RowIdIdtab.remove(wr);	break;	}		// удаляем строку реестра с данными об связи объектах
+	}
+
 }
 
 

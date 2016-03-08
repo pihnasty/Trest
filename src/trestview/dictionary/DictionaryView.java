@@ -104,6 +104,5 @@ public class DictionaryView extends Dialog implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         dictionaryModel = (DictionaryModel)o;
-        System.out.println("New model");
     }
 }

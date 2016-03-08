@@ -15,10 +15,11 @@ import java.util.Observer;
  */
 public class TableModel <cL> extends AbstractTableModel implements Observer {
 
+    private MethodCall methodCall;
+
     public TableModel(DictionaryModel dictionaryModel, Class<cL> tClass) {
         this.dictionaryModel = dictionaryModel;
         this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
-
         this.tClass = tClass;
         this.nameColumns = biuldNameColumns();
     }
@@ -34,15 +35,19 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
     private void updateHBoxpaneModel(HboxpaneModel o) {
         switch (o.getMethodCall()) {
             case addRowTable:
-                this.tab.add(new Work(this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet()));
+                methodCall = MethodCall.addRowTable;
+                selectRow = new Work(this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet());
+                tab.add(selectRow);
                 break;
             case saveRowTable:
+                methodCall = MethodCall.saveRowTable;
                 this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet().saveDataset();
                 break;
             case editRowTable:
+                methodCall = MethodCall.editRowTable;
                 break;
             case delRowTable:
-                this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet().saveDataset();
+                methodCall = MethodCall.delRowTable;
                 break;
             default:
                 break;
@@ -54,6 +59,8 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         notifyObservers();
 
     }
+
+    public MethodCall getMethodCall() { return methodCall;  }
 
 
 

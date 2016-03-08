@@ -46,6 +46,5 @@ public class TMenuView extends MenuBar  implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         menuModel = (TMenuModel)o;
-        System.out.println("New model");
     }
 }
