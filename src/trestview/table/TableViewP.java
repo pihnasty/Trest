@@ -1,6 +1,8 @@
 package trestview.table;
 
 import entityProduction.Work;
+import javafx.beans.property.Property;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -20,13 +22,18 @@ import java.util.ResourceBundle;
  */
 public class TableViewP<cL> extends TableView implements Observer {
 
-    private TableModel tableModel;
+    private TableModel tableModel=null;
+    private Property<TableModel> tableModelProperty;
     private ObservableList data;
 
     public TableViewP() {}
 
     public TableViewP(TableModel tableModel, TableController tableController) {
+
+       // tableModelProperty.bind(data.);
+
         this.tableModel = tableModel;
+       // this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "stylesMenu.css");
 
         for (Object name : this.tableModel.getNameColumns()) {
@@ -34,6 +41,8 @@ public class TableViewP<cL> extends TableView implements Observer {
             getColumns().addAll(tableColumn);
             tableColumn.setCellValueFactory(new PropertyValueFactory<Object,String>(name.toString()));
         }
+        setPrefWidth(850);
+        setPrefHeight(300);
         repaintTable();
     }
     @Override

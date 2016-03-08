@@ -59,7 +59,7 @@ public class HboxpaneController implements Initializable {
 
 
     @FXML
-    public void handleAddAsAction(MouseEvent e ) { hboxpaneModel.addRowTable();  }
+    public void handleAddAsAction(MouseEvent e )  { hboxpaneModel.addRowTable();  }
     @FXML
     public void handleSaveAsAction(MouseEvent e ) { hboxpaneModel.saveRowTable(); }
     @FXML
@@ -68,10 +68,6 @@ public class HboxpaneController implements Initializable {
         tab.add(new Work(this.hboxpaneModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet()));
     }
     @FXML
-    public void handleDelAsAction(MouseEvent e ) {
-        hboxpaneModel.addRowTable();
-        System.out.println("handleDelAsAction(MouseEvent e ) ");
-        // tab.add(new Work(this.hboxpaneModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet()));
-    }
+    public void handleDelAsAction(MouseEvent e )  { hboxpaneModel.delRowTable(); }
 
 }

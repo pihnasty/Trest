@@ -11,14 +11,14 @@ import java.util.ResourceBundle;
  */
 public class TableController implements Initializable {
 
-    private TableModel dictionaryModel;
+    private TableModel tableModel;
 
     public TableController() {
 
     }
 
-    public TableController(TableModel dictionaryModel) {
-        this.dictionaryModel = dictionaryModel;
+    public TableController(TableModel tableModel) {
+        this.tableModel = tableModel;
 
     }
 

@@ -12,7 +12,8 @@ public class HboxpaneModel extends Observable  {
 
     private Class tClass;
     private DictionaryModel dictionaryModel;
-    private boolean saveChange = false;
+
+    private MethodCall methodCall;
 
 
     public HboxpaneModel(DictionaryModel dictionaryModel, Class tClass) {
@@ -24,14 +25,20 @@ public class HboxpaneModel extends Observable  {
 
 
     public void  addRowTable()   {
-        saveChange = false;
+        methodCall = MethodCall.addRowTable;
         changed();
     }
 
     public void  saveRowTable()   {
-        saveChange = true;
+        methodCall = MethodCall.saveRowTable;
         changed();
     }
+
+    public void  delRowTable()   {
+        methodCall = MethodCall.delRowTable;
+        changed();
+    }
+
 
     public void changed() {
         setChanged();
@@ -55,13 +62,8 @@ public class HboxpaneModel extends Observable  {
         this.tClass = tClass;
     }
 
-
-    public boolean isSaveChange() {
-        return saveChange;
-    }
-
-    public void setSaveChange(boolean saveChange) {
-        this.saveChange = saveChange;
-    }
+    public MethodCall getMethodCall() { return methodCall;  }
 
 }
+
+
