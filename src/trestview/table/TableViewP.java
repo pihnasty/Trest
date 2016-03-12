@@ -51,26 +51,29 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         this.tclass=tableModel.gettClass();
         this.dataSet = tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet();
         this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        this.setEditable(true);
         XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "stylesMenu.css");
 
         for (Object name : this.tableModel.getNameColumns()) {
-            TableColumn tableColumn = new TableColumn(name.toString());
+            TableColumn<cL,String> tableColumn = new TableColumn  (name.toString());
+
+
             getColumns().addAll(tableColumn);
-            tableColumn.setCellValueFactory(new PropertyValueFactory<Object,String>(name.toString()));
-            tableColumn.setEditable(true);
- //           tableColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-/*            tableColumn.setOnEditCommit(
-                    (TableColumn.CellEditEvent<Work, String> t) -> {
-                        ((Work) t.getTableView().getItems().get(
+          if(name.toString()=="name")  tableColumn.setCellValueFactory(new PropertyValueFactory(name.toString()));
+
+            tableColumn.setCellFactory(TextFieldTableCell.<cL>forTableColumn());
+
+            tableColumn.setOnEditCommit(
+                    (TableColumn.CellEditEvent<cL, String> t) -> {
+                        ((RowWork) t.getTableView().getItems().get(
                                 t.getTablePosition().getRow())
-                        ).getName();
+                        ).setName(t.getNewValue());
                     });
 
-*/
         }
-        setEditable(true);
-        setEditable(false);
-        setEditable(true);
+        //tableColumn.setEditable(true);
+
         System.out.println("isEditable()="+isEditable());
         setPrefWidth(850);
         setPrefHeight(300);
@@ -93,6 +96,12 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         for (Object row : this.tab) data.add(row);
         setEditable(true);
         setItems(data);
+
+
+
+
+
+
     }
 
     private void updateTableModel(TableModel o) {
@@ -133,6 +142,8 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         }
     }
 
+    private class CellEditEvent<T, T1> {
+    }
 }
 
 
