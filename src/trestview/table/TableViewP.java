@@ -44,35 +44,21 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
     public TableViewP(TableModel tableModel, TableController tableController) {
 
-       // tableModelProperty.bind(data.);
-
         this.tableModel = tableModel;
         this.tab= tableModel.getTab();
         this.tclass=tableModel.gettClass();
         this.dataSet = tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet();
         this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
+        this.setTableMenuButtonVisible(true);
         this.setEditable(true);
         XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "stylesMenu.css");
 
         for (Object name : this.tableModel.getNameColumns()) {
-            TableColumn<cL,String> tableColumn = new TableColumn  (name.toString());
 
 
-            getColumns().addAll(tableColumn);
-          if(name.toString()=="name")  tableColumn.setCellValueFactory(new PropertyValueFactory(name.toString()));
-
-            tableColumn.setCellFactory(TextFieldTableCell.<cL>forTableColumn());
-
-            tableColumn.setOnEditCommit(
-                    (TableColumn.CellEditEvent<cL, String> t) -> {
-                        ((RowWork) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())
-                        ).setName(t.getNewValue());
-                    });
-
+            TableColumn<cL, String> tableColumn = getTableColumnP(name);
         }
-        //tableColumn.setEditable(true);
+
 
         System.out.println("isEditable()="+isEditable());
         setPrefWidth(850);
@@ -81,6 +67,27 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
 
     }
+
+    private TableColumn<cL, String> getTableColumnP(Object name) {
+        TableColumn<cL,String> tableColumn = new TableColumn  (name.toString());
+
+
+        getColumns().addAll(tableColumn);
+        if(name.toString()=="name")
+            tableColumn.setCellValueFactory(new PropertyValueFactory(name.toString()));
+
+        tableColumn.setCellFactory(TextFieldTableCell.<cL>forTableColumn());
+
+        tableColumn.setOnEditCommit(
+                (TableColumn.CellEditEvent<cL, String> t) -> {
+                    ((RowWork) t.getTableView().getItems().get(
+                            t.getTablePosition().getRow())
+                    ).setName(t.getNewValue());
+                });
+        tableColumn.setEditable(true);
+        return tableColumn;
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         this.getSelectionModel().getSelectedIndex();
