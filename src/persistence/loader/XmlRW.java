@@ -385,8 +385,8 @@ public class XmlRW
 	public static  <cL, RowcL, RowIdIdcL> void delRow (cL o, ArrayList <cL> tab, ArrayList <RowcL> Rowtab, ArrayList <RowIdIdcL> RowIdIdtab){
 		int id = ((RowIdNameDescription)o).getId();
 		tab.remove(o);
-		for ( RowcL r : Rowtab ) 			if ( id== ((RowIdNameDescription) r).getId() )  {	Rowtab.remove(r);	break;	}	// удаляем строку данных об объекте
-		for ( RowIdIdcL wr : RowIdIdtab )	if ( id == ((RowIdId2) wr).getId2() )  			{	Rowtab.remove(wr);	break;	}	// удаляем строку  связи объекта с родителем																								   {	RowIdIdtab.remove(wr);	break;	}		// удаляем строку реестра с данными об связи объектах
+		for ( RowcL r : Rowtab ) 			if ( id== ((RowIdNameDescription) r).getId() )  {	Rowtab.remove(r);		break;	}	// удаляем строку данных об объекте
+		for ( RowIdIdcL wr : RowIdIdtab )	if ( id == ((RowIdId2) wr).getId2() )  			{	RowIdIdtab.remove(wr);	break;	}	// удаляем строку  связи объекта с родителем																								   {	RowIdIdtab.remove(wr);	break;	}		// удаляем строку реестра с данными об связи объектах
 	}
 
 }

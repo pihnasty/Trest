@@ -1,6 +1,7 @@
 package trestview.table.tablemodel;
 
 import entityProduction.Work;
+import persistence.loader.tabDataSet.RowWork;
 import trestview.dictionary.DictionaryModel;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
@@ -36,7 +37,7 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         switch (o.getMethodCall()) {
             case addRowTable:
                 methodCall = MethodCall.addRowTable;
-                selectRow = new Work(this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet());
+                selectRow = new RowWork(this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet(),tClass);
                 tab.add(selectRow);
                 break;
             case saveRowTable:
