@@ -39,6 +39,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
     private ArrayList<cL> tab;
     private Class tclass;
     private DataSet dataSet;
+    private cL selectRow;
 
     public TableViewP() {}
 
@@ -103,12 +104,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         for (Object row : this.tab) data.add(row);
         setEditable(true);
         setItems(data);
-
-
-
-
-
-
     }
 
     private void updateTableModel(TableModel o) {
@@ -125,7 +120,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                 System.out.println("methodCall = MethodCall.editRowTable;22");
                 break;
             case delRowTable:
-                if (tclass == RowWork.class )  XmlRW.delRow ((cL)data.get(selectIndex), tab, dataSet.getTabWorks(), dataSet.getTabTrestsWorks());
                 data.remove(selectIndex);
                 if (getItems().size() == 0) {   return;   }
                 break;
@@ -146,6 +140,8 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             selectIndex = newVal.intValue();
             if ((selectIndex < 0) || (selectIndex >= data.size())) { return;  }
             setEditable(true);
+            selectRow = (cL)data.get(selectIndex);
+            tableModel.setSelectRow(selectRow );
         }
     }
 

@@ -1,13 +1,11 @@
 package trestview.table.tablemodel;
 
-import entityProduction.Work;
+import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowWork;
 import trestview.dictionary.DictionaryModel;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
 
-
-import java.lang.reflect.Method;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,6 +21,7 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
         this.tClass = tClass;
         this.nameColumns = biuldNameColumns();
+        this.dataset = dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
     }
 
 
@@ -37,18 +36,19 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         switch (o.getMethodCall()) {
             case addRowTable:
                 methodCall = MethodCall.addRowTable;
-                selectRow = new RowWork(this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet(),tClass);
+                selectRow = new RowWork(this.dataset,tClass);
                 tab.add(selectRow);
                 break;
             case saveRowTable:
                 methodCall = MethodCall.saveRowTable;
-                this.dictionaryModel.getTMenuModel().getTrestModel().getDataSet().saveDataset();
+                this.dataset.saveDataset();
                 break;
             case editRowTable:
                 methodCall = MethodCall.editRowTable;
                 break;
             case delRowTable:
                 methodCall = MethodCall.delRowTable;
+                if (tClass == RowWork.class )  XmlRW.delRow (selectRow, tab, dataset.getTabWorks(), dataset.getTabTrestsWorks());
                 break;
             default:
                 break;

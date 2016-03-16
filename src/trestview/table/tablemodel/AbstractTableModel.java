@@ -1,5 +1,6 @@
 package trestview.table.tablemodel;
 
+import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowIdNameDescription;
 import trestview.dictionary.DictionaryModel;
@@ -19,7 +20,8 @@ public abstract class AbstractTableModel<cL> extends Observable {
 
     protected DictionaryModel dictionaryModel;
     protected ArrayList<cL> tab;
-    protected RowIdNameDescription selectRow;
+    protected cL selectRow;
+    protected DataSet dataset;
 
     protected ArrayList<String>  nameColumns ;
 
@@ -68,9 +70,9 @@ public abstract class AbstractTableModel<cL> extends Observable {
         this.dictionaryModel = dictionaryModel;
     }
 
-    public RowIdNameDescription getSelectRow() {return selectRow;   }
+    public cL getSelectRow() {return selectRow;   }
 
-    public void setSelectRow(RowIdNameDescription selectRow) {  this.selectRow = selectRow; }
+    public void setSelectRow(cL selectRow) {  this.selectRow = selectRow; }
 
     public Class gettClass() { return tClass;  }
 
