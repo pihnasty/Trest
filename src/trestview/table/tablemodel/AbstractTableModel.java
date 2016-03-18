@@ -35,7 +35,7 @@ public abstract class AbstractTableModel<cL> extends Observable {
     }
 
 
-    public ArrayList<String> biuldNameColumns() {
+    public ArrayList<String> buildNameColumns() {
         nameColumns = new ArrayList<String>();
         Integer i = new Integer(0);
         if (tab != null) {
@@ -78,4 +78,15 @@ public abstract class AbstractTableModel<cL> extends Observable {
 
     public void settClass(Class tClass) { this.tClass = tClass;  }
 
+}
+
+/**
+ * column settings
+ */
+class ParametersForColumn  {
+    private String name;
+    private Class cLs;
+    private int number;
+    private boolean editable;
+    private double  width;
 }

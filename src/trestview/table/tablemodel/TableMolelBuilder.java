@@ -15,6 +15,3 @@ public class  TableMolelBuilder <cL> {
         return ((FactoryTableModel) factoryTableModel).getTableModel();
     }
 }
-
-
-// new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);

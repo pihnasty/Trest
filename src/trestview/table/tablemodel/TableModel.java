@@ -20,8 +20,9 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         this.dictionaryModel = dictionaryModel;
         this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
         this.tClass = tClass;
-        this.nameColumns = biuldNameColumns();
+        this.nameColumns = buildNameColumns();
         this.dataset = dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
+
     }
 
 
