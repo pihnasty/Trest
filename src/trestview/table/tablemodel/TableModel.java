@@ -6,6 +6,7 @@ import trestview.dictionary.DictionaryModel;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,8 +22,9 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
         this.tClass = tClass;
         this.nameColumns = buildNameColumns();
+        this.parametersOfColumns = buildParametersColumn() ;
         this.dataset = dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
-
+         //   RuleForTable r = RuleForTable.createRuleForTable();
     }
 
 
