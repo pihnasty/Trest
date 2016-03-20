@@ -23,8 +23,6 @@ public class FactoryTableModel   extends AbstractFactoryTableModel {
 
     }
 
-
-
     public AbstractTableModel getTableModel() {
         return new TableModel(dictionaryModel,tClass);
     }

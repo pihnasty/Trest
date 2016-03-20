@@ -17,14 +17,17 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
 
     private MethodCall methodCall;
 
+    /**
+     *
+     * @param dictionaryModel
+     * @param tClass    The data type for a table row. This is [RowWork.class] for the table = [ArrayList<RowWork>].
+     */
     public TableModel(DictionaryModel dictionaryModel, Class<cL> tClass) {
         this.dictionaryModel = dictionaryModel;
         this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
         this.tClass = tClass;
-        this.nameColumns = buildNameColumns();
         this.parametersOfColumns = buildParametersColumn() ;
         this.dataset = dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
-         //   RuleForTable r = RuleForTable.createRuleForTable();
     }
 
 

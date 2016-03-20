@@ -9,18 +9,21 @@ import java.util.ResourceBundle;
  */
 public class ParametersColumnMap  {
     private static Map<String,ParametersColumn> map;
-    public ParametersColumnMap () {
-        map = new HashMap<String,ParametersColumn>();
+    private ParametersColumnMap () {
+        map = new HashMap<>();
         // Parameters  of column  for RowWork
-        map.put("id", new ParametersColumn (getHeader("id"),      int.class, false, 40) );
-        map.put("name", new ParametersColumn (getHeader("name"), String.class, true, 200) );
-        map.put("scheme", new ParametersColumn (getHeader("scheme"), double.class, true, 100) );
-        map.put("overallSize", new ParametersColumn (getHeader("overallSize"), double.class, true, 100) );
-        map.put("scaleEquipment", new ParametersColumn (getHeader("scaleEquipment"), double.class, true, 100) );
-        map.put("description", new ParametersColumn (getHeader("description"), double.class, true, 100) );
+        map.put("id", new ParametersColumn ("id",      int.class, false, 40) );
+        map.put("name", new ParametersColumn ("name", String.class, true, 150) );
+        map.put("scheme", new ParametersColumn ("scheme", String.class, true, 150) );
+        map.put("overallSize", new ParametersColumn ("overallSize", double.class, true, 70) );
+        map.put("scaleEquipment", new ParametersColumn ("scaleEquipment", double.class, true, 50) );
+        map.put("description", new ParametersColumn ("description",String.class, true, 200) );
 
     }
-    private String getHeader(String headerColumn){
-        return ResourceBundle.getBundle("resources.ui").getString(headerColumn);
+
+    public static ParametersColumn getParametersColumn(String key) {
+        new ParametersColumnMap ();
+        return map.get(key);
     }
+
 }

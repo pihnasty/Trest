@@ -9,6 +9,7 @@ import trestview.dictionary.DictionaryModel;
 import trestview.menu.TMenuModel;
 import trestview.table.tablemodel.abstracttablemodel.ColumnsOrderMap;
 import trestview.table.tablemodel.abstracttablemodel.ParametersColumn;
+import trestview.table.tablemodel.abstracttablemodel.ParametersColumnMap;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -19,29 +20,19 @@ import java.util.stream.Stream;
  */
 public abstract class AbstractTableModel<cL> extends Observable {
 
-
-
-
     protected DictionaryModel dictionaryModel;
     protected ArrayList<cL> tab;
     protected cL selectRow;
     protected DataSet dataset;
+    protected ArrayList<ParametersColumn>  parametersOfColumns;
+    protected Class tClass;
 
-    protected ArrayList<String>  nameColumns ;
 
     public ArrayList<ParametersColumn> getParametersOfColumns() {
         return parametersOfColumns;
     }
 
-    public void setParametersOfColumns(ArrayList<ParametersColumn> parametersOfColumns) {
-        this.parametersOfColumns = parametersOfColumns;
-    }
 
-    protected ArrayList<ParametersColumn>  parametersOfColumns ;
-
-
-
-    protected Class tClass;
 
     public void changed() {
         setChanged();
@@ -49,27 +40,9 @@ public abstract class AbstractTableModel<cL> extends Observable {
     }
 
     public ArrayList<ParametersColumn> buildParametersColumn() {
-        parametersOfColumns = ColumnsOrderMap.getColumns(tClass);
+        parametersOfColumns = new ArrayList<>();
+        ColumnsOrderMap.getColumns(tClass).stream().map(s-> parametersOfColumns.add(ParametersColumnMap.getParametersColumn(s))).count();
         return parametersOfColumns;
-    }
-
-    public ArrayList<String> buildNameColumns() {
-        nameColumns = new ArrayList<String>();
-        Integer i = new Integer(0);
-        if (tab != null) {
-            if (!tab.isEmpty()) { Field[] fields = XmlRW.fieldsCl(tClass);
-                for (Field fd : fields) {
-                    // nameColumns.add(i.toString());
-                     nameColumns.add(fd.getName());
-                    i++;
-                }
-            }
-        }
-        return nameColumns;
-    }
-
-    public ArrayList<String> getNameColumns() {
-        return nameColumns;
     }
 
     public ArrayList<cL> getTab() {
@@ -84,17 +57,11 @@ public abstract class AbstractTableModel<cL> extends Observable {
         return dictionaryModel;
     }
 
-    public void setDictionaryModel(DictionaryModel dictionaryModel) {
-        this.dictionaryModel = dictionaryModel;
-    }
-
     public cL getSelectRow() {return selectRow;   }
 
     public void setSelectRow(cL selectRow) {  this.selectRow = selectRow; }
 
     public Class gettClass() { return tClass;  }
-
-    public void settClass(Class tClass) { this.tClass = tClass;  }
 
 }
 

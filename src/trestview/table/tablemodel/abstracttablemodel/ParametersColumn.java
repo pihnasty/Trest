@@ -1,4 +1,10 @@
 package trestview.table.tablemodel.abstracttablemodel;
+
+import persistence.loader.XmlRW;
+
+import java.lang.reflect.Field;
+import java.util.ResourceBundle;
+
 /**
  * column settings
  */
@@ -9,6 +15,10 @@ public class ParametersColumn  {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFielgName() {
+        return fieldName;
     }
 
     public Class getcLs() {
@@ -36,13 +46,22 @@ public class ParametersColumn  {
     }
 
     private String name;
+
+
+
+    private String fieldName;
     private Class cLs;
     private boolean editable;
     private double  width;
-    public ParametersColumn (String name, Class cLs, boolean editable, double  width) {
-        this.name=name;
+    public ParametersColumn (String fieldName, Class cLs, boolean editable, double  width) {
+        this.fieldName=fieldName;
+        this.name=getHeader(fieldName);
         this.cLs = cLs;
         this.editable = editable;
         this.width = width;
+     }
+
+    private String getHeader(String headerColumn){
+        return ResourceBundle.getBundle("resources.ui").getString(headerColumn);
     }
 }

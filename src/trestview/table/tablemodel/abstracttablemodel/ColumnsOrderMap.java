@@ -12,7 +12,7 @@ public class ColumnsOrderMap {
     private static Map<Class, ColumnsOrder> map;
 
     private ColumnsOrderMap() {
-        map = new HashMap<Class, ColumnsOrder>();
+        map = new HashMap<>();
         map.put(RowWork.class, new ColumnsOrder("id", "name", "scheme", "overallSize", "scaleEquipment", "description"));
     }
 

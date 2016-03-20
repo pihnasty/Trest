@@ -2,8 +2,6 @@
  * 
  */
 package persistence.loader;
-
-
 import entityProduction.*;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.DirectoryChooser;
@@ -32,7 +30,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 /**
  * @author ПОМ
  *
@@ -41,11 +38,7 @@ public class XmlRW
 {
 	private static DocumentBuilder builder;
     static Document doc;
-	
-
-/*___________________________________________________________________________________________________________________*/	
-
-	
+/*___________________________________________________________________________________________________________________*/
 	/**
 	 * Загрузочный конфигурационный метод.
 	 * @return Путь к файлу загрузки начальной информации из XML-файлов
@@ -76,26 +69,6 @@ public class XmlRW
         }	
 		return pathData;
 	}
-	
-	static public void writePathData( String pathData) 
-	{
-		  /* 	
-		 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	     builder = factory.newDocumentBuilder();
-	     doc = builder.newDocument();			
-	   
-		 File f = new File(pathDataFile+".xml");	
-		 Transformer t = TransformerFactory.newInstance().newTransformer();		 
-		 writeTabClass (tab, cL, TagNames);		  
-	     t.setOutputProperty(OutputKeys.INDENT,"yes");
-	     t.transform(new DOMSource(doc),new StreamResult(new FileOutputStream(f))); 
-	     
-	     
-	     */
-	}	
-	
-	
-
 
 	/**
 	 * This will select  the directory where we will create a database
@@ -112,7 +85,6 @@ public class XmlRW
 		chooser.setTitle(loader.getResources().getString("Select_db_download"));
 		chooser.setInitialDirectory(new File( DataSet.tSettings.get(0).getSystemPath()) );  //  .setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		java.io.File file=chooser.showDialog(new Stage());
-		;
 		if (file != null) {
 			chooser.setInitialDirectory(file);
 			try {
@@ -270,10 +242,6 @@ public class XmlRW
 		 if (fd.getType() == Date.class && flag=="PModelTable")			return  _Date._toDateForString	((String)o	, Locale.US);			// Специфический формат, используемый в PModelTable
 		 return o;
 	}
-
-
-
-
 
     /**
      * Возращаем поля тестируемого класса

@@ -11,6 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.util.Callback;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowIdId2;
@@ -19,7 +25,9 @@ import persistence.loader.tabDataSet.RowWork;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
 import trestview.table.tablemodel.TableModel;
+import trestview.table.tablemodel.abstracttablemodel.ParametersColumn;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
@@ -54,40 +62,130 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         this.setEditable(true);
         XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "stylesMenu.css");
 
-        for (Object name : this.tableModel.getNameColumns()) {
+        this.tableModel.getParametersOfColumns().stream().map(p-> getTableColumnP((ParametersColumn)p)).count();
 
+        isEditable();
 
-            TableColumn<cL, String> tableColumn = getTableColumnP(name);
-        }
-
-
-        System.out.println("isEditable()="+isEditable());
-        setPrefWidth(850);
         setPrefHeight(300);
         repaintTable();
         getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
 
     }
 
-    private TableColumn<cL, String> getTableColumnP(Object name) {
-        TableColumn<cL,String> tableColumn = new TableColumn  (name.toString());
+    private void setStringColumn(ParametersColumn parametersColumn, TableColumn<cL, String> tableColumn,String fielgName, Class tclass ) {
+        if(parametersColumn.getFielgName().equals(fielgName)) {
+            tableColumn.setCellValueFactory(new PropertyValueFactory(fielgName));
+            tableColumn.setCellFactory(TextFieldTableCell.<cL>forTableColumn());
+            tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, String> t) -> {
+              //if(tclass==RowWork.class)
+              if(fielgName=="name") ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setName(t.getNewValue());
+              if(fielgName=="scheme") {
+
+                  File f = new File(t.getNewValue());
+                  String schemePath = "Image\\Manufacturing";
+
+                  if (!f.exists()) {
+                      FileChooser chooser = new FileChooser();
+                      chooser.setInitialDirectory(new File (schemePath));
+                      chooser.getExtensionFilters().addAll(
+                              new FileChooser.ExtensionFilter("All Images", "*.*"),
+                              new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                              new FileChooser.ExtensionFilter("PNG", "*.png"),
+                              new FileChooser.ExtensionFilter("BMP", "*.bmp"),
+                              new FileChooser.ExtensionFilter("GIF", "*.gif")
+                      );
+                     chooser.setTitle( ResourceBundle.getBundle("resources.ui").getString("nameFileScheme"));
+                      Stage st = new Stage();
+                      st.setMaxWidth(400);
+                      st.setMaxHeight(400);
+                      f = chooser.showOpenDialog(st);
+                      Image image = new Image(f.toURI().toString()); System.out.println(image.getHeight());
+
+                      try                      {
+
+                          System.out.println(f.getAbsolutePath());
+                          t.getOldValue();
+                          System.out.println( "t.getOldValue()="+ t.getOldValue());
+                      }
+                     catch (Exception e) {
+                        System.out.println(e.getClass());
+                     }
+
+                  }
 
 
-        getColumns().addAll(tableColumn);
-        if(name.toString()=="name")
-            tableColumn.setCellValueFactory(new PropertyValueFactory(name.toString()));
 
-        tableColumn.setCellFactory(TextFieldTableCell.<cL>forTableColumn());
-
-        tableColumn.setOnEditCommit(
-                (TableColumn.CellEditEvent<cL, String> t) -> {
-                    ((RowWork) t.getTableView().getItems().get(
-                            t.getTablePosition().getRow())
-                    ).setName(t.getNewValue());
-                });
-        tableColumn.setEditable(true);
-        return tableColumn;
+                  ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(t.getNewValue());
+              }
+              if(fielgName=="description") ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setDescription(t.getNewValue());
+            });
+        }
     }
+
+    private void setIntegerColumn(ParametersColumn parametersColumn, TableColumn<cL, Integer> tableColumn,String fielgName, Class tclass ) {
+        if(parametersColumn.getFielgName().equals(fielgName)) {
+            tableColumn.setCellValueFactory(new PropertyValueFactory(fielgName));
+            tableColumn.setCellFactory(TextFieldTableCell.<cL, Integer>forTableColumn(new IntegerStringConverter()));
+            tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, Integer> t) -> {
+            if(fielgName=="id")   ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setId(t.getNewValue());
+            });
+        }
+    }
+
+    private void setDoubleColumn(ParametersColumn parametersColumn, TableColumn<cL, Double> tableColumn,String fielgName, Class tclass ) {
+        if(parametersColumn.getFielgName().equals(fielgName)) {
+            tableColumn.setCellValueFactory(new PropertyValueFactory(fielgName));
+            tableColumn.setCellFactory(TextFieldTableCell.<cL, Double>forTableColumn(new DoubleStringConverter()));
+            tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, Double> t) -> {
+            if(fielgName=="overallSize")   ((RowWork) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setOverallSize(t.getNewValue());
+            if(fielgName=="scaleEquipment")   ((RowWork) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setScaleEquipment(t.getNewValue());
+            });
+        }
+    }
+
+
+
+    private TableColumn<cL, ?> getTableColumnP(ParametersColumn parametersColumn) {
+
+        TableColumn<cL,?> tableCol = new TableColumn<>();
+
+        if (parametersColumn.getcLs()==String.class) {
+            TableColumn<cL,String> tableColumn = new TableColumn  (parametersColumn.getName());
+
+            setStringColumn(parametersColumn, tableColumn,"name",tclass);
+            setStringColumn(parametersColumn, tableColumn,"scheme",tclass);
+            setStringColumn(parametersColumn, tableColumn,"description",tclass);
+            tableCol=tableColumn;
+        }
+
+        if (parametersColumn.getcLs()==int.class) {
+            TableColumn<cL,Integer> tableColumn = new TableColumn  (parametersColumn.getName());
+
+            setIntegerColumn(parametersColumn, tableColumn,"id",tclass);
+            tableCol=tableColumn;
+        }
+        if (parametersColumn.getcLs()==double.class) {
+            TableColumn<cL,Double> tableColumn = new TableColumn  (parametersColumn.getName());
+
+            setDoubleColumn(parametersColumn, tableColumn,"overallSize",tclass);
+            setDoubleColumn(parametersColumn, tableColumn,"scaleEquipment",tclass);
+            tableCol=tableColumn;
+        }
+
+        getColumns().addAll(tableCol);
+         tableCol.setMinWidth(parametersColumn.getWidth());
+         tableCol.setPrefWidth(parametersColumn.getWidth());
+         tableCol.setEditable(parametersColumn.isEditable());
+
+
+         setPrefWidth(getPrefWidth() + parametersColumn.getWidth());
+         setMinWidth(getMinWidth() + parametersColumn.getWidth());
+            //  setMinWidth(getMinWidth()+parametersColumn.getWidth());
+
+        return tableCol;
+    }
+
+
 
     @Override
     public void update(Observable o, Object arg) {
