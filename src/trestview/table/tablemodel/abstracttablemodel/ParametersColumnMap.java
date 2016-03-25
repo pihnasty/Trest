@@ -1,5 +1,7 @@
 package trestview.table.tablemodel.abstracttablemodel;
 
+import javafx.scene.image.Image;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -18,6 +20,7 @@ public class ParametersColumnMap  {
         map.put("overallSize", new ParametersColumn ("overallSize", double.class, true, 70) );
         map.put("scaleEquipment", new ParametersColumn ("scaleEquipment", double.class, true, 50) );
         map.put("description", new ParametersColumn ("description",String.class, true, 200) );
+        map.put("image", new ParametersColumn ("image",Image.class, true, 200) );
 
     }
 

@@ -12,6 +12,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -22,6 +25,8 @@ import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowIdId2;
 import persistence.loader.tabDataSet.RowIdNameDescription;
 import persistence.loader.tabDataSet.RowWork;
+import resources.images.icons.IconT;
+import resources.images.works.WorkT;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
 import trestview.table.tablemodel.TableModel;
@@ -142,7 +147,45 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             });
         }
     }
+    private void setImageColumn(ParametersColumn parametersColumn, TableColumn<cL, String> tableColumn, String fielgName, Class tclass ) {
+        if(parametersColumn.getFielgName().equals(fielgName)) {
+            tableColumn.setCellValueFactory(new PropertyValueFactory("scheme"));
+            tableColumn.setCellFactory(
+              new Callback<TableColumn<cL, String>,TableCell<cL, String>>(){
+                @Override
+                public TableCell<cL, String> call(TableColumn<cL, String> param) {
+                    TableCell<cL, String> cell = new TableCell<cL, String>(){
+                        @Override
+                        public void updateItem(String item, boolean empty) {
+                            if(item!=null){
+                                HBox box= new HBox();
+                                box.setSpacing(10) ;
+                                ScrollPane sp = new ScrollPane();
+                                sp.setPrefSize(160,160);
+                                ImageView imageview = new ImageView();
+                                imageview.setFitHeight(300);
+                                sp.setPannable(false);
+                              //  imageview.setFitWidth(300);
+                                imageview.setImage(new Image("file:"+item ));
+                                box.getChildren().addAll(imageview);
+                                sp.setContent(imageview);
+                                setGraphic(sp);
+                            }
+                        }
+                    };
+                    System.out.println(cell.getIndex());
+                    return cell;
+                }
 
+            });
+
+
+            //   tableColumn.setCellFactory(TextFieldTableCell.<cL, Integer>forTableColumn(new IntegerStringConverter()));
+       //     tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, Image> t) -> {
+         //       if(fielgName=="image")   ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setId(t.getNewValue());
+           // });
+        }
+    }
 
 
     private TableColumn<cL, ?> getTableColumnP(ParametersColumn parametersColumn) {
@@ -151,7 +194,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
         if (parametersColumn.getcLs()==String.class) {
             TableColumn<cL,String> tableColumn = new TableColumn  (parametersColumn.getName());
-
             setStringColumn(parametersColumn, tableColumn,"name",tclass);
             setStringColumn(parametersColumn, tableColumn,"scheme",tclass);
             setStringColumn(parametersColumn, tableColumn,"description",tclass);
@@ -160,17 +202,21 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
         if (parametersColumn.getcLs()==int.class) {
             TableColumn<cL,Integer> tableColumn = new TableColumn  (parametersColumn.getName());
-
             setIntegerColumn(parametersColumn, tableColumn,"id",tclass);
             tableCol=tableColumn;
         }
         if (parametersColumn.getcLs()==double.class) {
             TableColumn<cL,Double> tableColumn = new TableColumn  (parametersColumn.getName());
-
             setDoubleColumn(parametersColumn, tableColumn,"overallSize",tclass);
             setDoubleColumn(parametersColumn, tableColumn,"scaleEquipment",tclass);
             tableCol=tableColumn;
         }
+        if (parametersColumn.getcLs()==Image.class) {
+            TableColumn<cL,String> tableColumn = new TableColumn  (parametersColumn.getName());
+            setImageColumn(parametersColumn, tableColumn,"image",tclass);
+            tableCol=tableColumn;
+        }
+
 
         getColumns().addAll(tableCol);
          tableCol.setMinWidth(parametersColumn.getWidth());

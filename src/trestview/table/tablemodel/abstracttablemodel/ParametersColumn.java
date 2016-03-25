@@ -46,13 +46,11 @@ public class ParametersColumn  {
     }
 
     private String name;
-
-
-
-    private String fieldName;
+    private String fieldName;   // Field names for [RowIdNameDescription (int id, String name, String description)] ->  [id, name, description)]
     private Class cLs;
     private boolean editable;
     private double  width;
+
     public ParametersColumn (String fieldName, Class cLs, boolean editable, double  width) {
         this.fieldName=fieldName;
         this.name=getHeader(fieldName);
