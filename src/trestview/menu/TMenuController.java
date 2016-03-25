@@ -5,15 +5,21 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.layout.HBox;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import trestmodel.TrestModel;
 import trestview.dictionary.DictionaryController;
 import trestview.dictionary.DictionaryModel;
 import trestview.dictionary.DictionaryView;
+import trestview.machinetest.MachineTestController;
+import trestview.machinetest.MachineTestModel;
+import trestview.machinetest.MachineTestView;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -55,6 +61,7 @@ public class TMenuController implements Initializable {
     private MenuItem routesPerspectiveItem;
     @FXML
     private MenuItem machinesLocationPerspectiveItem;
+
 
 
     public TMenuController() {
@@ -123,6 +130,19 @@ public class TMenuController implements Initializable {
         DictionaryController dictionaryController = new DictionaryController(dictionaryModel);
         DictionaryView dictionaryView = new DictionaryView(dictionaryModel, dictionaryController);
         dictionaryModel.addObserver(dictionaryView);
+    }
+
+    //------------------- menu MachineTest ------------------------------------
+    @FXML
+    private void handleMachineTestAction (ActionEvent event) {
+
+        MachineTestModel machineTestModel = new MachineTestModel(this.menuModel);
+        MachineTestController machineTestController = new MachineTestController(machineTestModel);
+        MachineTestView machineTestView = new MachineTestView(machineTestModel, machineTestController);
+        machineTestModel.addObserver(machineTestView);
+
+        System.out.println("Machine test in progress...");
+
     }
 
 

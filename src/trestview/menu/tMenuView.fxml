@@ -34,7 +34,7 @@
     <MenuItem text="%Work"       fx:id="workItem"    onAction="#handleWorkAction" />
 </Menu>
 <Menu text="%Test">
-    <MenuItem text="%TestOfMachine"></MenuItem>
+    <MenuItem text="%TestOfMachine" fx:id="testOfMachineItem" onAction="#handleMachineTestAction"></MenuItem>
 </Menu>
 <Menu text="%Help"/>
 <Menu text="%Language"/>
