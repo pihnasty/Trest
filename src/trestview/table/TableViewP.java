@@ -65,13 +65,13 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.setTableMenuButtonVisible(true);
         this.setEditable(true);
-        XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "stylesMenu.css");
+        XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "");
 
         this.tableModel.getParametersOfColumns().stream().map(p-> getTableColumnP((ParametersColumn)p)).count();
 
         isEditable();
 
-        setPrefHeight(300);
+     //   setPrefHeight(300);
         repaintTable();
         getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
 
@@ -117,9 +117,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                      }
 
                   }
-
-
-
                   ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(t.getNewValue());
               }
               if(fielgName=="description") ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setDescription(t.getNewValue());
@@ -161,11 +158,12 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                                 HBox box= new HBox();
                                 box.setSpacing(10) ;
                                 ScrollPane sp = new ScrollPane();
-                                sp.setPrefSize(160,160);
+                                sp.setPrefSize(50,50);
                                 ImageView imageview = new ImageView();
-                                imageview.setFitHeight(300);
+                               imageview.setFitHeight(100);    imageview.setFitWidth(100);
+                            //    imageview.setScaleX(0.5);
                                 sp.setPannable(false);
-                              //  imageview.setFitWidth(300);
+
                                 imageview.setImage(new Image("file:"+item ));
                                 box.getChildren().addAll(imageview);
                                 sp.setContent(imageview);
@@ -219,13 +217,13 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
 
         getColumns().addAll(tableCol);
-         tableCol.setMinWidth(parametersColumn.getWidth());
+     //    tableCol.setMinWidth(parametersColumn.getWidth());
          tableCol.setPrefWidth(parametersColumn.getWidth());
          tableCol.setEditable(parametersColumn.isEditable());
 
 
-         setPrefWidth(getPrefWidth() + parametersColumn.getWidth());
-         setMinWidth(getMinWidth() + parametersColumn.getWidth());
+    //     setPrefWidth(getPrefWidth() + parametersColumn.getWidth());
+      //   setMinWidth(getMinWidth() + parametersColumn.getWidth());
             //  setMinWidth(getMinWidth()+parametersColumn.getWidth());
 
         return tableCol;
