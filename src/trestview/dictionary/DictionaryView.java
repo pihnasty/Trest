@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import persistence.loader.XmlRW;
+import persistence.loader.tabDataSet.RowWork;
 import resources.images.icons.IconT;
 import trestview.hboxpane.HboxpaneController;
 import trestview.hboxpane.HboxpaneModel;
@@ -39,27 +41,18 @@ public class DictionaryView extends Dialog implements Observer {
 
     public DictionaryView (DictionaryModel dictionaryModel, DictionaryController dictionaryController ) {
         this.dictionaryModel =dictionaryModel;
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("dictionaryView.fxml"));
-        fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
-     //  this.getOwner().getStylesheets().add((getClass().getResource("stylesMenu2.css")).toExternalForm());
-     //   getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController( dictionaryController);        // or  fx:controller="ui.rootPane.menu.TMenuController"
-                                                // or <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-
+        FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,dictionaryController, "dictionaryView.fxml","resources.ui", "");
 
        //  setTitle("%Open");
-        setTitle(fxmlLoader.getResources().getString("Dictionary")+":  "+fxmlLoader.getResources().getString("Work"));
+        setTitle(fxmlLoader.getResources().getString("Dictionary")+":  "+fxmlLoader.getResources().getString(dictionaryModel.gettClass().getSimpleName()));
+        setGraphic( new ImageView(new Image(IconT.class.getResource(dictionaryModel.gettClass().getSimpleName()+".png").toString())));
+
         setHeaderText(fxmlLoader.getResources().getString("HeaderText"));
         setResizable(true);             //  Defines whether the Stage is resizable or not by the user.
+
         //this.getDialogPane().setMinWidth(1500);
         //setWidth(1500);
-
+        setHeight(700);
        // this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
 
 
@@ -68,16 +61,17 @@ public class DictionaryView extends Dialog implements Observer {
       //  icons.add(new Image(IconT.class.getResource("work1.png").toString()));
      //   this.getOwner().getScene().getWindow().impl_getPeer().setIcons(icons);
 
-        setGraphic( new ImageView(new Image(IconT.class.getResource("work1.png").toString())));
+
       //  this.getDialogPane().setPrefWidth(455);
        // this.getDialogPane().isScaleShape();
-        TableModel tableModel = ( TableModel)TableMolelBuilder.build(dictionaryModel, Work.class); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
+
+        TableModel tableModel = new  TableModel(dictionaryModel, dictionaryModel.gettClass());           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
         TableController tableController = new TableController(tableModel);
         TableViewP tableView = new TableViewP(tableModel, tableController);
         tableModel.addObserver(tableView);
 
 
-        HboxpaneModel hboxpaneModel = new HboxpaneModel(dictionaryModel, Work.class);
+        HboxpaneModel hboxpaneModel = new HboxpaneModel(dictionaryModel, dictionaryModel.gettClass());
         HboxpaneController hboxpaneController = new HboxpaneController(hboxpaneModel);
         HboxpaneView hboxpaneView = new HboxpaneView(hboxpaneModel, hboxpaneController);
         hboxpaneModel.addObserver(hboxpaneView);

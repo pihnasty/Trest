@@ -16,11 +16,15 @@ public class ParametersColumnMap  {
         // Parameters  of column  for RowWork
         map.put("id", new ParametersColumn ("id",      int.class, false, 40) );
         map.put("name", new ParametersColumn ("name", String.class, true, 150) );
-        map.put("scheme", new ParametersColumn ("scheme", String.class, true, 150) );
-        map.put("overallSize", new ParametersColumn ("overallSize", double.class, true, 70) );
-        map.put("scaleEquipment", new ParametersColumn ("scaleEquipment", double.class, true, 50) );
-        map.put("description", new ParametersColumn ("description",String.class, true, 200) );
-        map.put("image", new ParametersColumn ("image",Image.class, true, 200) );
+        map.put("scheme", new ParametersColumn ("scheme", String.class, true, 200) );
+        map.put("overallSize", new ParametersColumn ("overallSize", double.class, true, 90) );
+        map.put("scaleEquipment", new ParametersColumn ("scaleEquipment", double.class, true, 90) );
+        map.put("description", new ParametersColumn ("description",String.class, true, 300) );
+        map.put("image", new ParametersColumn ("image",Image.class, true, 100) );
+        // Parameters  of column  for RowMachine
+        map.put("locationX", new ParametersColumn ("locationX",double.class, true, 100) );
+        map.put("locationY", new ParametersColumn ("locationY",double.class, true, 100) );
+        map.put("state", new ParametersColumn ("state",double.class, true, 100) );
 
     }
 

@@ -11,7 +11,8 @@
 #copyItem       { -fx-background-image: url("../../resources/images/icons/copy.png");      }
 #pasteItem      { -fx-background-image: url("../../resources/images/icons/paste.png");     }
 /* Menu Dictionary*/
-#workItem      { -fx-background-image: url("../../resources/images/icons/work1.png");     }
+#rowWorkItem      { -fx-background-image: url("../../resources/images/icons/RowWork.png");     }
+#rowMachineItem   { -fx-background-image: url("../../resources/images/icons/RowMachine.png");     }
 
 .menu-item {
 /*    -fx-skin: "com.sun.javafx.scene.control.skin.MenuItemSkin";*/

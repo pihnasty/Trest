@@ -19,7 +19,7 @@ public class FactoryTableModel   extends AbstractFactoryTableModel {
 
     public FactoryTableModel (DictionaryModel dictionaryModel, Class  tClass) {
         this.dictionaryModel =  dictionaryModel;
-        this.tClass = tClass.getSuperclass();
+        this.tClass = tClass;
 
     }
 
