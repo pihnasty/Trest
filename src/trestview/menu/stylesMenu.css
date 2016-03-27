@@ -12,7 +12,9 @@
 #pasteItem      { -fx-background-image: url("../../resources/images/icons/paste.png");     }
 /* Menu Dictionary*/
 #rowWorkItem      { -fx-background-image: url("../../resources/images/icons/RowWork.png");     }
-#rowMachineItem   { -fx-background-image: url("../../resources/images/icons/RowMachine.png");     }
+#rowMachineItem   { -fx-background-image: url("../../resources/images/icons/RowMachine.png");  }
+#rowTypemachineItem   { -fx-background-image: url("../../resources/images/icons/RowTypemachine.png");  }
+
 
 .menu-item {
 /*    -fx-skin: "com.sun.javafx.scene.control.skin.MenuItemSkin";*/

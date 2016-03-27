@@ -10,29 +10,28 @@ import java.util.Observer;
  * Created by pom on 26.03.2016.
  */
 public class MVC {
+
+    private Object model;
+    private Method methodAddObserver;
+    private Object view;
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )   {
         try {
             Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
-            Object model = mConstructor.newInstance(o,cL);
+            model = mConstructor.newInstance(o,cL);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
             Object controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
-            Object view = vConstructor.newInstance(model,controller);
+            view = vConstructor.newInstance(model,controller);
 
-            Method methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
+            methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
             methodAddObserver.invoke(model, view);
 
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        } catch (NoSuchMethodException e)  {      e.printStackTrace();        }
+          catch (IllegalAccessException e) {      e.printStackTrace();        }
+          catch (InstantiationException e) {      e.printStackTrace();        }
+          catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o )   {
         try {
@@ -106,5 +105,15 @@ public class MVC {
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
+    }
+
+    public Object getModel() {   return model;   }
+    public Object getView()  {   return view;    }
+
+    public MVC addAddObserverP (Observer observer) {
+        try   {   methodAddObserver.invoke(model, observer); }
+        catch (IllegalAccessException e)    { e.printStackTrace();    }
+        catch (InvocationTargetException e) { e.printStackTrace();    }
+        return this;
     }
 }

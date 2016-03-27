@@ -1,5 +1,6 @@
 package trestview.dictionary;
 
+import designpatterns.MVC;
 import entityProduction.Work;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -65,11 +66,16 @@ public class DictionaryView extends Dialog implements Observer {
       //  this.getDialogPane().setPrefWidth(455);
        // this.getDialogPane().isScaleShape();
 
+
+     //   MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dictionaryModel, dictionaryModel.gettClass());
         TableModel tableModel = new  TableModel(dictionaryModel, dictionaryModel.gettClass());           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
         TableController tableController = new TableController(tableModel);
         TableViewP tableView = new TableViewP(tableModel, tableController);
         tableModel.addObserver(tableView);
 
+        //  public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )
+
+   //    MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class, dictionaryModel, dictionaryModel.gettClass());
 
         HboxpaneModel hboxpaneModel = new HboxpaneModel(dictionaryModel, dictionaryModel.gettClass());
         HboxpaneController hboxpaneController = new HboxpaneController(hboxpaneModel);
@@ -80,6 +86,7 @@ public class DictionaryView extends Dialog implements Observer {
 
         VBox vbox = new VBox();
         vbox.getChildren().addAll(hboxpaneView,tableView);
+        //vbox.getChildren().addAll((HboxpaneView) hboxpaneMVC.getView(),(TableViewP) tableMVC.getView());
         vbox.setSpacing(5);   // The amount of vertical space between each child in the vbox.
         vbox.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 

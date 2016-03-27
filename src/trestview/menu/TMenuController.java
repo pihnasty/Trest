@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowMachine;
+import persistence.loader.tabDataSet.RowTypemachine;
 import persistence.loader.tabDataSet.RowWork;
 import trestmodel.TrestModel;
 import trestview.dictionary.DictionaryController;
@@ -135,11 +136,17 @@ public class TMenuController implements Initializable {
     @FXML
     private void handleRowWorkAction (ActionEvent event) {
         new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowWork.class );
+}
+    @FXML
+    private void handleRowTypemachineAction (ActionEvent event) {
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowTypemachine.class );
+    //    new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
     }
     @FXML
     private void handleRowMachineAction (ActionEvent event) {
         new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
     }
+
 
     //------------------- menu MachineTest ------------------------------------
     @FXML

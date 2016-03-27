@@ -605,6 +605,7 @@ public class DataSet {
         }
     }
 
+ /*
     public <cL> int NextId(Class cL, Object tab) {
         int nextId = 1;
         for (cL t : (ArrayList<cL>) tab) {
@@ -628,7 +629,7 @@ public class DataSet {
         }
         return nextId;
     }
-
+*/
     /**
      * Инициализация из xml- файла объекта Trest по значению id
      *

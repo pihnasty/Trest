@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tabMachines>
-<RowMachine description="description №8а" id="8" locationX="800.0" locationY="200.0" name="Машина №8" state="0.2"/>
 <RowMachine description="Описание для    Machine" id="23" locationX="0.5685997171145686" locationY="0.29427792915531337" name="Machine№23" state="0.0"/>
 <RowMachine description="Описание для    Machine" id="24" locationX="0.9264705882352942" locationY="0.09912854030501089" name="Machine№24" state="0.0"/>
 <RowMachine description="Описание для    Machine" id="25" locationX="0.6645569620253164" locationY="0.45121951219512196" name="Machine№25" state="0.0"/>
@@ -14,319 +13,67 @@
 <RowMachine description="Описание для    Machine" id="39" locationX="0.18227848101265823" locationY="0.09024390243902439" name="Machine№39" state="0.0"/>
 <RowMachine description="Описание для    Machine" id="40" locationX="0.17974683544303796" locationY="0.03780487804878049" name="Machine№40" state="0.0"/>
 <RowMachine description="Описание для    Machine" id="41" locationX="0.2759493670886076" locationY="0.12317073170731707" name="Machine№41" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="42" locationX="0.14430379746835442" locationY="0.36097560975609755" name="Machine№42" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="43" locationX="0.760759493670886" locationY="0.08658536585365853" name="Machine№43" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="44" locationX="0.7227848101265822" locationY="0.2" name="Machine№44" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="45" locationX="0.5" locationY="0.5" name="Machine№45" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="52" locationX="0.8209090909090909" locationY="0.5422343324250681" name="Machine№52" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="54" locationX="0.8927272727272727" locationY="0.5381471389645777" name="Machine№54" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="55" locationX="0.899090909090909" locationY="0.6444141689373297" name="Machine№55" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="57" locationX="0.8736363636363637" locationY="0.7697547683923706" name="Machine№57" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="58" locationX="0.9263636363636364" locationY="0.42915531335149865" name="Machine№58" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="59" locationX="0.8145454545454546" locationY="0.6607629427792916" name="Machine№59" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="72" locationX="0.3498069498069498" locationY="0.26851851851851855" name="Machine№72" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="73" locationX="0.23166023166023167" locationY="0.5462962962962963" name="Machine№73" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="74" locationX="0.5088803088803089" locationY="0.6840277777777778" name="Machine№74" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="75" locationX="0.6471042471042471" locationY="0.48032407407407407" name="Machine№75" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="76" locationX="0.5305019305019305" locationY="0.5428240740740741" name="Machine№76" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="77" locationX="0.5528957528957529" locationY="0.3125" name="Machine№77" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="78" locationX="0.34826254826254827" locationY="0.47337962962962965" name="Machine№78" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="79" locationX="396.0" locationY="374.0" name="Machine№79" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="80" locationX="129.0" locationY="262.0" name="Machine№80" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="81" locationX="123.0" locationY="276.0" name="Machine№81" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="82" locationX="0.562942008486563" locationY="0.21934604904632152" name="Machine№82" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="83" locationX="188.0" locationY="145.0" name="Machine№83" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="86" locationX="465.0" locationY="86.0" name="Machine№86" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="87" locationX="577.0" locationY="91.0" name="Machine№87" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="88" locationX="239.0" locationY="86.0" name="Machine№88" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="89" locationX="108.0" locationY="89.0" name="Machine№89" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="90" locationX="407.0" locationY="86.0" name="Machine№90" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="91" locationX="353.0" locationY="89.0" name="Machine№91" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="92" locationX="638.0" locationY="93.0" name="Machine№92" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="93" locationX="106.0" locationY="318.0" name="Machine№93" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="94" locationX="520.0" locationY="87.0" name="Machine№94" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="95" locationX="170.0" locationY="89.0" name="Machine№95" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="96" locationX="295.0" locationY="88.0" name="Machine№96" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="97" locationX="94.0" locationY="215.0" name="Machine№97" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="99" locationX="601.0" locationY="103.0" name="Machine№99" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="100" locationX="317.0" locationY="240.0" name="Machine№100" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="101" locationX="390.0" locationY="344.0" name="Machine№101" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="102" locationX="187.0" locationY="166.0" name="Machine№102" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="104" locationX="703.0" locationY="251.0" name="Machine№104" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="105" locationX="970.0" locationY="256.0" name="Machine№105" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="106" locationX="0.0" locationY="0.0" name="Machine№106" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="107" locationX="0.0" locationY="0.0" name="Machine№107" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="108" locationX="0.0" locationY="0.0" name="Machine№108" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="109" locationX="764.0" locationY="146.0" name="Machine№109" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="110" locationX="506.0" locationY="344.0" name="Machine№110" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="111" locationX="662.0" locationY="267.0" name="Machine№111" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="112" locationX="0.0" locationY="0.0" name="Machine№112" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="113" locationX="0.0" locationY="0.0" name="Machine№113" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="114" locationX="693.0" locationY="292.0" name="Machine№114" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="115" locationX="450.0" locationY="36.0" name="Machine№115" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="116" locationX="320.0" locationY="183.0" name="Machine№116" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="117" locationX="164.0" locationY="346.0" name="Machine№117" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="213" locationX="0.0" locationY="0.0" name="RowMachine№213" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="214" locationX="0.0" locationY="0.0" name="RowMachine№214" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="215" locationX="0.0" locationY="0.0" name="RowMachine№215" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="216" locationX="0.0" locationY="0.0" name="RowMachine№216" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="217" locationX="0.0" locationY="0.0" name="RowMachine№217" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="218" locationX="0.0" locationY="0.0" name="RowMachine№218" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="219" locationX="0.0" locationY="0.0" name="RowMachine№219" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="220" locationX="0.0" locationY="0.0" name="RowMachine№220" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="221" locationX="0.0" locationY="0.0" name="RowMachine№221" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="222" locationX="0.0" locationY="0.0" name="RowMachine№222" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="223" locationX="0.0" locationY="0.0" name="RowMachine№223" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="224" locationX="0.0" locationY="0.0" name="RowMachine№224" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="225" locationX="0.0" locationY="0.0" name="RowMachine№225" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="226" locationX="0.0" locationY="0.0" name="RowMachine№226" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="227" locationX="0.0" locationY="0.0" name="RowMachine№227" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="228" locationX="0.0" locationY="0.0" name="RowMachine№228" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="229" locationX="0.0" locationY="0.0" name="RowMachine№229" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="230" locationX="0.0" locationY="0.0" name="RowMachine№230" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="231" locationX="0.0" locationY="0.0" name="RowMachine№231" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="232" locationX="0.0" locationY="0.0" name="RowMachine№232" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="233" locationX="0.0" locationY="0.0" name="RowMachine№233" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="234" locationX="0.0" locationY="0.0" name="RowMachine№234" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="235" locationX="0.0" locationY="0.0" name="RowMachine№235" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="236" locationX="0.0" locationY="0.0" name="RowMachine№236" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="237" locationX="0.0" locationY="0.0" name="RowMachine№237" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="238" locationX="0.0" locationY="0.0" name="RowMachine№238" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="239" locationX="0.0" locationY="0.0" name="RowMachine№239" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="240" locationX="0.0" locationY="0.0" name="RowMachine№240" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="241" locationX="0.0" locationY="0.0" name="RowMachine№241" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="242" locationX="0.0" locationY="0.0" name="RowMachine№242" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="243" locationX="0.0" locationY="0.0" name="RowMachine№243" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="244" locationX="0.0" locationY="0.0" name="RowMachine№244" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="245" locationX="0.0" locationY="0.0" name="RowMachine№245" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="246" locationX="0.0" locationY="0.0" name="RowMachine№246" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="247" locationX="0.0" locationY="0.0" name="RowMachine№247" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="248" locationX="0.0" locationY="0.0" name="RowMachine№248" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="249" locationX="0.0" locationY="0.0" name="RowMachine№249" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="250" locationX="0.0" locationY="0.0" name="RowMachine№250" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="251" locationX="0.0" locationY="0.0" name="RowMachine№251" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="252" locationX="0.0" locationY="0.0" name="RowMachine№252" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="253" locationX="0.0" locationY="0.0" name="RowMachine№253" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="254" locationX="0.0" locationY="0.0" name="RowMachine№254" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="255" locationX="0.0" locationY="0.0" name="RowMachine№255" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="256" locationX="0.0" locationY="0.0" name="RowMachine№256" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="257" locationX="0.0" locationY="0.0" name="RowMachine№257" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="258" locationX="0.0" locationY="0.0" name="RowMachine№258" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="259" locationX="0.0" locationY="0.0" name="RowMachine№259" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="260" locationX="0.0" locationY="0.0" name="RowMachine№260" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="270" locationX="0.3449248120300752" locationY="0.23160762942779292" name="Machine№270" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="271" locationX="0.08364661654135339" locationY="0.34332425068119893" name="Machine№271" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="272" locationX="0.46616541353383456" locationY="0.11989100817438691" name="Machine№272" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="273" locationX="0.3308270676691729" locationY="0.46866485013623976" name="Machine№273" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="274" locationX="0.7509398496240601" locationY="0.4359673024523161" name="Machine№274" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="275" locationX="0.40977443609022557" locationY="0.8419618528610354" name="Machine№275" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="276" locationX="0.3449248120300752" locationY="0.0653950953678474" name="Machine№276" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="277" locationX="0.11278195488721804" locationY="0.17029972752043596" name="Machine№277" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="278" locationX="0.2575187969924812" locationY="0.1362397820163488" name="Machine№278" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="279" locationX="0.8148496240601504" locationY="0.2356948228882834" name="Machine№279" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="280" locationX="0.7048872180451128" locationY="0.10490463215258855" name="Machine№280" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="281" locationX="0.10150375939849623" locationY="0.7397820163487738" name="Machine№281" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="282" locationX="0.2932330827067669" locationY="0.6335149863760218" name="Machine№282" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="283" locationX="0.5384139375476008" locationY="0.3709506509234029" name="Machine№283" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="284" locationX="0.32954545454545453" locationY="0.35149863760217986" name="Machine№284" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="287" locationX="0.8127272727272727" locationY="0.4223433242506812" name="Machine№287" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="288" locationX="0.759073359073359" locationY="0.4479166666666667" name="Machine№288" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="289" locationX="0.8645454545454545" locationY="0.10490463215258855" name="Machine№289" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="290" locationX="0.8754545454545455" locationY="0.2329700272479564" name="Machine№290" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="291" locationX="0.7972727272727272" locationY="0.055858310626702996" name="Machine№291" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="292" locationX="0.7936363636363636" locationY="0.21934604904632152" name="Machine№292" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="293" locationX="0.61" locationY="0.47275204359673023" name="Machine№293" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="294" locationX="0.4727272727272727" locationY="0.6267029972752044" name="Machine№294" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="295" locationX="0.5363636363636364" locationY="0.40054495912806537" name="Machine№295" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="296" locationX="0.6827272727272727" locationY="0.8133514986376021" name="Machine№296" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="297" locationX="0.7490909090909091" locationY="0.8433242506811989" name="Machine№297" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="298" locationX="0.8036363636363636" locationY="0.8474114441416893" name="Machine№298" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="299" locationX="0.5818181818181818" locationY="0.726158038147139" name="Machine№299" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="300" locationX="0.3442049842049842" locationY="0.40674513068927237" name="Machine№300" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="301" locationX="0.30727272727272725" locationY="0.6212534059945504" name="Machine№301" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="302" locationX="0.04181818181818182" locationY="0.784741144414169" name="Machine№302" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="303" locationX="0.04181818181818182" locationY="0.6525885558583107" name="Machine№303" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="304" locationX="0.04090909090909091" locationY="0.5217983651226158" name="Machine№304" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="305" locationX="0.42934362934362935" locationY="0.7534722222222222" name="Machine№305" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="306" locationX="0.5552123552123552" locationY="0.3506944444444444" name="Machine№306" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="307" locationX="0.1613899613899614" locationY="0.39814814814814814" name="Machine№307" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="308" locationX="0.1590909090909091" locationY="0.8119891008174387" name="Machine№308" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="309" locationX="0.1618181818181818" locationY="0.6648501362397821" name="Machine№309" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="310" locationX="0.9528957528957529" locationY="0.78125" name="Machine№310" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="311" locationX="0.5984555984555985" locationY="0.8703703703703703" name="Machine№311" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="312" locationX="0.7186942786942787" locationY="0.3142313805631244" name="Machine№312" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="313" locationX="0.9528957528957529" locationY="0.032407407407407406" name="Machine№313" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="314" locationX="0.28545454545454546" locationY="0.043596730245231606" name="Machine№314" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="315" locationX="0.4338574938574938" locationY="1.0485827278231912" name="Machine№315" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="316" locationX="0.38545454545454544" locationY="0.04632152588555858" name="Machine№316" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="317" locationX="0.5245454545454545" locationY="0.11989100817438691" name="Machine№317" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="318" locationX="0.9536679536679536" locationY="0.2800925925925926" name="Machine№318" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="319" locationX="0.48957528957528956" locationY="0.7777777777777778" name="Machine№319" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="320" locationX="0.37683397683397685" locationY="0.29976851851851855" name="Machine№320" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="321" locationX="0.9536679536679536" locationY="0.1527777777777778" name="Machine№321" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="322" locationX="0.6362934362934363" locationY="0.5879629629629629" name="Machine№322" state="0.0"/>
-<RowMachine description="Machine324" id="324" locationX="0.11969111969111969" locationY="0.9942129629629629" name="Machine324" state="1.0"/>
-<RowMachine description="Machine325" id="325" locationX="0.16988416988416988" locationY="0.9930555555555556" name="Machine325" state="1.0"/>
-<RowMachine description="Machine326" id="326" locationX="0.25868725868725867" locationY="0.9942129629629629" name="Machine326" state="1.0"/>
-<RowMachine description="Machine327" id="327" locationX="0.3328185328185328" locationY="0.9895833333333334" name="Machine327" state="1.0"/>
-<RowMachine description="Machine328" id="328" locationX="0.4254826254826255" locationY="0.9930555555555556" name="Machine328" state="1.0"/>
-<RowMachine description="Machine329" id="329" locationX="0.3969111969111969" locationY="0.9918981481481481" name="Machine329" state="1.0"/>
-<RowMachine description="Machine330" id="330" locationX="0.44787644787644787" locationY="0.9942129629629629" name="Machine330" state="1.0"/>
-<RowMachine description="Machine331" id="331" locationX="0.5891891891891892" locationY="0.9918981481481481" name="Machine331" state="1.0"/>
-<RowMachine description="Machine332" id="332" locationX="0.6532818532818533" locationY="0.9872685185185185" name="Machine332" state="1.0"/>
-<RowMachine description="Machine333" id="333" locationX="0.8725868725868726" locationY="0.9884259259259259" name="Machine333" state="1.0"/>
-<RowMachine description="Machine334" id="334" locationX="0.055598455598455596" locationY="0.10185185185185185" name="Machine334" state="1.0"/>
-<RowMachine description="Machine335" id="335" locationX="0.16756756756756758" locationY="0.12037037037037036" name="Machine335" state="1.0"/>
-<RowMachine description="Machine336" id="336" locationX="0.2694980694980695" locationY="0.15046296296296297" name="Machine336" state="1.0"/>
-<RowMachine description="Machine337" id="337" locationX="0.355984555984556" locationY="0.2824074074074074" name="Machine337" state="1.0"/>
-<RowMachine description="Machine338" id="338" locationX="0.15675675675675677" locationY="0.23842592592592593" name="Machine338" state="1.0"/>
-<RowMachine description="Machine339" id="339" locationX="0.3366795366795367" locationY="0.3333333333333333" name="Machine339" state="1.0"/>
-<RowMachine description="Machine340" id="340" locationX="0.4254826254826255" locationY="0.45023148148148145" name="Machine340" state="1.0"/>
-<RowMachine description="Machine341" id="341" locationX="0.23938223938223938" locationY="0.4618055555555556" name="Machine341" state="1.0"/>
-<RowMachine description="Machine342" id="342" locationX="0.44787644787644787" locationY="0.49537037037037035" name="Machine342" state="1.0"/>
-<RowMachine description="Machine343" id="343" locationX="0.16370656370656367" locationY="0.12731481481481483" name="Machine343" state="1.0"/>
-<RowMachine description="Machine344" id="344" locationX="0.21081081081081082" locationY="0.15625" name="Machine344" state="1.0"/>
-<RowMachine description="Machine345" id="345" locationX="0.3065637065637066" locationY="0.15046296296296297" name="Machine345" state="1.0"/>
-<RowMachine description="Machine347" id="347" locationX="0.3498069498069498" locationY="0.49074074074074076" name="Machine347" state="1.0"/>
-<RowMachine description="Machine349" id="349" locationX="0.05889423076923077" locationY="0.14699074074074073" name="Machine349" state="1.0"/>
-<RowMachine description="Machine350" id="350" locationX="0.25240384615384615" locationY="0.17939814814814814" name="Machine350" state="1.0"/>
-<RowMachine description="Machine351" id="351" locationX="0.46875" locationY="0.12037037037037036" name="Machine351" state="1.0"/>
-<RowMachine description="Machine352" id="352" locationX="0.8221153846153846" locationY="0.29976851851851855" name="Machine352" state="1.0"/>
-<RowMachine description="Machine353" id="353" locationX="0.8329326923076923" locationY="0.5486111111111112" name="Machine353" state="1.0"/>
-<RowMachine description="Machine354" id="354" locationX="0.7548076923076923" locationY="0.7592592592592593" name="Machine354" state="1.0"/>
-<RowMachine description="Machine355" id="355" locationX="0.11778846153846154" locationY="0.29282407407407407" name="Machine355" state="1.0"/>
-<RowMachine description="Machine356" id="356" locationX="0.25721153846153844" locationY="0.4513888888888889" name="Machine356" state="1.0"/>
-<RowMachine description="Machine357" id="357" locationX="0.12980769230769232" locationY="0.2754629629629629" name="Machine357" state="1.0"/>
-<RowMachine description="Machine358" id="358" locationX="0.7872596153846154" locationY="0.09722222222222222" name="Machine358" state="1.0"/>
-<RowMachine description="Описание для    RowMachine" id="359" locationX="0.0" locationY="0.0" name="RowMachine№359" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="360" locationX="0.0" locationY="0.0" name="RowMachine№360" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="361" locationX="0.0" locationY="0.0" name="RowMachine№361" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="362" locationX="0.0" locationY="0.0" name="RowMachine№362" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="363" locationX="0.0" locationY="0.0" name="RowMachine№363" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="364" locationX="0.0" locationY="0.0" name="RowMachine№364" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="365" locationX="0.0" locationY="0.0" name="RowMachine№365" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="366" locationX="0.0" locationY="0.0" name="RowMachine№366" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="367" locationX="0.0" locationY="0.0" name="RowMachine№367" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="368" locationX="0.09884169884169884" locationY="0.2025462962962963" name="RowMachine№368" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="369" locationX="0.0" locationY="0.0" name="RowMachine№369" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="370" locationX="0.0" locationY="0.0" name="RowMachine№370" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="371" locationX="0.0" locationY="0.0" name="RowMachine№371" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="374" locationX="0.1915057915057915" locationY="0.1550925925925926" name="Machine№374" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="375" locationX="0.29034749034749036" locationY="0.19675925925925927" name="Machine№375" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="377" locationX="0.05019305019305019" locationY="0.1412037037037037" name="Machine№377" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="378" locationX="0.0" locationY="0.0" name="RowMachine№378" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="379" locationX="0.0" locationY="0.0" name="Machine№379" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="380" locationX="0.0" locationY="0.0" name="Machine№380" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="381" locationX="0.02857142857142857" locationY="0.09143518518518519" name="Machine№381" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="382" locationX="0.2965250965250965" locationY="0.6053240740740741" name="Machine№382" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="383" locationX="0.5372596153846154" locationY="0.3460648148148148" name="Machine№383" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="384" locationX="0.28966346153846156" locationY="0.16435185185185186" name="Machine№384" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="385" locationX="0.10576923076923077" locationY="0.2199074074074074" name="Machine№385" state="0.0"/>
-<RowMachine description="Machine386" id="386" locationX="0.023938223938223938" locationY="0.18287037037037038" name="Machine386" state="1.0"/>
-<RowMachine description="Machine387" id="387" locationX="0.19073359073359072" locationY="0.24768518518518517" name="Machine387" state="1.0"/>
-<RowMachine description="Machine388" id="388" locationX="0.039663461538461536" locationY="0.09606481481481481" name="Machine388" state="1.0"/>
-<RowMachine description="Machine389" id="389" locationX="0.18870192307692307" locationY="0.15856481481481483" name="Machine389" state="1.0"/>
-<RowMachine description="Machine390" id="390" locationX="0.08413461538461539" locationY="0.13773148148148148" name="Machine390" state="1.0"/>
-<RowMachine description="Machine391" id="391" locationX="0.23798076923076922" locationY="0.14930555555555555" name="Machine391" state="1.0"/>
-<RowMachine description="Machine392" id="392" locationX="0.4326923076923077" locationY="0.15393518518518517" name="Machine392" state="1.0"/>
-<RowMachine description="Machine393" id="393" locationX="0.1201923076923077" locationY="0.7488425925925926" name="Machine393" state="1.0"/>
-<RowMachine description="Machine394" id="394" locationX="0.2704326923076923" locationY="0.7534722222222222" name="Machine394" state="1.0"/>
-<RowMachine description="Machine395" id="395" locationX="0.4567307692307692" locationY="0.7291666666666666" name="Machine395" state="1.0"/>
-<RowMachine description="Machine396" id="396" locationX="0.16466346153846154" locationY="0.1724537037037037" name="Machine396" state="1.0"/>
-<RowMachine description="Machine397" id="397" locationX="0.18870192307692307" locationY="0.41782407407407407" name="Machine397" state="1.0"/>
-<RowMachine description="Machine398" id="398" locationX="0.8173076923076923" locationY="0.20023148148148148" name="Machine398" state="1.0"/>
-<RowMachine description="Machine399" id="399" locationX="0.7872596153846154" locationY="0.34953703703703703" name="Machine399" state="1.0"/>
-<RowMachine description="Machine400" id="400" locationX="0.7992788461538461" locationY="0.4513888888888889" name="Machine400" state="1.0"/>
-<RowMachine description="Machine401" id="401" locationX="0.22956730769230768" locationY="0.7037037037037037" name="Machine401" state="1.0"/>
-<RowMachine description="Machine402" id="402" locationX="0.4182692307692308" locationY="0.7256944444444444" name="Machine402" state="1.0"/>
-<RowMachine description="Machine403" id="403" locationX="0.640625" locationY="0.7268518518518519" name="Machine403" state="1.0"/>
-<RowMachine description="Machine404" id="404" locationX="-0.006009615384615385" locationY="0.7280092592592593" name="Machine404" state="1.0"/>
-<RowMachine description="Machine405" id="405" locationX="0.1622596153846154" locationY="0.7233796296296297" name="Machine405" state="1.0"/>
-<RowMachine description="Machine406" id="406" locationX="0.32091346153846156" locationY="0.7025462962962963" name="Machine406" state="1.0"/>
-<RowMachine description="Machine407" id="407" locationX="0.14543269230769232" locationY="0.6550925925925926" name="Machine407" state="1.0"/>
-<RowMachine description="Machine408" id="408" locationX="0.125" locationY="0.7465277777777778" name="Machine408" state="1.0"/>
-<RowMachine description="Machine409" id="409" locationX="0.18870192307692307" locationY="0.3090277777777778" name="Machine409" state="1.0"/>
-<RowMachine description="Machine410" id="410" locationX="0.33774038461538464" locationY="0.3333333333333333" name="Machine410" state="1.0"/>
-<RowMachine description="Machine411" id="411" locationX="0.48197115384615385" locationY="0.3599537037037037" name="Machine411" state="1.0"/>
-<RowMachine description="Machine412" id="412" locationX="0.14903846153846154" locationY="0.4398148148148148" name="Machine412" state="1.0"/>
-<RowMachine description="Machine413" id="413" locationX="0.23317307692307693" locationY="0.26851851851851855" name="Machine413" state="1.0"/>
-<RowMachine description="Machine414" id="414" locationX="0.08052884615384616" locationY="0.7754629629629629" name="Machine414" state="1.0"/>
-<RowMachine description="Machine415" id="415" locationX="0.22716346153846154" locationY="0.7824074074074074" name="Machine415" state="1.0"/>
-<RowMachine description="Machine416" id="416" locationX="0.21235521235521235" locationY="0.5127314814814815" name="Machine416" state="1.0"/>
-<RowMachine description="Machine417" id="417" locationX="0.7704326923076923" locationY="0.48148148148148145" name="Machine417" state="1.0"/>
-<RowMachine description="Machine418" id="418" locationX="0.7740384615384616" locationY="0.5659722222222222" name="Machine418" state="1.0"/>
-<RowMachine description="Machine419" id="419" locationX="0.07091346153846154" locationY="0.4988425925925926" name="Machine419" state="1.0"/>
-<RowMachine description="Machine420" id="420" locationX="0.05889423076923077" locationY="0.5752314814814815" name="Machine420" state="1.0"/>
-<RowMachine description="Machine421" id="421" locationX="0.28262548262548265" locationY="0.4270833333333333" name="Machine421" state="1.0"/>
-<RowMachine description="Machine422" id="422" locationX="0.4486486486486487" locationY="0.5428240740740741" name="Machine422" state="1.0"/>
-<RowMachine description="Machine423" id="423" locationX="0.47876447876447875" locationY="0.3981481481481482" name="Machine423" state="1.0"/>
-<RowMachine description="Machine424" id="424" locationX="0.3861003861003861" locationY="0.8125" name="Machine424" state="1.0"/>
-<RowMachine description="Machine425" id="425" locationX="0.4826254826254826" locationY="0.8217592592592593" name="Machine425" state="1.0"/>
-<RowMachine description="Machine426" id="426" locationX="0.7382239382239383" locationY="0.6504629629629629" name="Machine426" state="1.0"/>
-<RowMachine description="Machine427" id="427" locationX="0.09884169884169884" locationY="0.619212962962963" name="Machine427" state="1.0"/>
-<RowMachine description="Machine428" id="428" locationX="0.138996138996139" locationY="0.6759259259259259" name="Machine428" state="1.0"/>
-<RowMachine description="Machine429" id="429" locationX="0.12895752895752896" locationY="0.8344907407407407" name="Machine429" state="1.0"/>
-<RowMachine description="Machine430" id="430" locationX="0.3274131274131274" locationY="0.8287037037037037" name="Machine430" state="1.0"/>
-<RowMachine description="Machine431" id="431" locationX="0.4061776061776062" locationY="0.8252314814814815" name="Machine431" state="1.0"/>
-<RowMachine description="Machine432" id="432" locationX="0.34054054054054056" locationY="0.8414351851851851" name="Machine432" state="1.0"/>
-<RowMachine description="Machine433" id="433" locationX="0.31891891891891894" locationY="0.1909722222222222" name="Machine433" state="1.0"/>
-<RowMachine description="Machine434" id="434" locationX="0.4200772200772201" locationY="0.08796296296296297" name="Machine434" state="1.0"/>
-<RowMachine description="Machine435" id="435" locationX="0.23783783783783785" locationY="0.7650462962962963" name="Machine435" state="1.0"/>
-<RowMachine description="Описание для    Machine" id="436" locationX="0.0" locationY="0.0" name="Machine№436" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="437" locationX="0.2525096525096525" locationY="0.1712962962962963" name="Machine№437" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="438" locationX="0.6841698841698842" locationY="0.02546296296296296" name="Machine№438" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="439" locationX="0.0" locationY="0.0" name="Machine№439" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="440" locationX="0.0" locationY="0.0" name="Machine№440" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="442" locationX="0.0" locationY="0.0" name="Machine№442" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="443" locationX="0.0" locationY="0.0" name="Machine№443" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="444" locationX="0.0" locationY="0.0" name="Machine№444" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="445" locationX="0.6633204633204633" locationY="0.3020833333333333" name="Machine№445" state="0.0"/>
-<RowMachine description="Описание для    Machine" id="446" locationX="0.8918918918918919" locationY="0.06481481481481481" name="Machine№446" state="0.0"/>
-<RowMachine description="Machine447" id="447" locationX="0.13204633204633204" locationY="0.5358796296296297" name="Machine447" state="1.0"/>
-<RowMachine description="Machine448" id="448" locationX="0.22702702702702704" locationY="0.8657407407407407" name="Machine448" state="1.0"/>
-<RowMachine description="Machine449" id="449" locationX="0.029343629343629343" locationY="0.034722222222222224" name="Machine449" state="1.0"/>
-<RowMachine description="Machine450" id="450" locationX="0.3065637065637066" locationY="0.16319444444444445" name="Machine450" state="1.0"/>
-<RowMachine description="Machine451" id="451" locationX="0.61003861003861" locationY="0.13194444444444445" name="Machine451" state="1.0"/>
-<RowMachine description="Machine452" id="452" locationX="0.7204633204633205" locationY="0.5555555555555556" name="Machine452" state="1.0"/>
-<RowMachine description="Machine453" id="453" locationX="0.4640926640926641" locationY="0.2488425925925926" name="Machine453" state="1.0"/>
-<RowMachine description="Machine454" id="454" locationX="0.05328185328185328" locationY="0.19907407407407407" name="Machine454" state="1.0"/>
-<RowMachine description="Machine455" id="455" locationX="0.13513513513513514" locationY="0.15625" name="Machine455" state="1.0"/>
-<RowMachine description="Machine456" id="456" locationX="0.13667953667953667" locationY="0.2743055555555556" name="Machine456" state="1.0"/>
-<RowMachine description="Machine457" id="457" locationX="0.372972972972973" locationY="0.5879629629629629" name="Machine457" state="1.0"/>
-<RowMachine description="Machine458" id="458" locationX="0.42934362934362935" locationY="0.4861111111111111" name="Machine458" state="1.0"/>
-<RowMachine description="Machine459" id="459" locationX="0.6424710424710425" locationY="0.27546296296296297" name="Machine459" state="1.0"/>
-<RowMachine description="Machine460" id="460" locationX="0.9111969111969112" locationY="0.8263888888888888" name="Machine460" state="1.0"/>
-<RowMachine description="Machine461" id="461" locationX="0.2602316602316602" locationY="0.42476851851851855" name="Machine461" state="1.0"/>
-<RowMachine description="Machine462" id="462" locationX="0.6030888030888032" locationY="0.3645833333333333" name="Machine462" state="1.0"/>
-<RowMachine description="Machine463" id="463" locationX="0.4525096525096525" locationY="0.0798611111111111" name="Machine463" state="1.0"/>
-<RowMachine description="Machine464" id="464" locationX="0.5335907335907336" locationY="0.6331018518518519" name="Machine464" state="1.0"/>
-<RowMachine description="Machine465" id="465" locationX="0.749034749034749" locationY="0.5740740740740741" name="Machine465" state="1.0"/>
-<RowMachine description="Machine467" id="467" locationX="0.4587742904370262" locationY="0.45717592592592593" name="Machine467" state="1.0"/>
-<RowMachine description="Machine468" id="468" locationX="0.5356394129979035" locationY="0.6180555555555556" name="Machine468" state="1.0"/>
-<RowMachine description="Machine470" id="470" locationX="0.3920335429769392" locationY="0.4525462962962963" name="Machine470" state="1.0"/>
-<RowMachine description="Machine471" id="471" locationX="0.1970649895178197" locationY="0.49189814814814814" name="Machine471" state="1.0"/>
-<RowMachine description="Machine472" id="472" locationX="0.2389937106918239" locationY="0.45601851851851855" name="Machine472" state="1.0"/>
-<RowMachine description="Machine475" id="475" locationX="0.37631027253668764" locationY="0.6458333333333334" name="Machine475" state="1.0"/>
-<RowMachine description="Machine476" id="476" locationX="0.05450733752620545" locationY="0.39814814814814814" name="Machine476" state="1.0"/>
-<RowMachine description="Machine477" id="477" locationX="0.4109014675052411" locationY="0.3900462962962963" name="Machine477" state="1.0"/>
-<RowMachine description="Machine478" id="478" locationX="0.4109014675052411" locationY="0.46296296296296297" name="Machine478" state="1.0"/>
-<RowMachine description="Machine481" id="481" locationX="0.5196911196911197" locationY="0.26273148148148145" name="Machine481" state="1.0"/>
-<RowMachine description="Machine482" id="482" locationX="0.6710424710424711" locationY="0.5960648148148148" name="Machine482" state="1.0"/>
-<RowMachine description="Machine483" id="483" locationX="0.12473794549266247" locationY="0.024305555555555556" name="Machine483" state="1.0"/>
-<RowMachine description="Machine484" id="484" locationX="0.21278825995807127" locationY="0.04282407407407408" name="Machine484" state="1.0"/>
-<RowMachine description="Machine485" id="485" locationX="0.41509433962264153" locationY="0.056712962962962965" name="Machine485" state="1.0"/>
-<RowMachine description="Machine486" id="486" locationX="0.0880503144654088" locationY="0.6134259259259259" name="Machine486" state="1.0"/>
-<RowMachine description="Machine487" id="487" locationX="0.18763102725366876" locationY="0.6168981481481481" name="Machine487" state="1.0"/>
-<RowMachine description="Machine488" id="488" locationX="0.31027253668763105" locationY="0.6168981481481481" name="Machine488" state="1.0"/>
-<RowMachine description="Machine489" id="489" locationX="0.10272536687631027" locationY="0.4930555555555556" name="Machine489" state="1.0"/>
-<RowMachine description="Machine490" id="490" locationX="0.03668763102725367" locationY="0.5208333333333334" name="Machine490" state="1.0"/>
-<RowMachine description="Machine491" id="491" locationX="0.5964360587002097" locationY="0.16782407407407407" name="Machine491" state="1.0"/>
-<RowMachine description="Machine492" id="492" locationX="0.31027253668763105" locationY="0.8472222222222222" name="Machine492" state="1.0"/>
-<RowMachine description="Machine493" id="493" locationX="0.4140461215932914" locationY="0.625" name="Machine493" state="1.0"/>
-<RowMachine description="Machine494" id="494" locationX="0.14465408805031446" locationY="0.6273148148148148" name="Machine494" state="1.0"/>
-<RowMachine description="Machine495" id="495" locationX="0.17714884696016772" locationY="0.25810185185185186" name="Machine495" state="1.0"/>
-<RowMachine description="Machine496" id="496" locationX="0.04507337526205451" locationY="0.3113425925925926" name="Machine496" state="1.0"/>
-<RowMachine description="Machine497" id="497" locationX="0.34591194968553457" locationY="0.9166666666666666" name="Machine497" state="1.0"/>
-<RowMachine description="Machine498" id="498" locationX="0.5324947589098532" locationY="0.3923611111111111" name="Machine498" state="1.0"/>
-<RowMachine description="Machine499" id="499" locationX="0.9606177606177606" locationY="0.5034722222222222" name="Machine499" state="1.0"/>
+<RowMachine description="Machine95" id="95" locationX="0.2030888030888031" locationY="0.7118055555555556" name="Machine95" state="1.0"/>
+<RowMachine description="Machine96" id="96" locationX="0.45714285714285713" locationY="0.6793981481481481" name="Machine96" state="1.0"/>
+<RowMachine description="Machine97" id="97" locationX="0.22007722007722008" locationY="0.21875" name="Machine97" state="1.0"/>
+<RowMachine description="Machine98" id="98" locationX="0.6401544401544401" locationY="0.2175925925925926" name="Machine98" state="1.0"/>
+<RowMachine description="Machine99" id="99" locationX="0.7042471042471042" locationY="0.7303240740740741" name="Machine99" state="1.0"/>
+<RowMachine description="Machine100" id="100" locationX="0.5552123552123552" locationY="0.5416666666666666" name="Machine100" state="1.0"/>
+<RowMachine description="Machine101" id="101" locationX="0.8586872586872587" locationY="0.47685185185185186" name="Machine101" state="1.0"/>
+<RowMachine description="Machine102" id="102" locationX="0.8563706563706563" locationY="0.7361111111111112" name="Machine102" state="1.0"/>
+<RowMachine description="Описание для    RowMachine" id="103" locationX="0.0" locationY="0.0" name="RowMachine№103" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="104" locationX="0.0" locationY="0.0" name="RowMachine№104" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="105" locationX="0.0" locationY="0.0" name="RowMachine№105" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="106" locationX="0.0" locationY="0.0" name="RowMachine№106" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="107" locationX="0.0" locationY="0.0" name="RowMachine№107" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="108" locationX="0.0" locationY="0.0" name="RowMachine№108" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="109" locationX="0.0" locationY="0.0" name="RowMachine№109" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="110" locationX="0.0" locationY="0.0" name="RowMachine№110" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="111" locationX="0.0" locationY="0.0" name="RowMachine№111" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="112" locationX="0.0" locationY="0.0" name="RowMachine№112" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="113" locationX="0.0" locationY="0.0" name="RowMachine№113" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="114" locationX="0.0" locationY="0.0" name="RowMachine№114" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="115" locationX="0.0" locationY="0.0" name="RowMachine№115" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="116" locationX="0.0" locationY="0.0" name="RowMachine№116" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="117" locationX="0.0" locationY="0.0" name="RowMachine№117" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="118" locationX="0.0" locationY="0.0" name="RowMachine№118" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="119" locationX="0.0" locationY="0.0" name="RowMachine№119" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="120" locationX="0.0" locationY="0.0" name="RowMachine№120" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="121" locationX="0.0" locationY="0.0" name="RowMachine№121" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="122" locationX="0.0" locationY="0.0" name="RowMachine№122" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="123" locationX="0.0" locationY="0.0" name="RowMachine№123" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="124" locationX="0.0" locationY="0.0" name="RowMachine№124" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="125" locationX="0.0" locationY="0.0" name="RowMachine№125" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="126" locationX="0.0" locationY="0.0" name="RowMachine№126" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="127" locationX="0.0" locationY="0.0" name="RowMachine№127" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="128" locationX="0.0" locationY="0.0" name="RowMachine№128" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="129" locationX="0.0" locationY="0.0" name="RowMachine№129" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="130" locationX="0.0" locationY="0.0" name="RowMachine№130" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="131" locationX="0.0" locationY="0.0" name="RowMachine№131" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="132" locationX="0.0" locationY="0.0" name="RowMachine№132" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="133" locationX="0.0" locationY="0.0" name="RowMachine№133" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="134" locationX="0.0" locationY="0.0" name="RowMachine№134" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="135" locationX="0.0" locationY="0.0" name="RowMachine№135" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="136" locationX="0.0" locationY="0.0" name="RowMachine№136" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="137" locationX="0.0" locationY="0.0" name="RowMachine№137" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="138" locationX="0.0" locationY="0.0" name="RowMachine№138" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="139" locationX="0.0" locationY="0.0" name="RowMachine№139" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="140" locationX="0.0" locationY="0.0" name="RowMachine№140" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="141" locationX="0.0" locationY="0.0" name="RowMachine№141" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="142" locationX="0.0" locationY="0.0" name="RowMachine№142" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="143" locationX="0.0" locationY="0.0" name="RowMachine№143" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="144" locationX="0.0" locationY="0.0" name="RowMachine№144" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="145" locationX="0.0" locationY="0.0" name="RowMachine№145" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="146" locationX="0.0" locationY="0.0" name="RowMachine№146" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="147" locationX="0.0" locationY="0.0" name="RowMachine№147" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="148" locationX="0.0" locationY="0.0" name="RowMachine№148" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="149" locationX="0.0" locationY="0.0" name="RowMachine№149" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="150" locationX="0.0" locationY="0.0" name="RowMachine№150" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="151" locationX="0.0" locationY="0.0" name="RowMachine№151" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="152" locationX="0.0" locationY="0.0" name="RowMachine№152" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="153" locationX="0.0" locationY="0.0" name="RowMachine№153" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="154" locationX="0.0" locationY="0.0" name="RowMachine№154" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="155" locationX="0.0" locationY="0.0" name="RowMachine№155" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="156" locationX="0.0" locationY="0.0" name="RowMachine№156" state="0.0"/>
+<RowMachine description="Описание для    RowMachine" id="157" locationX="0.0" locationY="0.0" name="RowMachine№157" state="0.0"/>
 </tabMachines>
