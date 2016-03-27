@@ -1,11 +1,13 @@
 package trestview.machinetest;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
@@ -13,16 +15,17 @@ import persistence.loader.XmlRW;
 
 
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Created by Roman Korsun on 22.03.2016.
  */
-public class MachineTestView extends HBox implements Observer {
+public class MachineTestView extends BorderPane implements Observer {
     private MachineTestModel machineTestModel;
+
+    LineChart<Number,Number> lineChart;
+
+    XYChart.Series series;
 
     public MachineTestView(MachineTestModel machineTestModel, MachineTestController machineTestController) {
         this.machineTestModel = machineTestModel;
@@ -54,36 +57,29 @@ public class MachineTestView extends HBox implements Observer {
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("X");
         //creating the chart
-        final LineChart<Number,Number> lineChart =
-                new LineChart<Number,Number>(xAxis,yAxis);
 
-        lineChart.setTitle(fxmlLoader.getResources().getString("TestOfMachine"));
+        lineChart = new LineChart<Number, Number>(xAxis,yAxis);
+
+//        lineChart.setTitle(fxmlLoader.getResources().getString("TestOfMachine"));
         //defining a series
-        XYChart.Series series = new XYChart.Series();
+        series = new XYChart.Series();
         series.setName("Random values");    //Put in resourses
         //populating the series with data
-        populateChart(series);
+        populateSeries(machineTestModel.getRandomValuesList());
 
 
-        lineChart.getData().add(series);
 
-        getChildren().add(lineChart);
 
+//        getChildren().add(lineChart);
+            setCenter(lineChart);
     }
 
-    private void populateChart(XYChart.Series series) {
-        series.getData().add(new XYChart.Data(1, 23));
-        series.getData().add(new XYChart.Data(2, 14));
-        series.getData().add(new XYChart.Data(3, 15));
-        series.getData().add(new XYChart.Data(4, 24));
-        series.getData().add(new XYChart.Data(5, 34));
-        series.getData().add(new XYChart.Data(6, 36));
-        series.getData().add(new XYChart.Data(7, 22));
-        series.getData().add(new XYChart.Data(8, 45));
-        series.getData().add(new XYChart.Data(9, 43));
-        series.getData().add(new XYChart.Data(10, 17));
-        series.getData().add(new XYChart.Data(11, 29));
-        series.getData().add(new XYChart.Data(12, 25));
+    private void populateSeries(ArrayList<Double> list) {
+        for(int i = 0; i < list.size(); i++) {
+            series.getData().add(new XYChart.Data(i, list.get(i)));
+        }
+
+        lineChart.getData().add(series);
     }
 
 
