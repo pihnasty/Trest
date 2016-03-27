@@ -1,5 +1,6 @@
 package trestview.table;
 
+import designpatterns.MVC;
 import entityProduction.Work;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleListProperty;
@@ -24,6 +25,7 @@ import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowIdId2;
 import persistence.loader.tabDataSet.RowIdNameDescription;
+import persistence.loader.tabDataSet.RowMachine;
 import persistence.loader.tabDataSet.RowWork;
 import resources.images.icons.IconT;
 import resources.images.works.WorkT;
@@ -34,6 +36,7 @@ import trestview.table.tablemodel.abstracttablemodel.ParametersColumn;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -65,13 +68,13 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.setTableMenuButtonVisible(true);
         this.setEditable(true);
-        XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "stylesMenu.css");
+        XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "");
 
         this.tableModel.getParametersOfColumns().stream().map(p-> getTableColumnP((ParametersColumn)p)).count();
 
         isEditable();
 
-        setPrefHeight(300);
+        setPrefHeight(800);
         repaintTable();
         getSelectionModel().selectedIndexProperty().addListener(new RowSelectChangeListener());
 
@@ -81,48 +84,48 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         if(parametersColumn.getFielgName().equals(fielgName)) {
             tableColumn.setCellValueFactory(new PropertyValueFactory(fielgName));
             tableColumn.setCellFactory(TextFieldTableCell.<cL>forTableColumn());
+
             tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, String> t) -> {
               //if(tclass==RowWork.class)
               if(fielgName=="name") ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setName(t.getNewValue());
               if(fielgName=="scheme") {
-
                   File f = new File(t.getNewValue());
                   String schemePath = "Image\\Manufacturing";
-
                   if (!f.exists()) {
                       FileChooser chooser = new FileChooser();
                       chooser.setInitialDirectory(new File (schemePath));
                       chooser.getExtensionFilters().addAll(
                               new FileChooser.ExtensionFilter("All Images", "*.*"),
-                              new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                              new FileChooser.ExtensionFilter("PNG", "*.png"),
-                              new FileChooser.ExtensionFilter("BMP", "*.bmp"),
-                              new FileChooser.ExtensionFilter("GIF", "*.gif")
+                              new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"),
+                              new FileChooser.ExtensionFilter("BMP", "*.bmp"), new FileChooser.ExtensionFilter("GIF", "*.gif")
                       );
-                     chooser.setTitle( ResourceBundle.getBundle("resources.ui").getString("nameFileScheme"));
+                      chooser.setTitle( ResourceBundle.getBundle("resources.ui").getString("nameFileScheme"));
                       Stage st = new Stage();
                       st.setMaxWidth(400);
                       st.setMaxHeight(400);
                       f = chooser.showOpenDialog(st);
-                      Image image = new Image(f.toURI().toString()); System.out.println(image.getHeight());
+                      if (f!=null) {
+                          try {
+                              Files.copy(f.toPath(), new File(schemePath+"\\m"+f.getName()).toPath());
 
-                      try                      {
+                               if(new File(schemePath+"\\"+f.getName()).delete()){
+                              }else System.out.println("Файл file.txt не был найден в корневой папке проекта");
+                              Files.copy(new File(schemePath+"\\m"+f.getName()).toPath(), new File(schemePath+"\\"+f.getName()).toPath());
+                              if(new File(schemePath+"\\m"+f.getName()).delete()){
+                              }else System.out.println("Файл file.txt не был найден в корневой папке проекта");
 
-                          System.out.println(f.getAbsolutePath());
-                          t.getOldValue();
-                          System.out.println( "t.getOldValue()="+ t.getOldValue());
+                          } catch (IOException e) {
+                              e.printStackTrace();
+                          }
+                          ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(schemePath+"\\"+f.getName());
+                          repaintTable();
                       }
-                     catch (Exception e) {
-                        System.out.println(e.getClass());
-                     }
-
+                      else  ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(t.getOldValue());
                   }
-
-
-
-                  ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(t.getNewValue());
               }
-              if(fielgName=="description") ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setDescription(t.getNewValue());
+              if(fielgName=="description") { ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setDescription(t.getNewValue());
+                  ((TableCell)t.getTableView().getItems().get( t.getTablePosition().getRow())).setTooltip(new Tooltip(t.getNewValue()));}
+
             });
         }
     }
@@ -144,12 +147,17 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, Double> t) -> {
             if(fielgName=="overallSize")   ((RowWork) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setOverallSize(t.getNewValue());
             if(fielgName=="scaleEquipment")   ((RowWork) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setScaleEquipment(t.getNewValue());
+            if(fielgName=="locationX")      ((RowMachine) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setLocationX (t.getNewValue());
+            if(fielgName=="locationY")      ((RowMachine) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setLocationY (t.getNewValue());
+            if(fielgName=="state")      ((RowMachine) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setState (t.getNewValue());
+
             });
         }
     }
     private void setImageColumn(ParametersColumn parametersColumn, TableColumn<cL, String> tableColumn, String fielgName, Class tclass ) {
         if(parametersColumn.getFielgName().equals(fielgName)) {
             tableColumn.setCellValueFactory(new PropertyValueFactory("scheme"));
+
             tableColumn.setCellFactory(
               new Callback<TableColumn<cL, String>,TableCell<cL, String>>(){
                 @Override
@@ -161,19 +169,18 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                                 HBox box= new HBox();
                                 box.setSpacing(10) ;
                                 ScrollPane sp = new ScrollPane();
-                                sp.setPrefSize(160,160);
+                                sp.setPrefSize(50,50);
                                 ImageView imageview = new ImageView();
-                                imageview.setFitHeight(300);
+                                imageview.setFitHeight(100);    imageview.setFitWidth(100);    //    imageview.setScaleX(0.5);
                                 sp.setPannable(false);
-                              //  imageview.setFitWidth(300);
                                 imageview.setImage(new Image("file:"+item ));
+                                setTooltip(new Tooltip(item));
                                 box.getChildren().addAll(imageview);
                                 sp.setContent(imageview);
                                 setGraphic(sp);
                             }
                         }
                     };
-                    System.out.println(cell.getIndex());
                     return cell;
                 }
 
@@ -209,6 +216,9 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             TableColumn<cL,Double> tableColumn = new TableColumn  (parametersColumn.getName());
             setDoubleColumn(parametersColumn, tableColumn,"overallSize",tclass);
             setDoubleColumn(parametersColumn, tableColumn,"scaleEquipment",tclass);
+            setDoubleColumn(parametersColumn, tableColumn,"locationX",tclass);
+            setDoubleColumn(parametersColumn, tableColumn,"locationY",tclass);
+            setDoubleColumn(parametersColumn, tableColumn,"state",tclass);
             tableCol=tableColumn;
         }
         if (parametersColumn.getcLs()==Image.class) {
@@ -219,13 +229,13 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
 
         getColumns().addAll(tableCol);
-         tableCol.setMinWidth(parametersColumn.getWidth());
-         tableCol.setPrefWidth(parametersColumn.getWidth());
-         tableCol.setEditable(parametersColumn.isEditable());
+        tableCol.setMinWidth(parametersColumn.getWidth());
+        tableCol.setPrefWidth(parametersColumn.getWidth());
+        tableCol.setEditable(parametersColumn.isEditable());
 
 
-         setPrefWidth(getPrefWidth() + parametersColumn.getWidth());
-         setMinWidth(getMinWidth() + parametersColumn.getWidth());
+    //     setPrefWidth(getPrefWidth() + parametersColumn.getWidth());
+      //   setMinWidth(getMinWidth() + parametersColumn.getWidth());
             //  setMinWidth(getMinWidth()+parametersColumn.getWidth());
 
         return tableCol;
@@ -257,7 +267,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                 data.add(selectIndex,((TableModel)o).getSelectRow() );
                 break;
             case saveRowTable:
-                //tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet().saveDataset(); // Save new path add read new database  from new directory path
+                tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet().saveDataset(); // Save new path add read new database  from new directory path
                 break;
             case editRowTable:
                 this.setEditable(true);
@@ -271,12 +281,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                 break;
         }
     }
-
-
-
-
-
-
 
     private class RowSelectChangeListener implements ChangeListener<Number> {
         @Override

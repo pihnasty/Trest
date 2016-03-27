@@ -327,22 +327,23 @@ public class XmlRW
 	/**
 	 * Resource loader FXML
 	 * @param view
-	 * @param conrtoller
+	 * @param controller
 	 * @param getResourceFxml
 	 * @param getBundleResources
      * @param getBundleCss
      */
-	public static void fxmlLoad (Object view, Object conrtoller, String getResourceFxml, String getBundleResources, String getBundleCss)  {
-		FXMLLoader fxmlLoader;
+	public static FXMLLoader fxmlLoad (Object view, Object controller, String getResourceFxml, String getBundleResources, String getBundleCss)  {
+		FXMLLoader fxmlLoader = null;
 		if (getResourceFxml!="") {
 			fxmlLoader = new FXMLLoader(view.getClass().getResource(getResourceFxml));
 			if (getBundleResources!="") fxmlLoader.setResources(ResourceBundle.getBundle(getBundleResources));
 			//   getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
 			fxmlLoader.setRoot(view);
-			if (conrtoller!=null) fxmlLoader.setController(conrtoller);        // or  fx:controller="ui.rootPane.menu.TMenuController"
+			if (controller!=null) fxmlLoader.setController(controller);        // or  fx:controller="ui.rootPane.menu.TMenuController"
 			// or <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >
 			try { fxmlLoader.load();  } catch (IOException exception) {  throw new RuntimeException(exception);       }
 		}
+		return fxmlLoader;
 	}
 
 	/**

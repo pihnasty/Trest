@@ -1,5 +1,7 @@
 package trestview.table.tablemodel.abstracttablemodel;
 
+import persistence.loader.tabDataSet.RowMachine;
+import persistence.loader.tabDataSet.RowTypemachine;
 import persistence.loader.tabDataSet.RowWork;
 
 import java.util.HashMap;
@@ -14,6 +16,12 @@ public class ColumnsOrderMap {
     private ColumnsOrderMap() {
         map = new HashMap<>();
         map.put(RowWork.class, new ColumnsOrder("id", "name", "scheme", "image", "overallSize", "scaleEquipment", "description"));
+        map.put(RowMachine.class, new ColumnsOrder("id", "name", "image","locationX","locationY",  "state",  "description" ));
+        map.put(RowTypemachine.class, new ColumnsOrder("id", "name", "description" ));
+
+
+
+
     }
 
     public static ColumnsOrder getColumns(Class key) {
@@ -21,3 +29,6 @@ public class ColumnsOrderMap {
         return map.get(key);
     }
 }
+
+
+

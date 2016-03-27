@@ -2,20 +2,8 @@ package persistence.loader.tabDataSet;
 
 import persistence.loader.DataSet;
 
-/**
- * Описание сущности строка таблицы: Машина (оборудование)
- *
- * @author ПОМ
- */
 public class RowTypemachine extends RowIdNameDescription {
 
-    /**
-     * Инициализирует строку таблицы: Машина
-     *
-     * @param id	Id Типа машины
-     * @param name	Название типа машины
-     * @param description	Описание машины
-     */
     public RowTypemachine(int id, String name, String description) {
         super(id, name, description);
     }

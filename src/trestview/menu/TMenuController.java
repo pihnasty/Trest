@@ -1,5 +1,7 @@
 package trestview.menu;
 
+import designpatterns.MVC;
+import entityProduction.Machine;
 import entityProduction.Work;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -12,6 +14,9 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
+import persistence.loader.tabDataSet.RowMachine;
+import persistence.loader.tabDataSet.RowTypemachine;
+import persistence.loader.tabDataSet.RowWork;
 import trestmodel.TrestModel;
 import trestview.dictionary.DictionaryController;
 import trestview.dictionary.DictionaryModel;
@@ -20,7 +25,12 @@ import trestview.machinetest.MachineTestController;
 import trestview.machinetest.MachineTestModel;
 import trestview.machinetest.MachineTestView;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
 /**
@@ -124,26 +134,34 @@ public class TMenuController implements Initializable {
     }
 //------------------- menu Dictionary ------------------------------------
     @FXML
-    private void handleWorkAction (ActionEvent event) {
-
-        DictionaryModel dictionaryModel = new DictionaryModel(this.menuModel, Work.class);
-        DictionaryController dictionaryController = new DictionaryController(dictionaryModel);
-        DictionaryView dictionaryView = new DictionaryView(dictionaryModel, dictionaryController);
-        dictionaryModel.addObserver(dictionaryView);
+    private void handleRowWorkAction (ActionEvent event) {
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowWork.class );
+}
+    @FXML
+    private void handleRowTypemachineAction (ActionEvent event) {
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowTypemachine.class );
+    //    new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
     }
+    @FXML
+    private void handleRowMachineAction (ActionEvent event) {
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
+    }
+
 
     //------------------- menu MachineTest ------------------------------------
     @FXML
     private void handleMachineTestAction (ActionEvent event) {
 
-        MachineTestModel machineTestModel = new MachineTestModel(this.menuModel);
+        new MVC(MachineTestModel.class, MachineTestController.class, MachineTestView.class, this.menuModel  );
+  /*      MachineTestModel machineTestModel = new MachineTestModel(this.menuModel);
         MachineTestController machineTestController = new MachineTestController(machineTestModel);
         MachineTestView machineTestView = new MachineTestView(machineTestModel, machineTestController);
         machineTestModel.addObserver(machineTestView);
-
+*/
         System.out.println("Machine test in progress...");
 
     }
+
 
 
 

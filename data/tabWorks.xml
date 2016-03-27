@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tabWorks>
-<RowWork description="description №01" id="1" name="Производс №1" overallSize="30.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство двигателей.png"/>
+<RowWork description="description №01" id="1" name="Производс №1" overallSize="32.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство двигателей.png"/>
 <RowWork description="description №3a" id="3" name="Производст №3" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство мебели.png"/>
 <RowWork description="description №4" id="4" name="Производс №4" overallSize="36.14" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
 <RowWork description="description №5" id="5" name="Производ №5" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство полимеров.png"/>
 <RowWork description="description №6" id="6" name="Произво №6" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство тканей.png"/>
 <RowWork description="Описание для    Work" id="20" name="Work№20" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство мебели.png"/>
-<RowWork description="Описание для    Work" id="23" name="Work№23" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство автомобилей.png"/>
-<RowWork description="Описание для    Work" id="25" name="Work№25" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство автомобилей.png"/>
-<RowWork description="Описание для    Work" id="26" name="Work№26" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство автомобилей.png"/>
-<RowWork description="Описание для    Work" id="27" name="Work№27" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство автомобилей.png"/>
-<RowWork description="Описание для    RowWork" id="28" name="RowWork№28" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
-<RowWork description="Описание для    RowWork" id="29" name="RowWork№298989" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
 </tabWorks>
