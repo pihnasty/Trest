@@ -15,9 +15,9 @@
 
         </HBox>
     </top>
-    <left>
-        <Label text="left"></Label>
-    </left>
+    <!--<left>-->
+        <!--<Label text="left"></Label>-->
+    <!--</left>-->
     <!--<LineChart fx:id="lineChart">-->
         <!--<xAxis><NumberAxis label="Values for X-Axis" /></xAxis>-->
         <!--<yAxis><NumberAxis label="Values for Y-Axis" /></yAxis>-->
