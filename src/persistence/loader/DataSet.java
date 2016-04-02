@@ -91,6 +91,7 @@ public class DataSet {
     private ArrayList<RowMachineModelmachine> tabMachineModelmachines;
     private ArrayList<RowFunctiondist> tabFunctiondists;
     private ArrayList<RowParametrfunctiondist> tabParametrfunctiondists = new ArrayList<>();
+    private ArrayList<RowFunctiondistParametrfunctiondist> tabFunctiondistsParametrfunctiondistsTest = new ArrayList<>();
 
 
 
@@ -235,8 +236,9 @@ public class DataSet {
        // showTab(tabFunctiondists);
 
         tabParametrfunctiondists = (ArrayList<RowParametrfunctiondist>) setTabXML(tabParametrfunctiondists, RowParametrfunctiondist.class);
-        showTab(tabParametrfunctiondists);
-
+       // showTab(tabParametrfunctiondists);
+        tabFunctiondistsParametrfunctiondistsTest = (ArrayList<RowFunctiondistParametrfunctiondist>) setTabXML(tabFunctiondistsParametrfunctiondistsTest, RowFunctiondistParametrfunctiondist.class);
+        showTab(tabFunctiondistsParametrfunctiondistsTest);
 
 
         System.out.println("Данные из XML файла считаны успешно");
@@ -288,7 +290,7 @@ public class DataSet {
         writeTab(tabMachineModelmachines);
         writeTab(tabFunctiondists);
         writeTab(tabParametrfunctiondists);
-
+        writeTab(tabFunctiondistsParametrfunctiondistsTest);
 
 
         for (int i = 50; i < 60; i++) {
