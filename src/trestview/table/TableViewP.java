@@ -23,10 +23,7 @@ import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
-import persistence.loader.tabDataSet.RowIdId2;
-import persistence.loader.tabDataSet.RowIdNameDescription;
-import persistence.loader.tabDataSet.RowMachine;
-import persistence.loader.tabDataSet.RowWork;
+import persistence.loader.tabDataSet.*;
 import resources.images.icons.IconT;
 import resources.images.works.WorkT;
 import trestview.hboxpane.HboxpaneModel;
@@ -53,7 +50,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
     private int selectIndex = 0;
     private MethodCall methodCall;
     private ArrayList<cL> tab;
-    private Class tclass;
+    private Class tClass;
     private DataSet dataSet;
     private cL selectRow;
 
@@ -63,11 +60,12 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
         this.tableModel = tableModel;
         this.tab= tableModel.getTab();
-        this.tclass=tableModel.gettClass();
+        this.tClass=tableModel.gettClass();
         this.dataSet = tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet();
         this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.setTableMenuButtonVisible(true);
         this.setEditable(true);
+        if (tClass == RowFunctiondist.class) this.setEditable(false);
         XmlRW.fxmlLoad(this,tableController, "TableView.fxml","resources.ui", "");
 
         this.tableModel.getParametersOfColumns().stream().map(p-> getTableColumnP((ParametersColumn)p)).count();
@@ -201,29 +199,29 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
         if (parametersColumn.getcLs()==String.class) {
             TableColumn<cL,String> tableColumn = new TableColumn  (parametersColumn.getName());
-            setStringColumn(parametersColumn, tableColumn,"name",tclass);
-            setStringColumn(parametersColumn, tableColumn,"scheme",tclass);
-            setStringColumn(parametersColumn, tableColumn,"description",tclass);
+            setStringColumn(parametersColumn, tableColumn,"name",tClass);
+            setStringColumn(parametersColumn, tableColumn,"scheme",tClass);
+            setStringColumn(parametersColumn, tableColumn,"description",tClass);
             tableCol=tableColumn;
         }
 
         if (parametersColumn.getcLs()==int.class) {
             TableColumn<cL,Integer> tableColumn = new TableColumn  (parametersColumn.getName());
-            setIntegerColumn(parametersColumn, tableColumn,"id",tclass);
+            setIntegerColumn(parametersColumn, tableColumn,"id",tClass);
             tableCol=tableColumn;
         }
         if (parametersColumn.getcLs()==double.class) {
             TableColumn<cL,Double> tableColumn = new TableColumn  (parametersColumn.getName());
-            setDoubleColumn(parametersColumn, tableColumn,"overallSize",tclass);
-            setDoubleColumn(parametersColumn, tableColumn,"scaleEquipment",tclass);
-            setDoubleColumn(parametersColumn, tableColumn,"locationX",tclass);
-            setDoubleColumn(parametersColumn, tableColumn,"locationY",tclass);
-            setDoubleColumn(parametersColumn, tableColumn,"state",tclass);
+            setDoubleColumn(parametersColumn, tableColumn,"overallSize",tClass);
+            setDoubleColumn(parametersColumn, tableColumn,"scaleEquipment",tClass);
+            setDoubleColumn(parametersColumn, tableColumn,"locationX",tClass);
+            setDoubleColumn(parametersColumn, tableColumn,"locationY",tClass);
+            setDoubleColumn(parametersColumn, tableColumn,"state",tClass);
             tableCol=tableColumn;
         }
         if (parametersColumn.getcLs()==Image.class) {
             TableColumn<cL,String> tableColumn = new TableColumn  (parametersColumn.getName());
-            setImageColumn(parametersColumn, tableColumn,"image",tclass);
+            setImageColumn(parametersColumn, tableColumn,"image",tClass);
             tableCol=tableColumn;
         }
 
@@ -263,8 +261,8 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
     private void updateTableModel(TableModel o) {
         switch (o.getMethodCall()) {
             case addRowTable:
-                selectIndex++;
-                data.add(selectIndex,((TableModel)o).getSelectRow() );
+               selectIndex++;
+               data.add(selectIndex,((TableModel)o).getSelectRow() );
                 break;
             case saveRowTable:
                 tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet().saveDataset(); // Save new path add read new database  from new directory path

@@ -1,7 +1,9 @@
 package trestview.table.tablemodel;
 
+import entityProduction.Functiondist;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
+import persistence.loader.tabDataSet.RowFunctiondist;
 import persistence.loader.tabDataSet.RowMachine;
 import persistence.loader.tabDataSet.RowTypemachine;
 import persistence.loader.tabDataSet.RowWork;
@@ -58,7 +60,7 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
                   catch (InvocationTargetException e) { e.printStackTrace(); }
 
 
-                tab.add(selectRow);
+                if (!tClass.equals(RowFunctiondist.class) )  tab.add(selectRow);
                 break;
             case saveRowTable:
                 methodCall = MethodCall.saveRowTable;

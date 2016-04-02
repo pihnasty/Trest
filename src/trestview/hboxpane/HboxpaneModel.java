@@ -1,5 +1,6 @@
 package trestview.hboxpane;
 
+import persistence.loader.tabDataSet.RowFunctiondist;
 import trestmodel.TrestModel;
 import trestview.dictionary.DictionaryModel;
 
@@ -8,7 +9,7 @@ import java.util.Observable;
 /**
  * Created by pom on 07.02.2016.
  */
-public class HboxpaneModel extends Observable  {
+public class HboxpaneModel extends Observable {
 
     private Class tClass;
     private DictionaryModel dictionaryModel;
@@ -22,23 +23,29 @@ public class HboxpaneModel extends Observable  {
     }
 
 
-
-
-    public void  addRowTable()   {
-        methodCall = MethodCall.addRowTable;
-        changed();
+    public void addRowTable() {
+        if (!tClass.equals(RowFunctiondist.class)) {
+            methodCall = MethodCall.addRowTable;
+            changed();
+        }
+        else {
+            // TODO: Generate dialog message: This table system and can not be edited.
+        }
     }
 
-    public void  saveRowTable()   {
+    public void saveRowTable() {
         methodCall = MethodCall.saveRowTable;
         changed();
     }
 
-    public void  delRowTable()   {
-        methodCall = MethodCall.delRowTable;
-        changed();
+    public void delRowTable() {
+        if (!tClass.equals(RowFunctiondist.class)) {
+            methodCall = MethodCall.delRowTable;
+            changed();
+        }
     }
-    public void  editRowTable()   {
+
+    public void editRowTable() {
         methodCall = MethodCall.editRowTable;
         changed();
     }
@@ -64,7 +71,9 @@ public class HboxpaneModel extends Observable  {
         this.tClass = tClass;
     }
 
-    public MethodCall getMethodCall() { return methodCall;  }
+    public MethodCall getMethodCall() {
+        return methodCall;
+    }
 
 }
 

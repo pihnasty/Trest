@@ -89,12 +89,17 @@ public class DataSet {
     private ArrayList<RowTypemachine> tabTypemachines;
     private ArrayList<RowModelmachineTypemachine> tabModelmachineTypemachines;
     private ArrayList<RowMachineModelmachine> tabMachineModelmachines;
+    private ArrayList<RowFunctiondist> tabFunctiondists;
+    private ArrayList<RowParametrfunctiondist> tabParametrfunctiondists = new ArrayList<>();
+
 
 
     /* Определяет путь к директории  (папке) с Базой данных ХМL */
     private String pathDataDefault;
     static private String pathConfig = "config/";
     /*_____________________________________________________________________________*/
+
+
 
     /**
      * Инициализация переменных
@@ -139,6 +144,13 @@ public class DataSet {
         tabTypemachines = new ArrayList<RowTypemachine>();
         tabModelmachineTypemachines = new ArrayList<RowModelmachineTypemachine>();
         tabMachineModelmachines = new ArrayList<RowMachineModelmachine>();
+        tabFunctiondists = new ArrayList<>();
+
+
+
+
+
+
         /*Матрица связей между таблицами в DataSet					*/
         /*						tabLines				tabSubject_labours			tabUnits
          * tabLines										tabLineSubject_labours
@@ -148,6 +160,8 @@ public class DataSet {
 
         openDataSet();
     }
+
+
 
     /**
      * Чтение данных из XML файла для заполнения DataSet
@@ -209,13 +223,21 @@ public class DataSet {
 
         tabModelmachines = (ArrayList<RowModelmachine>) setTabXML(tabModelmachines, RowModelmachine.class);   //   showTab(tabModelmachines);
         tabTypemachines = (ArrayList<RowTypemachine>) setTabXML(tabTypemachines, RowTypemachine.class);
-        showTab(tabTypemachines);
+  //      showTab(tabTypemachines);
 
         tabModelmachineTypemachines = (ArrayList<RowModelmachineTypemachine>) setTabXML(tabModelmachineTypemachines, RowModelmachineTypemachine.class);
         //showTab(tabModelmachineTypemachines);
 
         tabMachineModelmachines = (ArrayList<RowMachineModelmachine>) setTabXML(tabMachineModelmachines, RowMachineModelmachine.class);
-         showTab(tabMachineModelmachines);
+        // showTab(tabMachineModelmachines);
+
+        tabFunctiondists = (ArrayList<RowFunctiondist>) setTabXML(tabFunctiondists, RowFunctiondist.class);
+       // showTab(tabFunctiondists);
+
+        tabParametrfunctiondists = (ArrayList<RowParametrfunctiondist>) setTabXML(tabParametrfunctiondists, RowParametrfunctiondist.class);
+        showTab(tabParametrfunctiondists);
+
+
 
         System.out.println("Данные из XML файла считаны успешно");
     }
@@ -264,6 +286,10 @@ public class DataSet {
         writeTab(tabLineroutesLinespecs);
         writeTab(tabModelmachineTypemachines);
         writeTab(tabMachineModelmachines);
+        writeTab(tabFunctiondists);
+        writeTab(tabParametrfunctiondists);
+
+
 
         for (int i = 50; i < 60; i++) {
 
@@ -1138,6 +1164,14 @@ public class DataSet {
         if (cL == Typemachine.class || cL == RowTypemachine.class) {
             return (ArrayList<T>) getTabTypemachines();
         }
+        if (cL == Functiondist.class || cL == RowFunctiondist.class) {
+            return (ArrayList<T>) getTabFunctiondists();
+        }
+
+        if (cL == Parametrfunctiondist.class || cL == RowParametrfunctiondist.class) {
+            return (ArrayList<T>) getTabParametrfunctiondists();
+        }
+
 
         return null;
     }
@@ -1405,6 +1439,23 @@ public class DataSet {
     public void setTabMachineModelmachines(ArrayList<RowMachineModelmachine> tabMachineModelmachines) {
         this.tabMachineModelmachines = tabMachineModelmachines;
     }
+
+    public ArrayList<RowFunctiondist> getTabFunctiondists() {
+        return tabFunctiondists;
+    }
+
+    public void setTabFunctiondists(ArrayList<RowFunctiondist> tabFunctiondists) {
+        this.tabFunctiondists = tabFunctiondists;
+    }
+
+    public ArrayList<RowParametrfunctiondist> getTabParametrfunctiondists() {
+        return tabParametrfunctiondists;
+    }
+
+    public void setTabParametrfunctiondists(ArrayList<RowParametrfunctiondist> tabParametrfunctiondists) {
+        this.tabParametrfunctiondists = tabParametrfunctiondists;
+    }
+
 
     public static String getPathConfig() {
         return pathConfig;

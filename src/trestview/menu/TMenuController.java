@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.HBox;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
+import persistence.loader.tabDataSet.RowFunctiondist;
 import persistence.loader.tabDataSet.RowMachine;
 import persistence.loader.tabDataSet.RowTypemachine;
 import persistence.loader.tabDataSet.RowWork;
@@ -146,8 +147,8 @@ public class TMenuController implements Initializable {
     //    new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
     }
     @FXML
-    private void handleRowMachineAction (ActionEvent event) {
-        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
+    private void handleRowFunctiondistAction (ActionEvent event) {
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowFunctiondist.class );
     }
 
 
