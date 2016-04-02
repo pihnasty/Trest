@@ -27,6 +27,7 @@ public class MachineTestView extends BorderPane implements Observer {
 
     LineChart<Number,Number> lineChart;
 
+
     XYChart.Series series;
 
     public MachineTestView(MachineTestModel machineTestModel, MachineTestController machineTestController) {
@@ -35,7 +36,7 @@ public class MachineTestView extends BorderPane implements Observer {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("machinetestView.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         fxmlLoader.setRoot(this);
-        fxmlLoader.setController(machineTestController);
+        fxmlLoader.setController(this);
 
         try {
             fxmlLoader.load();
@@ -51,7 +52,7 @@ public class MachineTestView extends BorderPane implements Observer {
         vBox.setPadding(new Insets(10, 5, 5, 10));
 
         //img
-        Image image = new Image("resources/images/animation/2.gif");
+        Image image = new Image("file:D:\\POM\\Trest\\Image\\Machine\\freza_02.png");
 
         ImageView imageView = new ImageView();
         imageView.setImage(image);

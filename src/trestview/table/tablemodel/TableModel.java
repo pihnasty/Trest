@@ -91,8 +91,6 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
                 }
 */
 
-
-
                 //System.out.println(tClass.getSimpleName().substring(3));
                 if (tClass == RowTypemachine.class )  XmlRW.delRow (selectRow, tab, dataset.getTabTypemachines(), dataset.getTabModelmachineTypemachines());
                 if (tClass == RowMachine.class )  XmlRW.delRow (selectRow, tab, dataset.getTabMachines(), dataset.getTabWorksMachines());

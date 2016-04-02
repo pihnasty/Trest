@@ -20,7 +20,7 @@ public class TMenuView extends MenuBar  implements Observer {
     private TMenuModel menuModel;
 
     @FXML
-    private Menu fileMenu;
+    private Menu OpenPerspective2;
 
     @FXML
     private Menu OpenPerspective;

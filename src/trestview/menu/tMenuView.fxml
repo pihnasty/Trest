@@ -4,7 +4,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"   >
 <!-- <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >   or   fxmlLoader.setController( menuController);     -->
-<Menu text="%File">
+<Menu text="%File"    fx:id="OpenPerspective2"   >
     <MenuItem text="%New"       fx:id="newItem"     />
     <MenuItem text="%Open"      fx:id="openItem"   onAction="#handleOpenAction" />
     <SeparatorMenuItem/>
@@ -30,7 +30,7 @@
         <MenuItem text="%MachinesLocationPerspective"   fx:id="machinesLocationPerspectiveItem" />
     </Menu>
 </Menu>
-<Menu text="%Dictionary">
+<Menu text="%Dictionary"  >
     <MenuItem text="%RowWork"           fx:id="rowWorkItem"             onAction="#handleRowWorkAction" />
     <MenuItem text="%RowTypemachine"    fx:id="rowTypemachineItem"      onAction="#handleRowTypemachineAction" />
     <MenuItem text="%RowMachine"        fx:id="rowMachineItem"          onAction="#handleRowMachineAction" />

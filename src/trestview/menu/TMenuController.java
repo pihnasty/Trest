@@ -38,7 +38,10 @@ import java.util.ResourceBundle;
  */
 public class TMenuController implements Initializable {
 
+
     private TMenuModel menuModel;
+
+
 
     @FXML
     private Menu fileMenu;

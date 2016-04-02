@@ -21,8 +21,6 @@
 <RowMachine description="Machine100" id="100" locationX="0.5552123552123552" locationY="0.5416666666666666" name="Machine100" state="1.0"/>
 <RowMachine description="Machine101" id="101" locationX="0.8586872586872587" locationY="0.47685185185185186" name="Machine101" state="1.0"/>
 <RowMachine description="Machine102" id="102" locationX="0.8563706563706563" locationY="0.7361111111111112" name="Machine102" state="1.0"/>
-<RowMachine description="Описание для    RowMachine" id="103" locationX="0.0" locationY="0.0" name="RowMachine№103" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="104" locationX="0.0" locationY="0.0" name="RowMachine№104" state="0.0"/>
 <RowMachine description="Описание для    RowMachine" id="105" locationX="0.0" locationY="0.0" name="RowMachine№105" state="0.0"/>
 <RowMachine description="Описание для    RowMachine" id="106" locationX="0.0" locationY="0.0" name="RowMachine№106" state="0.0"/>
 <RowMachine description="Описание для    RowMachine" id="107" locationX="0.0" locationY="0.0" name="RowMachine№107" state="0.0"/>
@@ -75,5 +73,4 @@
 <RowMachine description="Описание для    RowMachine" id="154" locationX="0.0" locationY="0.0" name="RowMachine№154" state="0.0"/>
 <RowMachine description="Описание для    RowMachine" id="155" locationX="0.0" locationY="0.0" name="RowMachine№155" state="0.0"/>
 <RowMachine description="Описание для    RowMachine" id="156" locationX="0.0" locationY="0.0" name="RowMachine№156" state="0.0"/>
-<RowMachine description="Описание для    RowMachine" id="157" locationX="0.0" locationY="0.0" name="RowMachine№157" state="0.0"/>
 </tabMachines>
