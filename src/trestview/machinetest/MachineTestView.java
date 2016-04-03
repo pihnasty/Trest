@@ -84,7 +84,7 @@ public class MachineTestView extends BorderPane implements Observer {
         populateSeries(machineTestModel.getRandomValuesList());
 
 
-        splitPane.getItems().addAll(vBox,lineChart);
+        splitPane.getItems().addAll(vBox,lineChart, machineTestModel.getTableView());
 
 
 //        getChildren().add(lineChart);

@@ -1,30 +1,26 @@
 package trestview.table.tablemodel;
 
-import trestview.dictionary.DictionaryModel;
-import trestview.table.tablemodel.AbstractFactoryTableModel;
-import trestview.table.tablemodel.AbstractTableModel;
-import trestview.table.tablemodel.TableModel;
 
-import java.util.ArrayList;
+import persistence.loader.DataSet;
 
 /**
  * Created by pom on 05.03.2016.
  */
 
-public class FactoryTableModel   extends AbstractFactoryTableModel {
+public class FactoryTableModel  extends AbstractFactoryTableModel {
 
-    private DictionaryModel dictionaryModel;
+    private DataSet dataSet;
     private Class tClass;
 
 
-    public FactoryTableModel (DictionaryModel dictionaryModel, Class  tClass) {
-        this.dictionaryModel =  dictionaryModel;
+    public FactoryTableModel (DataSet dataSet, Class tClass) {
+        this.dataSet =  dataSet;
         this.tClass = tClass;
 
     }
 
-    public AbstractTableModel getTableModel() {
-        return new TableModel(dictionaryModel,tClass);
+    public TableModel getTableModel() {
+        return new TableModel(dataSet ,tClass);
     }
 
 

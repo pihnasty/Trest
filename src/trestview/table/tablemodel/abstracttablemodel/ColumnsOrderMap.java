@@ -1,5 +1,6 @@
 package trestview.table.tablemodel.abstracttablemodel;
 
+import entityProduction.Functiondist;
 import persistence.loader.tabDataSet.RowFunctiondist;
 import persistence.loader.tabDataSet.RowMachine;
 import persistence.loader.tabDataSet.RowTypemachine;
@@ -20,10 +21,7 @@ public class ColumnsOrderMap {
         map.put(RowMachine.class, new ColumnsOrder("id", "name", "image","locationX","locationY",  "state",  "description" ));
         map.put(RowTypemachine.class, new ColumnsOrder("id", "name", "description" ));
         map.put(RowFunctiondist.class, new ColumnsOrder("id", "name", "description" ));
-
-
-
-
+        map.put(Functiondist.class, new ColumnsOrder("id", "name", "averageValue", "meanSquareDeviation", "pathData", "description" ));
     }
 
     public static ColumnsOrder getColumns(Class key) {

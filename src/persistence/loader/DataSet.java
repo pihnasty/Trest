@@ -91,6 +91,7 @@ public class DataSet {
     private ArrayList<RowMachineModelmachine> tabMachineModelmachines;
     private ArrayList<RowFunctiondist> tabFunctiondists;
     private ArrayList<RowParametrfunctiondist> tabParametrfunctiondists = new ArrayList<>();
+
     private ArrayList<RowFunctiondistParametrfunctiondist> tabFunctiondistsParametrfunctiondistsTest = new ArrayList<>();
 
 
@@ -362,8 +363,7 @@ public class DataSet {
      *
      * @param s Название файла
      * @return Путь к файлу, находящемуся в директории pathDataDefault
-     * @see    pathDataDefault
-     */
+      */
     public String pathFile(String s) {
         return pathDataDefault + s;
     }
@@ -565,7 +565,6 @@ public class DataSet {
      * Вспомогательный класс, используется для передачи данных из метода
      * FieldClass getFieldName_Class (Object tab)
      *
-     * @see    pathDataDefault
      */
     private class FieldClass {
 
@@ -611,7 +610,6 @@ public class DataSet {
     /**
      * Сохранение в xml- файл объекта Trest по значению id
      *
-     * @param id
      * @return
      * @throws Throwable
      * @throws ParserConfigurationException
@@ -712,7 +710,7 @@ public class DataSet {
      * == RT.Id
      */
     public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(Object row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab, Class cRT, Class cRMT) {
-        ArrayList<T> typemachines = new ArrayList<T>();
+        ArrayList<T> typemachines = new ArrayList<>();
         for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
             if (((RowIdNameDescription) row).getId() == wr.getId()) {
                 for (RT w : rtTab) {
@@ -730,7 +728,6 @@ public class DataSet {
                     if (rSL.compareTo(w) == 0) {
                         flag = true;
                         rSL = w;
-                        //System.out.println("rtTab.add(rSL)=" + rSL.getClass() + "rSL.getId()=" + rSL.getId() + "rSL.getId()=" + w.getId());
                     }
                 }
                 if (!flag) {
@@ -759,17 +756,37 @@ public class DataSet {
     }
 
     //-------------------------------------------------------------------------------
-    public <cL> cL createObject(cL row) {
-        cL m = null;
+    public <cL> cL createObject(Object row) {
+        Object m = null;
+
+        if (row.getClass() == RowFunctiondist.class) {
+
+            ArrayList<Parametrfunctiondist>  ps = select(row, tabParametrfunctiondists, tabFunctiondistsParametrfunctiondistsTest, RowParametrfunctiondist.class, RowFunctiondistParametrfunctiondist.class);
+
+            m =   new Functiondist (          ((RowFunctiondist) row).getId(),
+                    ((RowFunctiondist) row).getName(),
+                    ps,
+                    ((RowFunctiondist) row).getDescription());
+        }
+
+
+        if (row.getClass() == RowParametrfunctiondist.class) {
+             m =   new Parametrfunctiondist (          ((RowParametrfunctiondist) row).getId(),
+                                                           ((RowParametrfunctiondist) row).getName(),
+                                                           ((RowParametrfunctiondist) row).getAverageValue(),
+                                                           ((RowParametrfunctiondist) row).getMeanSquareDeviation(),
+                                                           ((RowParametrfunctiondist) row).getPathData(),
+                                                           ((RowParametrfunctiondist) row).getDescription());
+        }
 
         if (row.getClass() == RowTypemachine.class) {
-            m = (cL) new Typemachine(((RowTypemachine) row).getId(), ((RowTypemachine) row).getName(), ((RowTypemachine) row).getDescription());
+            m = new Typemachine(((RowTypemachine) row).getId(), ((RowTypemachine) row).getName(), ((RowTypemachine) row).getDescription());
         }
 
         //------------------------------------------------------------------------
         if (row.getClass() == RowModelmachine.class) {
             ArrayList<Typemachine> typemachines = select(row, tabTypemachines, tabModelmachineTypemachines, RowTypemachine.class, RowModelmachineTypemachine.class);
-            m = (cL) new Modelmachine(((RowModelmachine) row).getId(), ((RowModelmachine) row).getName(),
+            m = new Modelmachine(((RowModelmachine) row).getId(), ((RowModelmachine) row).getName(),
                     ((RowModelmachine) row).getImg(), typemachines.get(0).getName(), ((RowModelmachine) row).getOverallDimensionX(), ((RowModelmachine) row).getOverallDimensionY(),
                     ((RowModelmachine) row).getWorkSizeX(), ((RowModelmachine) row).getWorkSizeY(), ((RowModelmachine) row).getDescription()
             );
@@ -783,10 +800,10 @@ public class DataSet {
 
 
         if (row.getClass() == RowEmployee.class) {
-            m = (cL) new Employee(((RowEmployee) row).getId(), ((RowEmployee) row).getName(), ((RowEmployee) row).getDescription());
+            m = new Employee(((RowEmployee) row).getId(), ((RowEmployee) row).getName(), ((RowEmployee) row).getDescription());
         }
         if (row.getClass() == RowOperation.class) {
-            m = (cL) new Operation(((RowOperation) row).getId(), ((RowOperation) row).getName(), ((RowOperation) row).getDescription());
+            m = new Operation(((RowOperation) row).getId(), ((RowOperation) row).getName(), ((RowOperation) row).getDescription());
         }
         if (row.getClass() == RowResource.class) {
             m = (cL) new Resource(((RowResource) row).getId(), ((RowResource) row).getName(), ((RowResource) row).getDescription());
@@ -821,7 +838,7 @@ public class DataSet {
                 // теперь у нас есть все необходиое для создание отсутствующего предмета труда
                 routes.add((Route) createObject(rSL));                            // д) создаем недостающий предмет труда и помещаем его в коллекцию.
             }
-            m = (cL) new Subject_labour(((RowSubject_labour) row).getId(), ((RowSubject_labour) row).getName(), ((RowSubject_labour) row).getPrice(), routes, ((RowSubject_labour) row).getDescription());
+            m =  new Subject_labour(((RowSubject_labour) row).getId(), ((RowSubject_labour) row).getName(), ((RowSubject_labour) row).getPrice(), routes, ((RowSubject_labour) row).getDescription());
         }
         //E--------Subject_labour-------------------------------------------------------------------------------------------------------------//
 
@@ -849,7 +866,7 @@ public class DataSet {
                 // теперь у нас есть все необходиое для создание отсутствующего предмета труда
                 //      operations.add((Operation) createObject(rSL));							// д) создаем недостающий предмет труда и помещаем его в коллекцию.
             }
-            m = (cL) new Route(((RowRoute) row).getId(), ((RowRoute) row).getName(), lineroutes, ((RowRoute) row).getDescription());
+            m =  new Route(((RowRoute) row).getId(), ((RowRoute) row).getName(), lineroutes, ((RowRoute) row).getDescription());
         }
         //E--------Route ------------Cоздается Объект-----------------------------------------------------------------------------------------//
 
@@ -933,7 +950,7 @@ public class DataSet {
                 employees.add((Employee) createObject(rSL));                            // д) создаем недостающий предмет труда и помещаем его в коллекцию.  Теперь у нас есть все необходиое для создание отсутствующего предмета труда
             }
 
-            m = (cL) new Lineroute(
+            m =  new Lineroute(
                     ((RowLineroute) row).getId(),
                     ((RowLineroute) row).getName(),
                     operations,
@@ -1012,7 +1029,7 @@ public class DataSet {
                 functionOEMs.add((FunctionOEM) createObject(rSL));                            // д) создаем недостающий предмет труда и помещаем его в коллекцию.
             }
 
-            m = (cL) new Linespec(
+            m = new Linespec(
                     ((RowLinespec) row).getId(),
                     ((RowLinespec) row).getName(),
                     resources,
@@ -1076,10 +1093,10 @@ public class DataSet {
                 subject_labours.add((Subject_labour) createObject(rSL));                            // д) создаем недостающий предмет труда и помещаем его в коллекцию.
 
             }
-            m = (cL) new Line(((RowLine) row).getId(), ((RowLine) row).getName(), subject_labours, units, ((RowLine) row).getQuantity(), ((RowLine) row).getDateBegin(), ((RowLine) row).getDateEnd(), ((RowLine) row).getDescription());
+            m =  new Line(((RowLine) row).getId(), ((RowLine) row).getName(), subject_labours, units, ((RowLine) row).getQuantity(), ((RowLine) row).getDateBegin(), ((RowLine) row).getDateEnd(), ((RowLine) row).getDescription());
         }
 
-        return m;
+        return (cL)m;
     }
 
     /**
@@ -1458,6 +1475,13 @@ public class DataSet {
         this.tabParametrfunctiondists = tabParametrfunctiondists;
     }
 
+    public ArrayList<RowFunctiondistParametrfunctiondist> getTabFunctiondistsParametrfunctiondistsTest() {
+        return tabFunctiondistsParametrfunctiondistsTest;
+    }
+
+    public void setTabFunctiondistsParametrfunctiondistsTest(ArrayList<RowFunctiondistParametrfunctiondist> tabFunctiondistsParametrfunctiondistsTest) {
+        this.tabFunctiondistsParametrfunctiondistsTest = tabFunctiondistsParametrfunctiondistsTest;
+    }
 
     public static String getPathConfig() {
         return pathConfig;

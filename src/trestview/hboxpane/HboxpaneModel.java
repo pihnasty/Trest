@@ -1,5 +1,6 @@
 package trestview.hboxpane;
 
+import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.RowFunctiondist;
 import trestmodel.TrestModel;
 import trestview.dictionary.DictionaryModel;
@@ -12,13 +13,14 @@ import java.util.Observable;
 public class HboxpaneModel extends Observable {
 
     private Class tClass;
-    private DictionaryModel dictionaryModel;
+
+    private DataSet dataSet;
 
     private MethodCall methodCall;
 
 
-    public HboxpaneModel(DictionaryModel dictionaryModel, Class tClass) {
-        this.dictionaryModel = dictionaryModel;
+    public HboxpaneModel(DataSet dataSet, Class tClass) {
+        this.dataSet = dataSet;
         this.tClass = tClass;
     }
 
@@ -55,14 +57,6 @@ public class HboxpaneModel extends Observable {
         notifyObservers();
     }
 
-    public DictionaryModel getDictionaryModel() {
-        return dictionaryModel;
-    }
-
-    public void setDictionaryModel(DictionaryModel dictionaryModel) {
-        this.dictionaryModel = dictionaryModel;
-    }
-
     public Class gettClass() {
         return tClass;
     }
@@ -73,6 +67,14 @@ public class HboxpaneModel extends Observable {
 
     public MethodCall getMethodCall() {
         return methodCall;
+    }
+
+    public DataSet getDataSet() {
+        return dataSet;
+    }
+
+    public void setDataSet(DataSet dataSet) {
+        this.dataSet = dataSet;
     }
 
 }

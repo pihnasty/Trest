@@ -1,6 +1,7 @@
 package trestview.table;
 
 import designpatterns.MVC;
+import entityProduction.Functiondist;
 import entityProduction.Work;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleListProperty;
@@ -61,7 +62,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         this.tableModel = tableModel;
         this.tab= tableModel.getTab();
         this.tClass=tableModel.gettClass();
-        this.dataSet = tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet();
+        this.dataSet = tableModel.getDataset();
         this.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         this.setTableMenuButtonVisible(true);
         this.setEditable(true);
@@ -86,7 +87,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             tableColumn.setOnEditCommit(  (TableColumn.CellEditEvent<cL, String> t) -> {
               //if(tclass==RowWork.class)
               if(fielgName=="name") ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setName(t.getNewValue());
-              if(fielgName=="scheme") {
+              if(fielgName=="scheme" || fielgName=="pathData") {
                   File f = new File(t.getNewValue());
                   String schemePath = "Image\\Manufacturing";
                   if (!f.exists()) {
@@ -115,10 +116,14 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                           } catch (IOException e) {
                               e.printStackTrace();
                           }
-                          ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(schemePath+"\\"+f.getName());
+                          if (fielgName== "scheme")        ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(schemePath+"\\"+f.getName());
+                          if (fielgName== "pathData") ((Functiondist) t.getTableView().getItems().get(t.getTablePosition().getRow())).setPathData (schemePath+"\\"+f.getName());
                           repaintTable();
                       }
-                      else  ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(t.getOldValue());
+                      else {
+                          if (fielgName== "scheme") ((RowWork) t.getTableView().getItems().get(t.getTablePosition().getRow())).setScheme(t.getOldValue());
+                          if (fielgName== "pathData") ((Functiondist) t.getTableView().getItems().get(t.getTablePosition().getRow())).setPathData (t.getOldValue());
+                      }
                   }
               }
               if(fielgName=="description") { ((RowIdNameDescription) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setDescription(t.getNewValue());
@@ -148,7 +153,8 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             if(fielgName=="locationX")      ((RowMachine) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setLocationX (t.getNewValue());
             if(fielgName=="locationY")      ((RowMachine) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setLocationY (t.getNewValue());
             if(fielgName=="state")      ((RowMachine) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setState (t.getNewValue());
-
+            if(fielgName=="averageValue")      ((Functiondist) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setAverageValue (t.getNewValue());
+            if(fielgName=="meanSquareDeviation")      ((Functiondist) t.getTableView().getItems().get( t.getTablePosition().getRow()) ).setMeanSquareDeviation(t.getNewValue());
             });
         }
     }
@@ -202,6 +208,9 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             setStringColumn(parametersColumn, tableColumn,"name",tClass);
             setStringColumn(parametersColumn, tableColumn,"scheme",tClass);
             setStringColumn(parametersColumn, tableColumn,"description",tClass);
+            setStringColumn(parametersColumn, tableColumn,"pathData",tClass);
+
+
             tableCol=tableColumn;
         }
 
@@ -217,7 +226,10 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             setDoubleColumn(parametersColumn, tableColumn,"locationX",tClass);
             setDoubleColumn(parametersColumn, tableColumn,"locationY",tClass);
             setDoubleColumn(parametersColumn, tableColumn,"state",tClass);
-            tableCol=tableColumn;
+            setDoubleColumn(parametersColumn, tableColumn,"averageValue",tClass);
+            setDoubleColumn(parametersColumn, tableColumn,"meanSquareDeviation",tClass);
+
+                tableCol=tableColumn;
         }
         if (parametersColumn.getcLs()==Image.class) {
             TableColumn<cL,String> tableColumn = new TableColumn  (parametersColumn.getName());
@@ -265,7 +277,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                data.add(selectIndex,((TableModel)o).getSelectRow() );
                 break;
             case saveRowTable:
-                tableModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet().saveDataset(); // Save new path add read new database  from new directory path
+                tableModel.getDataset().saveDataset(); // Save new path add read new database  from new directory path
                 break;
             case editRowTable:
                 this.setEditable(true);

@@ -1,19 +1,16 @@
 package trestview.table.tablemodel;
 
-import entityProduction.Functiondist;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowFunctiondist;
 import persistence.loader.tabDataSet.RowMachine;
 import persistence.loader.tabDataSet.RowTypemachine;
 import persistence.loader.tabDataSet.RowWork;
-import trestview.dictionary.DictionaryModel;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -25,18 +22,31 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
 
     private MethodCall methodCall;
 
+    public TableModel(DataSet dataSet ) {
+        this.parametersOfColumns = buildParametersColumn() ;
+        this.dataset = dataSet;
+    }
+
     /**
-     *
-     * @param dictionaryModel
      * @param tClass    The data type for a table row. This is [RowWork.class] for the table = [ArrayList<RowWork>].
      */
-    public TableModel(DictionaryModel dictionaryModel, Class<cL> tClass) {
-        this.dictionaryModel = dictionaryModel;
-        this.tab = dictionaryModel.getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
+    public TableModel(DataSet dataSet, Class<cL> tClass) {
+        this.tab = dataSet.getTabIND(tClass);
         this.tClass = tClass;
         this.parametersOfColumns = buildParametersColumn() ;
-        this.dataset = dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
+        this.dataset = dataSet;
     }
+    public TableModel(DataSet dataSet, ArrayList<cL> tab) {
+        // TODO Найти метод определения базового типа данных [cL] в массиве ArrayList<cL>
+            this.tab = tab;
+            this.tClass = tab.get(0).getClass();
+          //  this.tClass = RowFunctiondist.class;
+            this.parametersOfColumns = buildParametersColumn() ;
+            this.dataset = dataSet;
+    }
+
+
+
 
 
     @Override
@@ -50,7 +60,6 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         switch (o.getMethodCall()) {
             case addRowTable:
                 methodCall = MethodCall.addRowTable;
-            //    selectRow = new RowWork(this.dataset,tClass);
                 try {
                     Constructor constructor = tClass.getConstructor(DataSet.class, Class.class);
                     selectRow = constructor.newInstance(this.dataset,tClass);
@@ -71,29 +80,6 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
                 break;
             case delRowTable:
                 methodCall = MethodCall.delRowTable;
-
-/*
-                try {
-                    System.out.println("getTab"+tClass.getSimpleName().substring(3)+"s");
-                    Class noparams[] = {};
-                    Method mGetTabChild  =  dataset.getClass().getDeclaredMethod("getTab"+tClass.getSimpleName().substring(3)+"s", null);
-                    Method mGetTabParent =  dataset.getClass().getDeclaredMethod("getTab"+tClass.getSimpleName().substring(3)+"s", null);
-                    try {
-                        XmlRW.delRow (selectRow, tab,
-                               // dataset.getTabWorks(),
-                                (ArrayList<cL>) mGetTabChild.invoke(dataset,null),
-                                dataset.getTabTrestsWorks());
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    }
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-*/
-
-                //System.out.println(tClass.getSimpleName().substring(3));
                 if (tClass == RowTypemachine.class )  XmlRW.delRow (selectRow, tab, dataset.getTabTypemachines(), dataset.getTabModelmachineTypemachines());
                 if (tClass == RowMachine.class )  XmlRW.delRow (selectRow, tab, dataset.getTabMachines(), dataset.getTabWorksMachines());
                 if (tClass == RowWork.class )  XmlRW.delRow (selectRow, tab, dataset.getTabWorks(), dataset.getTabTrestsWorks());

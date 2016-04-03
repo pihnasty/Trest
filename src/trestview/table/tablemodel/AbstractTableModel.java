@@ -20,13 +20,11 @@ import java.util.stream.Stream;
  */
 public abstract class AbstractTableModel<cL> extends Observable {
 
-    protected DictionaryModel dictionaryModel;
     protected ArrayList<cL> tab;
     protected cL selectRow;
     protected DataSet dataset;
     protected ArrayList<ParametersColumn>  parametersOfColumns;
     protected Class tClass;
-
 
     public ArrayList<ParametersColumn> getParametersOfColumns() {
         return parametersOfColumns;
@@ -53,15 +51,15 @@ public abstract class AbstractTableModel<cL> extends Observable {
         this.tab = tab;
     }
 
-    public DictionaryModel getDictionaryModel() {
-        return dictionaryModel;
-    }
-
     public cL getSelectRow() {return selectRow;   }
 
     public void setSelectRow(cL selectRow) {  this.selectRow = selectRow; }
 
     public Class gettClass() { return tClass;  }
+
+    public DataSet getDataset() {  return dataset;  }
+
+    public void setDataset(DataSet dataset) {  this.dataset = dataset;  }
 
 }
 

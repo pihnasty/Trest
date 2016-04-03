@@ -31,10 +31,6 @@ public class HboxpaneController implements Initializable {
     private Button delButton;
 
     private HboxpaneModel hboxpaneModel;
-    private Class tClass;
-    private ArrayList tab;
-
-
 
     public HboxpaneController() {
 
@@ -42,10 +38,6 @@ public class HboxpaneController implements Initializable {
 
     public HboxpaneController(HboxpaneModel hboxpaneModel) {
         this.hboxpaneModel = hboxpaneModel;
-        this.tClass = hboxpaneModel.gettClass();
-        this.tab =  hboxpaneModel.getDictionaryModel().getTMenuModel().getTrestModel().getDataSet().getTabIND(tClass);
-
-
     }
 
 

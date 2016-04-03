@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
 import persistence.loader.tabDataSet.RowWork;
 import resources.images.icons.IconT;
@@ -31,9 +32,10 @@ import java.util.*;
 /**
  * Created by pom on 07.02.2016.
  */
-public class DictionaryView extends Dialog implements Observer {
+public class  DictionaryView extends Dialog implements Observer {
 
     private DictionaryModel dictionaryModel;
+    private DataSet dataSet;
 
 
 
@@ -42,6 +44,7 @@ public class DictionaryView extends Dialog implements Observer {
 
     public DictionaryView (DictionaryModel dictionaryModel, DictionaryController dictionaryController ) {
         this.dictionaryModel =dictionaryModel;
+        this.dataSet =dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
         FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,dictionaryController, "dictionaryView.fxml","resources.ui", "");
 
        //  setTitle("%Open");
@@ -68,7 +71,7 @@ public class DictionaryView extends Dialog implements Observer {
 
 
      //   MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dictionaryModel, dictionaryModel.gettClass());
-        TableModel tableModel = new  TableModel(dictionaryModel, dictionaryModel.gettClass());           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
+        TableModel tableModel = new  TableModel(dataSet, dictionaryModel.gettClass());           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
         TableController tableController = new TableController(tableModel);
         TableViewP tableView = new TableViewP(tableModel, tableController);
         tableModel.addObserver(tableView);
@@ -77,7 +80,7 @@ public class DictionaryView extends Dialog implements Observer {
 
    //    MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class, dictionaryModel, dictionaryModel.gettClass());
 
-        HboxpaneModel hboxpaneModel = new HboxpaneModel(dictionaryModel, dictionaryModel.gettClass());
+        HboxpaneModel hboxpaneModel = new HboxpaneModel(dataSet, dictionaryModel.gettClass());
         HboxpaneController hboxpaneController = new HboxpaneController(hboxpaneModel);
         HboxpaneView hboxpaneView = new HboxpaneView(hboxpaneModel, hboxpaneController);
         hboxpaneModel.addObserver(hboxpaneView);
