@@ -1,7 +1,7 @@
 package trestview.machinetest;
 
+import designpatterns.MVC;
 import entityProduction.Functiondist;
-import entityProduction.Parametrfunctiondist;
 import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.*;
 import trestview.menu.TMenuModel;
@@ -26,7 +26,7 @@ public class MachineTestModel extends Observable {
 
 
     public MachineTestModel() {
-        this.randomValuesList = new ArrayList<Double>();
+        this.randomValuesList = new ArrayList<>();
     }
     public MachineTestModel(TMenuModel menuModel) {
         this.menuModel = menuModel;
@@ -37,13 +37,11 @@ public class MachineTestModel extends Observable {
 
 //-----------------------------------------------------------------------------------------------
         ArrayList<Functiondist> functiondists = new ArrayList<>();
-        for (RowFunctiondist rowFun: dataSet.getTabFunctiondists()) functiondists.add(dataSet.createObject( rowFun));
+     //   for (RowFunctiondist rowFun: dataSet.getTabFunctiondists()) functiondists.add(dataSet.createObject( rowFun));   // Это эквивалентно  dataSet.getTabFunctiondists().stream().filter(w->{functiondists.add(dataSet.createObject(w)); return true;}).count();
+        dataSet.getTabFunctiondists().stream().filter(w->{functiondists.add(dataSet.createObject(w)); return true;}).count();
         DataSet.showTab(functiondists);
-        //   MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dictionaryModel, dictionaryModel.gettClass());
-        TableModel tableModel = new  TableModel(dataSet, functiondists );           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
-        TableController tableController = new TableController(tableModel);
-        tableView = new TableViewP(tableModel, tableController);
-        tableModel.addObserver(tableView);
+        MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dataSet, functiondists);
+        tableView = (TableViewP) tableMVC.getView();
 //--------------------------------------------------------------------------------------------------
 
 

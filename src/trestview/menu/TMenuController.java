@@ -84,7 +84,6 @@ public class TMenuController implements Initializable {
 
     public TMenuController(TMenuModel menuModel) {
         this.menuModel = menuModel;
-        //System.out.println("_________________________________________________________________________________________1"+this.menuModel);
     }
 
 
@@ -156,7 +155,7 @@ public class TMenuController implements Initializable {
     @FXML
     private void handleMachineTestAction (ActionEvent event) {
 
-        new MVC(MachineTestModel.class, MachineTestController.class, MachineTestView.class, this.menuModel  );
+//        new MVC(MachineTestModel.class, MachineTestController.class, MachineTestView.class, this.menuModel  );
   /*      MachineTestModel machineTestModel = new MachineTestModel(this.menuModel);
         MachineTestController machineTestController = new MachineTestController(machineTestModel);
         MachineTestView machineTestView = new MachineTestView(machineTestModel, machineTestController);

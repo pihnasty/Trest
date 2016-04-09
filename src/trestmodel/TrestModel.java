@@ -4,11 +4,12 @@ import entityProduction.Trest;
 import persistence.loader.DataSet;
 
 import java.util.Locale;
+import java.util.Observable;
 
 /**
  * Created by Max on 19.02.2016.
  */
-public class TrestModel {
+public class TrestModel extends Observable {
 
     private DataSet dataSet;
 

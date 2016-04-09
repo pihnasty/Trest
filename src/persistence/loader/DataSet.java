@@ -1,12 +1,8 @@
 package persistence.loader;
-
-
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import old._util._Date;
-import persistence.loader.tabDataSet.*;
 import entityProduction.*;
+import old._util._Date;
 import org.w3c.dom.DOMException;
-
+import persistence.loader.tabDataSet.*;
 import javax.xml.parsers.ParserConfigurationException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,8 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class DataSet {
 
@@ -714,6 +708,7 @@ public class DataSet {
      * Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id
      * == RT.Id
      */
+    @Deprecated
     public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab, Class cRT, Class cRMT) {
         ArrayList<T> typemachines = new ArrayList<>();
 
@@ -773,6 +768,68 @@ public class DataSet {
         return typemachines;
     }
 
+
+    public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab, Class cRT, Class cRMT, String s) {
+        ArrayList<T> typemachines = new ArrayList<>();
+
+        rmtTab.stream().filter(wr->{
+
+            for (RT w : rtTab) {
+                if (wr.getId2() == w.getId()) {
+                    typemachines.add((T) createObject(w));
+                }
+            }
+            return row.getId() == wr.getId(); }).count();
+
+/*
+        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
+            if ( row.getId() == wr.getId()) {
+                for (RT w : rtTab) {
+                    if (wr.getId2() == w.getId()) {
+                        typemachines.add((T) createObject(w));
+                    }
+                }
+            }
+        }
+
+*/
+        if (typemachines.isEmpty() == true) {     //  If the table is empty, create a new element. His type of equipment installed by default.
+            try {
+                RT rSL = (RT) cRT.getDeclaredConstructor(DataSet.class, Class.class).newInstance(this, cRT);
+                boolean flag = false;
+                for (RT w : rtTab) {
+                    if (rSL.compareTo(w) == 0) {
+                        flag = true;
+                        rSL = w;
+                    }
+                }
+                if (!flag) {
+                    rtTab.add(rSL);
+                }
+                RMT rIdId = (RMT) cRMT.getDeclaredConstructor(int.class, int.class, String.class).newInstance(((RT) row).getId(), rSL.getId(), "   ");
+                // б)помещаем его в таблицу для RowSubject_labour
+                rmtTab.add(rIdId);
+                // теперь у нас есть все необходиое для создание отсутствующего предмета труда
+                typemachines.add((T) createObject(rSL));
+            } catch (NoSuchMethodException ex) {
+                Logger.getLogger(DataSet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SecurityException ex) {
+                Logger.getLogger(DataSet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(DataSet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(DataSet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalArgumentException ex) {
+                Logger.getLogger(DataSet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvocationTargetException ex) {
+                Logger.getLogger(DataSet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return typemachines;
+    }
+
+
+
     //-------------------------------------------------------------------------------
     public <cL> cL createObject(RowIdNameDescription row) {
         Object m = null;
@@ -808,7 +865,7 @@ public class DataSet {
         //------------------------------------------------------------------------
         if (row.getClass() == RowMachine.class) {
             ArrayList<Modelmachine> modelmachines = select(row, tabModelmachines, tabMachineModelmachines, RowModelmachine.class, RowMachineModelmachine.class);
-            m = (cL) new Machine(((RowMachine) row).getId(), ((RowMachine) row).getName(), modelmachines.get(0), ((RowMachine) row).getLocationX(), ((RowMachine) row).getLocationY(), ((RowMachine) row).getState(), ((RowMachine) row).getDescription());
+            m = (cL) new Machine(row.getId(), row.getName(), modelmachines.get(0), ((RowMachine) row).getLocationX(), ((RowMachine) row).getLocationY(), ((RowMachine) row).getAngle(),  ((RowMachine) row).getState(), ((RowMachine) row).getDescription());
         }
 
 

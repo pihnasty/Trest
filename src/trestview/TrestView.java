@@ -1,9 +1,12 @@
 package trestview;
 
+import designpatterns.MVC;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import persistence.loader.DataSet;
+import persistence.loader.XmlRW;
 import trestmodel.TrestModel;
 import trestview.machinetest.MachineTestController;
 import trestview.machinetest.MachineTestModel;
@@ -14,43 +17,22 @@ import trestview.menu.TMenuView;
 
 
 import java.io.IOException;
-
-/**
- * Sample custom control hosting a text field and a button.
- */
+import java.util.Observable;
+import java.util.ResourceBundle;
 public class TrestView extends BorderPane {
     TrestModel trestModel;
-
-    public TrestView() {
-    }
-
     public TrestView(TrestModel trestModel) {
         this.trestModel =  trestModel;
+        XmlRW.fxmlLoad(this,this,"trestview.fxml","","");
+        MVC menu = new MVC(TMenuModel.class, TMenuController.class, TMenuView.class, this.trestModel );
+        this.setTop((TMenuView)menu.getView());
 
-        //region FXMLLoader fxmlLoader =
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("trestview.fxml"));
-        //   fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-        //endregion
-
-
-        TMenuModel menuModel = new TMenuModel(this.trestModel);
-        TMenuController menuController = new TMenuController(menuModel);
-        TMenuView menuView = new TMenuView(menuModel, menuController);
-        menuModel.addObserver(menuView);
-
-        this.setTop(menuView);
-
-        MachineTestModel machineTestModel = new MachineTestModel(menuModel);
+        MachineTestModel machineTestModel = new MachineTestModel((TMenuModel)menu.getModel());
         MachineTestController machineTestController = new MachineTestController(machineTestModel);
         MachineTestView machineTestView = new MachineTestView(machineTestModel, machineTestController);
         machineTestModel.addObserver(machineTestView);
+
+
 
         this.setCenter(machineTestView);
     }

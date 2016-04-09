@@ -1,8 +1,11 @@
 package designpatterns;
 
+import persistence.loader.DataSet;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,6 +17,28 @@ public class MVC {
     private Object model;
     private Method methodAddObserver;
     private Object view;
+
+    public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet, ArrayList  arrayList)   {
+        try {
+            Constructor mConstructor = mClass.getConstructor(DataSet.class, ArrayList.class);
+            model = mConstructor.newInstance(dataSet,arrayList);
+
+            Constructor cConstructor = cClass.getConstructor( mClass);
+            Object controller = cConstructor.newInstance(model);
+
+            Constructor vConstructor = vClass.getConstructor( mClass, cClass);
+            view = vConstructor.newInstance(model,controller);
+
+            methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
+            methodAddObserver.invoke(model, view);
+
+        } catch (NoSuchMethodException e)  {      e.printStackTrace();        }
+        catch (IllegalAccessException e) {      e.printStackTrace();        }
+        catch (InstantiationException e) {      e.printStackTrace();        }
+        catch (InvocationTargetException e) {    e.printStackTrace();       }
+    }
+
+    @Deprecated
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )   {
         try {
             Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
@@ -33,18 +58,19 @@ public class MVC {
           catch (InstantiationException e) {      e.printStackTrace();        }
           catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
+    @Deprecated
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o )   {
         try {
-            Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
-            Object model = mConstructor.newInstance(o);
+            Constructor mConstructor = mClass.getConstructor(Observable.class);
+            model = mConstructor.newInstance(o);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
             Object controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
-            Object view = vConstructor.newInstance(model,controller);
+            view = vConstructor.newInstance(model,controller);
 
-            Method methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
+            methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
             methodAddObserver.invoke(model, view);
 
         } catch (NoSuchMethodException e) {
@@ -58,18 +84,18 @@ public class MVC {
         }
     }
 
-    public static void createMVC(Class mClass, Class cClass, Class vClass, Observable o, Class cL )   {
+    public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet )   {
         try {
-            Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
-            Object model = mConstructor.newInstance(o,cL);
+            Constructor mConstructor = mClass.getConstructor(Observable.class);
+            model = mConstructor.newInstance(dataSet);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
             Object controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
-            Object view = vConstructor.newInstance(model,controller);
+            view = vConstructor.newInstance(model,controller);
 
-            Method methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
+            methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
             methodAddObserver.invoke(model, view);
 
         } catch (NoSuchMethodException e) {
@@ -82,30 +108,13 @@ public class MVC {
             e.printStackTrace();
         }
     }
-    public static void createMVC(Class mClass, Class cClass, Class vClass, Observable o )   {
-        try {
-            Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
-            Object model = mConstructor.newInstance(o);
 
-            Constructor cConstructor = cClass.getConstructor( mClass);
-            Object controller = cConstructor.newInstance(model);
-
-            Constructor vConstructor = vClass.getConstructor( mClass, cClass);
-            Object view = vConstructor.newInstance(model,controller);
-
-            Method methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
-            methodAddObserver.invoke(model, view);
-
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-    }
+    /*
+    TMenuModel menuModel = new TMenuModel(this.trestModel);
+        TMenuController menuController = new TMenuController(menuModel);
+        TMenuView menuView = new TMenuView(menuModel, menuController);
+        menuModel.addObserver(menuView);
+    */
 
     public Object getModel() {   return model;   }
     public Object getView()  {   return view;    }

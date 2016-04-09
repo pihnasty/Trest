@@ -2,28 +2,23 @@ package persistence.loader.tabDataSet;
 
 import persistence.loader.DataSet;
 
-/**
- * Описание сущности строка таблицы: Машина (оборудование)
- *
- * @author ПОМ
- *
- */
 public class RowMachine extends RowIdNameDescription {
 
     /**
-     * Инициализирует строку таблицы: Машина
-     * @param id	Id машины
-     * @param name	Имя машины
-     * @param locationX	Расположение машины в цеху X-координата
-     * @param locationY	Расположение машины в цеху Y-координата
-     * @param foto	Фото машины
-     * @param state	Состояние машины (Например вероятность поломки)
-     * @param description	Описание машины
+     * Initializes a row in the table: Machine
+     * @param id	Id of the machine
+     * @param name	Name of the machine
+     * @param locationX	Location of the machine in the work (X coordinate)
+     * @param locationY	Location of the machine in the work (Y coordinate)
+     * @param angle  	The angle of placement machine (Clockwise)
+     * @param state	Machine condition (the probability that the machine is working)
+     * @param description	Machine description
      */
-    public RowMachine(int id, String name, double locationX, double locationY, double state, String description) {
+    public RowMachine(int id, String name, double locationX, double locationY, double angle, double state, String description) {
         super(id, name, description);
         this.locationX = locationX;
         this.locationY = locationY;
+        this.angle = angle;
         this.setState(state);
     }
 
@@ -57,13 +52,16 @@ public class RowMachine extends RowIdNameDescription {
     public void setState(Double state) {
         this.state = state;
     }
-    
-    /* Расположение машины в цеху (координата Х)                                */
-    private double locationX = 0;
-    /* Расположение машины в цеху (координата Y)                                */
-    private double locationY = 0;
-    /* Фото машины								*/
 
-    /* Состояние машины до ремонта                                              */
+    public double getAngle() {        return angle;    }
+
+    public void setAngle(double angle) {        this.angle = angle;    }
+
+    private double locationX = 0;
+
+    private double locationY = 0;
+
+    private double angle = 0;
+
     private double state = 0.0;
 }

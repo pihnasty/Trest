@@ -9,14 +9,14 @@ import java.util.Observable;
  */
 public class TMenuModel extends Observable  {
 
-    private TrestModel trestModel;
+    private Observable trestModel;
 
     public TMenuModel() {
     }
 
 
 
-    public TMenuModel(TrestModel trestModel) {
+    public TMenuModel(Observable trestModel) {
         this.trestModel = trestModel;
     }
 
@@ -24,10 +24,10 @@ public class TMenuModel extends Observable  {
 
 
     public TrestModel getTrestModel() {
-        return trestModel;
+        return (TrestModel) trestModel;
     }
 
-    public void setTrestModel(TrestModel trestModel) {
+    public void setTrestModel(Observable trestModel) {
         this.trestModel = trestModel;
         changed();
     }

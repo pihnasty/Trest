@@ -24,12 +24,11 @@ public class Machine extends RowMachine {
      * @param name	Имя машины
      * @param locationX	Расположение машины в цеху X-координата
      * @param locationY	Расположение машины в цеху Y-координата
-     * @param foto	Фото машины
      * @param state	Состояние машины (Например вероятность поломки)
      * @param description	Описание машины
      */
-    public Machine(int id, String name, Modelmachine modelmachine, double locationX, double locationY, double state, String description) {
-        super(id, name, locationX, locationY, state, description);
+    public Machine(int id, String name, Modelmachine modelmachine, double locationX, double locationY, double angle, double state, String description) {
+        super(id, name, locationX, locationY, angle, state, description);
         
         //String img,
         this.modelmachine = modelmachine;
