@@ -4,24 +4,19 @@ import trestmodel.TrestModel;
 
 import java.util.Observable;
 
-/**
- * Created by pom on 07.02.2016.
- */
 public class TMenuModel extends Observable  {
 
+    public MenuItemCall getMenuItemCall() { return menuItemCall;  }
+
+    public void setMenuItemCall(MenuItemCall menuItemCall) { this.menuItemCall = menuItemCall; }
+
+    private MenuItemCall menuItemCall = MenuItemCall.defaultItem;
+
     private Observable trestModel;
-
-    public TMenuModel() {
-    }
-
-
 
     public TMenuModel(Observable trestModel) {
         this.trestModel = trestModel;
     }
-
-
-
 
     public TrestModel getTrestModel() {
         return (TrestModel) trestModel;
@@ -36,4 +31,11 @@ public class TMenuModel extends Observable  {
         setChanged();
         notifyObservers();
     }
+
+    public void clickTestOfMachineItem() {
+        this.menuItemCall = MenuItemCall.testOfMachineItem;
+        changed();
+    }
+
+
 }

@@ -22,9 +22,7 @@ public class DictionaryModel extends Observable  {
 
     private Class tClass;
 
-    public DictionaryModel() {
-    }
-    public DictionaryModel(Observable menuModel,Class tClass) {
+     public DictionaryModel(Observable menuModel,Class tClass) {
         this.menuModel = (TMenuModel)menuModel;
         this.tClass = tClass;
     }

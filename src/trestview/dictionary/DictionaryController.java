@@ -12,14 +12,9 @@ public class DictionaryController implements Initializable {
 
     private DictionaryModel dictionaryModel;
 
-    public DictionaryController() {
-
-    }
-
     public DictionaryController (DictionaryModel dictionaryModel) {
         this.dictionaryModel = dictionaryModel;
-        //System.out.println("_________________________________________________________________________________________1"+this.dictionaryModel);
-    }
+     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

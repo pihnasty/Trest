@@ -154,13 +154,8 @@ public class TMenuController implements Initializable {
     //------------------- menu MachineTest ------------------------------------
     @FXML
     private void handleMachineTestAction (ActionEvent event) {
+        menuModel.clickTestOfMachineItem();
 
-//        new MVC(MachineTestModel.class, MachineTestController.class, MachineTestView.class, this.menuModel  );
-  /*      MachineTestModel machineTestModel = new MachineTestModel(this.menuModel);
-        MachineTestController machineTestController = new MachineTestController(machineTestModel);
-        MachineTestView machineTestView = new MachineTestView(machineTestModel, machineTestController);
-        machineTestModel.addObserver(machineTestView);
-*/
         System.out.println("Machine test in progress...");
 
     }

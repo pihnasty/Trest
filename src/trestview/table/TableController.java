@@ -13,13 +13,8 @@ public class TableController implements Initializable {
 
     private TableModel tableModel;
 
-    public TableController() {
-
-    }
-
     public TableController(TableModel tableModel) {
         this.tableModel = tableModel;
-
     }
 
     @Override

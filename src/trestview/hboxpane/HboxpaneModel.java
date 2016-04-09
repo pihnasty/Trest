@@ -7,9 +7,6 @@ import trestview.dictionary.DictionaryModel;
 
 import java.util.Observable;
 
-/**
- * Created by pom on 07.02.2016.
- */
 public class HboxpaneModel extends Observable {
 
     private Class tClass;
