@@ -1,6 +1,7 @@
 package persistence.loader;
 
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import old._util._Date;
 import persistence.loader.tabDataSet.*;
 import entityProduction.*;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class DataSet {
 
@@ -670,6 +673,8 @@ public class DataSet {
             if (id == w.getId()) {
                 ArrayList<Machine> machines = select(w, tabMachines, tabWorksMachines, RowMachine.class, RowWorkMachine.class);
 
+                for (Machine m: machines )               System.out.println(w.getName()+"___________________________________________________"+m.getName());
+
                 ArrayList<Employee> employees = select(w, tabEmployees, tabWorksEmployees, RowEmployee.class, RowWorkEmployee.class);
                 ArrayList<Subject_labour> subject_labours = new ArrayList<Subject_labour>();
                 ArrayList<Order> orders = new ArrayList<Order>();
@@ -709,10 +714,21 @@ public class DataSet {
      * Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id
      * == RT.Id
      */
-    public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(Object row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab, Class cRT, Class cRMT) {
+    public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab, Class cRT, Class cRMT) {
         ArrayList<T> typemachines = new ArrayList<>();
+
+        rmtTab.stream().filter(wr->{
+
+                for (RT w : rtTab) {
+                    if (wr.getId2() == w.getId()) {
+                        typemachines.add((T) createObject(w));
+                    }
+                }
+            return row.getId() == wr.getId(); }).count();
+
+/*
         for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
-            if (((RowIdNameDescription) row).getId() == wr.getId()) {
+            if ( row.getId() == wr.getId()) {
                 for (RT w : rtTab) {
                     if (wr.getId2() == w.getId()) {
                         typemachines.add((T) createObject(w));
@@ -720,6 +736,8 @@ public class DataSet {
                 }
             }
         }
+
+*/
         if (typemachines.isEmpty() == true) {     //  If the table is empty, create a new element. His type of equipment installed by default.
             try {
                 RT rSL = (RT) cRT.getDeclaredConstructor(DataSet.class, Class.class).newInstance(this, cRT);
@@ -756,31 +774,26 @@ public class DataSet {
     }
 
     //-------------------------------------------------------------------------------
-    public <cL> cL createObject(Object row) {
+    public <cL> cL createObject(RowIdNameDescription row) {
         Object m = null;
 
         if (row.getClass() == RowFunctiondist.class) {
-
             ArrayList<Parametrfunctiondist>  ps = select(row, tabParametrfunctiondists, tabFunctiondistsParametrfunctiondistsTest, RowParametrfunctiondist.class, RowFunctiondistParametrfunctiondist.class);
-
-            m =   new Functiondist (          ((RowFunctiondist) row).getId(),
-                    ((RowFunctiondist) row).getName(),
-                    ps,
-                    ((RowFunctiondist) row).getDescription());
+            m =   new Functiondist (row.getId(), row.getName(),   ps, row.getDescription());
         }
 
 
         if (row.getClass() == RowParametrfunctiondist.class) {
-             m =   new Parametrfunctiondist (          ((RowParametrfunctiondist) row).getId(),
-                                                           ((RowParametrfunctiondist) row).getName(),
+             m =   new Parametrfunctiondist (           row.getId(),
+                                                        row.getName(),
                                                            ((RowParametrfunctiondist) row).getAverageValue(),
                                                            ((RowParametrfunctiondist) row).getMeanSquareDeviation(),
                                                            ((RowParametrfunctiondist) row).getPathData(),
-                                                           ((RowParametrfunctiondist) row).getDescription());
+                                                        row.getDescription());
         }
 
         if (row.getClass() == RowTypemachine.class) {
-            m = new Typemachine(((RowTypemachine) row).getId(), ((RowTypemachine) row).getName(), ((RowTypemachine) row).getDescription());
+            m = new Typemachine( row.getId(), row.getName(), row.getDescription());
         }
 
         //------------------------------------------------------------------------
