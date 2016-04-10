@@ -38,7 +38,7 @@ public class new_PDEapp extends Application {
         TrestModel trestModel = new TrestModel();
         TrestView trestView = new TrestView(trestModel);
         TrestController trestController = new TrestController();
-
+        trestModel.addObserver(trestView);
         //endregion
 
         //region Methods of specifying the icon.

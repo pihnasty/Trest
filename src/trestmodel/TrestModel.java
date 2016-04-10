@@ -21,7 +21,7 @@ public class TrestModel extends Observable {
         setLocale("ru"); //en
         this.dataSet = new DataSet();
      //   dataSet.openDataSet();						// Считываем данные из XML-файлов в поля DataSet.
-        this.trest= dataSet.getTrest(1);					// Инициализируем объект Трест по id=1
+          this.trest= dataSet.getTrest(1);					// Инициализируем объект Трест по id=1
 
 
     }

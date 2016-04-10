@@ -14,11 +14,6 @@ import java.util.ResourceBundle;
 public class MachineTestController implements Initializable {
     private MachineTestModel machineTestModel;
 
-
-    public MachineTestController() {
-
-    }
-
     public MachineTestController(MachineTestModel machineTestModel) {
         this.machineTestModel = machineTestModel;
     }

@@ -7,4 +7,5 @@
 <RowWork description="description №6" id="6" name="Произво №6" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство тканей.png"/>
 <RowWork description="Описание для    Work" id="7" name="Work№20" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Производство мебели.png"/>
 <RowWork description="Описание для    RowWork" id="8" name="RowWork№8" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
+<RowWork description="Описание для    RowWork" id="9" name="RowWork№9" overallSize="100.0" scaleEquipment="1.0" scheme="Image/Manufacturing/Manufacture of bearings.png"/>
 </tabWorks>

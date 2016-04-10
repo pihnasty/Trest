@@ -36,7 +36,7 @@ public class MachineTestView extends BorderPane implements Observer {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("machinetestView.fxml"));
         fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
         fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
+        fxmlLoader.setController(machineTestController);
 
         try {
             fxmlLoader.load();

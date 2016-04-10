@@ -40,6 +40,7 @@ public class MachineTestModel extends Observable {
      //   for (RowFunctiondist rowFun: dataSet.getTabFunctiondists()) functiondists.add(dataSet.createObject( rowFun));   // Это эквивалентно  dataSet.getTabFunctiondists().stream().filter(w->{functiondists.add(dataSet.createObject(w)); return true;}).count();
         dataSet.getTabFunctiondists().stream().filter(w->{functiondists.add(dataSet.createObject(w)); return true;}).count();
         DataSet.showTab(functiondists);
+        DataSet.showTab(functiondists);
         MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dataSet, functiondists);
         tableView = (TableViewP) tableMVC.getView();
 //--------------------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ public class MVC {
     private Object model;
     private Method methodAddObserver;
     private Object view;
-
+    @Deprecated
     public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet, ArrayList  arrayList)   {
         try {
             Constructor mConstructor = mClass.getConstructor(DataSet.class, ArrayList.class);
@@ -38,7 +38,7 @@ public class MVC {
         catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
 
-    @Deprecated
+
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )   {
         try {
             Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
@@ -58,7 +58,7 @@ public class MVC {
           catch (InstantiationException e) {      e.printStackTrace();        }
           catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
-    @Deprecated
+
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o )   {
         try {
             Constructor mConstructor = mClass.getConstructor(Observable.class);
@@ -84,9 +84,11 @@ public class MVC {
         }
     }
 
+
+    @Deprecated
     public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet )   {
         try {
-            Constructor mConstructor = mClass.getConstructor(Observable.class);
+            Constructor mConstructor = mClass.getConstructor(DataSet.class);
             model = mConstructor.newInstance(dataSet);
 
             Constructor cConstructor = cClass.getConstructor( mClass);

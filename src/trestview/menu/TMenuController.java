@@ -42,8 +42,6 @@ public class TMenuController implements Initializable {
 
     private TMenuModel menuModel;
 
-
-
     @FXML
     private Menu fileMenu;
 
@@ -75,7 +73,8 @@ public class TMenuController implements Initializable {
     private MenuItem routesPerspectiveItem;
     @FXML
     private MenuItem resourcesLinksPerspectiveItem;
-
+    @FXML
+    private MenuItem  testOfMachineItem;
 
 
     public TMenuController() {
@@ -97,14 +96,17 @@ public class TMenuController implements Initializable {
         saveAllItem.setAccelerator(KeyCombination.keyCombination("Ctrl+L"));
         exitItem.setAccelerator(KeyCombination.keyCombination("Ctrl+E"));
 
-        cutItem.setAccelerator(KeyCombination.keyCombination("Ctrl+T"));
+        cutItem.setAccelerator(KeyCombination.keyCombination("Ctrl+Y"));
         copyItem.setAccelerator(KeyCombination.keyCombination("Ctrl+C"));
         pasteItem.setAccelerator(KeyCombination.keyCombination("Ctrl+V"));
 
         defaultPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
         ordersPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+W"));
-        routesPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+R"));
-        resourcesLinksPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+M"));
+        routesPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+M"));
+        resourcesLinksPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+R"));
+
+        testOfMachineItem.setAccelerator(KeyCombination.keyCombination("Ctrl+T"));
+
     }
 
 
@@ -153,12 +155,11 @@ public class TMenuController implements Initializable {
 
     //------------------- menu MachineTest ------------------------------------
     @FXML
-    private void handleMachineTestAction (ActionEvent event) {
-        menuModel.clickTestOfMachineItem();
+    private void handleMachineTestAction (ActionEvent event) {    menuModel.clickTestOfMachineItem();   }
 
-        System.out.println("Machine test in progress...");
-
-    }
+    //------------------- menu Window->OpenPerspective ------------------------------------
+    @FXML
+    private void handleResourcesLinksPerspectiveAction (ActionEvent event) { menuModel.clickResourcesLinksPerspectiveItem(); }
 
 
 

@@ -20,6 +20,9 @@ import trestview.machinetest.MachineTestView;
 import trestview.menu.TMenuController;
 import trestview.menu.TMenuModel;
 import trestview.menu.TMenuView;
+import trestview.resourcelink.ResourceLinkController;
+import trestview.resourcelink.ResourceLinkModel;
+import trestview.resourcelink.ResourceLinkView;
 
 
 import java.io.IOException;
@@ -31,20 +34,26 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 public class TrestView extends BorderPane implements Observer {
     private TrestModel trestModel;
+    private DataSet dataSet;
     private List<Node> nodes;
     private MachineTestView machineTestView;
+    private MVC resourceLink;
+
     public TrestView(TrestModel trestModel) {
         this.trestModel =  trestModel;
+        this.dataSet = trestModel.getDataSet();
         XmlRW.fxmlLoad(this,this,"trestview.fxml","","");
         MVC menu = new MVC(TMenuModel.class, TMenuController.class, TMenuView.class, this.trestModel );
         this.setTop((TMenuView)menu.getView());
-        ((TMenuModel) menu.getModel()).addObserver(this);
+        ((TMenuModel) menu.getModel()).addObserver(this);    // this: Depending on the keys pressed Menu is changing appearance for TrestView.
+
+        resourceLink = new MVC(ResourceLinkModel.class, ResourceLinkController.class, ResourceLinkView.class, this.trestModel );
+        this.setCenter((BorderPane)resourceLink.getView());
 
         MachineTestModel machineTestModel = new MachineTestModel((TMenuModel)menu.getModel());
         MachineTestController machineTestController = new MachineTestController(machineTestModel);
         machineTestView = new MachineTestView(machineTestModel, machineTestController);
         machineTestModel.addObserver(machineTestView);
-        this.setCenter(null);
     }
 
     @Override
@@ -54,9 +63,9 @@ public class TrestView extends BorderPane implements Observer {
 
     private void updateCenter (TMenuModel o) {
         switch (o.getMenuItemCall()) {
-            case testOfMachineItem:      this.setCenter(machineTestView);     break;
-            default:
-                break;
+            case testOfMachineItem:             this.setCenter(machineTestView);     break;
+            case resourcesLinksPerspectiveItem: this.setCenter((BorderPane)resourceLink.getView());     break;
+            default:                                                                 break;
         }
     }
 }

@@ -3,8 +3,9 @@ package trestview.menu;
 import trestmodel.TrestModel;
 
 import java.util.Observable;
+import java.util.Observer;
 
-public class TMenuModel extends Observable  {
+public class TMenuModel extends Observable {
 
     public MenuItemCall getMenuItemCall() { return menuItemCall;  }
 
@@ -37,5 +38,9 @@ public class TMenuModel extends Observable  {
         changed();
     }
 
+    public void clickResourcesLinksPerspectiveItem() {
+        this.menuItemCall = MenuItemCall.resourcesLinksPerspectiveItem;
+        changed();
+    }
 
 }
