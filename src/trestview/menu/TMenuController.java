@@ -74,7 +74,7 @@ public class TMenuController implements Initializable {
     @FXML
     private MenuItem routesPerspectiveItem;
     @FXML
-    private MenuItem machinesLocationPerspectiveItem;
+    private MenuItem resourcesLinksPerspectiveItem;
 
 
 
@@ -104,7 +104,7 @@ public class TMenuController implements Initializable {
         defaultPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+D"));
         ordersPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+W"));
         routesPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+R"));
-        machinesLocationPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+M"));
+        resourcesLinksPerspectiveItem.setAccelerator(KeyCombination.keyCombination("Ctrl+M"));
     }
 
 
