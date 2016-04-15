@@ -14,6 +14,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 import persistence.loader.XmlRW;
+import trestview.machinetest.charts.ChartCommonModel;
+import trestview.machinetest.charts.ChartController;
+import trestview.machinetest.charts.ChartView;
 
 
 import java.io.IOException;
@@ -25,8 +28,8 @@ import java.util.*;
 public class MachineTestView extends BorderPane implements Observer {
     private MachineTestModel machineTestModel;
 
-    LineChart<Number,Number> lineChart;
-
+//    LineChart<Number,Number> lineChart;
+    ChartView chartView;
 
     XYChart.Series series;
 
@@ -52,7 +55,7 @@ public class MachineTestView extends BorderPane implements Observer {
         vBox.setPadding(new Insets(10, 5, 5, 10));
 
         //img
-        Image image = new Image("file:D:\\POM\\Trest\\Image\\Machine\\freza_02.png");
+        Image image = new Image("file:Image\\Machine\\freza_02.png");
 
         ImageView imageView = new ImageView();
         imageView.setImage(image);
@@ -60,35 +63,36 @@ public class MachineTestView extends BorderPane implements Observer {
 
         imageView.setPreserveRatio(true);
 
-        vBox.getChildren().addAll(new Label("Hello"), imageView);
-//        getDialogPane().setContent(vBox);
-//        getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-////
-//
-//
-//        Optional<Pair<String, Boolean>> result = showAndWait();
+        vBox.getChildren().addAll(imageView, machineTestModel.getTableView());
+
         SplitPane splitPane = new SplitPane();
 
+        //creating the chart
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
+        //----------------------------------------------------//
+        ChartCommonModel chartCommonModel = new ChartCommonModel();
+        ChartController chartController = new ChartController(chartCommonModel);
+        chartView = new ChartView(xAxis, yAxis);
+        machineTestModel.addObserver(chartView);
+
+
+        //---------------------------------------------------//
+
         xAxis.setLabel("X");
-        //creating the chart
-
-        lineChart = new LineChart<Number, Number>(xAxis,yAxis);
-
-//        lineChart.setTitle(fxmlLoader.getResources().getString("TestOfMachine"));
-        //defining a series
         series = new XYChart.Series();
         series.setName("Random values");    //Put in resourses
+
+
+//        lineChart = new LineChart<Number, Number>(xAxis,yAxis);
+
         //populating the series with data
         populateSeries(machineTestModel.getRandomValuesList());
 
 
-        splitPane.getItems().addAll(vBox,lineChart, machineTestModel.getTableView());
+        splitPane.getItems().addAll(vBox,chartView);
 
-
-//        getChildren().add(lineChart);
-            setCenter(splitPane);
+        setCenter(splitPane);
     }
 
     private void populateSeries(ArrayList<Double> list) {
@@ -96,7 +100,7 @@ public class MachineTestView extends BorderPane implements Observer {
             series.getData().add(new XYChart.Data(i, list.get(i)));
         }
 
-        lineChart.getData().add(series);
+        chartView.getData().add(series);
     }
 
 
