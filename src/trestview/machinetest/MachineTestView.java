@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 import persistence.loader.XmlRW;
@@ -30,6 +31,8 @@ public class MachineTestView extends BorderPane implements Observer {
 
 //    LineChart<Number,Number> lineChart;
     ChartView chartView;
+    ChartView chartView1;
+    ChartView chartView2;
 
     XYChart.Series series;
 
@@ -76,6 +79,15 @@ public class MachineTestView extends BorderPane implements Observer {
         chartView = new ChartView(xAxis, yAxis);
         machineTestModel.addObserver(chartView);
 
+        ChartCommonModel chartCommonModel1 = new ChartCommonModel();
+        ChartController chartController1 = new ChartController(chartCommonModel1);
+        chartView1 = new ChartView(xAxis, yAxis);
+        machineTestModel.addObserver(chartView1);
+
+        ChartCommonModel chartCommonModel2 = new ChartCommonModel();
+        ChartController chartController2 = new ChartController(chartCommonModel2);
+        chartView2 = new ChartView(xAxis, yAxis);
+        machineTestModel.addObserver(chartView2);
 
         //---------------------------------------------------//
 
@@ -89,8 +101,12 @@ public class MachineTestView extends BorderPane implements Observer {
         //populating the series with data
         populateSeries(machineTestModel.getRandomValuesList());
 
-
-        splitPane.getItems().addAll(vBox,chartView);
+        VBox vBox1 = new VBox(5);
+        chartView.setMaxSize(600, 400);
+        chartView1.setMaxSize(600, 400);
+        chartView2.setMaxSize(600, 400);
+        vBox1.getChildren().addAll(chartView, chartView1, chartView2);
+        splitPane.getItems().addAll(vBox, vBox1);
 
         setCenter(splitPane);
     }
@@ -101,6 +117,8 @@ public class MachineTestView extends BorderPane implements Observer {
         }
 
         chartView.getData().add(series);
+//        chartView1.getData().add(series);
+//        chartView2.getData().add(series);
     }
 
 
