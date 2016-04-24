@@ -6,12 +6,6 @@ import java.util.ArrayList;
 
 public class RowIdNameDescription implements Comparable<RowIdNameDescription> {
 
-    /**
-     * Описание сущности, которая содержит поля (Id,Имя,Описание)
-     * @param id	Id элемента
-     * @param name	Имя элемента
-     * @param description	Описание элемента
-     */
     public RowIdNameDescription(int id, String name, String description) {
         this.id = id;
         this.name = name;

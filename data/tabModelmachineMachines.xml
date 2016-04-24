@@ -1,271 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tabModelmachineMachines>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 50-1" id="1" id2="50"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 51-2" id="2" id2="51"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 52-3" id="3" id2="52"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 53-4" id="4" id2="53"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 54-5" id="5" id2="54"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 55-6" id="6" id2="55"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 56-7" id="7" id2="56"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 57-8" id="8" id2="57"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 58-9" id="9" id2="58"/>
-<RowModelmachineMachine description="Строка: Машина - Модель Машины 59-10" id="10" id2="59"/>
-<RowModelmachineMachine description="   " id="6" id2="33"/>
-<RowModelmachineMachine description="   " id="2" id2="34"/>
-<RowModelmachineMachine description="   " id="2" id2="35"/>
-<RowModelmachineMachine description="   " id="2" id2="36"/>
-<RowModelmachineMachine description="   " id="2" id2="46"/>
-<RowModelmachineMachine description="   " id="2" id2="47"/>
-<RowModelmachineMachine description="   " id="2" id2="48"/>
-<RowModelmachineMachine description="   " id="2" id2="49"/>
-<RowModelmachineMachine description="   " id="2" id2="60"/>
-<RowModelmachineMachine description="   " id="2" id2="61"/>
-<RowModelmachineMachine description="   " id="2" id2="62"/>
-<RowModelmachineMachine description="   " id="2" id2="63"/>
-<RowModelmachineMachine description="   " id="2" id2="64"/>
-<RowModelmachineMachine description="   " id="2" id2="65"/>
-<RowModelmachineMachine description="   " id="2" id2="66"/>
-<RowModelmachineMachine description="   " id="2" id2="67"/>
-<RowModelmachineMachine description="   " id="2" id2="68"/>
-<RowModelmachineMachine description="   " id="2" id2="69"/>
-<RowModelmachineMachine description="   " id="2" id2="71"/>
-<RowModelmachineMachine description="   " id="2" id2="84"/>
-<RowModelmachineMachine description="   " id="2" id2="85"/>
-<RowModelmachineMachine description="   " id="2" id2="118"/>
-<RowModelmachineMachine description="   " id="2" id2="119"/>
-<RowModelmachineMachine description="   " id="2" id2="120"/>
-<RowModelmachineMachine description="   " id="2" id2="208"/>
-<RowModelmachineMachine description="   " id="2" id2="209"/>
-<RowModelmachineMachine description="   " id="2" id2="210"/>
-<RowModelmachineMachine description="   " id="2" id2="211"/>
-<RowModelmachineMachine description="   " id="2" id2="212"/>
-<RowModelmachineMachine description="   " id="2" id2="261"/>
-<RowModelmachineMachine description="   " id="2" id2="262"/>
-<RowModelmachineMachine description="   " id="2" id2="263"/>
-<RowModelmachineMachine description="   " id="2" id2="264"/>
-<RowModelmachineMachine description="   " id="2" id2="265"/>
-<RowModelmachineMachine description="   " id="2" id2="266"/>
-<RowModelmachineMachine description="   " id="2" id2="267"/>
-<RowModelmachineMachine description="   " id="2" id2="268"/>
-<RowModelmachineMachine description="   " id="2" id2="269"/>
-<RowModelmachineMachine description="   " id="2" id2="213"/>
-<RowModelmachineMachine description="   " id="2" id2="214"/>
-<RowModelmachineMachine description="   " id="2" id2="215"/>
-<RowModelmachineMachine description="   " id="2" id2="216"/>
-<RowModelmachineMachine description="   " id="2" id2="217"/>
-<RowModelmachineMachine description="   " id="2" id2="218"/>
-<RowModelmachineMachine description="   " id="2" id2="219"/>
-<RowModelmachineMachine description="   " id="2" id2="220"/>
-<RowModelmachineMachine description="   " id="2" id2="221"/>
-<RowModelmachineMachine description="   " id="2" id2="222"/>
-<RowModelmachineMachine description="   " id="2" id2="43"/>
-<RowModelmachineMachine description="   " id="2" id2="42"/>
-<RowModelmachineMachine description="   " id="2" id2="44"/>
-<RowModelmachineMachine description="   " id="2" id2="41"/>
-<RowModelmachineMachine description="   " id="2" id2="45"/>
-<RowModelmachineMachine description="   " id="2" id2="223"/>
-<RowModelmachineMachine description="   " id="2" id2="224"/>
-<RowModelmachineMachine description="   " id="2" id2="225"/>
-<RowModelmachineMachine description="   " id="2" id2="226"/>
-<RowModelmachineMachine description="   " id="2" id2="227"/>
-<RowModelmachineMachine description="   " id="2" id2="228"/>
-<RowModelmachineMachine description="   " id="2" id2="229"/>
-<RowModelmachineMachine description="   " id="2" id2="230"/>
-<RowModelmachineMachine description="   " id="2" id2="231"/>
-<RowModelmachineMachine description="   " id="2" id2="232"/>
-<RowModelmachineMachine description="   " id="2" id2="233"/>
-<RowModelmachineMachine description="   " id="2" id2="234"/>
-<RowModelmachineMachine description="   " id="2" id2="235"/>
-<RowModelmachineMachine description="   " id="2" id2="236"/>
-<RowModelmachineMachine description="   " id="2" id2="237"/>
-<RowModelmachineMachine description="   " id="2" id2="238"/>
-<RowModelmachineMachine description="   " id="2" id2="239"/>
-<RowModelmachineMachine description="   " id="2" id2="240"/>
-<RowModelmachineMachine description="   " id="2" id2="241"/>
-<RowModelmachineMachine description="   " id="2" id2="242"/>
-<RowModelmachineMachine description="   " id="2" id2="243"/>
-<RowModelmachineMachine description="   " id="2" id2="244"/>
-<RowModelmachineMachine description="   " id="2" id2="245"/>
-<RowModelmachineMachine description="   " id="2" id2="246"/>
-<RowModelmachineMachine description="   " id="2" id2="247"/>
-<RowModelmachineMachine description="   " id="2" id2="248"/>
-<RowModelmachineMachine description="   " id="2" id2="249"/>
-<RowModelmachineMachine description="   " id="2" id2="250"/>
-<RowModelmachineMachine description="   " id="2" id2="251"/>
-<RowModelmachineMachine description="   " id="2" id2="252"/>
-<RowModelmachineMachine description="   " id="2" id2="253"/>
-<RowModelmachineMachine description="   " id="2" id2="254"/>
-<RowModelmachineMachine description="   " id="2" id2="255"/>
-<RowModelmachineMachine description="   " id="2" id2="256"/>
-<RowModelmachineMachine description="   " id="2" id2="257"/>
-<RowModelmachineMachine description="   " id="2" id2="270"/>
-<RowModelmachineMachine description="   " id="2" id2="271"/>
-<RowModelmachineMachine description="   " id="2" id2="272"/>
-<RowModelmachineMachine description="   " id="2" id2="273"/>
-<RowModelmachineMachine description="   " id="2" id2="274"/>
-<RowModelmachineMachine description="   " id="2" id2="275"/>
-<RowModelmachineMachine description="   " id="2" id2="276"/>
-<RowModelmachineMachine description="   " id="2" id2="277"/>
-<RowModelmachineMachine description="   " id="2" id2="278"/>
-<RowModelmachineMachine description="   " id="2" id2="279"/>
-<RowModelmachineMachine description="   " id="2" id2="280"/>
-<RowModelmachineMachine description="   " id="2" id2="281"/>
-<RowModelmachineMachine description="   " id="2" id2="282"/>
-<RowModelmachineMachine description="   " id="2" id2="258"/>
-<RowModelmachineMachine description="   " id="2" id2="149"/>
-<RowModelmachineMachine description="   " id="2" id2="150"/>
-<RowModelmachineMachine description="   " id="2" id2="151"/>
-<RowModelmachineMachine description="   " id="2" id2="152"/>
-<RowModelmachineMachine description="   " id="2" id2="153"/>
-<RowModelmachineMachine description="   " id="2" id2="154"/>
-<RowModelmachineMachine description="   " id="2" id2="155"/>
-<RowModelmachineMachine description="   " id="2" id2="156"/>
-<RowModelmachineMachine description="   " id="2" id2="157"/>
-<RowModelmachineMachine description="   " id="2" id2="158"/>
-<RowModelmachineMachine description="   " id="2" id2="159"/>
 <RowModelmachineMachine description="   " id="2" id2="23"/>
 <RowModelmachineMachine description="   " id="2" id2="24"/>
 <RowModelmachineMachine description="   " id="2" id2="25"/>
 <RowModelmachineMachine description="   " id="2" id2="26"/>
 <RowModelmachineMachine description="   " id="2" id2="27"/>
 <RowModelmachineMachine description="   " id="2" id2="28"/>
-<RowModelmachineMachine description="   " id="2" id2="29"/>
 <RowModelmachineMachine description="   " id="2" id2="30"/>
-<RowModelmachineMachine description="   " id="2" id2="37"/>
 <RowModelmachineMachine description="   " id="2" id2="38"/>
 <RowModelmachineMachine description="   " id="2" id2="39"/>
 <RowModelmachineMachine description="   " id="2" id2="40"/>
-<RowModelmachineMachine description="   " id="2" id2="72"/>
-<RowModelmachineMachine description="   " id="2" id2="73"/>
-<RowModelmachineMachine description="   " id="2" id2="74"/>
-<RowModelmachineMachine description="   " id="2" id2="75"/>
-<RowModelmachineMachine description="   " id="2" id2="76"/>
-<RowModelmachineMachine description="   " id="2" id2="77"/>
-<RowModelmachineMachine description="   " id="2" id2="78"/>
-<RowModelmachineMachine description="   " id="2" id2="80"/>
-<RowModelmachineMachine description="   " id="2" id2="82"/>
-<RowModelmachineMachine description="   " id="2" id2="83"/>
-<RowModelmachineMachine description="   " id="2" id2="259"/>
-<RowModelmachineMachine description="   " id="2" id2="260"/>
-<RowModelmachineMachine description="   " id="2" id2="283"/>
-<RowModelmachineMachine description="IdMachine=454IdMoelMachine=1.0" id="1" id2="454"/>
-<RowModelmachineMachine description="IdMachine=455IdModelMachine=1.0" id="1" id2="455"/>
-<RowModelmachineMachine description="IdMachine=456IdModelMachine=2.0" id="2" id2="456"/>
-<RowModelmachineMachine description="   " id="4" id2="287"/>
-<RowModelmachineMachine description="   " id="4" id2="288"/>
-<RowModelmachineMachine description="   " id="4" id2="289"/>
-<RowModelmachineMachine description="   " id="4" id2="290"/>
-<RowModelmachineMachine description="   " id="4" id2="291"/>
-<RowModelmachineMachine description="   " id="4" id2="292"/>
-<RowModelmachineMachine description="   " id="4" id2="293"/>
-<RowModelmachineMachine description="   " id="4" id2="294"/>
-<RowModelmachineMachine description="   " id="4" id2="295"/>
-<RowModelmachineMachine description="   " id="4" id2="296"/>
-<RowModelmachineMachine description="   " id="4" id2="297"/>
-<RowModelmachineMachine description="   " id="4" id2="298"/>
-<RowModelmachineMachine description="   " id="4" id2="299"/>
-<RowModelmachineMachine description="   " id="4" id2="300"/>
-<RowModelmachineMachine description="   " id="4" id2="301"/>
-<RowModelmachineMachine description="   " id="4" id2="302"/>
-<RowModelmachineMachine description="   " id="4" id2="303"/>
-<RowModelmachineMachine description="   " id="4" id2="304"/>
-<RowModelmachineMachine description="   " id="4" id2="305"/>
-<RowModelmachineMachine description="   " id="4" id2="306"/>
-<RowModelmachineMachine description="   " id="4" id2="307"/>
-<RowModelmachineMachine description="   " id="4" id2="308"/>
-<RowModelmachineMachine description="   " id="4" id2="309"/>
-<RowModelmachineMachine description="   " id="4" id2="310"/>
-<RowModelmachineMachine description="   " id="4" id2="311"/>
-<RowModelmachineMachine description="   " id="4" id2="312"/>
-<RowModelmachineMachine description="   " id="4" id2="313"/>
-<RowModelmachineMachine description="   " id="4" id2="314"/>
-<RowModelmachineMachine description="   " id="4" id2="315"/>
-<RowModelmachineMachine description="   " id="4" id2="316"/>
-<RowModelmachineMachine description="   " id="4" id2="317"/>
-<RowModelmachineMachine description="   " id="4" id2="318"/>
-<RowModelmachineMachine description="   " id="4" id2="319"/>
-<RowModelmachineMachine description="   " id="4" id2="320"/>
-<RowModelmachineMachine description="   " id="4" id2="321"/>
-<RowModelmachineMachine description="   " id="4" id2="322"/>
-<RowModelmachineMachine description="   " id="4" id2="343"/>
-<RowModelmachineMachine description="   " id="4" id2="387"/>
-<RowModelmachineMachine description="   " id="4" id2="416"/>
-<RowModelmachineMachine description="   " id="4" id2="435"/>
-<RowModelmachineMachine description="   " id="4" id2="447"/>
-<RowModelmachineMachine description="   " id="4" id2="448"/>
-<RowModelmachineMachine description="   " id="4" id2="449"/>
-<RowModelmachineMachine description="   " id="4" id2="450"/>
-<RowModelmachineMachine description="   " id="4" id2="451"/>
-<RowModelmachineMachine description="   " id="4" id2="452"/>
-<RowModelmachineMachine description="   " id="4" id2="453"/>
-<RowModelmachineMachine description="   " id="4" id2="359"/>
-<RowModelmachineMachine description="   " id="4" id2="360"/>
-<RowModelmachineMachine description="   " id="4" id2="354"/>
-<RowModelmachineMachine description="   " id="4" id2="357"/>
-<RowModelmachineMachine description="   " id="4" id2="358"/>
-<RowModelmachineMachine description="   " id="4" id2="361"/>
-<RowModelmachineMachine description="   " id="4" id2="362"/>
-<RowModelmachineMachine description="   " id="4" id2="284"/>
-<RowModelmachineMachine description="   " id="4" id2="363"/>
-<RowModelmachineMachine description="   " id="4" id2="364"/>
-<RowModelmachineMachine description="   " id="4" id2="365"/>
-<RowModelmachineMachine description="   " id="4" id2="366"/>
-<RowModelmachineMachine description="   " id="4" id2="367"/>
-<RowModelmachineMachine description="   " id="4" id2="368"/>
-<RowModelmachineMachine description="   " id="4" id2="423"/>
-<RowModelmachineMachine description="   " id="4" id2="426"/>
-<RowModelmachineMachine description="   " id="4" id2="429"/>
-<RowModelmachineMachine description="   " id="4" id2="432"/>
-<RowModelmachineMachine description="   " id="4" id2="433"/>
-<RowModelmachineMachine description="   " id="4" id2="434"/>
-<RowModelmachineMachine description="   " id="4" id2="445"/>
-<RowModelmachineMachine description="   " id="4" id2="446"/>
-<RowModelmachineMachine description="IdMachine=457IdModelMachine=13.0" id="13" id2="457"/>
-<RowModelmachineMachine description="IdMachine=458IdModelMachine=28.0" id="28" id2="458"/>
-<RowModelmachineMachine description="IdMachine=459IdModelMachine=18.0" id="18" id2="459"/>
-<RowModelmachineMachine description="IdMachine=460IdModelMachine=20.0" id="20" id2="460"/>
-<RowModelmachineMachine description="IdMachine=461IdModelMachine=31.0" id="31" id2="461"/>
-<RowModelmachineMachine description="IdMachine=462IdModelMachine=30.0" id="30" id2="462"/>
-<RowModelmachineMachine description="IdMachine=463IdModelMachine=15.0" id="15" id2="463"/>
-<RowModelmachineMachine description="IdMachine=464IdModelMachine=18.0" id="18" id2="464"/>
-<RowModelmachineMachine description="IdMachine=465IdModelMachine=19.0" id="19" id2="465"/>
-<RowModelmachineMachine description="IdMachine=466IdModelMachine=23.0" id="23" id2="466"/>
-<RowModelmachineMachine description="IdMachine=467IdModelMachine=23.0" id="23" id2="467"/>
-<RowModelmachineMachine description="IdMachine=468IdModelMachine=27.0" id="27" id2="468"/>
-<RowModelmachineMachine description="IdMachine=469IdModelMachine=18.0" id="18" id2="469"/>
-<RowModelmachineMachine description="IdMachine=470IdModelMachine=18.0" id="18" id2="470"/>
-<RowModelmachineMachine description="IdMachine=471IdModelMachine=18.0" id="18" id2="471"/>
-<RowModelmachineMachine description="IdMachine=472IdModelMachine=7.0" id="7" id2="472"/>
-<RowModelmachineMachine description="IdMachine=473IdModelMachine=7.0" id="7" id2="473"/>
-<RowModelmachineMachine description="IdMachine=474IdModelMachine=19.0" id="19" id2="474"/>
-<RowModelmachineMachine description="IdMachine=475IdModelMachine=18.0" id="18" id2="475"/>
-<RowModelmachineMachine description="IdMachine=476IdModelMachine=13.0" id="13" id2="476"/>
-<RowModelmachineMachine description="IdMachine=477IdModelMachine=13.0" id="13" id2="477"/>
-<RowModelmachineMachine description="IdMachine=478IdModelMachine=17.0" id="17" id2="478"/>
-<RowModelmachineMachine description="IdMachine=479IdModelMachine=15.0" id="15" id2="479"/>
-<RowModelmachineMachine description="IdMachine=480IdModelMachine=20.0" id="20" id2="480"/>
-<RowModelmachineMachine description="IdMachine=481IdModelMachine=20.0" id="20" id2="481"/>
-<RowModelmachineMachine description="IdMachine=482IdModelMachine=21.0" id="21" id2="482"/>
-<RowModelmachineMachine description="IdMachine=483IdModelMachine=21.0" id="21" id2="483"/>
-<RowModelmachineMachine description="IdMachine=484IdModelMachine=21.0" id="21" id2="484"/>
-<RowModelmachineMachine description="IdMachine=485IdModelMachine=21.0" id="21" id2="485"/>
-<RowModelmachineMachine description="IdMachine=486IdModelMachine=22.0" id="22" id2="486"/>
-<RowModelmachineMachine description="IdMachine=487IdModelMachine=22.0" id="22" id2="487"/>
-<RowModelmachineMachine description="IdMachine=488IdModelMachine=22.0" id="22" id2="488"/>
-<RowModelmachineMachine description="IdMachine=489IdModelMachine=18.0" id="18" id2="489"/>
-<RowModelmachineMachine description="IdMachine=490IdModelMachine=19.0" id="19" id2="490"/>
-<RowModelmachineMachine description="IdMachine=491IdModelMachine=29.0" id="29" id2="491"/>
-<RowModelmachineMachine description="IdMachine=492IdModelMachine=29.0" id="29" id2="492"/>
-<RowModelmachineMachine description="IdMachine=493IdModelMachine=14.0" id="14" id2="493"/>
-<RowModelmachineMachine description="IdMachine=494IdModelMachine=14.0" id="14" id2="494"/>
-<RowModelmachineMachine description="IdMachine=495IdModelMachine=30.0" id="30" id2="495"/>
-<RowModelmachineMachine description="IdMachine=496IdModelMachine=30.0" id="30" id2="496"/>
-<RowModelmachineMachine description="IdMachine=497IdModelMachine=3.0" id="3" id2="497"/>
-<RowModelmachineMachine description="IdMachine=498IdModelMachine=31.0" id="31" id2="498"/>
-<RowModelmachineMachine description="IdMachine=499IdModelMachine=29.0" id="29" id2="499"/>
-<RowModelmachineMachine description="   " id="4" id2="390"/>
-<RowModelmachineMachine description="   " id="4" id2="389"/>
-<RowModelmachineMachine description="   " id="4" id2="381"/>
 <RowModelmachineMachine description="   " id="4" id2="111"/>
 <RowModelmachineMachine description="   " id="4" id2="112"/>
 <RowModelmachineMachine description="   " id="4" id2="113"/>
@@ -301,20 +45,6 @@
 <RowModelmachineMachine description="   " id="4" id2="146"/>
 <RowModelmachineMachine description="   " id="4" id2="147"/>
 <RowModelmachineMachine description="   " id="4" id2="148"/>
-<RowModelmachineMachine description="   " id="4" id2="160"/>
-<RowModelmachineMachine description="   " id="4" id2="161"/>
-<RowModelmachineMachine description="   " id="4" id2="70"/>
-<RowModelmachineMachine description="   " id="4" id2="79"/>
-<RowModelmachineMachine description="   " id="4" id2="81"/>
-<RowModelmachineMachine description="   " id="4" id2="86"/>
-<RowModelmachineMachine description="   " id="4" id2="87"/>
-<RowModelmachineMachine description="   " id="4" id2="88"/>
-<RowModelmachineMachine description="   " id="4" id2="89"/>
-<RowModelmachineMachine description="   " id="4" id2="90"/>
-<RowModelmachineMachine description="   " id="4" id2="91"/>
-<RowModelmachineMachine description="   " id="4" id2="92"/>
-<RowModelmachineMachine description="   " id="4" id2="93"/>
-<RowModelmachineMachine description="   " id="4" id2="94"/>
 <RowModelmachineMachine description="IdMachine=95IdModelMachine=31.0" id="31" id2="95"/>
 <RowModelmachineMachine description="IdMachine=96IdModelMachine=23.0" id="23" id2="96"/>
 <RowModelmachineMachine description="IdMachine=97IdModelMachine=26.0" id="26" id2="97"/>
@@ -323,12 +53,9 @@
 <RowModelmachineMachine description="IdMachine=100IdModelMachine=15.0" id="15" id2="100"/>
 <RowModelmachineMachine description="IdMachine=101IdModelMachine=19.0" id="19" id2="101"/>
 <RowModelmachineMachine description="IdMachine=102IdModelMachine=9.0" id="9" id2="102"/>
-<RowModelmachineMachine description="   " id="4" id2="103"/>
-<RowModelmachineMachine description="   " id="4" id2="104"/>
 <RowModelmachineMachine description="   " id="4" id2="105"/>
 <RowModelmachineMachine description="   " id="4" id2="106"/>
 <RowModelmachineMachine description="   " id="4" id2="107"/>
 <RowModelmachineMachine description="   " id="4" id2="108"/>
 <RowModelmachineMachine description="   " id="4" id2="109"/>
-<RowModelmachineMachine description="   " id="4" id2="110"/>
 </tabModelmachineMachines>

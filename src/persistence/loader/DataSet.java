@@ -697,27 +697,29 @@ public class DataSet {
         ArrayList<T> typemachines = new ArrayList<>();
         ArrayList<RMT> deleteFrom_rmtTab = new ArrayList<>();
 
-//        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
-//            if ( row.getId() == wr.getId()) {
-//                for (RT w : rtTab) {
-//                    if (wr.getId2() == w.getId()) {
-//                        typemachines.add((T) createObject(w));
-//                    }
-//                }
-//            }
-//        }
-        rmtTab.stream().filter(wr->{
-            for (RT w : rtTab)  if (wr.getId2() == w.getId())   typemachines.add((T) createObject(w));
-                                else deleteFrom_rmtTab.add(wr);
-            return row.getId() == wr.getId(); }).count();
-        System.out.println("showTab deleteFrom_rmtTab)");
+        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
+            if ( row.getId() == wr.getId()) {
+                boolean [] t  = {true};
 
-        for ( int i=rmtTab.size()-1; i<=0; i-- )  if (deleteFrom_rmtTab.contains(rmtTab.get(i))) { rmtTab.remove(rmtTab.get(i));
-            System.out.println("удален = "+rmtTab.get(i).getDescription());}
+//              rtTab.stream().filter( w->{
+//                  System.out.println("wr.getId()="+wr.getId()+" w.getId()="+w.getId());
+//                  typemachines.add((T) createObject(w)); t[0] = false;  return wr.getId2() == w.getId(); }).count();
 
+                for (RT w : rtTab) if (wr.getId2() == w.getId()) { typemachines.add((T) createObject(w)); t[0] = false;}
+                if (t[0]) deleteFrom_rmtTab.add(wr);
+            }
+        }
 
+//        rmtTab.stream().filter(wr->{
+//            boolean t = true;
+//            for (RT w : rtTab)  if (wr.getId2() == w.getId()) {  typemachines.add((T) createObject(w)); t = false; }
+//            if (t) deleteFrom_rmtTab.add(wr);
+//            return row.getId() == wr.getId(); }).count();
 
-    //   showTab(deleteFrom_rmtTab); trimToSize().
+        for ( int i2 =deleteFrom_rmtTab.size()-1; i2>=0; i2-- )
+            for (int i= 0; i< rmtTab.size(); i++ )
+                if (rmtTab.get(i).equals(deleteFrom_rmtTab.get(i2))) rmtTab.remove(rmtTab.get(i));
+        rmtTab.trimToSize();
         return typemachines;
     }
 
@@ -740,8 +742,10 @@ public class DataSet {
 //= SectionDataSet: TypeMachine ========================================================================================/
 //----------------------------------------------------------------------------------------------------------------------
         if (row.getClass() == RowTypemachine.class) {
+            ArrayList<Modelmachine> modelmachines = new ArrayList<>();
+            modelmachines =   select (row, tabModelmachines, tabTypemachineModelmachines);
             m = new Typemachine( row.getId(), row.getName(),
-                    select (row, tabModelmachines, tabTypemachineModelmachines),
+                    modelmachines,
                     row.getDescription());
         }
 //----------------------------------------------------------------------------------------------------------------------

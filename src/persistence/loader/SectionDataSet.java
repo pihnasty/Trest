@@ -17,7 +17,7 @@ public class SectionDataSet {
 
         DataSet .showTab(sectionTypemachines);
 
-        for (Typemachine row : sectionTypemachines)   DataSet .showTab(row.getModelmachines());
+   //     for (Typemachine row : sectionTypemachines)   DataSet .showTab(row.getModelmachines());
 
 
 

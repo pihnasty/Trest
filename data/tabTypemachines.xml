@@ -7,4 +7,6 @@
 <RowTypemachine description="Тип машины:Сверлильные" id="5" name="Сверлильные"/>
 <RowTypemachine description="Тип машины:Токарные" id="6" name="Токарные"/>
 <RowTypemachine description="Тип машины:Вакумные пресса" id="7" name="Вакумные пресса"/>
+<RowTypemachine description="Описание для    RowTypemachine" id="8" name="Пресса кривошипные"/>
+<RowTypemachine description="Описание для    RowTypemachine" id="9" name="Пресса кривошипные"/>
 </tabTypemachines>

@@ -30,7 +30,6 @@ public class TrestModel extends Observable {
          this.trest= dataSet.getTrest(1);					// Инициализируем объект Трест по id=1
 
 
-        System.out.println("-------------------------dfggfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         DataSet.showTab(trest.getWorks());
 
 
