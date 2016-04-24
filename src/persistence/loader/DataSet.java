@@ -366,44 +366,6 @@ public class DataSet {
         return pathDataDefault + s;
     }
 
-    /**
-     * Выдает значения полей класса obj. Примитивные типы автоматически,
-     * объектные типы objects по выбору
-     *
-     * @param obj     Анализируемый объект
-     * @param cLs     Массив типов элементов (Пример: Object.class), одержащихся в
-     *                ArrayList<Object>
-     * @param objects Массив объектных типов ArrayList<Object>()
-     * @throws ParserConfigurationException
-     * @throws Throwable
-     */
-    static public void showObjTabs(Object obj, Class[] cLs, Object... objects) {
-
-        System.out.print(" Данные объекта  " + obj.getClass().getSimpleName() + ":  ");
-        Class cLobj = obj.getClass();
-        Field[] fields = XmlRW.fieldsCl(cLobj);
-
-        for (Field fd : fields) {
-            Object fd_get = new Object();
-            fd.setAccessible(true);
-            try {
-                fd_get = fd.get(obj);
-            } catch (IllegalArgumentException exp) {
-                exp.printStackTrace();
-            } catch (IllegalAccessException exp) {
-                exp.printStackTrace();
-            }
-            if (fd.getType().isPrimitive() || fd.getType() == String.class) {
-                System.out.print(fd.getName() + "   " + fd_get + "   ");
-            }
-            fd.setAccessible(false);
-        }
-        int i = 0;
-        for (Object o : objects) {
-            DataSet.showTab(o, cLs[i]);
-        }
-        i++;
-    }
 
     static public <cL> void showTab(Object tab) {
         if (tab != null) {
@@ -575,31 +537,20 @@ public class DataSet {
         }
     }
 
-    /**
-     * Инициализация из xml- файла объекта Trest по значению id
-     *
-     * @param id
-     * @return
-     * @throws Throwable
-     * @throws ParserConfigurationException
-     */
     public Trest getTrest(int id) {
         for (RowTrest t : tabTrests) {
             if (id == t.getId()) {
-
-                ArrayList<Work> works = new ArrayList<Work>();
-
-                for (RowTrestWork tw : tabTrestsWorks) {
-                    for (RowWork w : tabWorks) {
-                        if (id == tw.getId() && tw.getId() == w.getId()) {
-                            works.add(getWork(tw.getId2()));
-                        }
-                    }
-                }
-
-                Trest trest = new Trest(t.getId(), t.getName(), t.getDescription(), works);
-
-                return trest;
+//                ArrayList<Work> works = new ArrayList<Work>();
+//
+//                for (RowTrestWork tw : tabTrestsWorks) {
+//                    for (RowWork w : tabWorks) {
+//                        if (id == tw.getId() && tw.getId() == w.getId()) {
+//                            works.add(getWork(tw.getId2()));
+//                        }
+//                    }
+//                }
+                return new Trest(t.getId(), t.getName(), t.getDescription(),
+                        select(t,tabWorks,tabTrestsWorks));
             }
         }
         return null;
@@ -629,48 +580,6 @@ public class DataSet {
         }
     }
 
-    public Work getWork(int id) {
-
-        for (RowWork w : tabWorks) {
-            if (id == w.getId()) {
-                ArrayList<Machine> machines = select(w, tabMachines, tabWorksMachines, RowMachine.class, RowWorkMachine.class);
-
-                for (Machine m: machines )               System.out.println(w.getName()+"___________________________________________________"+m.getName());
-
-                ArrayList<Employee> employees = select(w, tabEmployees, tabWorksEmployees, RowEmployee.class, RowWorkEmployee.class);
-                ArrayList<Subject_labour> subject_labours = new ArrayList<Subject_labour>();
-                ArrayList<Order> orders = new ArrayList<Order>();
-
-
-                for (RowWorkSubject_labour wr : tabWorksSubject_labours) {
-                    if (w.getId() == wr.getId()) {
-                        for (RowSubject_labour m : tabSubject_labours) {
-                            if (wr.getId2() == m.getId()) {
-                                subject_labours.add((Subject_labour) createObject(m));
-                            }
-                        }
-                    }
-                }
-
-                for (RowWorkOrder wr : tabWorksOrders) {
-                    if (w.getId() == wr.getId()) {
-                        for (RowOrder m : tabOrders) {
-                            if (wr.getId2() == m.getId()) {
-                                orders.add((Order) createObject(m));
-                            }
-                        }
-                    }
-                }
-
-                Work work = new Work(w.getId(), w.getName(), w.getScheme(), w.getOverallSize(), w.getScaleEquipment(),
-                        machines, employees, subject_labours, orders, w.getDescription());
-
-                return work;
-
-            }
-        }
-        return null;
-    }
 
     /**
      * Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id
@@ -784,10 +693,9 @@ public class DataSet {
         return typemachines;
     }
 
-
-
     public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab) {
         ArrayList<T> typemachines = new ArrayList<>();
+        ArrayList<RMT> deleteFrom_rmtTab = new ArrayList<>();
 
 //        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
 //            if ( row.getId() == wr.getId()) {
@@ -800,20 +708,41 @@ public class DataSet {
 //        }
         rmtTab.stream().filter(wr->{
             for (RT w : rtTab)  if (wr.getId2() == w.getId())   typemachines.add((T) createObject(w));
+                                else deleteFrom_rmtTab.add(wr);
             return row.getId() == wr.getId(); }).count();
+        System.out.println("showTab deleteFrom_rmtTab)");
+
+        for ( int i=rmtTab.size()-1; i<=0; i-- )  if (deleteFrom_rmtTab.contains(rmtTab.get(i))) { rmtTab.remove(rmtTab.get(i));
+            System.out.println("удален = "+rmtTab.get(i).getDescription());}
+
+
+
+    //   showTab(deleteFrom_rmtTab); trimToSize().
         return typemachines;
     }
-
 
     //-------------------------------------------------------------------------------
     public <cL> cL createObject(RowIdNameDescription row) {
         Object m = null;
     //    System.out.println("row.getName()="+row.getName());
-//= SectionDataSet: TypeMacine ========================================================================================/
+
+//= SectionDataSet: Trest =============================================================================================/
+        if (row.getClass() == RowWork.class) {
+            ArrayList<Employee> employees = select(row, tabEmployees, tabWorksEmployees);
+            ArrayList<Subject_labour> subject_labours = new ArrayList<Subject_labour>();
+            ArrayList<Order> orders = new ArrayList<Order>();
+            m = new Work(row.getId(), row.getName(),( (RowWork) row).getScheme(), ( (RowWork) row).getOverallSize(), ( (RowWork) row).getScaleEquipment(),
+                    select(row, tabMachines, tabWorksMachines),     //  ArrayList<Machine> machines
+                    null, null, null, row.getDescription());
+        }
+
+
+//= SectionDataSet: TypeMachine ========================================================================================/
 //----------------------------------------------------------------------------------------------------------------------
         if (row.getClass() == RowTypemachine.class) {
-            ArrayList<Modelmachine> modelmachines= select (row, tabModelmachines, tabTypemachineModelmachines);
-            m = new Typemachine( row.getId(), row.getName(), modelmachines, row.getDescription());
+            m = new Typemachine( row.getId(), row.getName(),
+                    select (row, tabModelmachines, tabTypemachineModelmachines),
+                    row.getDescription());
         }
 //----------------------------------------------------------------------------------------------------------------------
         if (row.getClass() == RowModelmachine.class) {
@@ -825,7 +754,7 @@ public class DataSet {
         }
 //----------------------------------------------------------------------------------------------------------------------
         if (row.getClass() == RowMachine.class) {
-            m = (cL) new Machine(row.getId(), row.getName(),((RowMachine) row).getLocationX(), ((RowMachine) row).getLocationY(), ((RowMachine) row).getAngle(),  ((RowMachine) row).getState(),row.getDescription());
+            m =  new Machine(row.getId(), row.getName(),((RowMachine) row).getLocationX(), ((RowMachine) row).getLocationY(), ((RowMachine) row).getAngle(),  ((RowMachine) row).getState(),row.getDescription());
         }
 //=====================================================================================================================/
         if (row.getClass() == RowFunctiondist.class) {
