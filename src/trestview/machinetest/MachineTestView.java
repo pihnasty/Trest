@@ -35,7 +35,7 @@ public class MachineTestView extends BorderPane implements Observer {
 
     public MachineTestView(MachineTestModel machineTestModel, MachineTestController machineTestController) {
         this.machineTestModel = machineTestModel;
-        XmlRW.fxmlLoad(this, machineTestController,"machinetestView.fxml", "resources.ui", null);
+        XmlRW.fxmlLoad(this, machineTestController,"machinetestView.fxml", "resources.ui", "");
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("machinetestView.fxml"));
 //        fxmlLoader.setResources(ResourceBundle.getBundle("resources.ui"));
 //        fxmlLoader.setRoot(this);

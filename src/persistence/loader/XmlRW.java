@@ -4,9 +4,12 @@
 package persistence.loader;
 import entityProduction.*;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.*;
+import javafx.scene.control.Control;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.w3c.dom.Node;
 import persistence.loader._util._Date;
 import persistence.loader.tabDataSet.*;
 import org.w3c.dom.*;
@@ -337,7 +340,7 @@ public class XmlRW
 		if (getResourceFxml!="") {
 			fxmlLoader = new FXMLLoader(view.getClass().getResource(getResourceFxml));
 			if (getBundleResources!="") fxmlLoader.setResources(ResourceBundle.getBundle(getBundleResources));
-			//   getStylesheets().add((getClass().getResource("stylesMenu.css")).toExternalForm());
+			if (getBundleCss!="") ((Parent)view).getStylesheets().add((view.getClass().getResource(getBundleCss)).toExternalForm());
 			fxmlLoader.setRoot(view);
 			if (controller!=null) fxmlLoader.setController(controller);        // or  fx:controller="ui.rootPane.menu.TMenuController"
 			// or <fx:root type="trestview.menu.TMenuView" xmlns:fx="http://javafx.com/fxml"  fx:controller="trestview.menu.TMenuController" >

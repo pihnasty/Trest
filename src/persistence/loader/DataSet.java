@@ -7,6 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,8 +85,8 @@ public class DataSet {
     private ArrayList<RowLinerouteEmployee> tabLineroutesEmployees;
     private ArrayList<RowLinerouteLinespec> tabLineroutesLinespecs;
     private ArrayList<RowTypemachine> tabTypemachines;
-    private ArrayList<RowModelmachineTypemachine> tabModelmachineTypemachines;
-    private ArrayList<RowMachineModelmachine> tabMachineModelmachines;
+    private ArrayList<RowTypemachineModelmachine> tabTypemachineModelmachines;
+    private ArrayList<RowModelmachineMachine> tabModelmachineMachines;
     private ArrayList<RowFunctiondist> tabFunctiondists;
     private ArrayList<RowParametrfunctiondist> tabParametrfunctiondists = new ArrayList<>();
 
@@ -141,8 +142,8 @@ public class DataSet {
         tabLineroutesLinespecs = new ArrayList<RowLinerouteLinespec>();
         tabModelmachines = new ArrayList<RowModelmachine>();
         tabTypemachines = new ArrayList<RowTypemachine>();
-        tabModelmachineTypemachines = new ArrayList<RowModelmachineTypemachine>();
-        tabMachineModelmachines = new ArrayList<RowMachineModelmachine>();
+        tabTypemachineModelmachines = new ArrayList<>();
+        tabModelmachineMachines = new ArrayList<>();
         tabFunctiondists = new ArrayList<>();
 
 
@@ -224,10 +225,10 @@ public class DataSet {
         tabTypemachines = (ArrayList<RowTypemachine>) setTabXML(tabTypemachines, RowTypemachine.class);
   //      showTab(tabTypemachines);
 
-        tabModelmachineTypemachines = (ArrayList<RowModelmachineTypemachine>) setTabXML(tabModelmachineTypemachines, RowModelmachineTypemachine.class);
+        tabTypemachineModelmachines = (ArrayList<RowTypemachineModelmachine>) setTabXML(tabTypemachineModelmachines, RowTypemachineModelmachine.class);
         //showTab(tabModelmachineTypemachines);
 
-        tabMachineModelmachines = (ArrayList<RowMachineModelmachine>) setTabXML(tabMachineModelmachines, RowMachineModelmachine.class);
+        tabModelmachineMachines = (ArrayList<RowModelmachineMachine>) setTabXML(tabModelmachineMachines, RowModelmachineMachine.class);
         // showTab(tabMachineModelmachines);
 
         tabFunctiondists = (ArrayList<RowFunctiondist>) setTabXML(tabFunctiondists, RowFunctiondist.class);
@@ -284,8 +285,8 @@ public class DataSet {
         writeTab(tabLineroutesMachines);
         writeTab(tabLineroutesEmployees);
         writeTab(tabLineroutesLinespecs);
-        writeTab(tabModelmachineTypemachines);
-        writeTab(tabMachineModelmachines);
+        writeTab(tabTypemachineModelmachines);
+        writeTab(tabModelmachineMachines);
         writeTab(tabFunctiondists);
         writeTab(tabParametrfunctiondists);
         writeTab(tabFunctiondistsParametrfunctiondistsTest);
@@ -628,39 +629,6 @@ public class DataSet {
         }
     }
 
- /*
-    public <cL> int NextId(Class cL, Object tab) {
-        int nextId = 1;
-        for (cL t : (ArrayList<cL>) tab) {
-            for (Field field : XmlRW.fieldsCl(cL)) {
-                field.setAccessible(true);
-                int field_getInt = 0;
-                try {
-                    field_getInt = field.getInt(t);
-                } catch (IllegalArgumentException exp) {
-                    exp.printStackTrace();
-                } catch (IllegalAccessException exp) {
-                    exp.printStackTrace();
-                }
-                if (field.getName() == "id") {
-                    if (field_getInt > nextId) {
-                        nextId = field_getInt;
-                    }
-                }
-                field.setAccessible(false);
-            }
-        }
-        return nextId;
-    }
-*/
-    /**
-     * Инициализация из xml- файла объекта Trest по значению id
-     *
-     * @param id
-     * @return
-     * @throws Throwable
-     * @throws ParserConfigurationException
-     */
     public Work getWork(int id) {
 
         for (RowWork w : tabWorks) {
@@ -768,7 +736,7 @@ public class DataSet {
         return typemachines;
     }
 
-
+    @Deprecated
     public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab, Class cRT, Class cRMT, String s) {
         ArrayList<T> typemachines = new ArrayList<>();
 
@@ -781,18 +749,6 @@ public class DataSet {
             }
             return row.getId() == wr.getId(); }).count();
 
-/*
-        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
-            if ( row.getId() == wr.getId()) {
-                for (RT w : rtTab) {
-                    if (wr.getId2() == w.getId()) {
-                        typemachines.add((T) createObject(w));
-                    }
-                }
-            }
-        }
-
-*/
         if (typemachines.isEmpty() == true) {     //  If the table is empty, create a new element. His type of equipment installed by default.
             try {
                 RT rSL = (RT) cRT.getDeclaredConstructor(DataSet.class, Class.class).newInstance(this, cRT);
@@ -830,10 +786,48 @@ public class DataSet {
 
 
 
+    public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab) {
+        ArrayList<T> typemachines = new ArrayList<>();
+
+//        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
+//            if ( row.getId() == wr.getId()) {
+//                for (RT w : rtTab) {
+//                    if (wr.getId2() == w.getId()) {
+//                        typemachines.add((T) createObject(w));
+//                    }
+//                }
+//            }
+//        }
+        rmtTab.stream().filter(wr->{
+            for (RT w : rtTab)  if (wr.getId2() == w.getId())   typemachines.add((T) createObject(w));
+            return row.getId() == wr.getId(); }).count();
+        return typemachines;
+    }
+
+
     //-------------------------------------------------------------------------------
     public <cL> cL createObject(RowIdNameDescription row) {
         Object m = null;
-
+    //    System.out.println("row.getName()="+row.getName());
+//= SectionDataSet: TypeMacine ========================================================================================/
+//----------------------------------------------------------------------------------------------------------------------
+        if (row.getClass() == RowTypemachine.class) {
+            ArrayList<Modelmachine> modelmachines= select (row, tabModelmachines, tabTypemachineModelmachines);
+            m = new Typemachine( row.getId(), row.getName(), modelmachines, row.getDescription());
+        }
+//----------------------------------------------------------------------------------------------------------------------
+        if (row.getClass() == RowModelmachine.class) {
+            ArrayList<Machine> machines = select(row, tabMachines, tabModelmachineMachines );
+            m = new Modelmachine(row.getId(),row.getName(),
+                    ((RowModelmachine) row).getImg(), machines, ((RowModelmachine) row).getOverallDimensionX(), ((RowModelmachine) row).getOverallDimensionY(),
+                    ((RowModelmachine) row).getWorkSizeX(), ((RowModelmachine) row).getWorkSizeY(),  row.getDescription()
+            );
+        }
+//----------------------------------------------------------------------------------------------------------------------
+        if (row.getClass() == RowMachine.class) {
+            m = (cL) new Machine(row.getId(), row.getName(),((RowMachine) row).getLocationX(), ((RowMachine) row).getLocationY(), ((RowMachine) row).getAngle(),  ((RowMachine) row).getState(),row.getDescription());
+        }
+//=====================================================================================================================/
         if (row.getClass() == RowFunctiondist.class) {
             ArrayList<Parametrfunctiondist>  ps = select(row, tabParametrfunctiondists, tabFunctiondistsParametrfunctiondistsTest, RowParametrfunctiondist.class, RowFunctiondistParametrfunctiondist.class);
             m =   new Functiondist (row.getId(), row.getName(),   ps, row.getDescription());
@@ -849,24 +843,11 @@ public class DataSet {
                                                         row.getDescription());
         }
 
-        if (row.getClass() == RowTypemachine.class) {
-            m = new Typemachine( row.getId(), row.getName(), row.getDescription());
-        }
+
 
         //------------------------------------------------------------------------
-        if (row.getClass() == RowModelmachine.class) {
-            ArrayList<Typemachine> typemachines = select(row, tabTypemachines, tabModelmachineTypemachines, RowTypemachine.class, RowModelmachineTypemachine.class);
-            m = new Modelmachine(((RowModelmachine) row).getId(), ((RowModelmachine) row).getName(),
-                    ((RowModelmachine) row).getImg(), typemachines.get(0).getName(), ((RowModelmachine) row).getOverallDimensionX(), ((RowModelmachine) row).getOverallDimensionY(),
-                    ((RowModelmachine) row).getWorkSizeX(), ((RowModelmachine) row).getWorkSizeY(), ((RowModelmachine) row).getDescription()
-            );
-        }
 
-        //------------------------------------------------------------------------
-        if (row.getClass() == RowMachine.class) {
-            ArrayList<Modelmachine> modelmachines = select(row, tabModelmachines, tabMachineModelmachines, RowModelmachine.class, RowMachineModelmachine.class);
-            m = (cL) new Machine(row.getId(), row.getName(), modelmachines.get(0), ((RowMachine) row).getLocationX(), ((RowMachine) row).getLocationY(), ((RowMachine) row).getAngle(),  ((RowMachine) row).getState(), ((RowMachine) row).getDescription());
-        }
+
 
 
         if (row.getClass() == RowEmployee.class) {
@@ -1512,21 +1493,21 @@ public class DataSet {
         this.tabTypemachines = tabTypemachines;
     }
 
-    public ArrayList<RowModelmachineTypemachine> getTabModelmachineTypemachines() {
-        return tabModelmachineTypemachines;
+    public ArrayList<RowTypemachineModelmachine> getTabModelmachineTypemachines() {
+        return tabTypemachineModelmachines;
     }
 
-    public void setTabModelmachineTypemachines(ArrayList<RowModelmachineTypemachine> tabModelmachineTypemachines) {
-        this.tabModelmachineTypemachines = tabModelmachineTypemachines;
+    public void setTabModelmachineTypemachines(ArrayList<RowTypemachineModelmachine> tabRowTypemachineModelmachines) {
+        this.tabTypemachineModelmachines = tabTypemachineModelmachines;
     }
 
 
-    public ArrayList<RowMachineModelmachine> getTabMachineModelmachines() {
-        return tabMachineModelmachines;
+    public ArrayList<RowModelmachineMachine> getTabMachineModelmachines() {
+        return tabModelmachineMachines;
     }
 
-    public void setTabMachineModelmachines(ArrayList<RowMachineModelmachine> tabMachineModelmachines) {
-        this.tabMachineModelmachines = tabMachineModelmachines;
+    public void setTabMachineModelmachines(ArrayList<RowModelmachineMachine> tabMachineModelmachines) {
+        this.tabModelmachineMachines = tabMachineModelmachines;
     }
 
     public ArrayList<RowFunctiondist> getTabFunctiondists() {

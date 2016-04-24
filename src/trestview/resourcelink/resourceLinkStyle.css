@@ -1,2 +1,3 @@
-/* Menu File*/
-#newItem        { -fx-background-image: url("../../resources/images/icons/new.png");       }
+.label       {    -fx-font-weight: bold;
+       /*           -fx-text-fill: red;     */
+}
