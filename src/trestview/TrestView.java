@@ -43,6 +43,7 @@ public class TrestView extends BorderPane implements Observer {
         this.trestModel =  trestModel;
         this.dataSet = trestModel.getDataSet();
         XmlRW.fxmlLoad(this,this,"trestview.fxml","","");
+
         MVC menu = new MVC(TMenuModel.class, TMenuController.class, TMenuView.class, this.trestModel );
         this.setTop((TMenuView)menu.getView());
         ((TMenuModel) menu.getModel()).addObserver(this);    // this: Depending on the keys pressed Menu is changing appearance for TrestView.
@@ -63,9 +64,9 @@ public class TrestView extends BorderPane implements Observer {
 
     private void updateCenter (TMenuModel o) {
         switch (o.getMenuItemCall()) {
-            case testOfMachineItem:             this.setCenter(machineTestView);     break;
+            case testOfMachineItem:             this.setCenter(machineTestView);                        break;
             case resourcesLinksPerspectiveItem: this.setCenter((BorderPane)resourceLink.getView());     break;
-            default:                                                                 break;
+            default:                                                                                    break;
         }
     }
 }

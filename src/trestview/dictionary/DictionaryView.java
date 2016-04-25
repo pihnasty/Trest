@@ -53,43 +53,15 @@ public class  DictionaryView extends Dialog implements Observer {
 
         setHeaderText(fxmlLoader.getResources().getString("HeaderText"));
         setResizable(true);             //  Defines whether the Stage is resizable or not by the user.
-
-        //this.getDialogPane().setMinWidth(1500);
-        //setWidth(1500);
         setHeight(700);
-       // this.primaryStage.getIcons().add(new Image("file:resources/images/address_book_32.png"));
 
-
-       // getDialogPane().getGraphic().getScene().getWindow().set
-     //   ArrayList icons = new ArrayList();
-      //  icons.add(new Image(IconT.class.getResource("work1.png").toString()));
-     //   this.getOwner().getScene().getWindow().impl_getPeer().setIcons(icons);
-
-
-      //  this.getDialogPane().setPrefWidth(455);
-       // this.getDialogPane().isScaleShape();
-
-
-     //   MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dictionaryModel, dictionaryModel.gettClass());
-        TableModel tableModel = new  TableModel(dataSet, dictionaryModel.gettClass());           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
-        TableController tableController = new TableController(tableModel);
-        TableViewP tableView = new TableViewP(tableModel, tableController);
-        tableModel.addObserver(tableView);
-
-        //  public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )
-
-   //    MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class, dictionaryModel, dictionaryModel.gettClass());
-
-        HboxpaneModel hboxpaneModel = new HboxpaneModel(dataSet, dictionaryModel.gettClass());
-        HboxpaneController hboxpaneController = new HboxpaneController(hboxpaneModel);
-        HboxpaneView hboxpaneView = new HboxpaneView(hboxpaneModel, hboxpaneController);
-        hboxpaneModel.addObserver(hboxpaneView);
-        hboxpaneModel.addObserver(tableModel);
-
+        MVC tableMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, dictionaryModel.gettClass() );
+        MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, dictionaryModel.gettClass());
+        hboxpaneMVC.addObserverP( (TableModel)tableMVC.getModel());
 
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(hboxpaneView,tableView);
-        //vbox.getChildren().addAll((HboxpaneView) hboxpaneMVC.getView(),(TableViewP) tableMVC.getView());
+        vbox.getChildren().addAll((HboxpaneView)hboxpaneMVC.getView(),(TableViewP)tableMVC.getView());
+
         vbox.setSpacing(5);   // The amount of vertical space between each child in the vbox.
         vbox.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 

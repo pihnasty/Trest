@@ -38,6 +38,25 @@ public class MVC {
         catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
 
+    public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet, Class cL )   {
+        try {
+            Constructor mConstructor = mClass.getConstructor(DataSet.class, Class.class);
+            model = mConstructor.newInstance(dataSet,cL);
+
+            Constructor cConstructor = cClass.getConstructor( mClass);
+            Object controller = cConstructor.newInstance(model);
+
+            Constructor vConstructor = vClass.getConstructor( mClass, cClass);
+            view = vConstructor.newInstance(model,controller);
+
+            methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
+            methodAddObserver.invoke(model, view);
+
+        } catch (NoSuchMethodException e)  {      e.printStackTrace();        }
+        catch (IllegalAccessException e) {      e.printStackTrace();        }
+        catch (InstantiationException e) {      e.printStackTrace();        }
+        catch (InvocationTargetException e) {    e.printStackTrace();       }
+    }
 
     public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )   {
         try {
@@ -121,7 +140,7 @@ public class MVC {
     public Object getModel() {   return model;   }
     public Object getView()  {   return view;    }
 
-    public MVC addAddObserverP (Observer observer) {
+    public MVC addObserverP (Observer observer) {
         try   {   methodAddObserver.invoke(model, observer); }
         catch (IllegalAccessException e)    { e.printStackTrace();    }
         catch (InvocationTargetException e) { e.printStackTrace();    }

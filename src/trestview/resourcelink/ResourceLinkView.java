@@ -1,18 +1,22 @@
 package trestview.resourcelink;
 
+import designpatterns.MVC;
+import entityProduction.Work;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
+import javafx.geometry.Orientation;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
+import persistence.loader.tabDataSet.RowMachine;
+import persistence.loader.tabDataSet.RowWork;
 import resources.images.icons.IconT;
 import trestview.hboxpane.HboxpaneController;
 import trestview.hboxpane.HboxpaneModel;
@@ -21,6 +25,8 @@ import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Optional;
@@ -30,47 +36,71 @@ import java.util.Optional;
  */
 public class  ResourceLinkView extends BorderPane implements Observer {
 
-    public Observable resourceLinkModel;
+    private Observable resourceLinkModel;
+    private DataSet dataSet;
     public ResourceLinkView (ResourceLinkModel resourceLinkModel, ResourceLinkController resourceLinkController ) {
+        this.dataSet = resourceLinkModel.getDataSet();
         //this.dictionaryModel =dictionaryModel;
         //this.dataSet =dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
-        FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,resourceLinkController, "resourceLinkView.fxml","resources.ui", "");
+        FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,resourceLinkController, "resourceLinkView.fxml","resources.ui", "resourceLinkStyle.css");
+
+        SplitPane splitPane = new SplitPane();
+        SplitPane splitPaneInner = new SplitPane();
+
+//----------------------------------------------------------------------------------------------------------------------
+        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowWork.class );
+        MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowWork.class);
+        hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
+
+        VBox vboxWork = new VBox();
+
+        Label labelWork = new Label(fxmlLoader.getResources().getString("ListManufacturing"));
+        labelWork.setGraphic(new ImageView(new Image(IconT.class.getResource("RowWork.png").toString())));
+
+        vboxWork.getChildren().addAll(labelWork,(HboxpaneView)hboxpaneWorkMVC.getView(),(TableViewP)tableWorkMVC.getView());
+        vboxWork.setSpacing(5);   // The amount of vertical space between each child in the vbox.
+        vboxWork.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
+//----------------------------------------------------------------------------------------------------------------------
+        MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowMachine.class );
+        MVC hboxpaneMVCmacine = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowMachine.class);
+        hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
+
+        VBox vboxMacine = new VBox();
+        Label labelMacine = new Label(fxmlLoader.getResources().getString("ListEquipment"));
+        labelMacine.setGraphic(new ImageView(new Image(IconT.class.getResource("RowMachine.png").toString())));
+
+        vboxMacine.getChildren().addAll(labelMacine,(HboxpaneView)hboxpaneMVCmacine.getView(),(TableViewP)tableMacineMVC.getView());
+        vboxMacine.setSpacing(5);   // The amount of vertical space between each child in the vbox.
+        vboxMacine.setPadding(new Insets(30, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
+//----------------------------------------------------------------------------------------------------------------------
+        VBox vboxSplitPaneLeft = new VBox();
+        vboxSplitPaneLeft.getChildren().addAll(vboxWork,vboxMacine);
+        vboxSplitPaneLeft.setSpacing(5);   // The amount of vertical space between each child in the vbox.
+        vboxSplitPaneLeft.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
+//----------------------------------------------------------------------------------------------------------------------
 
 
-/*        TableModel tableModel = new  TableModel(dataSet, dictionaryModel.gettClass());           //( TableModel)TableMolelBuilder.build(dictionaryModel, dictionaryModel.gettClass()); //  new TableModel(this.dictionaryModel.getTMenuModel().getTrestModel().getTrest().getWorks(), Work.class);
-        TableController tableController = new TableController(tableModel);
-        TableViewP tableView = new TableViewP(tableModel, tableController);
-        tableModel.addObserver(tableView);
-
-        //  public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )
-
-   //    MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class, dictionaryModel, dictionaryModel.gettClass());
-
-        HboxpaneModel hboxpaneModel = new HboxpaneModel(dataSet, dictionaryModel.gettClass());
-        HboxpaneController hboxpaneController = new HboxpaneController(hboxpaneModel);
-        HboxpaneView hboxpaneView = new HboxpaneView(hboxpaneModel, hboxpaneController);
-        hboxpaneModel.addObserver(hboxpaneView);
-        hboxpaneModel.addObserver(tableModel);
 
 
-        VBox vbox = new VBox();
-        vbox.getChildren().addAll(hboxpaneView,tableView);
-        //vbox.getChildren().addAll((HboxpaneView) hboxpaneMVC.getView(),(TableViewP) tableMVC.getView());
-        vbox.setSpacing(5);   // The amount of vertical space between each child in the vbox.
-        vbox.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
+        final StackPane sp2 = new StackPane();
+        sp2.getChildren().add(new Button("Button Two"));
 
-        getDialogPane().setContent( vbox);
-      //  getDialogPane().setContent(tableView);
+        final StackPane sp3 = new StackPane();
+        sp3.getChildren().add(new Button("Button Tree"));
 
-        ButtonType searchButtonType = new ButtonType("Search", ButtonBar.ButtonData.OK_DONE);
-        getDialogPane().getButtonTypes().addAll(searchButtonType,ButtonType.CANCEL);        // Create the layout for the controls.
+        splitPane.getItems().addAll(vboxSplitPaneLeft, splitPaneInner);
 
-        Optional<Pair<String, Boolean>> result = showAndWait();        // Display dialog box and wait for user response.
+        splitPaneInner.getItems().addAll(sp2, sp3);
+        splitPaneInner.setDividerPositions(0.3f, 0.6f);
+        splitPaneInner.setOrientation(Orientation.VERTICAL);
 
-        // If the user closed the dialog box via the search button, output the
-        // chosen search text and case-sensitive search status.
 
-*/
+        splitPane.setDividerPositions(0.2f, 0.6f);
+
+
+         setCenter(splitPane);
+
+
     }
 
     @Override

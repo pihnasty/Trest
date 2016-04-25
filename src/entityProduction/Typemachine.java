@@ -8,23 +8,25 @@ package entityProduction;
 import old.database.DataSet;
 import old.database.tabDataSet.RowTypemachine;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class Typemachine extends RowTypemachine {
 
-    /**
-     * Инициализирует строку "Технологическая операция"
-     *
-     * @param id	Id для типа машины
-     * @param name	Название типа машины
-     * @param description	Описание строки "типа машины"
-     */
-    public Typemachine(int id, String name, String description) {
-        super(id, name, description);
-    }
+    private ArrayList<Modelmachine> modelmachines;
 
-    public Typemachine() {
+    public Typemachine(int id, String name,ArrayList<Modelmachine> modelmachines, String description) {
+        super(id, name, description);
+        this.modelmachines = modelmachines;
     }
 
     public Typemachine(DataSet dataSet) {
         super(dataSet, Typemachine.class);
     }
+
+    public ArrayList<Modelmachine> getModelmachines() {       return modelmachines;    }
+
+    public void setModelmachines(ArrayList<Modelmachine> modelmachines) {       this.modelmachines = modelmachines;    }
+
 }
