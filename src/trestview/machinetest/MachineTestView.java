@@ -18,6 +18,9 @@ import persistence.loader.XmlRW;
 import trestview.machinetest.charts.ChartCommonModel;
 import trestview.machinetest.charts.ChartController;
 import trestview.machinetest.charts.ChartView;
+import trestview.machinetest.module3.Controller3;
+import trestview.machinetest.module3.Model3;
+import trestview.machinetest.module3.View3;
 
 
 import java.io.IOException;
@@ -73,27 +76,33 @@ public class MachineTestView extends BorderPane implements Observer {
         //creating the chart
         final NumberAxis xAxis = new NumberAxis();
         final NumberAxis yAxis = new NumberAxis();
+
+        final NumberAxis xAxis1 = new NumberAxis();
+        final NumberAxis yAxis1 = new NumberAxis();
+
+        final NumberAxis xAxis2 = new NumberAxis();
+        final NumberAxis yAxis2 = new NumberAxis();
         //----------------------------------------------------//
-        ChartCommonModel chartCommonModel = new ChartCommonModel();
-        ChartController chartController = new ChartController(chartCommonModel);
-        chartView = new ChartView(xAxis, yAxis);
-        machineTestModel.addObserver(chartView);
+        Model3 model3 = new Model3();
+        Controller3 controller3 = new Controller3(model3);
+        View3 view3 = new View3(xAxis, yAxis, model3, controller3);
+        model3.addObserver(view3);
 
         ChartCommonModel chartCommonModel1 = new ChartCommonModel();
         ChartController chartController1 = new ChartController(chartCommonModel1);
-        chartView1 = new ChartView(xAxis, yAxis);
+        chartView1 = new ChartView(xAxis1, yAxis1, chartCommonModel1, chartController1);
         machineTestModel.addObserver(chartView1);
 
         ChartCommonModel chartCommonModel2 = new ChartCommonModel();
         ChartController chartController2 = new ChartController(chartCommonModel2);
-        chartView2 = new ChartView(xAxis, yAxis);
+        chartView2 = new ChartView(xAxis2, yAxis2, chartCommonModel2, chartController2);
         machineTestModel.addObserver(chartView2);
 
         //---------------------------------------------------//
 
-        xAxis.setLabel("X");
+//        xAxis.setLabel("X");
         series = new XYChart.Series();
-        series.setName("Random values");    //Put in resourses
+//        series.setName("Random values");    //Put in resourses
 
 
 //        lineChart = new LineChart<Number, Number>(xAxis,yAxis);
@@ -102,10 +111,11 @@ public class MachineTestView extends BorderPane implements Observer {
         populateSeries(machineTestModel.getRandomValuesList());
 
         VBox vBox1 = new VBox(5);
-        chartView.setMaxSize(600, 400);
+        vBox1.setSpacing(5);
+//        chartView.setMaxSize(600, 400);
         chartView1.setMaxSize(600, 400);
         chartView2.setMaxSize(600, 400);
-        vBox1.getChildren().addAll(chartView, chartView1, chartView2);
+        vBox1.getChildren().addAll(view3, chartView1, chartView2);
         splitPane.getItems().addAll(vBox, vBox1);
 
         setCenter(splitPane);
@@ -116,7 +126,7 @@ public class MachineTestView extends BorderPane implements Observer {
             series.getData().add(new XYChart.Data(i, list.get(i)));
         }
 
-        chartView.getData().add(series);
+        chartView1.getData().add(series);
 //        chartView1.getData().add(series);
 //        chartView2.getData().add(series);
     }
