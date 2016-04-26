@@ -281,7 +281,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                 break;
             case editRowTable:
                 this.setEditable(true);
-                System.out.println("methodCall = MethodCall.editRowTable;22");
                 break;
             case delRowTable:
                 data.remove(selectIndex);
