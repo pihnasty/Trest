@@ -1,8 +1,6 @@
 package trestview.machinetest.module3;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.fxml.Initializable;
-import trestview.machinetest.charts.ChartCommonModel;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,12 +8,12 @@ import java.util.ResourceBundle;
 /**
  * Created by Роман on 15.04.2016.
  */
-public class Controller3 implements Initializable {
+public class Module3Controller implements Initializable {
 
-    private Model3 model3;
+    private Module3Model module3Model;
 
-    public Controller3(Model3 model3) {
-        this.model3 = model3;
+    public Module3Controller(Module3Model module3Model) {
+        this.module3Model = module3Model;
     }
 
     @Override

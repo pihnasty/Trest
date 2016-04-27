@@ -1,29 +1,22 @@
 package trestview.machinetest;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Pair;
 import persistence.loader.XmlRW;
 import trestview.machinetest.charts.ChartCommonModel;
 import trestview.machinetest.charts.ChartController;
 import trestview.machinetest.charts.ChartView;
-import trestview.machinetest.module3.Controller3;
-import trestview.machinetest.module3.Model3;
-import trestview.machinetest.module3.View3;
+import trestview.machinetest.module3.Module3Controller;
+import trestview.machinetest.module3.Module3Model;
+import trestview.machinetest.module3.Module3View;
 
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -83,20 +76,20 @@ public class MachineTestView extends BorderPane implements Observer {
         final NumberAxis xAxis2 = new NumberAxis();
         final NumberAxis yAxis2 = new NumberAxis();
         //----------------------------------------------------//
-        Model3 model3 = new Model3();
-        Controller3 controller3 = new Controller3(model3);
-        View3 view3 = new View3(xAxis, yAxis, model3, controller3);
-        model3.addObserver(view3);
+        Module3Model module3Model = new Module3Model();
+        Module3Controller module3Controller = new Module3Controller(module3Model);
+        Module3View module3View = new Module3View(module3Model, module3Controller);
+        module3Model.addObserver(module3View);
 
-        ChartCommonModel chartCommonModel1 = new ChartCommonModel();
-        ChartController chartController1 = new ChartController(chartCommonModel1);
-        chartView1 = new ChartView(xAxis1, yAxis1, chartCommonModel1, chartController1);
-        machineTestModel.addObserver(chartView1);
-
-        ChartCommonModel chartCommonModel2 = new ChartCommonModel();
-        ChartController chartController2 = new ChartController(chartCommonModel2);
-        chartView2 = new ChartView(xAxis2, yAxis2, chartCommonModel2, chartController2);
-        machineTestModel.addObserver(chartView2);
+//        ChartCommonModel chartCommonModel1 = new ChartCommonModel();
+//        ChartController chartController1 = new ChartController(chartCommonModel1);
+//        chartView1 = new ChartView(xAxis1, yAxis1, chartCommonModel1, chartController1);
+//        machineTestModel.addObserver(chartView1);
+//
+//        ChartCommonModel chartCommonModel2 = new ChartCommonModel();
+//        ChartController chartController2 = new ChartController(chartCommonModel2);
+//        chartView2 = new ChartView(xAxis2, yAxis2, chartCommonModel2, chartController2);
+//        machineTestModel.addObserver(chartView2);
 
         //---------------------------------------------------//
 
@@ -113,9 +106,9 @@ public class MachineTestView extends BorderPane implements Observer {
         VBox vBox1 = new VBox(5);
         vBox1.setSpacing(5);
 //        chartView.setMaxSize(600, 400);
-        chartView1.setMaxSize(600, 400);
-        chartView2.setMaxSize(600, 400);
-        vBox1.getChildren().addAll(view3, chartView1, chartView2);
+//        chartView1.setMaxSize(600, 400);
+//        chartView2.setMaxSize(600, 400);
+        vBox1.getChildren().addAll(module3View); //, chartView1, chartView2);
         splitPane.getItems().addAll(vBox, vBox1);
 
         setCenter(splitPane);
@@ -126,7 +119,7 @@ public class MachineTestView extends BorderPane implements Observer {
             series.getData().add(new XYChart.Data(i, list.get(i)));
         }
 
-        chartView1.getData().add(series);
+//        chartView1.getData().add(series);
 //        chartView1.getData().add(series);
 //        chartView2.getData().add(series);
     }
