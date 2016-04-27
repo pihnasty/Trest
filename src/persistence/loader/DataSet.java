@@ -7,7 +7,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -550,7 +549,7 @@ public class DataSet {
 //                    }
 //                }
                 return new Trest(t.getId(), t.getName(), t.getDescription(),
-                        select(t,tabWorks,tabTrestsWorks));
+                                 select(t,tabWorks,tabTrestsWorks));
             }
         }
         return null;
@@ -699,27 +698,14 @@ public class DataSet {
 
         for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
             if ( row.getId() == wr.getId()) {
-                boolean [] t  = {true};
-
-//              rtTab.stream().filter( w->{
-//                  System.out.println("wr.getId()="+wr.getId()+" w.getId()="+w.getId());
-//                  typemachines.add((T) createObject(w)); t[0] = false;  return wr.getId2() == w.getId(); }).count();
-
-                for (RT w : rtTab) if (wr.getId2() == w.getId()) { typemachines.add((T) createObject(w)); t[0] = false;}
-                if (t[0]) deleteFrom_rmtTab.add(wr);
+                boolean t  = true;
+                for (RT w : rtTab) if (wr.getId2() == w.getId()) { typemachines.add((T) createObject(w)); t= false;}
+                if (t) deleteFrom_rmtTab.add(wr);
             }
         }
 
-//        rmtTab.stream().filter(wr->{
-//            boolean t = true;
-//            for (RT w : rtTab)  if (wr.getId2() == w.getId()) {  typemachines.add((T) createObject(w)); t = false; }
-//            if (t) deleteFrom_rmtTab.add(wr);
-//            return row.getId() == wr.getId(); }).count();
-
-        for ( int i2 =deleteFrom_rmtTab.size()-1; i2>=0; i2-- )
-            for (int i= 0; i< rmtTab.size(); i++ )
-                if (rmtTab.get(i).equals(deleteFrom_rmtTab.get(i2))) rmtTab.remove(rmtTab.get(i));
-        rmtTab.trimToSize();
+      rmtTab.removeAll(deleteFrom_rmtTab);
+      rmtTab.trimToSize();
         return typemachines;
     }
 
@@ -732,7 +718,7 @@ public class DataSet {
         if (row.getClass() == RowWork.class) {
             ArrayList<Employee> employees = select(row, tabEmployees, tabWorksEmployees);
             ArrayList<Subject_labour> subject_labours = new ArrayList<Subject_labour>();
-            ArrayList<Order> orders = new ArrayList<Order>();
+            ArrayList<Order> orders = new ArrayList<>();
             m = new Work(row.getId(), row.getName(),( (RowWork) row).getScheme(), ( (RowWork) row).getOverallSize(), ( (RowWork) row).getScaleEquipment(),
                     select(row, tabMachines, tabWorksMachines),     //  ArrayList<Machine> machines
                     null, null, null, row.getDescription());
@@ -742,17 +728,16 @@ public class DataSet {
 //= SectionDataSet: TypeMachine ========================================================================================/
 //----------------------------------------------------------------------------------------------------------------------
         if (row.getClass() == RowTypemachine.class) {
-            ArrayList<Modelmachine> modelmachines = new ArrayList<>();
-            modelmachines =   select (row, tabModelmachines, tabTypemachineModelmachines);
             m = new Typemachine( row.getId(), row.getName(),
-                    modelmachines,
+                    select (row, tabModelmachines, tabTypemachineModelmachines),    //  ArrayList<Modelmachines> modelmachines
                     row.getDescription());
         }
 //----------------------------------------------------------------------------------------------------------------------
         if (row.getClass() == RowModelmachine.class) {
-            ArrayList<Machine> machines = select(row, tabMachines, tabModelmachineMachines );
-            m = new Modelmachine(row.getId(),row.getName(),
-                    ((RowModelmachine) row).getImg(), machines, ((RowModelmachine) row).getOverallDimensionX(), ((RowModelmachine) row).getOverallDimensionY(),
+             m = new Modelmachine(row.getId(),row.getName(),
+                    ((RowModelmachine) row).getImg(),
+                    select(row, tabMachines, tabModelmachineMachines ),   //  ArrayList<Machine> machines
+                    ((RowModelmachine) row).getOverallDimensionX(), ((RowModelmachine) row).getOverallDimensionY(),
                     ((RowModelmachine) row).getWorkSizeX(), ((RowModelmachine) row).getWorkSizeY(),  row.getDescription()
             );
         }

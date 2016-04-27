@@ -25,7 +25,7 @@ public class TrestModel extends Observable {
      //   dataSet.openDataSet();						// Считываем данные из XML-файлов в поля DataSet.
 
         this.sectionDataSet = new SectionDataSet(dataSet);
-
+        DataSet.showTab(sectionDataSet.getSectionTypemachines());
 
          this.trest= dataSet.getTrest(1);					// Инициализируем объект Трест по id=1
 

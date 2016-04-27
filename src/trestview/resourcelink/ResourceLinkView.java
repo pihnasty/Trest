@@ -48,6 +48,7 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         SplitPane splitPaneInner = new SplitPane();
 
 //----------------------------------------------------------------------------------------------------------------------
+        TableModel b = new TableModel(dataSet.getTabWorks());
         MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowWork.class );
         MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowWork.class);
         hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
@@ -78,9 +79,6 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         vboxSplitPaneLeft.setSpacing(5);   // The amount of vertical space between each child in the vbox.
         vboxSplitPaneLeft.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 //----------------------------------------------------------------------------------------------------------------------
-
-
-
 
         final StackPane sp2 = new StackPane();
         sp2.getChildren().add(new Button("Button Two"));

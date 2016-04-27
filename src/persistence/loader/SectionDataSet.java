@@ -2,33 +2,40 @@ package persistence.loader;
 
 import entityProduction.Machine;
 import entityProduction.Typemachine;
+import persistence.loader.tabDataSet.RowIdNameDescription;
 import persistence.loader.tabDataSet.RowTypemachine;
 
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SectionDataSet {
-    ArrayList<Machine> sectionMachines;
+
+    private DataSet dataSet;
+
+    private  List<Typemachine> sectionTypemachines = new  ArrayList<>();
+
     public SectionDataSet(DataSet dataSet) {
 
-        ArrayList<Typemachine> sectionTypemachines = new ArrayList<>();
-
-        for (RowTypemachine row : dataSet.getTabTypemachines()) sectionTypemachines.add(dataSet.createObject(row));
-
-        DataSet .showTab(sectionTypemachines);
-
-   //     for (Typemachine row : sectionTypemachines)   DataSet .showTab(row.getModelmachines());
-
-
-
-
-
-
-
-
-
+        this.dataSet = dataSet;
+        sectionTypemachines  = getTab ((dataSet.getTabTypemachines()));
 
     }
 
+    public <cL> List<cL> getTab (List tab){
+        return (List<cL>) tab.stream().map(row->(cL)dataSet.createObject((RowIdNameDescription) row)).collect(Collectors.toList());      //   for (RowTypemachine row : dataSet.getTabTypemachines()) sectionTypemachines.add(dataSet.createObject(row));
+    }
+
+    public List<Typemachine> getSectionTypemachines() {
+        return sectionTypemachines;
+    }
+
+    public void setSectionTypemachines(List<Typemachine> sectionTypemachines) {
+        this.sectionTypemachines = sectionTypemachines;
+    }
 
 }

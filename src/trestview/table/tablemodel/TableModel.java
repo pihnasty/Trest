@@ -11,6 +11,7 @@ import trestview.hboxpane.MethodCall;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -27,31 +28,43 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         this.dataset = dataSet;
     }
 
+    public TableModel(ArrayList<?> tab) {
+        this.tab = tab;
+
+    //    this.tClass = (Class) ((ParameterizedType) tab.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        this.tClass = RowFunctiondist.class;
+        this.parametersOfColumns = buildParametersColumn() ;
+        System.out.println( ((ParameterizedType) tab.getClass() .getGenericSuperclass()).getActualTypeArguments()[0]);
+    }
+
+
     /**
      * @param tClass    The data type for a table row. This is [RowWork.class] for the table = [ArrayList<RowWork>].
      */
     public TableModel(DataSet dataSet, Class<cL> tClass) {
         this.tab = dataSet.getTabIND(tClass);
-        this.tClass = tClass;
+                  this.tClass =  tClass;
+
+   //     Class<cL> persistentClass = (Class<cL>)    ((ParameterizedType)getClass().getGenericSuperclass()) .getActualTypeArguments()[0];
+
+
+
+
         this.parametersOfColumns = buildParametersColumn() ;
         this.dataset = dataSet;
     }
     public TableModel(DataSet dataSet, ArrayList<cL> tab) {
         // TODO Найти метод определения базового типа данных [cL] в массиве ArrayList<cL>
-            this.tab = tab;
-            this.tClass = tab.get(0).getClass();
-          //  this.tClass = RowFunctiondist.class;
-            this.parametersOfColumns = buildParametersColumn() ;
-            this.dataset = dataSet;
+        this.tab = tab;
+        this.tClass = tab.get(0).getClass();
+        //  this.tClass = RowFunctiondist.class;
+        this.parametersOfColumns = buildParametersColumn() ;
+        this.dataset = dataSet;
     }
-
-
-
 
 
     @Override
     public void update(Observable o, Object arg) {
-
         if (o.getClass()==HboxpaneModel.class) { updateHBoxpaneModel((HboxpaneModel) o);   }
             changed();
     }
