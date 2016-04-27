@@ -24,6 +24,7 @@ import trestview.hboxpane.HboxpaneView;
 import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -48,10 +49,9 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         SplitPane splitPaneInner = new SplitPane();
 
 //----------------------------------------------------------------------------------------------------------------------
-        TableModel b = new TableModel(dataSet.getTabWorks());
-        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowWork.class );
-        MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowWork.class);
-        hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
+        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, Rule.RowWork );
+         MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.RowWork);
+         hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
 
         VBox vboxWork = new VBox();
 
@@ -62,9 +62,9 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         vboxWork.setSpacing(5);   // The amount of vertical space between each child in the vbox.
         vboxWork.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 //----------------------------------------------------------------------------------------------------------------------
-        MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowMachine.class );
-        MVC hboxpaneMVCmacine = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowMachine.class);
-        hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
+         MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, Rule.RowMachine );
+         MVC hboxpaneMVCmacine = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.RowMachine);
+         hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
 
         VBox vboxMacine = new VBox();
         Label labelMacine = new Label(fxmlLoader.getResources().getString("ListEquipment"));

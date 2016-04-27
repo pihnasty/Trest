@@ -8,6 +8,7 @@ import persistence.loader.tabDataSet.RowTypemachine;
 import persistence.loader.tabDataSet.RowWork;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -28,38 +29,27 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
         this.dataset = dataSet;
     }
 
-    public TableModel(ArrayList<?> tab) {
-        this.tab = tab;
-
-    //    this.tClass = (Class) ((ParameterizedType) tab.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        this.tClass = RowFunctiondist.class;
-        this.parametersOfColumns = buildParametersColumn() ;
-        System.out.println( ((ParameterizedType) tab.getClass() .getGenericSuperclass()).getActualTypeArguments()[0]);
-    }
-
 
     /**
      * @param tClass    The data type for a table row. This is [RowWork.class] for the table = [ArrayList<RowWork>].
      */
-    public TableModel(DataSet dataSet, Class<cL> tClass) {
+    public TableModel(DataSet dataSet, Rule rule) {
+        this.rule = rule;
+        this.tClass =  rule.getClassTab();
         this.tab = dataSet.getTabIND(tClass);
-                  this.tClass =  tClass;
-
-   //     Class<cL> persistentClass = (Class<cL>)    ((ParameterizedType)getClass().getGenericSuperclass()) .getActualTypeArguments()[0];
-
-
 
 
         this.parametersOfColumns = buildParametersColumn() ;
         this.dataset = dataSet;
     }
-    public TableModel(DataSet dataSet, ArrayList<cL> tab) {
+    public TableModel(ArrayList<cL> tab, Rule rule) {
         // TODO Найти метод определения базового типа данных [cL] в массиве ArrayList<cL>
+        this.rule=rule;
         this.tab = tab;
-        this.tClass = tab.get(0).getClass();
+        this.tClass = rule.getClassTab();
         //  this.tClass = RowFunctiondist.class;
         this.parametersOfColumns = buildParametersColumn() ;
-        this.dataset = dataSet;
+        this.dataset = null;
     }
 
 

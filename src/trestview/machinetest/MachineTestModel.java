@@ -8,6 +8,7 @@ import trestview.menu.TMenuModel;
 import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -40,7 +41,7 @@ public class MachineTestModel extends Observable {
      //   for (RowFunctiondist rowFun: dataSet.getTabFunctiondists()) functiondists.add(dataSet.createObject( rowFun));   // Это эквивалентно  dataSet.getTabFunctiondists().stream().filter(w->{functiondists.add(dataSet.createObject(w)); return true;}).count();
         dataSet.getTabFunctiondists().stream().filter(w->{functiondists.add(dataSet.createObject(w)); return true;}).count();
         DataSet.showTab(functiondists);
-        MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, dataSet, functiondists);
+       MVC tableMVC = new MVC(TableModel.class, TableController.class, TableViewP.class, functiondists, Rule.Functiondist);
         tableView = (TableViewP) tableMVC.getView();
 //--------------------------------------------------------------------------------------------------
 

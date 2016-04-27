@@ -10,6 +10,7 @@ import trestview.menu.TMenuModel;
 import trestview.table.tablemodel.abstracttablemodel.ColumnsOrderMap;
 import trestview.table.tablemodel.abstracttablemodel.ParametersColumn;
 import trestview.table.tablemodel.abstracttablemodel.ParametersColumnMap;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Field;
 import java.util.*;
@@ -25,6 +26,7 @@ public abstract class AbstractTableModel<cL> extends Observable {
     protected DataSet dataset;
     protected ArrayList<ParametersColumn>  parametersOfColumns;
     protected Class tClass;
+    protected Rule rule;
 
     public ArrayList<ParametersColumn> getParametersOfColumns() {
         return parametersOfColumns;
@@ -39,7 +41,7 @@ public abstract class AbstractTableModel<cL> extends Observable {
 
     public ArrayList<ParametersColumn> buildParametersColumn() {
         parametersOfColumns = new ArrayList<>();
-        ColumnsOrderMap.getColumns(tClass).stream().map(s-> parametersOfColumns.add(ParametersColumnMap.getParametersColumn(s))).count();
+        ColumnsOrderMap.getColumns(rule).stream().map(s-> parametersOfColumns.add(ParametersColumnMap.getParametersColumn(s))).count();
         return parametersOfColumns;
     }
 
