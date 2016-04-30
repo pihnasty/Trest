@@ -1,5 +1,6 @@
 package trestview.table.tablemodel;
 
+import entityProduction.Trest;
 import entityProduction.Work;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
@@ -24,6 +25,7 @@ public abstract class AbstractTableModel<cL> extends Observable {
     protected ArrayList<cL> tab;
     protected cL selectRow;
     protected DataSet dataset;
+    protected Trest trest;
     protected ArrayList<ParametersColumn>  parametersOfColumns;
     protected Class tClass;
     protected Rule rule;

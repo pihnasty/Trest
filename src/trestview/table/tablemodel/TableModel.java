@@ -1,13 +1,12 @@
 package trestview.table.tablemodel;
 
+import entityProduction.Work;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
-import persistence.loader.tabDataSet.RowFunctiondist;
-import persistence.loader.tabDataSet.RowMachine;
-import persistence.loader.tabDataSet.RowTypemachine;
-import persistence.loader.tabDataSet.RowWork;
+import persistence.loader.tabDataSet.*;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.MethodCall;
+import trestview.resourcelink.ResourceLinkModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Constructor;
@@ -31,17 +30,34 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
 
 
     /**
-     * @param tClass    The data type for a table row. This is [RowWork.class] for the table = [ArrayList<RowWork>].
+     * @param  rule    The data type for a table row. This is [RowWork.class] for the table = [ArrayList<RowWork>].
      */
+    public TableModel(Observable o, Rule rule) {
+        this.rule = rule;
+        this.tClass =  rule.getClassTab();
+        if(rule.getClassTab()== Work.class)  {
+            this.dataset = ((ResourceLinkModel)o).getDataSet();
+            this.trest = ((ResourceLinkModel)o).getTrest();
+            this.tab = trest.getWorks();
+        }
+
+
+        this.parametersOfColumns = buildParametersColumn() ;
+
+    }
+
     public TableModel(DataSet dataSet, Rule rule) {
         this.rule = rule;
         this.tClass =  rule.getClassTab();
         this.tab = dataSet.getTabIND(tClass);
-
-
         this.parametersOfColumns = buildParametersColumn() ;
         this.dataset = dataSet;
     }
+
+
+
+
+
     public TableModel(ArrayList<cL> tab, Rule rule) {
         // TODO Найти метод определения базового типа данных [cL] в массиве ArrayList<cL>
         this.rule=rule;
@@ -64,15 +80,50 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
             case addRowTable:
                 methodCall = MethodCall.addRowTable;
                 try {
-                    Constructor constructor = tClass.getConstructor(DataSet.class, Class.class);
-                    selectRow = constructor.newInstance(this.dataset,tClass);
-                } catch (NoSuchMethodException e)  { e.printStackTrace(); }
-                  catch (InstantiationException e) { e.printStackTrace(); }
-                  catch (IllegalAccessException e) { e.printStackTrace(); }
-                  catch (InvocationTargetException e) { e.printStackTrace(); }
+                    Constructor constructor;
+                    RowIdNameDescription r;
+                    ArrayList<RowIdNameDescription> tabRow;
+                    switch (rule) {
+                        case RowFunctiondist:
+
+                            break;
+                        case Work:
+                            System.out.println("case Work:");
+                            constructor = tClass.getSuperclass().getConstructor(DataSet.class, Class.class);
+                            r = (RowIdNameDescription) constructor.newInstance(this.dataset,tClass.getSuperclass());
+
+                            tabRow = dataset.getTabIND(tClass.getSuperclass());
+                            tabRow.add(r);
+
+                            selectRow = dataset.createObject(r);
+                            tab.add(selectRow);
+                            break;
+                        case Machine:
+                            System.out.println("case Work:");
+                            constructor = tClass.getSuperclass().getConstructor(DataSet.class, Class.class);
+                            r = (RowIdNameDescription) constructor.newInstance(this.dataset,tClass.getSuperclass());
+
+                            tabRow = dataset.getTabIND(tClass.getSuperclass());
+                            tabRow.add(r);
+
+                            selectRow = dataset.createObject(r);
+                            tab.add(selectRow);
+                            break;
+                        default:
+                            constructor = tClass.getConstructor(DataSet.class, Class.class);
+                            selectRow = constructor.newInstance(this.dataset,tClass);
+                            tab.add(selectRow);
+                            System.out.println("                  default:");
+                            break;
+                    }
+
+                } catch (NoSuchMethodException e)       { e.printStackTrace(); }
+                  catch (InstantiationException e)      { e.printStackTrace(); }
+                  catch (IllegalAccessException e)      { e.printStackTrace(); }
+                  catch (InvocationTargetException e)   { e.printStackTrace(); }
 
 
-                if (!tClass.equals(RowFunctiondist.class) )  tab.add(selectRow);
+
                 break;
             case saveRowTable:
                 methodCall = MethodCall.saveRowTable;

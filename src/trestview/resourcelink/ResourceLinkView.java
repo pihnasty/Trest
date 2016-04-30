@@ -1,6 +1,7 @@
 package trestview.resourcelink;
 
 import designpatterns.MVC;
+import entityProduction.Trest;
 import entityProduction.Work;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -39,8 +40,11 @@ public class  ResourceLinkView extends BorderPane implements Observer {
 
     private Observable resourceLinkModel;
     private DataSet dataSet;
+    private Trest trest;
+
     public ResourceLinkView (ResourceLinkModel resourceLinkModel, ResourceLinkController resourceLinkController ) {
         this.dataSet = resourceLinkModel.getDataSet();
+        this.trest = resourceLinkModel.getTrest();
         //this.dictionaryModel =dictionaryModel;
         //this.dataSet =dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
         FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,resourceLinkController, "resourceLinkView.fxml","resources.ui", "resourceLinkStyle.css");
@@ -49,9 +53,9 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         SplitPane splitPaneInner = new SplitPane();
 
 //----------------------------------------------------------------------------------------------------------------------
-        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, Rule.RowWork );
-         MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.RowWork);
-         hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
+        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, resourceLinkModel, Rule.Work );
+        MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.Work);
+        hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
 
         VBox vboxWork = new VBox();
 

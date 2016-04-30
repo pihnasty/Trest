@@ -40,9 +40,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-/**
- * Created by pom on 07.02.2016.
- */
 public class TableViewP<cL> extends TableView<cL> implements Observer {
 
     private TableModel tableModel;

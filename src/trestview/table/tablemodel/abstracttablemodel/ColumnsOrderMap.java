@@ -15,7 +15,9 @@ public class ColumnsOrderMap {
     private ColumnsOrderMap() {
         map = new HashMap<>();
         map.put(Rule.RowWork, new ColumnsOrder("id", "name", "scheme", "image", "overallSize", "scaleEquipment", "description"));
+        map.put(Rule.Work, new ColumnsOrder("id", "name", "scheme", "image", "overallSize", "scaleEquipment", "description"));
         map.put(Rule.RowMachine, new ColumnsOrder("id", "name", "image","locationX","locationY",  "state",  "description" ));
+        map.put(Rule.Machine, new ColumnsOrder("id", "name", "image","locationX","locationY",  "state",  "description" ));
         map.put(Rule.RowTypemachine, new ColumnsOrder("id", "name", "description" ));
         map.put(Rule.RowFunctiondist, new ColumnsOrder("id", "name", "description" ));
         map.put(Rule.Functiondist, new ColumnsOrder("id", "name", "averageValue", "meanSquareDeviation", "pathData", "description" ));
