@@ -2,6 +2,7 @@ package trestview.table;
 
 import designpatterns.MVC;
 import entityProduction.Functiondist;
+import entityProduction.Machine;
 import entityProduction.Work;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleListProperty;
@@ -240,11 +241,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
         tableCol.setPrefWidth(parametersColumn.getWidth());
         tableCol.setEditable(parametersColumn.isEditable());
 
-
-    //     setPrefWidth(getPrefWidth() + parametersColumn.getWidth());
-      //   setMinWidth(getMinWidth() + parametersColumn.getWidth());
-            //  setMinWidth(getMinWidth()+parametersColumn.getWidth());
-
         return tableCol;
     }
 
@@ -252,11 +248,23 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        this.getSelectionModel().getSelectedIndex();
-        updateTableModel((TableModel) o);
-        this.requestFocus();
-        this.getSelectionModel().select(selectIndex);
-        this.getFocusModel().focus(selectIndex);
+        if (     (!( ((TableModel)o).getMethodCall() == MethodCall.selectRowTable))    ) {
+            this.getSelectionModel().getSelectedIndex();
+            updateTableModel((TableModel) o);
+            this.requestFocus();
+            this.getSelectionModel().select(selectIndex);
+            this.getFocusModel().focus(selectIndex);
+        }
+
+        if (     (( ((TableModel)o).getMethodCall() == MethodCall.selectRowTable))&& tClass== Machine.class) {
+            this.getSelectionModel().getSelectedIndex();
+            updateTableModel((TableModel) o);
+            this.requestFocus();
+            this.getSelectionModel().select(selectIndex);
+            this.getFocusModel().focus(selectIndex);
+        }
+
+
     }
     // Repaints table after the data changes
     public void repaintTable() {
@@ -268,7 +276,13 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
     }
 
     private void updateTableModel(TableModel o) {
+
         switch (o.getMethodCall()) {
+
+            case selectRowTable:
+                this.tab= tableModel.getTab();
+                repaintTable();
+                break;
             case addRowTable:
                selectIndex++;
                data.add(selectIndex,((TableModel)o).getSelectRow() );
@@ -296,6 +310,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             setEditable(true);
             selectRow = (cL)data.get(selectIndex);
             tableModel.setSelectRow(selectRow );
+            tableModel.selectRowForTwoTableModel();
         }
     }
 

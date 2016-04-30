@@ -2,8 +2,6 @@ package trestview.hboxpane;
 
 import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.RowFunctiondist;
-import trestmodel.TrestModel;
-import trestview.dictionary.DictionaryModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.util.Observable;

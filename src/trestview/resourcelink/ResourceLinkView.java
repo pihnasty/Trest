@@ -43,6 +43,7 @@ public class  ResourceLinkView extends BorderPane implements Observer {
     private Trest trest;
 
     public ResourceLinkView (ResourceLinkModel resourceLinkModel, ResourceLinkController resourceLinkController ) {
+        this.resourceLinkModel = resourceLinkModel;
         this.dataSet = resourceLinkModel.getDataSet();
         this.trest = resourceLinkModel.getTrest();
         //this.dictionaryModel =dictionaryModel;
@@ -53,7 +54,7 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         SplitPane splitPaneInner = new SplitPane();
 
 //----------------------------------------------------------------------------------------------------------------------
-        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, resourceLinkModel, Rule.Work );
+        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, this.resourceLinkModel, Rule.Work );
         MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.Work);
         hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
 
@@ -66,9 +67,12 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         vboxWork.setSpacing(5);   // The amount of vertical space between each child in the vbox.
         vboxWork.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 //----------------------------------------------------------------------------------------------------------------------
-         MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, Rule.RowMachine );
+         MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, this.resourceLinkModel, Rule.Machine );
          MVC hboxpaneMVCmacine = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.RowMachine);
          hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
+
+        tableWorkMVC.addObserverP((TableModel)tableMacineMVC .getModel());
+
 
         VBox vboxMacine = new VBox();
         Label labelMacine = new Label(fxmlLoader.getResources().getString("ListEquipment"));
@@ -107,6 +111,6 @@ public class  ResourceLinkView extends BorderPane implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        resourceLinkModel = o;
+        if (ResourceLinkModel.class == o.getClass()) resourceLinkModel = o;
     }
 }
