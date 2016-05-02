@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,6 +23,9 @@ import resources.images.icons.IconT;
 import trestview.hboxpane.HboxpaneController;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.HboxpaneView;
+import trestview.resourcelink.canvschema.SchemaController;
+import trestview.resourcelink.canvschema.SchemaModel;
+import trestview.resourcelink.canvschema.SchemaView;
 import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
@@ -53,6 +57,11 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         SplitPane splitPane = new SplitPane();
         SplitPane splitPaneInner = new SplitPane();
 
+
+//----------------------------------------------------------------------------------------------------------------------
+
+        MVC schemaWorkMVC  = new MVC (SchemaModel.class, SchemaController.class, SchemaView.class, this.resourceLinkModel, Rule.Work );
+
 //----------------------------------------------------------------------------------------------------------------------
         MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, this.resourceLinkModel, Rule.Work );
         MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.Work);
@@ -72,6 +81,7 @@ public class  ResourceLinkView extends BorderPane implements Observer {
          hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
 
         tableWorkMVC.addObserverP((TableModel)tableMacineMVC .getModel());
+        tableWorkMVC.addObserverP((SchemaModel)schemaWorkMVC .getModel());
 
 
         VBox vboxMacine = new VBox();
@@ -88,24 +98,20 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         vboxSplitPaneLeft.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 //----------------------------------------------------------------------------------------------------------------------
 
-        final StackPane sp2 = new StackPane();
-        sp2.getChildren().add(new Button("Button Two"));
 
         final StackPane sp3 = new StackPane();
         sp3.getChildren().add(new Button("Button Tree"));
 
         splitPane.getItems().addAll(vboxSplitPaneLeft, splitPaneInner);
 
-        splitPaneInner.getItems().addAll(sp2, sp3);
-        splitPaneInner.setDividerPositions(0.3f, 0.6f);
+        splitPaneInner.getItems().addAll((BorderPane)schemaWorkMVC.getView(), sp3);
+        splitPaneInner.setDividerPositions(0.1f, 0.6f);
         splitPaneInner.setOrientation(Orientation.VERTICAL);
 
 
         splitPane.setDividerPositions(0.2f, 0.6f);
 
-
          setCenter(splitPane);
-
 
     }
 
