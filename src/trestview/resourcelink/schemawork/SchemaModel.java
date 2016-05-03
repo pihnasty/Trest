@@ -1,6 +1,5 @@
-package trestview.resourcelink.canvschema;
+package trestview.resourcelink.schemawork;
 
-import entityProduction.Trest;
 import entityProduction.Work;
 import persistence.loader.DataSet;
 import trestview.resourcelink.ResourceLinkModel;

@@ -1,6 +1,6 @@
 package trestview.resourcelink.MVC_PanelTypModmachine;
 
-import trestview.resourcelink.canvschema.PschemeModel;
+import trestview.resourcelink.schemawork.PschemeModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

@@ -1,19 +1,12 @@
-package trestview.resourcelink.canvschema;
+package trestview.resourcelink.schemawork;
 
 import entityProduction.Work;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
-import trestview.table.TableController;
-import trestview.table.tablemodel.TableModel;
 
 
-import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -55,15 +48,19 @@ public class SchemaView extends BorderPane implements Observer {
 
 
 
+     //  setHeight(imageview.getImage().getHeight());       // setMaxHeight(100);
+      //  setWidth   (1200);
 
 
         getChildren().addAll( imageview, r,l);
-        setHeight(1200);
+
 
         imageview.setFitHeight(getHeight()*scaleHeight());
         imageview.setFitWidth( getWidth()*scaleHeight());
 
-        System.out.println("getHeight()"+getPrefHeight());
+        System.out.println("getHeight()"+getMinHeight()+"   "+imageview.getImage().getHeight()+"   ------------"+imageview.getImage().getWidth());
+
+        imageview.fitHeightProperty().bind(heightProperty());
 
     }
 

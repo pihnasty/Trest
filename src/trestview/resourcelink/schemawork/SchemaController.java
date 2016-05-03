@@ -1,9 +1,8 @@
-package trestview.resourcelink.canvschema;
+package trestview.resourcelink.schemawork;
 
 import javafx.fxml.Initializable;
 
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
 
 /**

@@ -1,4 +1,4 @@
-package trestview.resourcelink.canvschema;
+package trestview.resourcelink.schemawork;
 
 import old.entityProduction.Machine;
 import old.entityProduction.Work;
