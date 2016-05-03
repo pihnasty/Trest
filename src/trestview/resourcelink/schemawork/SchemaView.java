@@ -48,10 +48,6 @@ public class SchemaView extends BorderPane implements Observer {
 
 
 
-     //  setHeight(imageview.getImage().getHeight());       // setMaxHeight(100);
-      //  setWidth   (1200);
-
-
         getChildren().addAll( imageview, r,l);
 
 
