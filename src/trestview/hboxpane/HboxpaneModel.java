@@ -2,23 +2,25 @@ package trestview.hboxpane;
 
 import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.RowFunctiondist;
-import trestmodel.TrestModel;
-import trestview.dictionary.DictionaryModel;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.util.Observable;
 
 public class HboxpaneModel extends Observable {
 
     private Class tClass;
+    private Rule rule;
 
     private DataSet dataSet;
 
     private MethodCall methodCall;
 
 
-    public HboxpaneModel(DataSet dataSet, Class tClass) {
+    public HboxpaneModel(DataSet dataSet, Rule rule) {
+        this.rule = rule;
+        this.tClass = rule.getClassTab();
         this.dataSet = dataSet;
-        this.tClass = tClass;
+
     }
 
 

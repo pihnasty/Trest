@@ -109,12 +109,16 @@ public class RowIdNameDescription implements Comparable<RowIdNameDescription> {
 
     @Override
     public int compareTo(RowIdNameDescription o) {
-        if (this.getName().compareTo(((RowIdNameDescription) o).getName()) > 0) {
-            return 1;
-        }
-        if (this.getName().compareTo(((RowIdNameDescription) o).getName()) < 0) {
-            return -1;
-        }
+        if (this.getName().compareTo(((RowIdNameDescription) o).getName()) > 0) {  return 1;  }
+        if (this.getName().compareTo(((RowIdNameDescription) o).getName()) < 0) {  return -1; }
         return 0;
     }
+    public boolean equals(RowIdNameDescription o)	{
+        if(o == this) 	return true;
+        if(o == null)  	return false;
+        if(!(getClass() == o.getClass())) 	return false;
+        if( (o.getId() == this.getId()) )   return true;
+        else return false;
+    }
+
 }

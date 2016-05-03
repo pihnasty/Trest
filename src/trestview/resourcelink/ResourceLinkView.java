@@ -1,11 +1,13 @@
 package trestview.resourcelink;
 
 import designpatterns.MVC;
+import entityProduction.Trest;
 import entityProduction.Work;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,9 +23,13 @@ import resources.images.icons.IconT;
 import trestview.hboxpane.HboxpaneController;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.HboxpaneView;
+import trestview.resourcelink.canvschema.SchemaController;
+import trestview.resourcelink.canvschema.SchemaModel;
+import trestview.resourcelink.canvschema.SchemaView;
 import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -38,8 +44,12 @@ public class  ResourceLinkView extends BorderPane implements Observer {
 
     private Observable resourceLinkModel;
     private DataSet dataSet;
+    private Trest trest;
+
     public ResourceLinkView (ResourceLinkModel resourceLinkModel, ResourceLinkController resourceLinkController ) {
+        this.resourceLinkModel = resourceLinkModel;
         this.dataSet = resourceLinkModel.getDataSet();
+        this.trest = resourceLinkModel.getTrest();
         //this.dictionaryModel =dictionaryModel;
         //this.dataSet =dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
         FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,resourceLinkController, "resourceLinkView.fxml","resources.ui", "resourceLinkStyle.css");
@@ -47,10 +57,14 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         SplitPane splitPane = new SplitPane();
         SplitPane splitPaneInner = new SplitPane();
 
+
 //----------------------------------------------------------------------------------------------------------------------
-        TableModel b = new TableModel(dataSet.getTabWorks());
-        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowWork.class );
-        MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowWork.class);
+
+        MVC schemaWorkMVC  = new MVC (SchemaModel.class, SchemaController.class, SchemaView.class, this.resourceLinkModel, Rule.Work );
+
+//----------------------------------------------------------------------------------------------------------------------
+        MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, this.resourceLinkModel, Rule.Work );
+        MVC hboxpaneWorkMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.Work);
         hboxpaneWorkMVC.addObserverP( (TableModel)tableWorkMVC.getModel());
 
         VBox vboxWork = new VBox();
@@ -62,9 +76,13 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         vboxWork.setSpacing(5);   // The amount of vertical space between each child in the vbox.
         vboxWork.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 //----------------------------------------------------------------------------------------------------------------------
-        MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, RowMachine.class );
-        MVC hboxpaneMVCmacine = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, RowMachine.class);
-        hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
+         MVC tableMacineMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, this.resourceLinkModel, Rule.Machine );
+         MVC hboxpaneMVCmacine = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, Rule.RowMachine);
+         hboxpaneMVCmacine.addObserverP( (TableModel)tableMacineMVC .getModel());
+
+        tableWorkMVC.addObserverP((TableModel)tableMacineMVC .getModel());
+        tableWorkMVC.addObserverP((SchemaModel)schemaWorkMVC .getModel());
+
 
         VBox vboxMacine = new VBox();
         Label labelMacine = new Label(fxmlLoader.getResources().getString("ListEquipment"));
@@ -80,29 +98,25 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         vboxSplitPaneLeft.setPadding(new Insets(10, 0, 0, 10));   // The top,right,bottom,left padding around the region's content. This space will be included in the calculation of the region's minimum and preferred sizes. By default padding is Insets.EMPTY and cannot be set to null.
 //----------------------------------------------------------------------------------------------------------------------
 
-        final StackPane sp2 = new StackPane();
-        sp2.getChildren().add(new Button("Button Two"));
 
         final StackPane sp3 = new StackPane();
         sp3.getChildren().add(new Button("Button Tree"));
 
         splitPane.getItems().addAll(vboxSplitPaneLeft, splitPaneInner);
 
-        splitPaneInner.getItems().addAll(sp2, sp3);
-        splitPaneInner.setDividerPositions(0.3f, 0.6f);
+        splitPaneInner.getItems().addAll((BorderPane)schemaWorkMVC.getView(), sp3);
+        splitPaneInner.setDividerPositions(0.1f, 0.6f);
         splitPaneInner.setOrientation(Orientation.VERTICAL);
 
 
         splitPane.setDividerPositions(0.2f, 0.6f);
 
-
          setCenter(splitPane);
-
 
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        resourceLinkModel = o;
+        if (ResourceLinkModel.class == o.getClass()) resourceLinkModel = o;
     }
 }

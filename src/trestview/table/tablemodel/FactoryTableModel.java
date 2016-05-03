@@ -20,7 +20,7 @@ public class FactoryTableModel  extends AbstractFactoryTableModel {
     }
 
     public TableModel getTableModel() {
-        return new TableModel(dataSet ,tClass);
+        return null;
     }
 
 

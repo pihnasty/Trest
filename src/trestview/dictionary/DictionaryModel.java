@@ -2,6 +2,7 @@ package trestview.dictionary;
 
 import trestmodel.TrestModel;
 import trestview.menu.TMenuModel;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.util.Observable;
 
@@ -11,6 +12,16 @@ import java.util.Observable;
 public class DictionaryModel extends Observable  {
 
     private TMenuModel menuModel;
+
+    public Rule getRule() {
+        return rule;
+    }
+
+    public void setRule(Rule rule) {
+        this.rule = rule;
+    }
+
+    private Rule rule;
 
     public Class gettClass() {
         return tClass;
@@ -22,9 +33,9 @@ public class DictionaryModel extends Observable  {
 
     private Class tClass;
 
-     public DictionaryModel(Observable menuModel,Class tClass) {
+     public DictionaryModel(Observable menuModel,Rule rule) {     this.rule = rule;        this.tClass = rule.getClassTab();
         this.menuModel = (TMenuModel)menuModel;
-        this.tClass = tClass;
+
     }
 
     public TMenuModel getTMenuModel() {

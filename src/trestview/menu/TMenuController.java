@@ -25,6 +25,7 @@ import trestview.dictionary.DictionaryView;
 import trestview.machinetest.MachineTestController;
 import trestview.machinetest.MachineTestModel;
 import trestview.machinetest.MachineTestView;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -140,16 +141,16 @@ public class TMenuController implements Initializable {
 //------------------- menu Dictionary ------------------------------------
     @FXML
     private void handleRowWorkAction (ActionEvent event) {
-        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowWork.class );
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, Rule.RowWork  );
 }
     @FXML
     private void handleRowTypemachineAction (ActionEvent event) {
-        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowTypemachine.class );
-    //    new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowMachine.class );
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, Rule.RowTypemachine );
+
     }
     @FXML
     private void handleRowFunctiondistAction (ActionEvent event) {
-        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, RowFunctiondist.class );
+        new MVC(DictionaryModel.class, DictionaryController.class, DictionaryView.class, this.menuModel, Rule.RowFunctiondist );
     }
 
 

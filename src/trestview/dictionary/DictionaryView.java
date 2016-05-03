@@ -55,8 +55,8 @@ public class  DictionaryView extends Dialog implements Observer {
         setResizable(true);             //  Defines whether the Stage is resizable or not by the user.
         setHeight(700);
 
-        MVC tableMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, dictionaryModel.gettClass() );
-        MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, dictionaryModel.gettClass());
+        MVC tableMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, dataSet, dictionaryModel.getRule() );
+        MVC hboxpaneMVC = new MVC (HboxpaneModel.class,HboxpaneController.class,HboxpaneView.class,dataSet, dictionaryModel.getRule());
         hboxpaneMVC.addObserverP( (TableModel)tableMVC.getModel());
 
         VBox vbox = new VBox();

@@ -1,6 +1,7 @@
 package designpatterns;
 
 import persistence.loader.DataSet;
+import trestview.table.tablemodel.abstracttablemodel.Rule;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -18,10 +19,10 @@ public class MVC {
     private Method methodAddObserver;
     private Object view;
     @Deprecated
-    public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet, ArrayList  arrayList)   {
+    public   MVC (Class mClass, Class cClass, Class vClass, ArrayList  arrayList, Rule rule)   {
         try {
-            Constructor mConstructor = mClass.getConstructor(DataSet.class, ArrayList.class);
-            model = mConstructor.newInstance(dataSet,arrayList);
+            Constructor mConstructor = mClass.getConstructor(ArrayList.class, Rule.class);
+            model = mConstructor.newInstance(arrayList, rule);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
             Object controller = cConstructor.newInstance(model);
@@ -38,10 +39,10 @@ public class MVC {
         catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
 
-    public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet, Class cL )   {
+    public   MVC (Class mClass, Class cClass, Class vClass, DataSet dataSet, Rule rule )   {
         try {
-            Constructor mConstructor = mClass.getConstructor(DataSet.class, Class.class);
-            model = mConstructor.newInstance(dataSet,cL);
+            Constructor mConstructor = mClass.getConstructor(DataSet.class, Rule.class);
+            model = mConstructor.newInstance(dataSet,rule);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
             Object controller = cConstructor.newInstance(model);
@@ -58,10 +59,10 @@ public class MVC {
         catch (InvocationTargetException e) {    e.printStackTrace();       }
     }
 
-    public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Class cL )   {
+    public   MVC (Class mClass, Class cClass, Class vClass, Observable o, Rule rule )   {
         try {
-            Constructor mConstructor = mClass.getConstructor(Observable.class, Class.class);
-            model = mConstructor.newInstance(o,cL);
+            Constructor mConstructor = mClass.getConstructor(Observable.class, Rule.class);
+            model = mConstructor.newInstance(o,rule);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
             Object controller = cConstructor.newInstance(model);
