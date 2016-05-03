@@ -23,11 +23,12 @@ public class Module3View extends HBox implements Observer {
 
     final CategoryAxis xAxis1;
     final NumberAxis yAxis1;
-
+    int i = 0;
 
     public Module3View(Module3Model model, Module3Controller controller) {
          xAxis = new NumberAxis();
          yAxis = new NumberAxis();
+
          xAxis1 = new CategoryAxis();
          yAxis1 = new NumberAxis();
 
@@ -37,27 +38,45 @@ public class Module3View extends HBox implements Observer {
         this.module3Controller = controller;
         series = new XYChart.Series<>();
         seriesBar = new XYChart.Series<>();
-        redrawChart();
+//        redrawChart();
         lineChart.getData().add(series);
         barChart.getData().add(seriesBar);
         getChildren().addAll(lineChart, barChart);
     }
 
     private void redrawChart() {
-        series.getData().removeAll();
+//        series.getData().removeAll();
 ////        lineChart.getData().removeAll();
-        for(int i = 0; i < module3Model.getRandomValuesList().size(); i++) {
-            series.getData().add(new XYChart.Data(i, module3Model.getRandomValuesList().get(i)));
+//        int i = module3Model.getRandomValuesList().size();
+//            if(module3Model.getRandomValuesList().isEmpty())
+//                return;
 
-        }
+            double val = module3Model.getRandomValuesList().peekLast();
+            series.getData().add(new XYChart.Data(i, val));
+            i++;
+
 
 //        lineChart.getData().add(series);
         System.out.println("In redrawChart()");
     }
 
+//    private void redrawBarChart() {
+//        seriesBar.getData().removeAll();
+//
+//        for (int i = 0; i < module3Model.getGroupedStatisticalSeries().size(); i++) {
+//            double curreentKey = module3Model.getGroupedStatisticalSeries().keys().nextElement();
+////            series.getData().add(new XYChart.Data(
+////                    Double.toString(curreentKey),
+////                    module3Model.getGroupedStatisticalSeries().get(curreentKey)));
+////            System.out.println("i::"+i+"::Key: " + curreentKey + " = " + module3Model.getGroupedStatisticalSeries().get(curreentKey));
+//        }
+//        System.out.println("In redrawBarChart()");
+//    }
+
     @Override
     public void update(Observable o, Object arg) {
         redrawChart();
+//        redrawBarChart();
     }
 
 

@@ -1,49 +1,68 @@
 package trestview.machinetest.module3;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Timer;
-import java.util.TimerTask;
+import trestview.machinetest.module0.Module0Model;
+
+import java.util.*;
 
 /**
  * Created by Роман on 15.04.2016.
  */
-public class Module3Model extends Observable {
+public class Module3Model extends Observable implements Observer{
 
-    private ArrayList<Double> randomValuesList;
-    private Timer timer;
+    Module0Model module0Model;
 
-    public Module3Model() {
-        this.randomValuesList = new ArrayList<Double>();
-        populateList(100);
+    private Deque<Double> randomValuesList;
+//    private Hashtable<Double, Double> groupedStatisticalSeries;//HashSet
+//    private Timer timer;
+
+    public Module3Model(Module0Model module0Model) {
+        this.module0Model = module0Model;
+        this.randomValuesList = new ArrayDeque<>();
+//        this.groupedStatisticalSeries = new Hashtable<>();
+
     }
 
-    public ArrayList<Double> getRandomValuesList() {
+    public Deque<Double> getRandomValuesList() {
         return randomValuesList;
     }
 
-    public void setRandomValuesList(ArrayList<Double> randomValuesList) {
+//    public Hashtable<Double, Double> getGroupedStatisticalSeries() { return groupedStatisticalSeries; }
+
+    public void setRandomValuesList(Deque<Double> randomValuesList) {
         this.randomValuesList = randomValuesList;
     }
 
-    //populate the List with a test data
-    private void populateList(int limit) {
-
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-//                randomValuesList.clear();
-                System.out.println("Timer is working");
-                    randomValuesList.add((Math.random()*100));
-                changed();
-            }
-        },3000, 4000);
-
-//        for (double i = 0; i < limit; i++) {
-//            randomValuesList.add(Math.atan(i));
-//        }
+    private void updateRandomValuesList() {
+        double tau = module0Model.getRandomVariablesList().peekLast();//get tail or null if deque is empty
+        randomValuesList.addLast(tau);
+        changed();
     }
+
+    //populate the List with a test data
+
+
+//    private void createGroupedStatisticalSeries() {
+//
+//        float step = 10.0f;
+//
+//        for(double i = 0; i < 100; i+=step) {
+//            int count = 0;
+//            double sum = 0;
+//            for(int j = 0; j < randomValuesList.size(); j++){
+//                if(randomValuesList.get(j) >= i && randomValuesList.get(j) < i + step) {
+//                    count++;
+//                }
+//
+//
+//            }
+//            double val = count;
+////            if(i == 0)
+//                groupedStatisticalSeries.put(i, val);
+//            System.out.println("keys::::i="+i+" --- "+ groupedStatisticalSeries.keys().toString());
+////            else
+////                groupedStatisticalSeries.replace(i, val);
+//        }
+//    }
 
 
 
@@ -52,4 +71,8 @@ public class Module3Model extends Observable {
         notifyObservers();
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        updateRandomValuesList();
+    }
 }

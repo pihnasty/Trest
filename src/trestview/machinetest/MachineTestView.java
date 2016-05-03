@@ -12,6 +12,7 @@ import persistence.loader.XmlRW;
 import trestview.machinetest.charts.ChartCommonModel;
 import trestview.machinetest.charts.ChartController;
 import trestview.machinetest.charts.ChartView;
+import trestview.machinetest.module0.Module0Model;
 import trestview.machinetest.module3.Module3Controller;
 import trestview.machinetest.module3.Module3Model;
 import trestview.machinetest.module3.Module3View;
@@ -76,10 +77,14 @@ public class MachineTestView extends BorderPane implements Observer {
         final NumberAxis xAxis2 = new NumberAxis();
         final NumberAxis yAxis2 = new NumberAxis();
         //----------------------------------------------------//
-        Module3Model module3Model = new Module3Model();
+        Module0Model module0Model = new Module0Model();
+
+        Module3Model module3Model = new Module3Model(module0Model);
         Module3Controller module3Controller = new Module3Controller(module3Model);
         Module3View module3View = new Module3View(module3Model, module3Controller);
+        module0Model.addObserver(module3Model);
         module3Model.addObserver(module3View);
+
 
 //        ChartCommonModel chartCommonModel1 = new ChartCommonModel();
 //        ChartController chartController1 = new ChartController(chartCommonModel1);
