@@ -1,6 +1,8 @@
 package trestview.resourcelink.schemawork;
 
 import entityProduction.Work;
+import javafx.beans.binding.DoubleBinding;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Line;
@@ -16,6 +18,12 @@ public class SchemaView extends BorderPane implements Observer {
     private SchemaModel schemaModel;
     private Work work;
     private Double scaleScheme;
+
+
+
+    private DoubleBinding kScale;
+    private DoubleBinding hImv;
+    private DoubleBinding wImv;
 
     public SchemaView(SchemaModel schemaModel, SchemaController schemaController) {
 
@@ -48,15 +56,46 @@ public class SchemaView extends BorderPane implements Observer {
 
 
 
+
+
         getChildren().addAll( imageview, r,l);
 
 
-        imageview.setFitHeight(getHeight()*scaleHeight());
-        imageview.setFitWidth( getWidth()*scaleHeight());
+
+
 
         System.out.println("getHeight()"+getMinHeight()+"   "+imageview.getImage().getHeight()+"   ------------"+imageview.getImage().getWidth());
 
-        imageview.fitHeightProperty().bind(heightProperty());
+
+        kScale = new DoubleBinding() {
+            { super.bind(heightProperty()); }
+            @Override
+            protected double computeValue() {
+                System.out.println(getHeight()/imageview.getImage().getHeight());
+                return getHeight()/imageview.getImage().getHeight() ;
+            }};
+
+        hImv = new DoubleBinding() {
+            { super.bind(heightProperty()); }
+            @Override
+            protected double computeValue() {
+                return kScale.getValue()*imageview.getImage().getHeight();
+            }};
+
+        wImv = new DoubleBinding() {
+            { super.bind(heightProperty()); }
+            @Override
+            protected double computeValue() {
+                return kScale.getValue()*imageview.getImage().getWidth();
+            }};
+
+
+
+        imageview.fitHeightProperty().bind(hImv);
+        imageview.fitWidthProperty().bind(wImv);
+
+
+     //   imageview.setFitHeight( imageview.getImage().getHeight()*db.getValue());
 
     }
 
@@ -65,11 +104,18 @@ public class SchemaView extends BorderPane implements Observer {
         work = (Work) ((SchemaModel) o).getWork();
         imageview.setImage(new javafx.scene.image.Image("file:"+work.getScheme() ));
         System.out.println("getHeight()"+getHeight());
+        setHeight(getHeight()+1);        setHeight(getHeight()-1);
+
+
+
+
     }
 
     double scaleHeight() {
         return (getHeight()/getWidth() < imageview.getFitHeight() / imageview.getFitWidth()) ? getHeight()/imageview.getFitHeight() : getWidth()/imageview.getFitWidth();
     }
+
+
 
 
 }

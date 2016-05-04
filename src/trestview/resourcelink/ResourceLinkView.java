@@ -45,8 +45,8 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         //this.dataSet =dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
         FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,resourceLinkController, "resourceLinkView.fxml","resources.ui", "resourceLinkStyle.css");
 
-        SplitPane splitPane = new SplitPane();
-        SplitPane splitPaneInner = new SplitPane();
+        SplitPane  splitPane = new SplitPane();
+        BorderPane borderPane = new BorderPane();
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -91,15 +91,20 @@ public class  ResourceLinkView extends BorderPane implements Observer {
 
 
         final StackPane sp3 = new StackPane();
+        sp3.setMinHeight(120);
         sp3.getChildren().add(new Button("Button Tree"));
 
-        splitPane.getItems().addAll(vboxSplitPaneLeft, splitPaneInner);
+        splitPane.getItems().addAll(vboxSplitPaneLeft, borderPane);
 
+        borderPane.setCenter((BorderPane)schemaWorkMVC.getView());
+        borderPane.setBottom(sp3);
+
+/*
         splitPaneInner.getItems().addAll((BorderPane)schemaWorkMVC.getView(), sp3);
-       splitPaneInner.setDividerPositions(0.5f, 0.1f);
+        splitPaneInner.setDividerPositions(0.5f, 0.1f);
         splitPaneInner.setOrientation(Orientation.VERTICAL);
 
-
+*/
 
       splitPane.setDividerPositions(0.2f, 0.6f);
 
