@@ -62,17 +62,12 @@ public class SchemaView extends BorderPane implements Observer {
 
 
 
-
-
-        System.out.println("getHeight()"+getMinHeight()+"   "+imageview.getImage().getHeight()+"   ------------"+imageview.getImage().getWidth());
-
-
         kScale = new DoubleBinding() {
             { super.bind(heightProperty()); }
             @Override
             protected double computeValue() {
                 System.out.println(getHeight()/imageview.getImage().getHeight());
-                return getHeight()/imageview.getImage().getHeight() ;
+                return 0.85*getHeight()/imageview.getImage().getHeight() ;
             }};
 
         hImv = new DoubleBinding() {

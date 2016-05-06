@@ -4,7 +4,10 @@ import entityProduction.Trest;
 import persistence.loader.DataSet;
 import trestmodel.TrestModel;
 import trestview.menu.TMenuModel;
+import trestview.resourcelink.schemawork.Q;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -21,6 +24,7 @@ public class ResourceLinkModel extends Observable  {
         this.trestModel = trestModel;
         this.trest =  ((TrestModel)trestModel).getTrest();
         this.dataSet = ((TrestModel)trestModel).getDataSet();
+
     }
 
     public void changed() {

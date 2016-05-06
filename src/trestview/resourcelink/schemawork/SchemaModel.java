@@ -1,11 +1,16 @@
 package trestview.resourcelink.schemawork;
 
+import entityProduction.Machine;
 import entityProduction.Work;
 import persistence.loader.DataSet;
+import persistence.loader.tabDataSet.RowIdNameDescription;
+import persistence.loader.tabDataSet.RowModelmachine;
 import trestview.resourcelink.ResourceLinkModel;
 import trestview.table.tablemodel.TableModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,14 +24,22 @@ public class SchemaModel extends Observable  implements Observer{
 
     private Work work;
 
+    private List<Q> qs;
+
     public SchemaModel(Observable observableModel, Rule rule) {
         this.observableModel = observableModel;
         this.rule = rule;
   //      this.tClass =  rule.getClassTab();
+        qs = new ArrayList();
         if(rule== Rule.Work)  {
             this.dataSet = ((ResourceLinkModel)observableModel).getDataSet();
-            if(!((ResourceLinkModel)observableModel).getTrest().getWorks().isEmpty()) this.work = ((ResourceLinkModel)observableModel).getTrest().getWorks().get(0);
-            //this.tab = trest.getWorks();
+            if(!((ResourceLinkModel)observableModel).getTrest().getWorks().isEmpty())  {
+                this.work = ((ResourceLinkModel)observableModel).getTrest().getWorks().get(0);
+                for(Machine machine : work.getMachines()) {
+                 //   RowModelmachine rowModelmachine = (RowModelmachine) dataSet.select(machine, dataSet.getTabModelmachines(), dataSet.getTabModelmachineMachines()  ).get(0);
+                 //   qs.add(new Q(machine, rowModelmachine ));
+                }  //  ArrayList<Machine> machines));
+            }
         }
 
     }

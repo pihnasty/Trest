@@ -1420,12 +1420,12 @@ public class DataSet {
     }
 
 
-    public ArrayList<RowModelmachineMachine> getTabMachineModelmachines() {
+    public ArrayList<RowModelmachineMachine> getTabModelmachineMachines() {
         return tabModelmachineMachines;
     }
 
-    public void setTabMachineModelmachines(ArrayList<RowModelmachineMachine> tabMachineModelmachines) {
-        this.tabModelmachineMachines = tabMachineModelmachines;
+    public void setTabMachineModelmachines(ArrayList<RowModelmachineMachine> tabModelmachineMachines) {
+        this.tabModelmachineMachines = tabModelmachineMachines;
     }
 
     public ArrayList<RowFunctiondist> getTabFunctiondists() {
