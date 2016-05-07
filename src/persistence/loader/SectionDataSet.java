@@ -17,12 +17,12 @@ public class SectionDataSet {
 
     private DataSet dataSet;
 
-    private  List<Typemachine> sectionTypemachines = new  ArrayList<>();
+    private  List<Typemachine> typemachines = new  ArrayList<>();
 
     public SectionDataSet(DataSet dataSet) {
 
         this.dataSet = dataSet;
-        sectionTypemachines  = getTab ((dataSet.getTabTypemachines()));
+        typemachines  = getTab ((this.dataSet.getTabTypemachines()));
 
     }
 
@@ -30,12 +30,12 @@ public class SectionDataSet {
         return (List<cL>) tab.stream().map(row->(cL)dataSet.createObject((RowIdNameDescription) row)).collect(Collectors.toList());      //   for (RowTypemachine row : dataSet.getTabTypemachines()) sectionTypemachines.add(dataSet.createObject(row));
     }
 
-    public List<Typemachine> getSectionTypemachines() {
-        return sectionTypemachines;
+    public List<Typemachine> getTypemachines() {
+        return typemachines;
     }
 
-    public void setSectionTypemachines(List<Typemachine> sectionTypemachines) {
-        this.sectionTypemachines = sectionTypemachines;
+    public void setTypemachines(List<Typemachine> typemachines) {
+        this.typemachines = typemachines;
     }
 
 }

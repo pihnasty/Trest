@@ -1,4 +1,5 @@
 package persistence.loader;
+import com.sun.istack.internal.NotNull;
 import entityProduction.*;
 import old._util._Date;
 import org.w3c.dom.DOMException;
@@ -368,7 +369,8 @@ public class DataSet {
 
     static public <cL> void showTab(Object tab) {
         if (tab != null) {
-            showTab(tab, ((ArrayList<cL>) tab).get(0).getClass());
+            if( !((ArrayList<cL>) tab).isEmpty() )
+             showTab(tab, ((ArrayList<cL>) tab).get(0).getClass());
         }
     }
 
@@ -536,50 +538,6 @@ public class DataSet {
         }
     }
 
-    public Trest getTrest(int id) {
-        for (RowTrest t : tabTrests) {
-            if (id == t.getId()) {
-//                ArrayList<Work> works = new ArrayList<Work>();
-//
-//                for (RowTrestWork tw : tabTrestsWorks) {
-//                    for (RowWork w : tabWorks) {
-//                        if (id == tw.getId() && tw.getId() == w.getId()) {
-//                            works.add(getWork(tw.getId2()));
-//                        }
-//                    }
-//                }
-                return new Trest(t.getId(), t.getName(), t.getDescription(),
-                                 select(t,tabWorks,tabTrestsWorks));
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Сохранение в xml- файл объекта Trest по значению id
-     *
-     * @return
-     * @throws Throwable
-     * @throws ParserConfigurationException
-     */
-    public void setTrest(Trest trest) // НАВЕРНО НАДО УБРАТЬ
-    {
-        for (RowTrest t : tabTrests) {
-            if (trest.getId() == t.getId()) // выбираем нужную строку таблицы для изменения
-            {
-                XmlRW.FieldToField(t, trest);                                // переносим все поля в таблицу
-                for (Work w : trest.getWorks()) {
-                    for (RowWork r : tabWorks) {
-                        if (w.getId() == r.getId()) {
-                            XmlRW.FieldToField(r, w);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
     /**
      * Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id
      * == RT.Id
@@ -695,26 +653,50 @@ public class DataSet {
     public <T, RT extends RowIdNameDescription, RMT extends RowIdId2> ArrayList<T> select(RowIdNameDescription row, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab) {
         ArrayList<T> typemachines = new ArrayList<>();
         ArrayList<RMT> deleteFrom_rmtTab = new ArrayList<>();
+        ArrayList<RT> deleteFrom_rtTab = new ArrayList<>();
 
         for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
             if ( row.getId() == wr.getId()) {
-                boolean t  = true;
-                for (RT w : rtTab) if (wr.getId2() == w.getId()) { typemachines.add((T) createObject(w)); t= false;}
-                if (t) deleteFrom_rmtTab.add(wr);
+                boolean b_wr  = true;
+                for (RT w : rtTab) if (wr.getId2() == w.getId()) { typemachines.add((T) createObject(w)); b_wr= false;}
+                if (b_wr) deleteFrom_rmtTab.add(wr);
             }
         }
-
       rmtTab.removeAll(deleteFrom_rmtTab);
       rmtTab.trimToSize();
+
+       for (RT w : rtTab) {
+           boolean b_w  = true;
+           for (RMT wr : rmtTab) if (wr.getId2() == w.getId()) { b_w  = false; }
+           if (b_w) deleteFrom_rtTab.add(w);
+       }
+        rtTab.removeAll(deleteFrom_rtTab);
+        rtTab.trimToSize();
         return typemachines;
     }
 
-    //-------------------------------------------------------------------------------
-    public <cL> cL createObject(RowIdNameDescription row) {
-        Object m = null;
-    //    System.out.println("row.getName()="+row.getName());
+//    public <T, RT extends RowIdNameDescription, RMT extends RowIdId2>  T selectBack(int id, ArrayList<RT> rtTab, ArrayList<RMT> rmtTab) {
+//        T modelmachine = null;
+//        for (RMT wr : rmtTab) {  // Выбираем из rtTab все элементы RT, для которых row.Id==RMT.Id && RMT.Id2 == RT.Id
+//            if ( id == wr.getId2()) {
+//                 for (RT w : rtTab) if (wr.getId() == w.getId()) { modelmachine = createObject(w); }
+//             }
+//        }
+//        return modelmachine;
+//    }
 
+
+
+    //-------------------------------------------------------------------------------
+    public <cL> cL createObject( RowIdNameDescription row) {
+        Object m = null;
 //= SectionDataSet: Trest =============================================================================================/
+        if (row.getClass() == RowTrest.class) {
+            m =new Trest(row.getId(), row.getName(),
+                    select(row, tabWorks, tabTrestsWorks),     //  ArrayList<Work> works
+                    row.getDescription());
+        }
+
         if (row.getClass() == RowWork.class) {
             ArrayList<Employee> employees = select(row, tabEmployees, tabWorksEmployees);
             ArrayList<Subject_labour> subject_labours = new ArrayList<Subject_labour>();

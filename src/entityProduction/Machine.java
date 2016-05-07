@@ -3,12 +3,11 @@ package entityProduction;
 import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.RowMachine;
 
-/**
- * @author POM Единица производственного оборудования
- */
 public class Machine extends RowMachine {
-    
 
+    private Modelmachine modelmachine;
+
+    private Work work;
             
     public Machine() {
         super();
@@ -22,7 +21,16 @@ public class Machine extends RowMachine {
         super(dataSet, Machine.class);
     }
 
-    /* Фото машины									*/
-    private String img = "Image/Machine/press_04.png";
+    public Modelmachine getModelmachine() {
+        return modelmachine;
+    }
+
+    public void setModelmachine(Modelmachine modelmachine) {
+        this.modelmachine = modelmachine;
+    }
+
+    public Work getWork() {  return work;  }
+
+    public void setWork(Work work) {  this.work = work; }
 
 }

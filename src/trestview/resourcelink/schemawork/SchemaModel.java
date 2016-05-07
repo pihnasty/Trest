@@ -1,6 +1,7 @@
 package trestview.resourcelink.schemawork;
 
 import entityProduction.Machine;
+import entityProduction.Modelmachine;
 import entityProduction.Work;
 import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.RowIdNameDescription;
@@ -36,8 +37,17 @@ public class SchemaModel extends Observable  implements Observer{
             if(!((ResourceLinkModel)observableModel).getTrest().getWorks().isEmpty())  {
                 this.work = ((ResourceLinkModel)observableModel).getTrest().getWorks().get(0);
                 for(Machine machine : work.getMachines()) {
-                 //   RowModelmachine rowModelmachine = (RowModelmachine) dataSet.select(machine, dataSet.getTabModelmachines(), dataSet.getTabModelmachineMachines()  ).get(0);
-                 //   qs.add(new Q(machine, rowModelmachine ));
+
+
+
+
+
+
+              //      Modelmachine mm =dataSet.selectBack(machine.getId(), dataSet.getTabModelmachines(), dataSet.getTabModelmachineMachines());
+       //             System.out.println( mm.getName());
+                  System.out.println(machine.getModelmachine().getName()+"              "+machine.getWork()+"                "+machine.getName());
+                //   RowModelmachine rowModelmachine = (RowModelmachine) dataSet.select(machine, dataSet.getTabModelmachines(), dataSet.getTabModelmachineMachines()  ).get(0);
+                   qs.add(new Q(machine ));
                 }  //  ArrayList<Machine> machines));
             }
         }

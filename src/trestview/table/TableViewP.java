@@ -46,7 +46,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
     private TableModel tableModel;
     private Property<TableModel> tableModelProperty;
     private ObservableList data;
-    private int selectIndex = 0;
+    private int selectIndex = -1;
     private MethodCall methodCall;
     private ArrayList<cL> tab;
     private Class tClass;
@@ -263,8 +263,6 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
             this.getSelectionModel().select(selectIndex);
             this.getFocusModel().focus(selectIndex);
         }
-
-
     }
     // Repaints table after the data changes
     public void repaintTable() {
@@ -284,7 +282,7 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                 repaintTable();
                 break;
             case addRowTable:
-               selectIndex++;
+               if(selectIndex<data.size()) selectIndex++;
                data.add(selectIndex,((TableModel)o).getSelectRow() );
                 break;
             case saveRowTable:
@@ -294,8 +292,9 @@ public class TableViewP<cL> extends TableView<cL> implements Observer {
                 this.setEditable(true);
                 break;
             case delRowTable:
-                data.remove(selectIndex);
-                if (getItems().size() == 0) {   return;   }
+                if(selectIndex<0 ) selectIndex =0;
+                if (!data.isEmpty()) data.remove(selectIndex);
+                //if (getItems().size() == 0) {   return;   }
                 break;
             default:
                 break;

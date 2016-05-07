@@ -44,11 +44,14 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
             this.dataset = ((ResourceLinkModel)observableModel).getDataSet();
             this.trest = ((ResourceLinkModel)observableModel).getTrest();
             this.tab = trest.getWorks();
+            this.selectRow = tab.get(0);
         }
         if(rule.getClassTab()== Machine.class)  {
             this.dataset = ((ResourceLinkModel)observableModel).getDataSet();
             this.trest = ((ResourceLinkModel)observableModel).getTrest();
             this.tab = trest.getWorks().get(0).getMachines();
+            this.selectRow = tab.get(0);
+            this.parentselectRow = trest.getWorks().get(0);
         }
 
 
@@ -83,11 +86,12 @@ public class TableModel <cL> extends AbstractTableModel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         if (o.getClass() == HboxpaneModel.class)    { updateHBoxpaneModel((HboxpaneModel) o);  }
-        if (o.getClass() == TableModel.class ) if (  ((TableModel)o).getRule() == Rule.Work)  {
-            methodCall = MethodCall.selectRowTable;
-            parentselectRow = (RowIdNameDescription) ((TableModel) o).selectRow;
-            for(Work w: trest.getWorks()) if ( w == ((TableModel) o).selectRow )  this.tab = w.getMachines();
-        }
+        if (o.getClass() == TableModel.class )
+            if (  ((TableModel)o).getRule() == Rule.Work)  {
+                methodCall = MethodCall.selectRowTable;
+                parentselectRow = (RowIdNameDescription) ((TableModel) o).selectRow;
+                for(Work w: trest.getWorks()) if ( w == ((TableModel) o).selectRow )  this.tab = w.getMachines();
+            }
         changed();
     }
 
