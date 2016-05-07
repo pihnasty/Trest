@@ -37,16 +37,6 @@ public class SchemaModel extends Observable  implements Observer{
             if(!((ResourceLinkModel)observableModel).getTrest().getWorks().isEmpty())  {
                 this.work = ((ResourceLinkModel)observableModel).getTrest().getWorks().get(0);
                 for(Machine machine : work.getMachines()) {
-
-
-
-
-
-
-              //      Modelmachine mm =dataSet.selectBack(machine.getId(), dataSet.getTabModelmachines(), dataSet.getTabModelmachineMachines());
-       //             System.out.println( mm.getName());
-                  System.out.println(machine.getModelmachine().getName()+"              "+machine.getWork()+"                "+machine.getName());
-                //   RowModelmachine rowModelmachine = (RowModelmachine) dataSet.select(machine, dataSet.getTabModelmachines(), dataSet.getTabModelmachineMachines()  ).get(0);
                    qs.add(new Q(machine ));
                 }  //  ArrayList<Machine> machines));
             }
@@ -68,5 +58,9 @@ public class SchemaModel extends Observable  implements Observer{
     public Work getWork()           {   return work;        }
 
     public void setWork(Work work)  {   this.work = work;   }
+
+    public List<Q> getQs()          {   return qs;          }
+
+    public void setQs(List<Q> qs)   {   this.qs = qs;       }
 
 }

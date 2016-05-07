@@ -33,8 +33,6 @@ public class SchemaView extends BorderPane implements Observer {
 
         setStyle("-fx-background-color: #336699;");
 
-
-
 /*
         this.setHeight(200);
         this.setWidth(200);
@@ -51,15 +49,13 @@ public class SchemaView extends BorderPane implements Observer {
         gc.strokeRoundRect(160, 60, 30, 30, 10, 10);
         fillArc(10, 110, 30, 30, 45, 240, ArcType.OPEN);
 */
-        Rectangle r = new Rectangle(100,100,100,100);
-        Line l = new Line(12,12,120,120);
+   //     Rectangle r = new Rectangle(100,100,100,100);
+   //     Line l = new Line(12,12,120,120);
 
+        getChildren().addAll( imageview);
 
-
-
-
-        getChildren().addAll( imageview, r,l);
-
+        for(Q q: schemaModel.getQs()) System.out.printf("     %d  \n" , q.getIdQ());
+        getChildren().addAll(schemaModel.getQs());
 
 
         kScale = new DoubleBinding() {
