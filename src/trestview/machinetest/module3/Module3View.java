@@ -1,5 +1,8 @@
 package trestview.machinetest.module3;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -14,10 +17,13 @@ public class Module3View extends HBox implements Observer {
 
     Module3Model module3Model;
     Module3Controller module3Controller;
+
     XYChart.Series<Number, Number> series;
-    XYChart.Series<String, Number> seriesBar;
+    XYChart.Series<Number, Number> seriesBar;
+    ObservableList<String> ranks;
+
     LineChart<Number, Number> lineChart;
-    BarChart<String, Number> barChart;//<String, Number> --> <Number, Number>
+    BarChart barChart;//<String, Number> --> <Number, Number>
     final NumberAxis xAxis;
     final NumberAxis yAxis;
 
@@ -26,6 +32,7 @@ public class Module3View extends HBox implements Observer {
     int i = 0;
 
     public Module3View(Module3Model model, Module3Controller controller) {
+         ranks = FXCollections.observableArrayList();
          xAxis = new NumberAxis();
          yAxis = new NumberAxis();
 
@@ -33,7 +40,7 @@ public class Module3View extends HBox implements Observer {
          yAxis1 = new NumberAxis();
 
         this.lineChart = new LineChart<Number, Number>(xAxis , yAxis);
-        this.barChart = new BarChart<String, Number>(xAxis1, yAxis1);
+        this.barChart = new BarChart(xAxis1, yAxis1);
         this.module3Model = model;
         this.module3Controller = controller;
         series = new XYChart.Series<>();
@@ -45,38 +52,44 @@ public class Module3View extends HBox implements Observer {
     }
 
     private void redrawChart() {
-//        series.getData().removeAll();
+        series.getData().removeAll();
 ////        lineChart.getData().removeAll();
 //        int i = module3Model.getRandomValuesList().size();
 //            if(module3Model.getRandomValuesList().isEmpty())
 //                return;
 
-            double val = module3Model.getRandomValuesList().peekLast();
-            series.getData().add(new XYChart.Data(i, val));
-            i++;
+//            double val = module3Model.getRandomValuesList().get(module3Model.getRandomValuesList().size()-1);
+//            series.getData().add(new XYChart.Data(i, val));
+//            i++;
 
 
 //        lineChart.getData().add(series);
         System.out.println("In redrawChart()");
     }
 
-//    private void redrawBarChart() {
-//        seriesBar.getData().removeAll();
-//
-//        for (int i = 0; i < module3Model.getGroupedStatisticalSeries().size(); i++) {
-//            double curreentKey = module3Model.getGroupedStatisticalSeries().keys().nextElement();
-////            series.getData().add(new XYChart.Data(
-////                    Double.toString(curreentKey),
-////                    module3Model.getGroupedStatisticalSeries().get(curreentKey)));
-////            System.out.println("i::"+i+"::Key: " + curreentKey + " = " + module3Model.getGroupedStatisticalSeries().get(curreentKey));
-//        }
-//        System.out.println("In redrawBarChart()");
-//    }
+    private void redrawBarChart() {
+        seriesBar.getData().removeAll();
+//        double rank = module3Model.getMinValue();
+
+        for (int i = 0; i < module3Model.getGroupedStatisticalSeries().size(); i++) {
+
+            seriesBar.getData().add(new XYChart.Data(
+                    module3Model.getRanks().get(i).toString(),
+                    module3Model.getGroupedStatisticalSeries().get(i)));
+
+//            rank += module3Model.getStep();
+        }
+
+//        System.out.println("In redrawBarChart() "+module3Model.getGroupedStatisticalSeries()
+//                + " size " +module3Model.getRandomValuesList().size());
+    }
 
     @Override
     public void update(Observable o, Object arg) {
-        redrawChart();
-//        redrawBarChart();
+        if(o.getClass() == Module3Model.class) {
+            redrawChart();
+            redrawBarChart();
+        }
     }
 
 

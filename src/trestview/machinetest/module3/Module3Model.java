@@ -1,7 +1,9 @@
 package trestview.machinetest.module3;
 
+import javafx.collections.ObservableList;
 import trestview.machinetest.module0.Module0Model;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -11,68 +13,143 @@ public class Module3Model extends Observable implements Observer{
 
     Module0Model module0Model;
 
-    private Deque<Double> randomValuesList;
-//    private Hashtable<Double, Double> groupedStatisticalSeries;//HashSet
+    private int minValue;
+    private int maxValue;
+    private double step;
+
+
+    private ArrayList<Double> randomValuesList;//tau
+    private ArrayList<Double> groupedStatisticalSeries;//HashSet
+    private ArrayList<Integer> ranks;
 //    private Timer timer;
 
     public Module3Model(Module0Model module0Model) {
         this.module0Model = module0Model;
-        this.randomValuesList = new ArrayDeque<>();
-//        this.groupedStatisticalSeries = new Hashtable<>();
-
+        this.randomValuesList = new ArrayList<>();
+        this.groupedStatisticalSeries = new ArrayList<>();
+        this.ranks = new ArrayList<>();
     }
 
-    public Deque<Double> getRandomValuesList() {
+    public ArrayList<Double> getRandomValuesList() {
         return randomValuesList;
     }
 
-//    public Hashtable<Double, Double> getGroupedStatisticalSeries() { return groupedStatisticalSeries; }
+    public ArrayList<Double> getGroupedStatisticalSeries() {
+        return groupedStatisticalSeries;
+    }
 
-    public void setRandomValuesList(Deque<Double> randomValuesList) {
+    public ArrayList<Integer> getRanks() {
+        return ranks;
+    }
+
+    public void setRandomValuesList(ArrayList<Double> randomValuesList) {
         this.randomValuesList = randomValuesList;
     }
 
+    public double getMaxValue() {
+        return maxValue;
+    }
+
+    public double getMinValue() {
+        return minValue;
+    }
+
+    public double getStep() {
+        return step;
+    }
+
+
     private void updateRandomValuesList() {
-        double tau = module0Model.getRandomVariablesList().peekLast();//get tail or null if deque is empty
-        randomValuesList.addLast(tau);
+        double tau = module0Model.getRandomVariable();//get tail or null if deque is empty
+//        randomValuesList.addLast(tau); for deque
+        randomValuesList.add(tau);
         changed();
     }
 
     //populate the List with a test data
+    private void createGroupedStatisticalSeries(int stepsCount) {
 
+        resizeGroupedStatisticalSeries(stepsCount);
+//        stepsCount = 10;
+        //1.sort
+        sort(randomValuesList);
+        //2.min max
+        findMaxAndMin(randomValuesList);
+        //3.find limits
+        setLimits();
+        //
+        findFrequencies(stepsCount);
 
-//    private void createGroupedStatisticalSeries() {
-//
-//        float step = 10.0f;
-//
-//        for(double i = 0; i < 100; i+=step) {
-//            int count = 0;
-//            double sum = 0;
-//            for(int j = 0; j < randomValuesList.size(); j++){
-//                if(randomValuesList.get(j) >= i && randomValuesList.get(j) < i + step) {
-//                    count++;
-//                }
-//
-//
+    }
+
+    private void resizeGroupedStatisticalSeries(int stepsCount) {
+        groupedStatisticalSeries.clear();
+//        if(groupedStatisticalSeries.size() != stepsCount) {
+//            for(int i = 0; i < stepsCount; i++) {
+//                groupedStatisticalSeries.add(0.0);
 //            }
-//            double val = count;
-////            if(i == 0)
-//                groupedStatisticalSeries.put(i, val);
-//            System.out.println("keys::::i="+i+" --- "+ groupedStatisticalSeries.keys().toString());
-////            else
-////                groupedStatisticalSeries.replace(i, val);
 //        }
-//    }
+    }
 
+    private void sort(List<Double> list) {
+        Collections.sort(list);
+//        System.out.println(list);
+    }
 
+    private void findMaxAndMin(List<Double> list) {
+        if(list.size() > 0) {
+            maxValue = list.get(list.size() - 1).intValue();//last element
+            minValue = list.get(0).intValue();//first element
+        } else {
+            maxValue = 50;
+            minValue = 0;
+        }
+
+    }
+
+    private void setLimits() {
+        //temporary solution
+        minValue = 0;
+        maxValue = 100;
+    }
+
+    private void findFrequencies(double stepsCount) {
+
+        double step = (maxValue - minValue)/stepsCount;
+        ranks.clear();
+        for( int r = minValue; r <= maxValue; r+=step) {
+            ranks.add(r);
+        }
+
+        for(int rank : ranks) {
+            double count = 0;
+            for(double tau : randomValuesList) {
+                if(tau < rank && tau > rank-step) {
+                    count++;
+                }
+            }
+            groupedStatisticalSeries.add(count);
+        }
+        System.out.println("---ranks:"+ranks);
+        System.out.println("---frequencies:"+groupedStatisticalSeries);
+
+    }
 
     public void changed() {
         setChanged();
         notifyObservers();
+
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        updateRandomValuesList();
+
+        if(o.getClass() == (Module0Model.class)) {
+            double tau = ((Module0Model) o).getRandomVariable();
+            randomValuesList.add(tau);
+            createGroupedStatisticalSeries(10);
+            changed();
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 package trestview.machinetest.module0;
 
+import javafx.application.Platform;
+
 import java.util.*;
 
 /**
@@ -7,26 +9,28 @@ import java.util.*;
  */
 public class Module0Model extends Observable {
 
-    private Deque<Double> randomVariablesList;
+//    private Deque<Double> randomVariablesList;
+
+    private double randomVariable;
 
     private Timer timer;
 
     public Module0Model() {
-        this.randomVariablesList = new ArrayDeque<>();
+//        this.randomVariablesList = new ArrayDeque<>();
 //        this.groupedStatisticalSeries = new Hashtable<>();
         populateList(100);
     }
 
-    public Deque<Double> getRandomVariablesList() {
-        return randomVariablesList;
+    public double getRandomVariable() {
+        return randomVariable;
     }
 
 
 
-    public void setRandomValuesList(Deque<Double> randomVariablesList) {
-        this.randomVariablesList = randomVariablesList;
-
-    }
+//    public void setRandomValuesList(Deque<Double> randomVariablesList) {
+//        this.randomVariablesList = randomVariablesList;
+//
+//    }
 
     //populate the List with a test data
     private void populateList(int limit) {
@@ -35,15 +39,21 @@ public class Module0Model extends Observable {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-//                randomValuesList.clear();
-                System.out.println("Timer is working");
-                double value = Math.random()*100;
-                System.out.println(value+"\\(^-^)/");
-                randomVariablesList.addLast(value);
-//                createGroupedStatisticalSeries();
-                changed();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        System.out.println("Timer is working");
+                        double value = Math.random()*100;
+                        System.out.println(value+"\\(^-^)/");
+                        randomVariable = value;
+
+                        changed();
+                    }
+                });
+
             }
-        },3000, 4000);
+        },3000, 3000);
 
 //        for (double i = 0; i < limit; i++) {
 //            randomValuesList.add(Math.atan(i));
