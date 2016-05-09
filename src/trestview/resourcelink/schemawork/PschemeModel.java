@@ -1,4 +1,4 @@
-package trestview.resourcelink.canvschema;
+package trestview.resourcelink.schemawork;
 
 import old.database.XmlRW;
 import old.database.tabDataSet.RowMachine;

@@ -6,10 +6,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 public class Work extends RowWork {
 
-    private ArrayList<Machine> machines = new ArrayList<Machine>();
-    private ArrayList<Employee> employees = new ArrayList<Employee>();
-    private ArrayList<Subject_labour> subject_labours = new ArrayList<Subject_labour>();
-    private ArrayList<Order> orders = new ArrayList<Order>();
+    private ArrayList<Machine> machines = new ArrayList<>();
+    private ArrayList<Employee> employees = new ArrayList<>();
+    private ArrayList<Subject_labour> subject_labours = new ArrayList<>();
+    private ArrayList<Order> orders = new ArrayList<>();
     private double overallSize;
     private double scaleEquipment;
 
@@ -26,6 +26,7 @@ public class Work extends RowWork {
         this.orders = orders;
         this.overallSize = overallSize;
         this.scaleEquipment = scaleEquipment;
+        for (Machine machine: machines) machine.setWork(this);
     }
 
     public Work() {

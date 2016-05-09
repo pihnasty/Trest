@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Trest extends RowTrest {
 
 	private ArrayList<Work>  	works;
-	public Trest(int id, String name,  String description,	 ArrayList<Work> works)	{
+	public Trest(int id, String name,ArrayList<Work> works, String description)	{
 		super(id, name, description); this.works = works;
 	}
 

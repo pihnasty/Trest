@@ -2,40 +2,31 @@ package trestview.resourcelink;
 
 import designpatterns.MVC;
 import entityProduction.Trest;
-import entityProduction.Work;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Pair;
 import persistence.loader.DataSet;
 import persistence.loader.XmlRW;
-import persistence.loader.tabDataSet.RowMachine;
-import persistence.loader.tabDataSet.RowWork;
 import resources.images.icons.IconT;
 import trestview.hboxpane.HboxpaneController;
 import trestview.hboxpane.HboxpaneModel;
 import trestview.hboxpane.HboxpaneView;
-import trestview.resourcelink.canvschema.SchemaController;
-import trestview.resourcelink.canvschema.SchemaModel;
-import trestview.resourcelink.canvschema.SchemaView;
+import trestview.resourcelink.schemawork.SchemaController;
+import trestview.resourcelink.schemawork.SchemaModel;
+import trestview.resourcelink.schemawork.SchemaView;
 import trestview.table.TableController;
 import trestview.table.TableViewP;
 import trestview.table.tablemodel.TableModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.Optional;
 
 /**
  * Created by pom on 07.02.2016.
@@ -54,8 +45,8 @@ public class  ResourceLinkView extends BorderPane implements Observer {
         //this.dataSet =dictionaryModel.getTMenuModel().getTrestModel().getDataSet();
         FXMLLoader fxmlLoader = XmlRW.fxmlLoad(this,resourceLinkController, "resourceLinkView.fxml","resources.ui", "resourceLinkStyle.css");
 
-        SplitPane splitPane = new SplitPane();
-        SplitPane splitPaneInner = new SplitPane();
+        SplitPane  splitPane = new SplitPane();
+        BorderPane borderPane = new BorderPane();
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -100,16 +91,22 @@ public class  ResourceLinkView extends BorderPane implements Observer {
 
 
         final StackPane sp3 = new StackPane();
+        sp3.setMinHeight(120);
         sp3.getChildren().add(new Button("Button Tree"));
 
-        splitPane.getItems().addAll(vboxSplitPaneLeft, splitPaneInner);
+        splitPane.getItems().addAll(vboxSplitPaneLeft, borderPane);
 
+        borderPane.setCenter((BorderPane)schemaWorkMVC.getView());
+        borderPane.setBottom(sp3);
+
+/*
         splitPaneInner.getItems().addAll((BorderPane)schemaWorkMVC.getView(), sp3);
-        splitPaneInner.setDividerPositions(0.1f, 0.6f);
+        splitPaneInner.setDividerPositions(0.5f, 0.1f);
         splitPaneInner.setOrientation(Orientation.VERTICAL);
 
+*/
 
-        splitPane.setDividerPositions(0.2f, 0.6f);
+      splitPane.setDividerPositions(0.2f, 0.6f);
 
          setCenter(splitPane);
 
