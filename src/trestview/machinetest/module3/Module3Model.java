@@ -20,6 +20,7 @@ public class Module3Model extends Observable implements Observer{
 
     private ArrayList<Double> randomValuesList;//tau
     private ArrayList<Double> groupedStatisticalSeries;//HashSet
+    private ArrayList<Double> normStatisticalSeries;//HashSet
     private ArrayList<Integer> ranks;
 //    private Timer timer;
 
@@ -27,6 +28,7 @@ public class Module3Model extends Observable implements Observer{
         this.module0Model = module0Model;
         this.randomValuesList = new ArrayList<>();
         this.groupedStatisticalSeries = new ArrayList<>();
+        this.normStatisticalSeries = new ArrayList<>();
         this.ranks = new ArrayList<>();
     }
 
@@ -36,6 +38,10 @@ public class Module3Model extends Observable implements Observer{
 
     public ArrayList<Double> getGroupedStatisticalSeries() {
         return groupedStatisticalSeries;
+    }
+
+    public ArrayList<Double> getNormStatisticalSeries() {
+        return normStatisticalSeries;
     }
 
     public ArrayList<Integer> getRanks() {
@@ -113,6 +119,18 @@ public class Module3Model extends Observable implements Observer{
         maxValue = 100;
     }
 
+    private void normalize() {
+        normStatisticalSeries.clear();
+        double normedVal;
+        double size = groupedStatisticalSeries.size();
+
+        for(double val : groupedStatisticalSeries) {
+            normedVal = val/size;
+            normStatisticalSeries.add(normedVal);
+        }
+        System.out.println("-----"+normStatisticalSeries);
+    }
+
     private void findFrequencies(double stepsCount) {
 
         double step = (maxValue - minValue)/stepsCount;
@@ -148,6 +166,7 @@ public class Module3Model extends Observable implements Observer{
             double tau = ((Module0Model) o).getRandomVariable();
             randomValuesList.add(tau);
             createGroupedStatisticalSeries(10);
+            normalize();
             changed();
         }
 
