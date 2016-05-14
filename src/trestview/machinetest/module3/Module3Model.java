@@ -128,6 +128,7 @@ public class Module3Model extends Observable implements Observer{
             normedVal = val/size;
             normStatisticalSeries.add(normedVal);
         }
+        normStatisticalSeries.add(0.0);
         System.out.println("-----"+normStatisticalSeries);
     }
 

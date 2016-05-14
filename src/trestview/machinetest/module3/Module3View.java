@@ -41,6 +41,7 @@ public class Module3View extends HBox implements Observer {
 //        yAxis1.setLowerBound(0);
 //        yAxis1.setUpperBound(10);
 //        yAxis1.setTickUnit(3);
+
         this.lineChart = new LineChart<Number, Number>(xAxis , yAxis);
         this.barChart = new BarChart(xAxis1, yAxis1);
         this.module3Model = model;
@@ -51,20 +52,22 @@ public class Module3View extends HBox implements Observer {
         lineChart.getData().add(series);
         barChart.getData().add(seriesBar);
         getChildren().addAll(lineChart, barChart);
+        barChart.setAnimated(false);
+        barChart.setCategoryGap(0);
+        barChart.setBarGap(0);
     }
 
     private void redrawChart(List<Double> listData, List<Integer> listRanks) {
-        series.getData().removeAll();
-        for(int i = 0; i < listData.size(); i++) {
+        series.getData().clear();
+        for(int i = 0; i < listRanks.size(); i++) {
             series.getData().add(new XYChart.Data(listRanks.get(i), listData.get(i)));
         }
         System.out.println("In redrawChart()");
     }
 
     private void redrawBarChart(List<Double> listData, List<Integer> listRanks) {
-//        seriesBar.getData().removeAll();
+//        seriesBar.getData().clear();
         for (int i = 0; i <listData.size(); i++) {
-
             seriesBar.getData().add(new XYChart.Data(
                     listRanks.get(i).toString(),
                     listData.get(i)));
