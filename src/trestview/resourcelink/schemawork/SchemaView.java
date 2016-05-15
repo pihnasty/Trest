@@ -54,12 +54,7 @@ public class SchemaView extends BorderPane implements Observer {
 //endregion
         getChildren().addAll( imageview);
 
-        for(Q q: schemaModel.getQs()) {
-            System.out.printf("     %d  \n" , q.getIdQ());
-            q.setLayoutX(q.getX().doubleValue());
-            q.setLayoutY(q.getY().doubleValue());
-        }
-        getChildren().addAll(schemaModel.getQs());
+
 
 
         kScale = new DoubleBinding() {
@@ -89,6 +84,17 @@ public class SchemaView extends BorderPane implements Observer {
         imageview.fitHeightProperty().bind(hImv);
         imageview.fitWidthProperty().bind(wImv);
 
+        for(Q q: schemaModel.getQs()) {
+            System.out.printf("     %d  \n" , q.getIdQ());
+
+
+            q.setLayoutX(q.getX().doubleValue());
+            q.setLayoutY(q.getY().doubleValue());
+            q.setRotate(q.getAngle());
+
+        }
+        getChildren().addAll(schemaModel.getQs());
+
 
      //   imageview.setFitHeight( imageview.getImage().getHeight()*db.getValue());
 
@@ -101,11 +107,11 @@ public class SchemaView extends BorderPane implements Observer {
         System.out.println("getHeight()"+getHeight());
         setHeight(getHeight()+1);        setHeight(getHeight()-1);
 
-        for(Q q: schemaModel.getQs()) {
-            System.out.printf("     %d  \n" , q.getIdQ());
-            q.setLayoutX(q.getX().doubleValue()+1);
-            q.setLayoutY(q.getY().doubleValue()+1);
-        }
+//        for(Q q: schemaModel.getQs()) {
+//            System.out.printf("     %d  \n" , q.getIdQ());
+//            q.setLayoutX(q.getX().doubleValue()+1);
+//            q.setLayoutY(q.getY().doubleValue()+1);
+//        }
 
 
     }
