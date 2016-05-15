@@ -32,7 +32,7 @@ public class SchemaView extends BorderPane implements Observer {
     this.imageview.setImage(new javafx.scene.image.Image("file:"+work.getScheme() ));
 
         setStyle("-fx-background-color: #336699;");
-
+//region
 /*
         this.setHeight(200);
         this.setWidth(200);
@@ -51,10 +51,14 @@ public class SchemaView extends BorderPane implements Observer {
 */
    //     Rectangle r = new Rectangle(100,100,100,100);
    //     Line l = new Line(12,12,120,120);
-
+//endregion
         getChildren().addAll( imageview);
 
-        for(Q q: schemaModel.getQs()) System.out.printf("     %d  \n" , q.getIdQ());
+        for(Q q: schemaModel.getQs()) {
+            System.out.printf("     %d  \n" , q.getIdQ());
+            q.setLayoutX(q.getX().doubleValue());
+            q.setLayoutY(q.getY().doubleValue());
+        }
         getChildren().addAll(schemaModel.getQs());
 
 
@@ -97,7 +101,11 @@ public class SchemaView extends BorderPane implements Observer {
         System.out.println("getHeight()"+getHeight());
         setHeight(getHeight()+1);        setHeight(getHeight()-1);
 
-
+        for(Q q: schemaModel.getQs()) {
+            System.out.printf("     %d  \n" , q.getIdQ());
+            q.setLayoutX(q.getX().doubleValue()+1);
+            q.setLayoutY(q.getY().doubleValue()+1);
+        }
 
 
     }

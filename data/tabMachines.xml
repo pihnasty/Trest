@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <tabMachines>
-<RowMachine angle="0.0" description="Machine96" id="96" locationX="0.45714285714285713" locationY="0.6793981481481481" name="Machine96" state="1.0"/>
-<RowMachine angle="0.0" description="Machine97" id="97" locationX="0.22007722007722008" locationY="0.21875" name="Machine97" state="1.0"/>
-<RowMachine angle="0.0" description="Machine98" id="98" locationX="0.6401544401544401" locationY="0.2175925925925926" name="Machine98" state="1.0"/>
-<RowMachine angle="0.0" description="Machine99" id="99" locationX="0.7042471042471042" locationY="0.7303240740740741" name="Machine99" state="1.0"/>
-<RowMachine angle="0.0" description="Machine100" id="100" locationX="0.5552123552123552" locationY="0.5416666666666666" name="Machine100" state="1.0"/>
-<RowMachine angle="0.0" description="Machine101" id="101" locationX="0.8586872586872587" locationY="0.47685185185185186" name="Machine101" state="1.0"/>
-<RowMachine angle="0.0" description="Machine102" id="102" locationX="0.8563706563706563" locationY="0.7361111111111112" name="Machine102" state="1.0"/>
+<RowMachine angle="0.0" description="Machine96" id="96" locationX="0.1" locationY="0.1" name="Machine96" state="1.0"/>
+<RowMachine angle="0.0" description="Machine97" id="97" locationX="0.1" locationY="0.9" name="Machine97" state="1.0"/>
+<RowMachine angle="0.0" description="Machine98" id="98" locationX="0.9" locationY="0.1" name="Machine98" state="1.0"/>
+<RowMachine angle="0.0" description="Machine99" id="99" locationX="1.0" locationY="1.0" name="Machine99" state="1.0"/>
+<RowMachine angle="0.0" description="Machine100" id="100" locationX="0.5" locationY="0.5" name="Machine100" state="1.0"/>
 </tabMachines>

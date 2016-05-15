@@ -2,6 +2,7 @@ package trestview.resourcelink.schemawork;
 
 import entityProduction.Machine;
 import entityProduction.Modelmachine;
+import javafx.beans.binding.DoubleBinding;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -13,24 +14,60 @@ public class Q extends BorderPane{
     private Machine machine;
     private ImageView imv = new ImageView();
     private int idQ;
-    private double x,y;
+
+
+
+    private DoubleBinding x;
+    private DoubleBinding y;
     private double scaleEquipment =1.0;
     private Rectangle rInner;
     private double scale;
 
     public Q(Machine machine) {
         this.machine = machine;
-        this.modelmachine = machine.getModelmachine();
-        this.idQ = machine.getId();
-        this.imv.setImage(new javafx.scene.image.Image("file:"+machine.getModelmachine().getImg() ));
-        this.x=machine.getLocationX()*imv.getImage().getWidth();
-        this.y=machine.getLocationY()*imv.getImage().getHeight();
-        this.scaleEquipment = machine.getWork().getScaleEquipment();
-
 
         ImageView imvWork = new ImageView();
         imvWork.setImage(new javafx.scene.image.Image("file:"+this.machine.getWork().getScheme()));
         scale = imvWork.getImage().getHeight()/ this.machine.getWork().getOverallSize();
+
+
+        this.modelmachine = machine.getModelmachine();
+        this.idQ = machine.getId();
+        this.imv.setImage(new javafx.scene.image.Image("file:"+machine.getModelmachine().getImg() ));
+
+        this.imv.fitWidthProperty().setValue(modelmachine.getOverallDimensionX()*scale);
+//       this.imv.fitHeightProperty().setValue(400);
+
+
+    //    this.x=machine.getLocationX()*imvWork.getImage().getWidth();
+
+
+        x = new DoubleBinding() {
+            { super.bind(imvWork.getImage().widthProperty()); }
+            @Override
+            protected double computeValue() {
+                return imvWork.getImage().widthProperty().getValue()*machine.getLocationX();
+            }};
+
+        y = new DoubleBinding() {
+            { super.bind(imvWork.getImage().heightProperty()); }
+            @Override
+            protected double computeValue() {
+                return imvWork.getImage().heightProperty().getValue()*machine.getLocationY();
+            }};
+
+
+   //     this.y=machine.getLocationY()*imvWork.getImage().getHeight();
+
+
+
+
+
+
+        this.scaleEquipment = machine.getWork().getScaleEquipment();
+
+
+
 
       //  this.imageview.setImage(new javafx.scene.image.Image("file:"+work.getScheme() ));
         //this.scale = machine.getWork().
@@ -56,6 +93,22 @@ public class Q extends BorderPane{
 
     public void setIdQ(int idQ) {
         this.idQ = idQ;
+    }
+
+    public Number getY() {
+        return y.get();
+    }
+
+    public DoubleBinding yProperty() {
+        return y;
+    }
+
+    public Number getX() {
+        return x.get();
+    }
+
+    public DoubleBinding xProperty() {
+        return x;
     }
 
 
