@@ -81,8 +81,11 @@ public class SchemaView extends BorderPane implements Observer {
 
 
 
-        imageview.fitHeightProperty().bind(hImv);
-        imageview.fitWidthProperty().bind(wImv);
+        BorderPane bp = new BorderPane();
+
+
+
+
 
         for(Q q: schemaModel.getQs()) {
             System.out.printf("     %d  \n" , q.getIdQ());
@@ -93,7 +96,18 @@ public class SchemaView extends BorderPane implements Observer {
             q.setRotate(q.getAngle());
 
         }
-        getChildren().addAll(schemaModel.getQs());
+
+
+
+        bp.getChildren().add(imageview);
+        bp.getChildren().addAll(schemaModel.getQs());
+
+        bp.setMaxHeight(200);
+
+   //     imageview.fitHeightProperty().bind(hImv);
+   //     imageview.fitWidthProperty().bind(wImv);
+
+        getChildren().addAll(bp);
 
 
      //   imageview.setFitHeight( imageview.getImage().getHeight()*db.getValue());
