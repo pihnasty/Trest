@@ -50,6 +50,7 @@ public class Module3View extends HBox implements Observer {
         seriesBar = new XYChart.Series<>();
 //        redrawChart();
         lineChart.getData().add(series);
+        lineChart.setAnimated(false);
         barChart.getData().add(seriesBar);
         getChildren().addAll(lineChart, barChart);
         barChart.setAnimated(false);
@@ -67,12 +68,12 @@ public class Module3View extends HBox implements Observer {
 
     private void redrawBarChart(List<Double> listData, List<Integer> listRanks) {
 //        seriesBar.getData().clear();
-        for (int i = 0; i <listData.size(); i++) {
+        for (int i = 1; i <listRanks.size(); i++) {
             seriesBar.getData().add(new XYChart.Data(
                     listRanks.get(i).toString(),
                     listData.get(i)));
         }
-        System.out.println("In redrawBarChart()");
+        System.out.println("In redrawBarChart()M3");
     }
 
     @Override

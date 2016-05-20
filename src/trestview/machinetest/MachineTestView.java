@@ -13,9 +13,9 @@ import trestview.machinetest.charts.ChartCommonModel;
 import trestview.machinetest.charts.ChartController;
 import trestview.machinetest.charts.ChartView;
 import trestview.machinetest.module0.Module0Model;
-import trestview.machinetest.module3.Module3Controller;
-import trestview.machinetest.module3.Module3Model;
-import trestview.machinetest.module3.Module3View;
+import trestview.machinetest.module3.*;
+import trestview.machinetest.module4.*;
+import trestview.machinetest.module5.*;
 
 
 import java.util.*;
@@ -85,6 +85,18 @@ public class MachineTestView extends BorderPane implements Observer {
         module0Model.addObserver(module3Model);
         module3Model.addObserver(module3View);
 
+        Module4Model module4Model = new Module4Model(module0Model);
+        Module4Controller module4Controller = new Module4Controller(module4Model);
+        Module4View module4View = new Module4View(module4Model, module4Controller);
+        module0Model.addObserver(module4Model);
+        module4Model.addObserver(module4View);
+
+        Module5Model module5Model = new Module5Model(module0Model);
+        Module5Controller module5Controller = new Module5Controller(module5Model);
+        Module5View module5View = new Module5View(module5Model, module5Controller);
+        module0Model.addObserver(module5Model);
+        module5Model.addObserver(module5View);
+
 
 //        ChartCommonModel chartCommonModel1 = new ChartCommonModel();
 //        ChartController chartController1 = new ChartController(chartCommonModel1);
@@ -113,7 +125,7 @@ public class MachineTestView extends BorderPane implements Observer {
 //        chartView.setMaxSize(600, 400);
 //        chartView1.setMaxSize(600, 400);
 //        chartView2.setMaxSize(600, 400);
-        vBox1.getChildren().addAll(module3View); //, chartView1, chartView2);
+        vBox1.getChildren().addAll(module3View, module4View, module5View); //, chartView1, chartView2);
         splitPane.getItems().addAll(vBox, vBox1);
 
         setCenter(splitPane);

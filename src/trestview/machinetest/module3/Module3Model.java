@@ -65,12 +65,6 @@ public class Module3Model extends Observable implements Observer{
     }
 
 
-    private void updateRandomValuesList() {
-        double tau = module0Model.getRandomVariable();//get tail or null if deque is empty
-//        randomValuesList.addLast(tau); for deque
-        randomValuesList.add(tau);
-        changed();
-    }
 
     //populate the List with a test data
     private void createGroupedStatisticalSeries(int stepsCount) {
@@ -123,22 +117,25 @@ public class Module3Model extends Observable implements Observer{
         normStatisticalSeries.clear();
         double normedVal;
         double size = groupedStatisticalSeries.size();
-
+//        double s = 0;
         for(double val : groupedStatisticalSeries) {
-            normedVal = val/size;
+            normedVal = val/(size*step);
             normStatisticalSeries.add(normedVal);
+//            s+=normedVal;
         }
         normStatisticalSeries.add(0.0);
+
         System.out.println("-----"+normStatisticalSeries);
     }
 
     private void findFrequencies(double stepsCount) {
 
-        double step = (maxValue - minValue)/stepsCount;
+        step = (maxValue - minValue)/stepsCount;
         ranks.clear();
         for( int r = minValue; r <= maxValue; r+=step) {
             ranks.add(r);
         }
+        ranks.add((int)(ranks.get(ranks.size()-1)+step));
 
         for(int rank : ranks) {
             double count = 0;
@@ -149,8 +146,8 @@ public class Module3Model extends Observable implements Observer{
             }
             groupedStatisticalSeries.add(count);
         }
-        System.out.println("---ranks:"+ranks);
-        System.out.println("---frequencies:"+groupedStatisticalSeries);
+//        System.out.println("---ranks:"+ranks);
+//        System.out.println("---frequencies:"+groupedStatisticalSeries);
 
     }
 
