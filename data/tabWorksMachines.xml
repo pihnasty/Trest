@@ -18,6 +18,6 @@
 <RowWorkMachine description="IdWork=1IdMachine=98" id="1" id2="98"/>
 <RowWorkMachine description="IdWork=1IdMachine=99" id="1" id2="99"/>
 <RowWorkMachine description="IdWork=1IdMachine=100" id="1" id2="100"/>
-<RowWorkMachine description="IdWork=1IdMachine=101" id="1" id2="101"/>
-<RowWorkMachine description="IdWork=1IdMachine=102" id="1" id2="102"/>
+<RowWorkMachine description="" id="3" id2="101"/>
+<RowWorkMachine description="" id="3" id2="102"/>
 </tabWorksMachines>

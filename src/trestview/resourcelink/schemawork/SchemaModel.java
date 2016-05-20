@@ -30,15 +30,12 @@ public class SchemaModel extends Observable  implements Observer{
     public SchemaModel(Observable observableModel, Rule rule) {
         this.observableModel = observableModel;
         this.rule = rule;
-  //      this.tClass =  rule.getClassTab();
         qs = new ArrayList();
-        if(rule== Rule.Work)  {
-            this.dataSet = ((ResourceLinkModel)observableModel).getDataSet();
+        this.dataSet = ((ResourceLinkModel)observableModel).getDataSet();
+
+        if(this.rule== Rule.Work)  {
             if(!((ResourceLinkModel)observableModel).getTrest().getWorks().isEmpty())  {
-                this.work = ((ResourceLinkModel)observableModel).getTrest().getWorks().get(0);
-                for(Machine machine : work.getMachines()) {
-                   qs.add(new Q(machine ));
-                }  //  ArrayList<Machine> machines));
+                createDataSchemaModel (((ResourceLinkModel) observableModel).getTrest().getWorks().get(0));
             }
         }
 
@@ -46,7 +43,12 @@ public class SchemaModel extends Observable  implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        work = (Work) ((TableModel<Work>)o).getSelectRow();
+
+
+        if(this.rule== Rule.Work)  {
+                createDataSchemaModel ((Work) ((TableModel<Work>)o).getSelectRow());
+            }
+
         changed();
     }
 
@@ -62,5 +64,14 @@ public class SchemaModel extends Observable  implements Observer{
     public List<Q> getQs()          {   return qs;          }
 
     public void setQs(List<Q> qs)   {   this.qs = qs;       }
+
+    private void createDataSchemaModel (Work work){
+        qs.clear();
+        this.work = work;
+        for (Machine machine : work.getMachines()) {
+            qs.add(new Q(machine));
+        }  //  ArrayList<Machine> machines));
+
+    }
 
 }
