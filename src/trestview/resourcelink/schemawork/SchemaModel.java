@@ -30,7 +30,7 @@ public class SchemaModel extends Observable  implements Observer{
     public SchemaModel(Observable observableModel, Rule rule) {
         this.observableModel = observableModel;
         this.rule = rule;
-        qs = new ArrayList();
+        this.qs = new ArrayList();
         this.dataSet = ((ResourceLinkModel)observableModel).getDataSet();
 
         if(this.rule== Rule.Work)  {
