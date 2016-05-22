@@ -18,6 +18,7 @@ public class MVC {
     private Object model;
     private Method methodAddObserver;
     private Object view;
+    private Object controller;
     @Deprecated
     public   MVC (Class mClass, Class cClass, Class vClass, ArrayList  arrayList, Rule rule)   {
         try {
@@ -25,7 +26,7 @@ public class MVC {
             model = mConstructor.newInstance(arrayList, rule);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
-            Object controller = cConstructor.newInstance(model);
+            controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
             view = vConstructor.newInstance(model,controller);
@@ -45,7 +46,7 @@ public class MVC {
             model = mConstructor.newInstance(dataSet,rule);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
-            Object controller = cConstructor.newInstance(model);
+            controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
             view = vConstructor.newInstance(model,controller);
@@ -65,7 +66,7 @@ public class MVC {
             model = mConstructor.newInstance(o,rule);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
-            Object controller = cConstructor.newInstance(model);
+            controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
             view = vConstructor.newInstance(model,controller);
@@ -85,7 +86,7 @@ public class MVC {
             model = mConstructor.newInstance(o);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
-            Object controller = cConstructor.newInstance(model);
+            controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
             view = vConstructor.newInstance(model,controller);
@@ -112,7 +113,7 @@ public class MVC {
             model = mConstructor.newInstance(dataSet);
 
             Constructor cConstructor = cClass.getConstructor( mClass);
-            Object controller = cConstructor.newInstance(model);
+            controller = cConstructor.newInstance(model);
 
             Constructor vConstructor = vClass.getConstructor( mClass, cClass);
             view = vConstructor.newInstance(model,controller);
@@ -120,13 +121,7 @@ public class MVC {
             methodAddObserver = Observable.class.getDeclaredMethod("addObserver",Observer.class );
             methodAddObserver.invoke(model, view);
 
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
             e.printStackTrace();
         }
     }
@@ -140,6 +135,7 @@ public class MVC {
 
     public Object getModel() {   return model;   }
     public Object getView()  {   return view;    }
+    public Object getController() { return controller;  }
 
     public MVC addObserverP (Observer observer) {
         try   {   methodAddObserver.invoke(model, observer); }
