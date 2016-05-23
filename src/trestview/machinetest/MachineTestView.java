@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import persistence.loader.XmlRW;
+import trestview.machinetest.animation.ProcessingAnimationModel;
+import trestview.machinetest.animation.ProcessingAnimationView;
 import trestview.machinetest.charts.ChartCommonModel;
 import trestview.machinetest.charts.ChartController;
 import trestview.machinetest.charts.ChartView;
@@ -55,15 +57,16 @@ public class MachineTestView extends BorderPane implements Observer {
         vBox.setPadding(new Insets(10, 5, 5, 10));
 
         //img
-        Image image = new Image("file:Image\\Machine\\freza_02.png");
+//        Image image = new Image("file:Image\\animation\\presBot.png");
 
-        ImageView imageView = new ImageView();
-        imageView.setImage(image);
+//        ImageView imageView = new ImageView();
+//        imageView.setImage(image);
 //        imageView.fitWidthProperty().bind(widthProperty());
 
-        imageView.setPreserveRatio(true);
+//        imageView.setPreserveRatio(true);
 
-        vBox.getChildren().addAll(imageView, machineTestModel.getTableView());
+
+
 
         SplitPane splitPane = new SplitPane();
 
@@ -78,6 +81,11 @@ public class MachineTestView extends BorderPane implements Observer {
         final NumberAxis yAxis2 = new NumberAxis();
         //----------------------------------------------------//
         Module0Model module0Model = new Module0Model();
+
+        ProcessingAnimationModel animationModel = new ProcessingAnimationModel();
+        ProcessingAnimationView animationView = new ProcessingAnimationView(animationModel);
+        module0Model.addObserver(animationModel);
+        animationModel.addObserver(animationView);
 
         Module3Model module3Model = new Module3Model(module0Model);
         Module3Controller module3Controller = new Module3Controller(module3Model);
@@ -125,6 +133,8 @@ public class MachineTestView extends BorderPane implements Observer {
 //        chartView.setMaxSize(600, 400);
 //        chartView1.setMaxSize(600, 400);
 //        chartView2.setMaxSize(600, 400);
+
+        vBox.getChildren().addAll(animationView, machineTestModel.getTableView());
         vBox1.getChildren().addAll(module3View, module4View, module5View); //, chartView1, chartView2);
         splitPane.getItems().addAll(vBox, vBox1);
 
