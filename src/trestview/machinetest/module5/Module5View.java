@@ -1,5 +1,6 @@
 package trestview.machinetest.module5;
 
+import com.sun.javafx.geom.Shape;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.LineChart;
@@ -7,9 +8,11 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
 
+import javax.swing.text.Style;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
 /**
  * Created by Роман on 15.04.2016.
@@ -20,7 +23,7 @@ public class Module5View extends HBox implements Observer {
     Module5Model module5Model;
     Module5Controller module5Controller;
     XYChart.Series<Number, Number> series;
-    XYChart.Series<Number, Number> seriesBar;
+//    XYChart.Series<Number, Number> seriesBar;
     ObservableList<String> ranks;
     LineChart<Number, Number> lineChart;
     final NumberAxis xAxis;
@@ -35,9 +38,11 @@ public class Module5View extends HBox implements Observer {
         yAxis = new NumberAxis();
         this.lineChart = new LineChart<Number, Number>(xAxis , yAxis);
         series = new XYChart.Series<>();
-        seriesBar = new XYChart.Series<>();
+        series.setName(ResourceBundle.getBundle("resources.ui").getString("meanSquareDeviation"));
+//        seriesBar = new XYChart.Series<>();
         lineChart.getData().add(series);
         lineChart.setAnimated(false);
+        lineChart.setCreateSymbols(false);
         getChildren().addAll(lineChart);
     }
 

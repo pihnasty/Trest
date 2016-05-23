@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
 /**
  * Created by Роман on 15.04.2016.
@@ -32,11 +33,12 @@ public class Module3View extends HBox implements Observer {
 
 
     public Module3View(Module3Model model, Module3Controller controller) {
-         ranks = FXCollections.observableArrayList();
-         xAxis = new NumberAxis();
-         yAxis = new NumberAxis();
-         xAxis1 = new CategoryAxis();
-         yAxis1 = new NumberAxis();
+
+        ranks = FXCollections.observableArrayList();
+        xAxis = new NumberAxis();
+        yAxis = new NumberAxis();
+        xAxis1 = new CategoryAxis();
+        yAxis1 = new NumberAxis();
 //        yAxis1.setAutoRanging(false);
 //        yAxis1.setLowerBound(0);
 //        yAxis1.setUpperBound(10);
@@ -56,6 +58,10 @@ public class Module3View extends HBox implements Observer {
         barChart.setAnimated(false);
         barChart.setCategoryGap(0);
         barChart.setBarGap(0);
+        lineChart.setCreateSymbols(false);
+        series.setName(ResourceBundle.getBundle("resources.ui").getString("densityDistribution"));
+        seriesBar.setName(ResourceBundle.getBundle("resources.ui").getString("statisticalDistribution"));
+
     }
 
     private void redrawChart(List<Double> listData, List<Integer> listRanks) {

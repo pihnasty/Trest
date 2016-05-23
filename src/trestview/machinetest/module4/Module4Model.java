@@ -14,7 +14,9 @@ public class Module4Model extends Observable implements Observer{
     private ArrayList<Double> randomValuesList;//tau
     private ArrayList<Double> expectedValues;
     private ArrayList<Long> times;
+    private ArrayList<Double> temps;
 
+    private double constantVal;
 
 
     private ArrayList<Double> groupedStatisticalSeries;
@@ -25,6 +27,7 @@ public class Module4Model extends Observable implements Observer{
         this.randomValuesList = new ArrayList<>();
         this.expectedValues = new ArrayList<>();
         this.times = new ArrayList<>();
+        this.temps = new ArrayList<>();
     }
 
     public ArrayList<Double> getExpectedValues() {
@@ -33,6 +36,15 @@ public class Module4Model extends Observable implements Observer{
 
     public ArrayList<Long> getTimes() {
         return times;
+    }
+
+    public ArrayList<Double> getTemps() {
+        return temps;
+    }
+
+    public double getConstantVal() {
+        constantVal = 5;
+        return constantVal;
     }
 
     private void runExpectedValue(int amount) {
@@ -46,6 +58,13 @@ public class Module4Model extends Observable implements Observer{
         double expectedVal = sum/amount;
         expectedValues.add(expectedVal);
         System.out.println(expectedValues+"jjjjjjj");
+    }
+
+    private void runTemp() {
+        double temp = 0;
+        double average = expectedValues.get(expectedValues.size()-1);
+        temp = 1/average;
+        temps.add(temp);
     }
 
     private void mesureTime() {
@@ -67,6 +86,7 @@ public class Module4Model extends Observable implements Observer{
             double tau = ((Module0Model) o).getRandomVariable();
             randomValuesList.add(tau);
             runExpectedValue(10);
+            runTemp();
             mesureTime();
 //            normalize();
 //            createExpectedValues();
