@@ -8,6 +8,7 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -52,6 +53,13 @@ public class  ResourceLinkView extends BorderPane implements Observer {
 //----------------------------------------------------------------------------------------------------------------------
 
         MVC schemaWorkMVC  = new MVC (SchemaModel.class, SchemaController.class, SchemaView.class, this.resourceLinkModel, Rule.Work );
+        SchemaView view = (SchemaView) schemaWorkMVC.getView();
+        view.addEventHandler(MouseEvent.MOUSE_ENTERED, (SchemaController)schemaWorkMVC.getController());
+
+
+//        pschemeView.addMouseMotionListener(pschemeController);                          //  Here we add an observer (MouseMotionListener: mouseDragged, mouseMoved) for the view.
+//        pschemeView.addMouseListener(pschemeController);                                //  Here we add an observer (MouseListener:  mousePressed) for the view.
+
 
 //----------------------------------------------------------------------------------------------------------------------
         MVC tableWorkMVC  = new MVC (TableModel.class, TableController.class, TableViewP.class, this.resourceLinkModel, Rule.Work );

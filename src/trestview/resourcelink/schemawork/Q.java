@@ -3,6 +3,7 @@ package trestview.resourcelink.schemawork;
 import entityProduction.Machine;
 import entityProduction.Modelmachine;
 import javafx.beans.binding.DoubleBinding;
+import javafx.scene.Cursor;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -94,6 +95,7 @@ public class Q extends BorderPane{
 
         getChildren().addAll(imvQ,rInner,rOuter);
         rInner.setLayoutX(0);   rInner.setLayoutY(0);
+        setCursor(Cursor.HAND);
 
     }
 

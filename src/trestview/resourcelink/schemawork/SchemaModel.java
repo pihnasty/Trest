@@ -3,6 +3,8 @@ package trestview.resourcelink.schemawork;
 import entityProduction.Machine;
 import entityProduction.Modelmachine;
 import entityProduction.Work;
+import javafx.geometry.Point2D;
+import javafx.scene.Cursor;
 import persistence.loader.DataSet;
 import persistence.loader.tabDataSet.RowIdNameDescription;
 import persistence.loader.tabDataSet.RowModelmachine;
@@ -10,6 +12,8 @@ import trestview.resourcelink.ResourceLinkModel;
 import trestview.table.tablemodel.TableModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
 
+import java.awt.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -23,6 +27,9 @@ public class SchemaModel extends Observable  implements Observer{
     private Rule rule;
     private DataSet dataSet;
 
+    private Cursor cursor;
+    private boolean typeCursor;                                                 //  There are  we determine, to look the cursor  at the subject. If (typeCursor=No) - to look.
+
     private Work work;
 
     private List<Q> qs;
@@ -30,7 +37,7 @@ public class SchemaModel extends Observable  implements Observer{
     public SchemaModel(Observable observableModel, Rule rule) {
         this.observableModel = observableModel;
         this.rule = rule;
-        qs = new ArrayList();
+        this.qs = new ArrayList();
         this.dataSet = ((ResourceLinkModel)observableModel).getDataSet();
 
         if(this.rule== Rule.Work)  {
@@ -72,6 +79,39 @@ public class SchemaModel extends Observable  implements Observer{
             qs.add(new Q(machine));
         }  //  ArrayList<Machine> machines));
 
+    }
+
+    public Cursor getCursor() {
+        return cursor;
+    }
+
+    public void setCursor(Cursor cursor) {
+        this.cursor = cursor;
+    }
+
+    public void changeCursor(Point ePoint) {
+        if (find(ePoint) == null) {
+            typeCursor = true;
+        } else {
+            typeCursor = false;
+        }
+        changed();
+    }
+
+    public Q find(Point p) {
+        for (int i = 0; i < qs.size(); i++) {
+            Q q = (Q) qs.get(i);
+            if (q.contains(p.getX(), p.getY())) {
+                System.out.println(p.getX()+"     "+ p.getY());
+                return q;
+            }
+            System.out.println(p.getX()+"     "+ p.getY());
+        }
+        return null;
+    }
+
+    public boolean isTypeCursor() {
+        return typeCursor;
     }
 
 }

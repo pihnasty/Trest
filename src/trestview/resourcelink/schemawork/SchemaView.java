@@ -2,12 +2,11 @@ package trestview.resourcelink.schemawork;
 
 import entityProduction.Work;
 import javafx.beans.binding.DoubleBinding;
+import javafx.scene.Cursor;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
-
 
 import java.util.Observable;
 import java.util.Observer;
@@ -65,6 +64,16 @@ public class SchemaView extends BorderPane implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
+        if ((  (SchemaModel)  o).isTypeCursor()) {
+
+            setCursor(Cursor.DEFAULT);
+            System.out.println("--------------------");
+
+        } else {
+            setCursor(Cursor.HAND);          //  .CROSSHAIR_CURSOR 			.HAND_CURSOR
+        }
+
+
         repaint((SchemaModel) o);
         setHeight(getHeight()+1);        setHeight(getHeight()-1);
     }
