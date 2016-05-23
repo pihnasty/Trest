@@ -52,30 +52,6 @@ public class Q extends BorderPane{
 
         this.x=machine.getLocationX()*imvWork.getImage().getWidth()  - (oX*Math.cos(angle/(2.0*Math.PI))-oY*Math.sin(angle/(2.0*Math.PI)));
         this.y=machine.getLocationY()*imvWork.getImage().getHeight() - (oX*Math.sin(angle/(2.0*Math.PI))+oY*Math.cos(angle/(2.0*Math.PI)));
-
-
-//        x = new DoubleBinding() {
-//            { super.bind(imvWork.getImage().widthProperty()); }
-//            @Override
-//            protected double computeValue() {
-//                return imvWork.getImage().widthProperty().getValue()*machine.getLocationX();
-//            }};
-//
-//        y = new DoubleBinding() {
-//            { super.bind(imvWork.getImage().heightProperty()); }
-//            @Override
-//            protected double computeValue() {
-//                return imvWork.getImage().heightProperty().getValue()*machine.getLocationY();
-//            }};
-
-
-   //     this.y=machine.getLocationY()*imvWork.getImage().getHeight();
-
-
-
-
-
-
         this.scaleEquipment = machine.getWork().getScaleEquipment();
 
 
@@ -85,17 +61,14 @@ public class Q extends BorderPane{
         //this.scale = machine.getWork().
 
 
-
-
-
        // rInner.setFill(null);
 
         rInner.setFill(Color.TRANSPARENT);        rInner.setStrokeWidth(5);        rInner.setStroke(Color.RED);
         rOuter.setFill(Color.TRANSPARENT);        rOuter.setStrokeWidth(5);        rOuter.setStroke(Color.BLUE);
 
         getChildren().addAll(imvQ,rInner,rOuter);
-        rInner.setLayoutX(0);   rInner.setLayoutY(0);
-        setCursor(Cursor.HAND);
+ //     rInner.setLayoutX(0);   rInner.setLayoutY(0);
+    //    setCursor(Cursor.HAND);
 
     }
 

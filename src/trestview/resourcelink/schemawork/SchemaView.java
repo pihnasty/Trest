@@ -2,14 +2,16 @@ package trestview.resourcelink.schemawork;
 
 import entityProduction.Work;
 import javafx.beans.binding.DoubleBinding;
+import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class SchemaView extends BorderPane implements Observer {
 
@@ -23,12 +25,13 @@ public class SchemaView extends BorderPane implements Observer {
     private DoubleBinding kScale;
     private DoubleBinding hImv;
     private DoubleBinding wImv;
+    private List<Q> qs;
 
     public SchemaView(SchemaModel schemaModel, SchemaController schemaController) {
 
         bp = new BorderPane();
         getChildren().addAll(bp);
-
+        qs = schemaModel.getQs();
 
         setStyle("-fx-background-color: #336699;");
 //region
@@ -51,8 +54,8 @@ public class SchemaView extends BorderPane implements Observer {
         this.work = schemaModel.getWork();
         this.imageview.setImage(new Image("file:"+work.getScheme() ));
         for(Q q: schemaModel.getQs()) {
-            q.setLayoutX(q.getX().doubleValue());
-            q.setLayoutY(q.getY().doubleValue());
+            q.setLayoutX(q.getX());
+            q.setLayoutY(q.getY());
             q.setRotate(q.getAngle());
         }
         if (imageview != null)           bp.getChildren().addAll(imageview);
@@ -64,15 +67,8 @@ public class SchemaView extends BorderPane implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        if ((  (SchemaModel)  o).isTypeCursor()) {
 
-            setCursor(Cursor.DEFAULT);
-            System.out.println("--------------------");
-
-        } else {
-            setCursor(Cursor.HAND);          //  .CROSSHAIR_CURSOR 			.HAND_CURSOR
-        }
-
+        changeCursor(o);
 
         repaint((SchemaModel) o);
         setHeight(getHeight()+1);        setHeight(getHeight()-1);
@@ -87,7 +83,8 @@ public class SchemaView extends BorderPane implements Observer {
             { super.bind(heightProperty()); }
             @Override
             protected double computeValue() {
-                return 0.85*getHeight()/imageview.getImage().getHeight() ;
+                return 1;
+                        //0.85*getHeight()/imageview.getImage().getHeight() ;
             }};
 
         hImv = new DoubleBinding() {
@@ -105,4 +102,40 @@ public class SchemaView extends BorderPane implements Observer {
             }};
     }
 
+    public Q find(Observable o,String s) {
+
+        Point p =  ((SchemaModel) o).getePoint();
+        for (int i = 0; i < qs.size(); i++) {
+            Q q = qs.get(i);
+            if (q.contains(p.getX()*kScale.getValue(), p.getY()*kScale.getValue())) {
+                System.out.println(p.getX()/kScale.getValue()+"     "+ p.getY()/kScale.getValue()+"   "+q.getIdQ()+"  "+q.getX()+"     "+ q.getY()+"  "+q.getWidth()+"     "+ q.getHeight()+ "  "+q.getLayoutX()+"     "+ q.getLayoutY() );
+                return q;
+            }
+        }
+        return null;
+    }
+
+    public Q find(Observable o) {
+
+        Point p =  ((SchemaModel) o).getePoint();
+        for (int i = 0; i <   bp.getChildren().size(); i++) {
+          if (bp.getChildren().get(i).getClass()==Q.class) {
+              Q q = (Q) bp.getChildren().get(i);
+              if (q.contains(p.getX()-q.getLayoutX() , p.getY()-q.getLayoutY() )) {
+                  System.out.println(p.getX() / kScale.getValue() + "     " + p.getY() / kScale.getValue() + "   " + q.getIdQ() + "  " + q.getX() + "     " + q.getY() + "  " + q.getWidth() + "     " + q.getHeight() + "  " + q.getLayoutX() + "     " + q.getLayoutY());
+                  return q;
+              }
+          }
+        }
+        return null;
+    }
+
+    public void changeCursor(Observable o) {
+        if (find(o) == null) {
+            setCursor(Cursor.DEFAULT);
+        } else {
+            setCursor(Cursor.HAND);
+        }
+
+    }
 }

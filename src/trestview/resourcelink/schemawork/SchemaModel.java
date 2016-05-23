@@ -29,6 +29,7 @@ public class SchemaModel extends Observable  implements Observer{
 
     private Cursor cursor;
     private boolean typeCursor;                                                 //  There are  we determine, to look the cursor  at the subject. If (typeCursor=No) - to look.
+    private Point ePoint;
 
     private Work work;
 
@@ -90,28 +91,16 @@ public class SchemaModel extends Observable  implements Observer{
     }
 
     public void changeCursor(Point ePoint) {
-        if (find(ePoint) == null) {
-            typeCursor = true;
-        } else {
-            typeCursor = false;
-        }
+        this.ePoint = ePoint;
         changed();
-    }
-
-    public Q find(Point p) {
-        for (int i = 0; i < qs.size(); i++) {
-            Q q = (Q) qs.get(i);
-            if (q.contains(p.getX(), p.getY())) {
-                System.out.println(p.getX()+"     "+ p.getY());
-                return q;
-            }
-            System.out.println(p.getX()+"     "+ p.getY());
-        }
-        return null;
     }
 
     public boolean isTypeCursor() {
         return typeCursor;
+    }
+
+    public Point getePoint() {
+        return ePoint;
     }
 
 }
