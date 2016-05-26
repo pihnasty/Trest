@@ -85,7 +85,7 @@ public class SchemaView extends BorderPane implements Observer {
             { super.bind(heightProperty()); }
             @Override
             protected double computeValue() {
-                return 1; //0.85*getHeight()/imageview.getImage().getHeight() ;
+                return 0.85*getHeight()/imageview.getImage().getHeight() ;
             }};
 
         hImv = new DoubleBinding() {
