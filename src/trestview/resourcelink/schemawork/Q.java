@@ -30,6 +30,7 @@ public class Q extends BorderPane{
 
     public Q(Machine machine) {
         this.machine = machine;
+        this.scaleEquipment = machine.getWork().getScaleEquipment();
         this.idQ = machine.getId();
         ImageView imvWork = new ImageView();
         imvWork.setImage(new javafx.scene.image.Image("file:"+this.machine.getWork().getScheme()));
@@ -50,9 +51,9 @@ public class Q extends BorderPane{
         this.imvQ.setLayoutY(rInner.getY());
         //endregion
 
-        this.x=machine.getLocationX()*imvWork.getImage().getWidth()  - (oX*Math.cos(angle/(2.0*Math.PI))-oY*Math.sin(angle/(2.0*Math.PI)));
-        this.y=machine.getLocationY()*imvWork.getImage().getHeight() - (oX*Math.sin(angle/(2.0*Math.PI))+oY*Math.cos(angle/(2.0*Math.PI)));
-        this.scaleEquipment = machine.getWork().getScaleEquipment();
+        this.x=machine.getLocationX()*imvWork.getImage().getWidth() ;// - (oX*Math.cos(angle/(2.0*Math.PI))-oY*Math.sin(angle/(2.0*Math.PI)));
+        this.y=machine.getLocationY()*imvWork.getImage().getHeight() ; //- (oX*Math.sin(angle/(2.0*Math.PI))+oY*Math.cos(angle/(2.0*Math.PI)));
+
 
 
 
@@ -66,7 +67,17 @@ public class Q extends BorderPane{
         rInner.setFill(Color.TRANSPARENT);        rInner.setStrokeWidth(5);        rInner.setStroke(Color.RED);
         rOuter.setFill(Color.TRANSPARENT);        rOuter.setStrokeWidth(5);        rOuter.setStroke(Color.BLUE);
 
-        getChildren().addAll(imvQ,rInner,rOuter);
+
+        BorderPane bp = new BorderPane();
+        bp.getChildren().addAll(imvQ,rInner,rOuter);
+
+//        bp.setRotate(getAngle());
+        bp.setLayoutX(-oX);
+        bp.setLayoutY(-oY);
+
+
+
+        getChildren().addAll(bp);
  //     rInner.setLayoutX(0);   rInner.setLayoutY(0);
     //    setCursor(Cursor.HAND);
 
