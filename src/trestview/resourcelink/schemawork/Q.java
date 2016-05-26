@@ -2,8 +2,7 @@ package trestview.resourcelink.schemawork;
 
 import entityProduction.Machine;
 import entityProduction.Modelmachine;
-import javafx.beans.binding.DoubleBinding;
-import javafx.scene.Cursor;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -27,11 +26,20 @@ public class Q extends BorderPane{
     private double scaleEquipment =1.0;
     private Rectangle rInner;
     private double scale;
+    private Label idMachine;
 
     public Q(Machine machine) {
         this.machine = machine;
         this.scaleEquipment = machine.getWork().getScaleEquipment();
         this.idQ = machine.getId();
+        this.idMachine = new Label(Integer.toString(idQ));
+        idMachine.setMinSize(20,20);
+    //    idMachine.setPrefSize(40,120);
+        idMachine.setStyle("-fx-font: bold italic 8pt Georgia; -fx-text-fill: #000066; -fx-background-color: lightgrey;");
+        idMachine.setLayoutX(50);
+        idMachine.setLayoutY(50);
+
+
         ImageView imvWork = new ImageView();
         imvWork.setImage(new javafx.scene.image.Image("file:"+this.machine.getWork().getScheme()));
         scale = imvWork.getImage().getHeight()/ this.machine.getWork().getOverallSize();
@@ -68,9 +76,10 @@ public class Q extends BorderPane{
         rOuter.setFill(Color.TRANSPARENT);        rOuter.setStrokeWidth(5);        rOuter.setStroke(Color.BLUE);
 
 
+
         BorderPane bp = new BorderPane();
         bp.getChildren().addAll(imvQ,rInner,rOuter);
-
+        bp.setBottom(idMachine);
 //        bp.setRotate(getAngle());
         bp.setLayoutX(-oX);
         bp.setLayoutY(-oY);

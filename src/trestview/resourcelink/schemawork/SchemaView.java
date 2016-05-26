@@ -2,9 +2,7 @@ package trestview.resourcelink.schemawork;
 
 import entityProduction.Work;
 import javafx.beans.binding.DoubleBinding;
-import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -34,6 +32,9 @@ public class SchemaView extends BorderPane implements Observer {
         qs = schemaModel.getQs();
 
         setStyle("-fx-background-color: #336699;");
+
+
+
 //region
 
 //endregion
@@ -84,8 +85,7 @@ public class SchemaView extends BorderPane implements Observer {
             { super.bind(heightProperty()); }
             @Override
             protected double computeValue() {
-                return 1;
-                        //0.85*getHeight()/imageview.getImage().getHeight() ;
+                return 1; //0.85*getHeight()/imageview.getImage().getHeight() ;
             }};
 
         hImv = new DoubleBinding() {
@@ -103,18 +103,7 @@ public class SchemaView extends BorderPane implements Observer {
             }};
     }
 
-    public Q find(Observable o,String s) {
 
-        Point p =  ((SchemaModel) o).getePoint();
-        for (int i = 0; i < qs.size(); i++) {
-            Q q = qs.get(i);
-            if (q.contains(p.getX()*kScale.getValue(), p.getY()*kScale.getValue())) {
-                System.out.println(p.getX()/kScale.getValue()+"     "+ p.getY()/kScale.getValue()+"   "+q.getIdQ()+"  "+q.getX()+"     "+ q.getY()+"  "+q.getWidth()+"     "+ q.getHeight()+ "  "+q.getLayoutX()+"     "+ q.getLayoutY() );
-                return q;
-            }
-        }
-        return null;
-    }
 
     public Q find(Observable o) {
 
@@ -122,8 +111,8 @@ public class SchemaView extends BorderPane implements Observer {
         for (int i = 0; i <   bp.getChildren().size(); i++) {
           if (bp.getChildren().get(i).getClass()==Q.class) {
               Q q = (Q) bp.getChildren().get(i);
-              if (q.contains(p.getX()-q.getLayoutX() , p.getY()-q.getLayoutY() )) {
-                  System.out.println(p.getX() / kScale.getValue() + "     " + p.getY() / kScale.getValue() + "   " + q.getIdQ() + "  " + q.getX() + "     " + q.getY() + "  " + q.getWidth() + "     " + q.getHeight() + "  " + q.getLayoutX() + "     " + q.getLayoutY());
+              if (q.contains(p.getX()/kScale.getValue() -q.getLayoutX() , p.getY()/kScale.getValue() -q.getLayoutY() )) {
+                  System.out.println(p.getX() / kScale.getValue() + "     " + p.getY() / kScale.getValue() + "  id=" + q.getIdQ() + "  q.getX()=" + q.getX() + "  q.getY()=" + q.getY() + " q.getWidth()=" + q.getWidth() + "    q.getHeight()= " + q.getHeight() + "  " + q.getLayoutX() + "     " + q.getLayoutY());
                   return q;
               }
           }
