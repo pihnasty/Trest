@@ -7,6 +7,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 
 public class Q extends BorderPane{
@@ -26,18 +30,26 @@ public class Q extends BorderPane{
     private double scaleEquipment =1.0;
     private Rectangle rInner;
     private double scale;
-    private Label idMachine;
+ //   private Label idMachine;
+    private Text idMacine;
 
     public Q(Machine machine) {
         this.machine = machine;
         this.scaleEquipment = machine.getWork().getScaleEquipment();
         this.idQ = machine.getId();
-        this.idMachine = new Label(Integer.toString(idQ));
-        idMachine.setMinSize(20,20);
+   //     this.idMachine = new Label(Integer.toString(idQ));
+ //       idMachine.setMinSize(20,20);
     //    idMachine.setPrefSize(40,120);
-        idMachine.setStyle("-fx-font: bold italic 8pt Georgia; -fx-text-fill: #000066; -fx-background-color: lightgrey;");
-        idMachine.setLayoutX(50);
-        idMachine.setLayoutY(50);
+//        idMachine.setStyle("-fx-font: bold italic 8pt Georgia; -fx-text-fill: #000066; -fx-background-color: lightgrey;");
+//        idMachine.setLayoutX(50);
+//        idMachine.setLayoutY(50);
+
+        idMacine = new Text(Integer.toString(idQ));
+        idMacine.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC,12));
+        idMacine.setFill(Color.RED);
+        //idMacine.setStroke(Color.BLUE);
+        idMacine.setY(12);
+
 
 
         ImageView imvWork = new ImageView();
@@ -78,8 +90,8 @@ public class Q extends BorderPane{
 
 
         BorderPane bp = new BorderPane();
-        bp.getChildren().addAll(imvQ,rInner,rOuter);
-        bp.setBottom(idMachine);
+        bp.getChildren().addAll(imvQ,rInner,rOuter, idMacine);
+
 //        bp.setRotate(getAngle());
         bp.setLayoutX(-oX);
         bp.setLayoutY(-oY);
