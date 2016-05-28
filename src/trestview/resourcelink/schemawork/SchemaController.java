@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
 
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,17 +27,16 @@ public class SchemaController implements Initializable, EventHandler<MouseEvent>
 
     @Override
     public void handle(MouseEvent event) {
-      //  observableModel.changeCursor(  event.));
-        System.out.println("event.getPoint()="+event.getX());
-
+        observableModel.changeCursor( new Point( (int) event.getX(), (int) event.getY()));
+        System.out.println("SchemaController="+event.getX()+"            "+event.getY());
     }
 
     /**
      * Invoked when the mouse cursor has been moved onto a component but no buttons have been pushed.
      * When the mouse cursor has been moved onto a component, the  image changes for cursor
      */
-//    public void mouseMoved(MouseEvent event) {
-//        observableModel.changeCursor(  event.getPoint());
-//        System.out.println("event.getPoint()="+event.getPoint());
+//     public void mouseMoved(MouseEvent event) {
+//         //observableModel.changeCursor(  event.getX());
+//
 //    }
 }

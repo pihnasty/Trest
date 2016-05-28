@@ -53,7 +53,7 @@ public class Module0Model extends Observable {
                 });
 
             }
-        },3000, 3000);
+        },3000000, 300000000);
 
 //        for (double i = 0; i < limit; i++) {
 //            randomValuesList.add(Math.atan(i));
