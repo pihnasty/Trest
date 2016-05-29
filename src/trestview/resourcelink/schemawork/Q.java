@@ -31,7 +31,7 @@ public class Q extends BorderPane{
     private Rectangle rInner;
     private double scale;
  //   private Label idMachine;
-    private Text idMacine;
+    private Text idMacine; // f
 
     public Q(Machine machine) {
         this.machine = machine;
