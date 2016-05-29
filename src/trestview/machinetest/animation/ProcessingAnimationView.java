@@ -1,11 +1,16 @@
 package trestview.machinetest.animation;
 
-import javafx.animation.Animation;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
+import javafx.event.*;
+import javafx.event.Event;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 import trestview.machinetest.MachineTestController;
 
@@ -17,6 +22,7 @@ import java.util.Observer;
  */
 public class ProcessingAnimationView extends Pane implements Observer {
 
+
     private ProcessingAnimationModel processingAnimationModel;
     private MachineTestController machineTestController;
 
@@ -24,6 +30,11 @@ public class ProcessingAnimationView extends Pane implements Observer {
     private ImageView imageViewBot;
     private Image imgTop;
     private Image imgBot;
+    Rectangle rectangle;
+    Circle circle;
+    Timeline timeline;
+    TranslateTransition transitionCircle;
+    TranslateTransition transitionRect;
 
     public ProcessingAnimationView(ProcessingAnimationModel animationModel) {//ProcessingAnimationModel animationModel, MachineTestController testController) {
         this.processingAnimationModel = animationModel;
@@ -43,27 +54,67 @@ public class ProcessingAnimationView extends Pane implements Observer {
         imageViewBot.setPreserveRatio(true);
         imageViewBot.setImage(imgBot);
 
-        this.getChildren().addAll(imageViewBot, imageViewTop);
-//        this.setHeight(400);
-        this.setMinSize(300, 300);
-//        this.minHeight(600);
-//        this.set
+        rectangle = new Rectangle(140, 185, 15, 5);
+//        rectangle.setVisible(false);
+        circle = new Circle(0, 180, 10);
 
-//        runProcessingAnimation(500);
+        this.getChildren().addAll(rectangle, circle, imageViewBot, imageViewTop);
+
+        this.setMinSize(300, 300);
+
+        timeline = new Timeline();
+        transitionCircle = new TranslateTransition();
+        transitionRect = new TranslateTransition();
     }
 
     private void runProcessingAnimation(double duration) {
-        TranslateTransition tt = new TranslateTransition(Duration.millis(duration), imageViewTop);
-        tt.setByY(90);
-        tt.setCycleCount(2);
-        tt.setAutoReverse(true);
-        tt.play();
+        timeline.setAutoReverse(true);
+        timeline.setCycleCount(2);
+
+//        transitionRect = new TranslateTransition(Duration.millis(duration), rectangle);
+//        transitionCircle = new TranslateTransition(Duration.millis(duration), circle);
+        transitionCircle.setDuration(Duration.millis(duration));
+        transitionCircle.setNode(circle);
+        transitionCircle.setAutoReverse(false);
+        transitionCircle.setByX(150);
+        transitionCircle.setFromX(0);
+
+        transitionRect.setAutoReverse(false);
+        transitionRect.setDuration(Duration.millis(duration));
+        transitionRect.setNode(rectangle);
+        transitionRect.setByX(150);
+        transitionRect.setFromX(0);
+
+        KeyValue keyValue = new KeyValue(imageViewTop.translateYProperty(), 90);
+        KeyFrame keyFrame = new KeyFrame(Duration.millis(duration), (ActionEvent)->{
+            toggleHide(rectangle);
+            transitionRect.play();
+            transitionCircle.play();
+
+
+        },keyValue);
+
+        timeline.getKeyFrames().clear();
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.play();
+    }
+
+    private void toggleHide(Shape... shapes) {
+        for(Shape shape : shapes) {
+            if(shape.isVisible()) {
+                shape.setVisible(false);
+            } else {
+                shape.setVisible(true);
+            }
+        }
     }
 
     @Override
     public void update(Observable o, Object arg) {
         if(o.getClass() == ProcessingAnimationModel.class) {
+            toggleHide(rectangle);
             runProcessingAnimation(((ProcessingAnimationModel)o).getDuration());
+
         }
     }
 }
