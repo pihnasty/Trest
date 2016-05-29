@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 public class Q extends BorderPane{
     private Modelmachine modelmachine;
     private Machine machine;
+
     private ImageView imvQ = new ImageView();
     private int idQ;
 
@@ -31,7 +32,9 @@ public class Q extends BorderPane{
     private Rectangle rInner;
     private double scale;
  //   private Label idMachine;
-    private Text idMacine; // f
+    private Text idMacine;
+
+    private Rectangle rOuter;
 
     public Q(Machine machine) {
         this.machine = machine;
@@ -45,10 +48,11 @@ public class Q extends BorderPane{
 //        idMachine.setLayoutY(50);
 
         idMacine = new Text(Integer.toString(idQ));
-        idMacine.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC,12));
+        Double fontSize = 12.0;
+        idMacine.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC,fontSize));
         idMacine.setFill(Color.RED);
         //idMacine.setStroke(Color.BLUE);
-        idMacine.setY(12);
+
 
 
 
@@ -60,12 +64,14 @@ public class Q extends BorderPane{
         oY = modelmachine.getWorkSizeY()*scale/2.0;
         angle = this.machine.getAngle();
 
-        Rectangle rInner = new Rectangle(oX-modelmachine.getOverallDimensionX()*scale/2.0,oY-modelmachine.getOverallDimensionY()*scale/2.0,modelmachine.getOverallDimensionX()*scale,modelmachine.getOverallDimensionY()*scale);
-        Rectangle rOuter = new Rectangle(0,0,2*oX,2*oY);
+        idMacine.setY(fontSize-oY);    idMacine.setX(-oX);
+
+        Rectangle rInner = new Rectangle(-modelmachine.getOverallDimensionX()*scale/2.0,-modelmachine.getOverallDimensionY()*scale/2.0,modelmachine.getOverallDimensionX()*scale,modelmachine.getOverallDimensionY()*scale);
+        rOuter = new Rectangle(-oX,-oY,2*oX,2*oY);
 
         //region: Affine coordinate transformation
         this.imvQ.setImage(new javafx.scene.image.Image("file:"+machine.getModelmachine().getImg() ));
-        this.imvQ.fitWidthProperty().setValue(modelmachine.getOverallDimensionX()*scale);
+        this.imvQ.fitWidthProperty().setValue(modelmachine.getOverallDimensionX()*scale* scaleEquipment);
         this.imvQ.fitHeightProperty().setValue(imvQ.getImage().getHeight()/imvQ.getImage().getWidth()*imvQ.getFitWidth());
         this.imvQ.setLayoutX(rInner.getX());
         this.imvQ.setLayoutY(rInner.getY());
@@ -90,15 +96,14 @@ public class Q extends BorderPane{
 
 
         BorderPane bp = new BorderPane();
-        bp.getChildren().addAll(imvQ,rInner,rOuter, idMacine);
+        bp.getChildren().addAll(rInner,rOuter);
 
-//        bp.setRotate(getAngle());
-        bp.setLayoutX(-oX);
-        bp.setLayoutY(-oY);
+        bp.setRotate(getAngle());
+   //     bp.setLayoutX(0);
+   //     bp.setLayoutY(0);
 
-
-
-        getChildren().addAll(bp);
+        getChildren().addAll(imvQ,bp, idMacine);
+       // getChildren().addAll(imvQ,rInner,rOuter, idMacine);
  //     rInner.setLayoutX(0);   rInner.setLayoutY(0);
     //    setCursor(Cursor.HAND);
 
@@ -152,5 +157,8 @@ public class Q extends BorderPane{
         this.oY = oY;
     }
 
+    public Rectangle getrOuter() { return rOuter;}
+
+    public ImageView getImvQ()   { return imvQ;  }
 
 }

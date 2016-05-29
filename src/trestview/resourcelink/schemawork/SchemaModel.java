@@ -95,6 +95,11 @@ public class SchemaModel extends Observable  implements Observer{
         changed();
     }
 
+    public void changeLocation(Point ePoint) {
+        this.ePoint = ePoint;
+        changed();
+    }
+
     public boolean isTypeCursor() {
         return typeCursor;
     }
@@ -102,5 +107,7 @@ public class SchemaModel extends Observable  implements Observer{
     public Point getePoint() {
         return ePoint;
     }
+
+
 
 }

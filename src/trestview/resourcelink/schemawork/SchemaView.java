@@ -55,10 +55,9 @@ public class SchemaView extends BorderPane implements Observer {
         this.work = schemaModel.getWork();
         this.imageview.setImage(new Image("file:"+work.getScheme() ));
         for(Q q: schemaModel.getQs()) {
-            q.setRotate(q.getAngle());
+          //  q.setRotate(q.getAngle());
             q.setLayoutX(q.getX());
             q.setLayoutY(q.getY());
-
         }
         if (imageview != null)           bp.getChildren().addAll(imageview);
         if (schemaModel.getQs() != null) bp.getChildren().addAll(schemaModel.getQs());
@@ -111,8 +110,12 @@ public class SchemaView extends BorderPane implements Observer {
         for (int i = 0; i <   bp.getChildren().size(); i++) {
           if (bp.getChildren().get(i).getClass()==Q.class) {
               Q q = (Q) bp.getChildren().get(i);
-              if (q.contains(p.getX()/kScale.getValue() -q.getLayoutX() , p.getY()/kScale.getValue() -q.getLayoutY() )) {
-                  System.out.println(p.getX() / kScale.getValue() + "     " + p.getY() / kScale.getValue() + "  id=" + q.getIdQ() + "  q.getX()=" + q.getX() + "  q.getY()=" + q.getY() + " q.getWidth()=" + q.getWidth() + "    q.getHeight()= " + q.getHeight() + "  " + q.getLayoutX() + "     " + q.getLayoutY());
+              double x =  (p.getX()/kScale.getValue() -q.getLayoutX());
+              double y =  (p.getY()/kScale.getValue() -q.getLayoutY() );
+              double t = 2.0*Math.PI/360;
+              double xAngle =   x*Math.cos(q.getAngle()*t) + y*Math.sin(q.getAngle()*t);
+              double yAngle =   -x*Math.sin(q.getAngle()*t) + y*Math.cos(q.getAngle()*t);
+              if (q.getrOuter(). contains(xAngle ,yAngle) ){
                   return q;
               }
           }
