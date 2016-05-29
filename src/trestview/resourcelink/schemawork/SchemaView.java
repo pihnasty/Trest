@@ -30,7 +30,6 @@ public class SchemaView extends BorderPane implements Observer {
         bp = new BorderPane();
         getChildren().addAll(bp);
         qs = schemaModel.getQs();
-
         setStyle("-fx-background-color: #336699;");
 
 
@@ -61,8 +60,6 @@ public class SchemaView extends BorderPane implements Observer {
         }
         if (imageview != null)           bp.getChildren().addAll(imageview);
         if (schemaModel.getQs() != null) bp.getChildren().addAll(schemaModel.getQs());
-
-
     }
 
 
@@ -101,7 +98,6 @@ public class SchemaView extends BorderPane implements Observer {
                 return kScale.getValue()*imageview.getImage().getWidth();
             }};
     }
-
 
 
     public Q find(Observable o) {
