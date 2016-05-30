@@ -1,19 +1,13 @@
 package trestview.resourcelink.schemawork;
 
 import entityProduction.Machine;
-import entityProduction.Modelmachine;
 import entityProduction.Work;
-import javafx.geometry.Point2D;
 import javafx.scene.Cursor;
+import javafx.scene.input.MouseEvent;
 import persistence.loader.DataSet;
-import persistence.loader.tabDataSet.RowIdNameDescription;
-import persistence.loader.tabDataSet.RowModelmachine;
 import trestview.resourcelink.ResourceLinkModel;
 import trestview.table.tablemodel.TableModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
-
-import java.awt.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -28,8 +22,7 @@ public class SchemaModel extends Observable  implements Observer{
     private DataSet dataSet;
 
     private Cursor cursor;
-    private boolean typeCursor;                                                 //  There are  we determine, to look the cursor  at the subject. If (typeCursor=No) - to look.
-    private Point ePoint;
+    private MouseEvent mouseEvent;
 
     private Work work;
 
@@ -90,24 +83,21 @@ public class SchemaModel extends Observable  implements Observer{
         this.cursor = cursor;
     }
 
-    public void changeCursor(Point ePoint) {
-        this.ePoint = ePoint;
+    public void changeCursor(MouseEvent event) {
+        this.mouseEvent =  event;
         changed();
     }
 
-    public void changeLocation(Point ePoint) {
-        this.ePoint = ePoint;
+    public void changeLocation(MouseEvent event) {
+        this.mouseEvent =  event;
         changed();
     }
 
-    public boolean isTypeCursor() {
-        return typeCursor;
+    public MouseEvent getMouseEvent() {
+        return mouseEvent;
     }
 
-    public Point getePoint() {
-        return ePoint;
+    public void setMouseEvent(MouseEvent mouseEvent) {
+        this.mouseEvent = mouseEvent;
     }
-
-
-
 }
