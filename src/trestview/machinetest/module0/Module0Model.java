@@ -2,6 +2,7 @@ package trestview.machinetest.module0;
 
 import javafx.application.Platform;
 
+import java.time.Duration;
 import java.util.*;
 
 /**
@@ -45,7 +46,7 @@ public class Module0Model extends Observable {
 
                         System.out.println("Timer is working");
                         double value = Math.random()*100;
-                        System.out.println(value+"\\(^-^)/");
+//                        System.out.println(value+"\\(^-^)/");
                         randomVariable = value;
 
                         changed();
@@ -53,7 +54,7 @@ public class Module0Model extends Observable {
                 });
 
             }
-        },3000000, 300000000);
+        },3000, 5000);//3000000, 300000000);
 
 //        for (double i = 0; i < limit; i++) {
 //            randomValuesList.add(Math.atan(i));
