@@ -7,11 +7,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 
 
 public class Q extends BorderPane{
     private Modelmachine modelmachine;
     private Machine machine;
+
     private ImageView imvQ = new ImageView();
     private int idQ;
 
@@ -26,18 +31,29 @@ public class Q extends BorderPane{
     private double scaleEquipment =1.0;
     private Rectangle rInner;
     private double scale;
-    private Label idMachine;
+ //   private Label idMachine;
+    private Text idMacine;
+
+    private Rectangle rOuter;
 
     public Q(Machine machine) {
         this.machine = machine;
         this.scaleEquipment = machine.getWork().getScaleEquipment();
         this.idQ = machine.getId();
-        this.idMachine = new Label(Integer.toString(idQ));
-        idMachine.setMinSize(20,20);
+   //     this.idMachine = new Label(Integer.toString(idQ));
+ //       idMachine.setMinSize(20,20);
     //    idMachine.setPrefSize(40,120);
-        idMachine.setStyle("-fx-font: bold italic 8pt Georgia; -fx-text-fill: #000066; -fx-background-color: lightgrey;");
-        idMachine.setLayoutX(50);
-        idMachine.setLayoutY(50);
+//        idMachine.setStyle("-fx-font: bold italic 8pt Georgia; -fx-text-fill: #000066; -fx-background-color: lightgrey;");
+//        idMachine.setLayoutX(50);
+//        idMachine.setLayoutY(50);
+
+        idMacine = new Text(Integer.toString(idQ));
+        Double fontSize = 12.0;
+        idMacine.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC,fontSize));
+        idMacine.setFill(Color.RED);
+        //idMacine.setStroke(Color.BLUE);
+
+
 
 
         ImageView imvWork = new ImageView();
@@ -48,12 +64,14 @@ public class Q extends BorderPane{
         oY = modelmachine.getWorkSizeY()*scale/2.0;
         angle = this.machine.getAngle();
 
-        Rectangle rInner = new Rectangle(oX-modelmachine.getOverallDimensionX()*scale/2.0,oY-modelmachine.getOverallDimensionY()*scale/2.0,modelmachine.getOverallDimensionX()*scale,modelmachine.getOverallDimensionY()*scale);
-        Rectangle rOuter = new Rectangle(0,0,2*oX,2*oY);
+        idMacine.setY(fontSize-oY);    idMacine.setX(-oX);
+
+        Rectangle rInner = new Rectangle(-modelmachine.getOverallDimensionX()*scale/2.0,-modelmachine.getOverallDimensionY()*scale/2.0,modelmachine.getOverallDimensionX()*scale,modelmachine.getOverallDimensionY()*scale);
+        rOuter = new Rectangle(-oX,-oY,2*oX,2*oY);
 
         //region: Affine coordinate transformation
         this.imvQ.setImage(new javafx.scene.image.Image("file:"+machine.getModelmachine().getImg() ));
-        this.imvQ.fitWidthProperty().setValue(modelmachine.getOverallDimensionX()*scale);
+        this.imvQ.fitWidthProperty().setValue(modelmachine.getOverallDimensionX()*scale* scaleEquipment);
         this.imvQ.fitHeightProperty().setValue(imvQ.getImage().getHeight()/imvQ.getImage().getWidth()*imvQ.getFitWidth());
         this.imvQ.setLayoutX(rInner.getX());
         this.imvQ.setLayoutY(rInner.getY());
@@ -78,15 +96,14 @@ public class Q extends BorderPane{
 
 
         BorderPane bp = new BorderPane();
-        bp.getChildren().addAll(imvQ,rInner,rOuter);
-        bp.setBottom(idMachine);
-//        bp.setRotate(getAngle());
-        bp.setLayoutX(-oX);
-        bp.setLayoutY(-oY);
+        bp.getChildren().addAll(rInner,rOuter);
 
+        bp.setRotate(getAngle());
+   //     bp.setLayoutX(0);
+   //     bp.setLayoutY(0);
 
-
-        getChildren().addAll(bp);
+        getChildren().addAll(imvQ,bp, idMacine);
+       // getChildren().addAll(imvQ,rInner,rOuter, idMacine);
  //     rInner.setLayoutX(0);   rInner.setLayoutY(0);
     //    setCursor(Cursor.HAND);
 
@@ -140,5 +157,8 @@ public class Q extends BorderPane{
         this.oY = oY;
     }
 
+    public Rectangle getrOuter() { return rOuter;}
+
+    public ImageView getImvQ()   { return imvQ;  }
 
 }

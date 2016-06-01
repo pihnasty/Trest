@@ -1,10 +1,12 @@
 package trestview.resourcelink.schemawork;
 
+import entityProduction.Machine;
 import entityProduction.Work;
 import javafx.beans.binding.DoubleBinding;
 import javafx.scene.Cursor;
 import javafx.scene.image.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 import java.awt.*;
@@ -30,7 +32,6 @@ public class SchemaView extends BorderPane implements Observer {
         bp = new BorderPane();
         getChildren().addAll(bp);
         qs = schemaModel.getQs();
-
         setStyle("-fx-background-color: #336699;");
 
 
@@ -55,22 +56,23 @@ public class SchemaView extends BorderPane implements Observer {
         this.work = schemaModel.getWork();
         this.imageview.setImage(new Image("file:"+work.getScheme() ));
         for(Q q: schemaModel.getQs()) {
-            q.setRotate(q.getAngle());
+          //  q.setRotate(q.getAngle());
             q.setLayoutX(q.getX());
             q.setLayoutY(q.getY());
-
         }
         if (imageview != null)           bp.getChildren().addAll(imageview);
         if (schemaModel.getQs() != null) bp.getChildren().addAll(schemaModel.getQs());
-
-
     }
 
 
     @Override
     public void update(Observable o, Object arg) {
 
-        changeCursor(o);
+        if(  ((SchemaModel) o).getMouseEvent().getEventType() ==   MouseEvent.MOUSE_MOVED) changeCursor(o);
+        if(  ((SchemaModel) o).getMouseEvent().getEventType() ==   MouseEvent.MOUSE_PRESSED) {
+            changeCursor(o);
+            changeLocation(o);
+        }
 
         repaint((SchemaModel) o);
         setHeight(getHeight()+1);        setHeight(getHeight()-1);
@@ -87,32 +89,22 @@ public class SchemaView extends BorderPane implements Observer {
             protected double computeValue() {
                 return 0.85*getHeight()/imageview.getImage().getHeight() ;
             }};
-
-        hImv = new DoubleBinding() {
-            { super.bind(heightProperty()); }
-            @Override
-            protected double computeValue() {
-                return kScale.getValue()*imageview.getImage().getHeight();
-            }};
-
-        wImv = new DoubleBinding() {
-            { super.bind(heightProperty()); }
-            @Override
-            protected double computeValue() {
-                return kScale.getValue()*imageview.getImage().getWidth();
-            }};
     }
-
 
 
     public Q find(Observable o) {
 
-        Point p =  ((SchemaModel) o).getePoint();
+        MouseEvent mouseEvent =  ((SchemaModel) o).getMouseEvent();
+        Point p =  new Point((int) mouseEvent .getX(), (int) mouseEvent.getY());
         for (int i = 0; i <   bp.getChildren().size(); i++) {
           if (bp.getChildren().get(i).getClass()==Q.class) {
               Q q = (Q) bp.getChildren().get(i);
-              if (q.contains(p.getX()/kScale.getValue() -q.getLayoutX() , p.getY()/kScale.getValue() -q.getLayoutY() )) {
-                  System.out.println(p.getX() / kScale.getValue() + "     " + p.getY() / kScale.getValue() + "  id=" + q.getIdQ() + "  q.getX()=" + q.getX() + "  q.getY()=" + q.getY() + " q.getWidth()=" + q.getWidth() + "    q.getHeight()= " + q.getHeight() + "  " + q.getLayoutX() + "     " + q.getLayoutY());
+              double x =  (p.getX()/kScale.getValue() -q.getLayoutX());
+              double y =  (p.getY()/kScale.getValue() -q.getLayoutY() );
+              double t = 2.0*Math.PI/360;
+              double xAngle =   x*Math.cos(q.getAngle()*t) + y*Math.sin(q.getAngle()*t);
+              double yAngle =   -x*Math.sin(q.getAngle()*t) + y*Math.cos(q.getAngle()*t);
+              if (q.getrOuter(). contains(xAngle ,yAngle) ){
                   return q;
               }
           }
@@ -126,6 +118,23 @@ public class SchemaView extends BorderPane implements Observer {
         } else {
             setCursor(Cursor.HAND);
         }
-
     }
+
+    public void changeLocation(Observable o) {
+        Q q = find(o);
+        if (q == null) {
+            setCursor(Cursor.DEFAULT);
+        } else {
+          for (Machine m:  ((SchemaModel) o).getWork().getMachines()) {
+              if (m.getId()==q.getIdQ()) {
+                  m.setLocationX(0.5); m.setLocationY(0.5);
+                  System.out.println(" m.setLocationX(0.5); m.setLocationY(0.5);");
+                  repaint(schemaModel);
+              }
+          }
+
+        }
+    }
+
+
 }
