@@ -2,12 +2,16 @@ package trestview.resourcelink.schemawork;
 
 import entityProduction.Machine;
 import entityProduction.Work;
+import javafx.beans.binding.DoubleBinding;
 import javafx.scene.Cursor;
+import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 import persistence.loader.DataSet;
 import trestview.resourcelink.ResourceLinkModel;
 import trestview.table.tablemodel.TableModel;
 import trestview.table.tablemodel.abstracttablemodel.Rule;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -20,12 +24,10 @@ public class SchemaModel extends Observable  implements Observer{
     private Observable observableModel;
     private Rule rule;
     private DataSet dataSet;
-
     private Cursor cursor;
     private MouseEvent mouseEvent;
-
     private Work work;
-
+    public Double kScale ;
     private List<Q> qs;
 
     public SchemaModel(Observable observableModel, Rule rule) {
@@ -39,7 +41,6 @@ public class SchemaModel extends Observable  implements Observer{
                 createDataSchemaModel (((ResourceLinkModel) observableModel).getTrest().getWorks().get(0));
             }
         }
-
     }
 
     @Override
@@ -85,11 +86,36 @@ public class SchemaModel extends Observable  implements Observer{
 
     public void changeCursor(MouseEvent event) {
         this.mouseEvent =  event;
+        if (find(this) == null) {
+            setCursor(Cursor.DEFAULT);
+        } else {
+            setCursor(Cursor.HAND);
+        }
         changed();
     }
 
     public void changeLocation(MouseEvent event) {
         this.mouseEvent =  event;
+        Point p = new Point((int) mouseEvent.getX(), (int) mouseEvent.getY());
+
+            Q q = find(this);
+
+        double x = (p.getX() / kScale - q.getLayoutX());
+        double y = (p.getY() / kScale - q.getLayoutY());
+        ImageView imvWork = new ImageView();
+        imvWork.setImage(new javafx.scene.image.Image("file:"+work.getScheme() ));
+
+
+            if (q == null) {
+                setCursor(Cursor.DEFAULT);
+            } else {
+                for (Machine m:  work.getMachines()) {
+                    if (m.getId()==q.getIdQ()) {
+                        m.setLocationX(x/imvWork.getImage().getWidth()); m.setLocationY(y/imvWork.getImage().getHeight());
+                    }
+                }
+            }
+        createDataSchemaModel (work);
         changed();
     }
 
@@ -99,5 +125,31 @@ public class SchemaModel extends Observable  implements Observer{
 
     public void setMouseEvent(MouseEvent mouseEvent) {
         this.mouseEvent = mouseEvent;
+    }
+
+    public Double getkScale() {
+        return kScale;
+    }
+
+    public void setkScale(Double kScale) {
+        this.kScale = kScale;
+        System.out.println("kScale="+kScale);
+    }
+
+    public Q find(Observable o) {
+            MouseEvent mouseEvent = ((SchemaModel) o).getMouseEvent();
+            Point p = new Point((int) mouseEvent.getX(), (int) mouseEvent.getY());
+            for (int i = 0; i < qs.size(); i++) {
+                Q q = qs.get(i);
+                double x = (p.getX() / kScale - q.getLayoutX());
+                double y = (p.getY() / kScale - q.getLayoutY());
+                double t = 2.0 * Math.PI / 360;
+                double xAngle = x * Math.cos(q.getAngle() * t) + y * Math.sin(q.getAngle() * t);
+                double yAngle = -x * Math.sin(q.getAngle() * t) + y * Math.cos(q.getAngle() * t);
+                if (q.getrOuter().contains(xAngle, yAngle)) {
+                    return q;
+                }
+            }
+        return null;
     }
 }

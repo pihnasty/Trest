@@ -40,13 +40,6 @@ public class Q extends BorderPane{
         this.machine = machine;
         this.scaleEquipment = machine.getWork().getScaleEquipment();
         this.idQ = machine.getId();
-   //     this.idMachine = new Label(Integer.toString(idQ));
- //       idMachine.setMinSize(20,20);
-    //    idMachine.setPrefSize(40,120);
-//        idMachine.setStyle("-fx-font: bold italic 8pt Georgia; -fx-text-fill: #000066; -fx-background-color: lightgrey;");
-//        idMachine.setLayoutX(50);
-//        idMachine.setLayoutY(50);
-
         idMacine = new Text(Integer.toString(idQ));
         Double fontSize = 12.0;
         idMacine.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC,fontSize));
