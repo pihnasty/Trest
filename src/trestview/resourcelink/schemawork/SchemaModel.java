@@ -100,8 +100,8 @@ public class SchemaModel extends Observable  implements Observer{
 
             Q q = find(this);
 
-        double x = (p.getX() / kScale - q.getLayoutX());
-        double y = (p.getY() / kScale - q.getLayoutY());
+        double x = (p.getX() / kScale );
+        double y = (p.getY() / kScale );
         ImageView imvWork = new ImageView();
         imvWork.setImage(new javafx.scene.image.Image("file:"+work.getScheme() ));
 
